@@ -155,12 +155,12 @@ Add new notes using the templates in `/Templates/`:
 
 ## Stats
 
-<!-- Auto-updated by scripts/update-stats.sh -->
-| Category | Count |
-|----------|-------|
-| Papers | 15 |
-| Concepts | 20 |
-| Templates | 4 |
+
+| Category  | Count                                 |
+| --------- | ------------------------------------- |
+| Papers    | `$= dv.pages('"01_Papers"').length`   |
+| Concepts  | `$= dv.pages('"02_Concepts"').length` |
+| Templates | `$= dv.pages('"Templates"').length`   |
 
 ---
 
