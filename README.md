@@ -141,10 +141,35 @@ Add new notes using the templates in `/Templates/`:
 
 ---
 
+## Changelog
+
+### 2026-01-16 - Initial Release
+
+**Papers Added (15):**
+- Foundation Models (10): AIVC Vision, scGPT, Geneformer, scFoundation, UCE, scBERT, CellPLM, GeneCompass, scPRINT, Cell2Sentence
+- Perturbation Models (5): GEARS, CPA, scGen, CellOT, chemCPA
+
+**Concepts Added (20):**
+- Foundation & Embeddings: Cell Foundation Models, Single-Cell Embeddings, Transfer Learning, Zero-shot Learning
+- Core Techniques: Transformers for Biology, Graph Neural Networks, Generative Models, VAEs, Optimal Transport, Disentangled Representations
+- Biology & Networks: Perturbation Prediction, Gene Regulatory Networks, Knowledge Graphs, Cell State Transitions
+- Multi-modal & Spatial: Multi-modal Integration, Spatial Transcriptomics, Cell-Cell Communication
+- Applications: Drug Discovery, Molecular Representations
+
+**Infrastructure:**
+- Obsidian vault with Dataview, Excalidraw, Git plugins
+- Dashboard with dynamic queries
+- Learning path (6 phases)
+- Reading queue with priority system
+- Templates for papers, concepts, models, projects
+- Model comparison index
+
+---
+
 ## Stats
 
-| Category | Count |
-|----------|-------|
-| Papers | 15 |
-| Concepts | 20 |
-| Templates | 4 |
+| Category  | Count |
+| --------- | ----- |
+| Papers    | 15    |
+| Concepts  | 20    |
+| Templates | 4     |
