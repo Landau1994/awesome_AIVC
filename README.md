@@ -11,19 +11,20 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ## Vault Structure
 
-```
-awesome_AIVC/
-├── 00_Dashboard/     # Navigation and tracking
-├── 01_Papers/        # Paper notes (15 papers)
-├── 02_Concepts/      # Core concepts (20 concepts)
-├── 03_Models/        # Model architectures and comparisons
-├── 04_Datasets/      # Datasets and benchmarks
-├── 05_Tools/         # Software tools and libraries
-├── 06_Projects/      # Personal projects and experiments
-├── 07_People_Labs/   # Key researchers and institutions
-├── 08_Resources/     # Tutorials, courses, and links
-└── Templates/        # Note templates
-```
+
+> [!note]
+> awesome_AIVC/
+> ├── 00_Dashboard/     # Navigation and tracking
+> ├── 01_Papers/        # Paper notes (`$= dv.pages('"01_Papers"').length` papers)
+> ├── 02_Concepts/      # Core concepts (`$= dv.pages('"02_Concepts"').length` concepts)
+> ├── 03_Models/        # Model architectures and comparisons
+> ├── 04_Datasets/      # Datasets and benchmarks
+> ├── 05_Tools/         # Software tools and libraries
+> ├── 06_Projects/      # Personal projects and experiments
+> ├── 07_People_Labs/   # Key researchers and institutions
+> ├── 08_Resources/     # Tutorials, courses, and links
+> └── Templates/        # Note templates
+> 
 
 ## Quick Links
 
@@ -34,9 +35,9 @@ awesome_AIVC/
 
 ---
 
-## Papers (15)
+## Papers (`$= dv.pages('"01_Papers"').length`5)
 
-### Foundation Models (10)
+### Foundation Models 
 
 | Paper                                                             | Year | Key Innovation                         |
 | ----------------------------------------------------------------- | ---- | -------------------------------------- |
@@ -51,7 +52,7 @@ awesome_AIVC/
 | [[01_Papers/scPRINT\|scPRINT]]                                    | 2025 | Zero-shot GRN inference                |
 | [[01_Papers/Cell2Sentence\|Cell2Sentence]]                        | 2024 | Google/Yale, LLM approach, 27B         |
 
-### Perturbation Models (5)
+### Perturbation Models 
 
 | Paper | Year | Key Innovation |
 |-------|------|----------------|
@@ -63,7 +64,7 @@ awesome_AIVC/
 
 ---
 
-## Concepts (20)
+## Concepts (`$= dv.pages('"02_Concepts"').length`)
 
 ### Foundation & Embeddings
 - [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
@@ -143,11 +144,12 @@ Add new notes using the templates in `/Templates/`:
 
 ## Stats
 
-| Category  | Count                                 |
-| --------- | ------------------------------------- |
-| Papers    | `$= dv.pages('"01_Papers"').length`   |
-| Concepts  | `$= dv.pages('"02_Concepts"').length` |
-| Templates | `$= dv.pages('"Templates"').length`   |
+<!-- Auto-updated by scripts/update-stats.sh -->
+| Category | Count |
+|----------|-------|
+| Papers | 15 |
+| Concepts | 20 |
+| Templates | 4 |
 
 ---
 
