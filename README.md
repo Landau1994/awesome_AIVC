@@ -35,7 +35,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (`$= dv.pages('"01_Papers"').length`5)
+## Papers (`$= dv.pages('"01_Papers"').length`)
 
 ### Foundation Models 
 
@@ -101,14 +101,14 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ### By Capability
 
-| Task | Best Models |
-|------|-------------|
-| Cell annotation (zero-shot) | UCE, Geneformer |
-| Perturbation prediction | GEARS, scGPT, CPA |
-| Gene network inference | scPRINT, GeneCompass |
-| Cross-species | UCE (8 species), GeneCompass |
-| Novel drug prediction | chemCPA |
-| Speed | CellPLM (100x faster) |
+| Task                        | Best Models                  |
+| --------------------------- | ---------------------------- |
+| Cell annotation (zero-shot) | UCE, Geneformer              |
+| Perturbation prediction     | GEARS, scGPT, CPA            |
+| Gene network inference      | scPRINT, GeneCompass         |
+| Cross-species               | UCE (8 species), GeneCompass |
+| Novel drug prediction       | chemCPA                      |
+| Speed                       | CellPLM (100x faster)        |
 
 ### By Architecture
 
