@@ -143,13 +143,6 @@ Add new notes using the templates in `/Templates/`:
 
 ## Stats
 
-```dataview
-TABLE WITHOUT ID
-  length(filter(file.lists, (x) => true)) as "Count"
-FROM ""
-WHERE false
-```
-
 | Category  | Count                                 |
 | --------- | ------------------------------------- |
 | Papers    | `$= dv.pages('"01_Papers"').length`   |
