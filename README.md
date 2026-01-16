@@ -141,6 +141,23 @@ Add new notes using the templates in `/Templates/`:
 
 ---
 
+## Stats
+
+```dataview
+TABLE WITHOUT ID
+  length(filter(file.lists, (x) => true)) as "Count"
+FROM ""
+WHERE false
+```
+
+| Category  | Count                                 |
+| --------- | ------------------------------------- |
+| Papers    | `$= dv.pages('"01_Papers"').length`   |
+| Concepts  | `$= dv.pages('"02_Concepts"').length` |
+| Templates | `$= dv.pages('"Templates"').length`   |
+
+---
+
 ## Changelog
 
 ### 2026-01-16 - Initial Release
@@ -163,13 +180,3 @@ Add new notes using the templates in `/Templates/`:
 - Reading queue with priority system
 - Templates for papers, concepts, models, projects
 - Model comparison index
-
----
-
-## Stats
-
-| Category  | Count |
-| --------- | ----- |
-| Papers    | 15    |
-| Concepts  | 20    |
-| Templates | 4     |
