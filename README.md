@@ -13,16 +13,27 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 
 > [!note]
+> 
 > awesome_AIVC/
+> 
 > ├── 00_Dashboard/     # Navigation and tracking
+> 
 > ├── 01_Papers/        # Paper notes (`$= dv.pages('"01_Papers"').length` papers)
+> 
 > ├── 02_Concepts/      # Core concepts (`$= dv.pages('"02_Concepts"').length` concepts)
+> 
 > ├── 03_Models/        # Model architectures and comparisons
+> 
 > ├── 04_Datasets/      # Datasets and benchmarks
+> 
 > ├── 05_Tools/         # Software tools and libraries
+> 
 > ├── 06_Projects/      # Personal projects and experiments
+> 
 > ├── 07_People_Labs/   # Key researchers and institutions
+> 
 > ├── 08_Resources/     # Tutorials, courses, and links
+> 
 > └── Templates/        # Note templates
 > 
 
