@@ -38,28 +38,28 @@ awesome_AIVC/
 
 ### Foundation Models (10)
 
-| Paper | Year | Key Innovation |
-|-------|------|----------------|
-| [[01_Papers/Bunne 2024 - How to Build Virtual Cell\|AIVC Vision]] | 2024 | Roadmap paper |
-| [[01_Papers/scGPT\|scGPT]] | 2024 | Gene tokenization, multi-task |
-| [[01_Papers/Geneformer\|Geneformer]] | 2023 | Rank-value encoding |
-| [[01_Papers/scFoundation\|scFoundation]] | 2024 | 100M params, read-depth aware |
-| [[01_Papers/UCE\|UCE]] | 2024 | 650M params, 8 species, best zero-shot |
-| [[01_Papers/scBERT\|scBERT]] | 2022 | First BERT for single-cell |
-| [[01_Papers/CellPLM\|CellPLM]] | 2024 | Cells-as-tokens, 100x faster |
-| [[01_Papers/GeneCompass\|GeneCompass]] | 2024 | Knowledge-informed, cross-species |
-| [[01_Papers/scPRINT\|scPRINT]] | 2025 | Zero-shot GRN inference |
-| [[01_Papers/Cell2Sentence\|Cell2Sentence]] | 2024 | Google/Yale, LLM approach, 27B |
+| Paper                                                             | Year | Key Innovation                         |
+| ----------------------------------------------------------------- | ---- | -------------------------------------- |
+| [[01_Papers/Bunne 2024 - How to Build Virtual Cell\|AIVC Vision]] | 2024 | Roadmap paper                          |
+| [[01_Papers/scGPT\|scGPT]]                                        | 2024 | Gene tokenization, multi-task          |
+| [[01_Papers/Geneformer\|Geneformer]]                              | 2023 | Rank-value encoding                    |
+| [[01_Papers/scFoundation\|scFoundation]]                          | 2024 | 100M params, read-depth aware          |
+| [[01_Papers/UCE\|UCE]]                                            | 2024 | 650M params, 8 species, best zero-shot |
+| [[01_Papers/scBERT\|scBERT]]                                      | 2022 | First BERT for single-cell             |
+| [[01_Papers/CellPLM\|CellPLM]]                                    | 2024 | Cells-as-tokens, 100x faster           |
+| [[01_Papers/GeneCompass\|GeneCompass]]                            | 2024 | Knowledge-informed, cross-species      |
+| [[01_Papers/scPRINT\|scPRINT]]                                    | 2025 | Zero-shot GRN inference                |
+| [[01_Papers/Cell2Sentence\|Cell2Sentence]]                        | 2024 | Google/Yale, LLM approach, 27B         |
 
 ### Perturbation Models (5)
 
 | Paper | Year | Key Innovation |
 |-------|------|----------------|
-| [[01_Papers/GEARS|GEARS]] | 2023 | GNN + knowledge graph, multi-gene |
-| [[01_Papers/CPA|CPA]] | 2023 | Compositional VAE, drug combinations |
-| [[01_Papers/scGen|scGen]] | 2019 | Latent arithmetic (foundational) |
-| [[01_Papers/CellOT|CellOT]] | 2023 | Optimal transport, patient transfer |
-| [[01_Papers/chemCPA|chemCPA]] | 2022 | Novel drug prediction |
+| [[01_Papers/GEARS\|GEARS]] | 2023 | GNN + knowledge graph, multi-gene |
+| [[01_Papers/CPA\|CPA]] | 2023 | Compositional VAE, drug combinations |
+| [[01_Papers/scGen\|scGen]] | 2019 | Latent arithmetic (foundational) |
+| [[01_Papers/CellOT\|CellOT]] | 2023 | Optimal transport, patient transfer |
+| [[01_Papers/chemCPA\|chemCPA]] | 2022 | Novel drug prediction |
 
 ---
 
