@@ -1,4 +1,4 @@
-# Awesome AI Virtual Cell (AIVC)
+# Awesome AI Virtual Cell (AIVC) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A comprehensive knowledge base for studying AI-powered Virtual Cell models
 

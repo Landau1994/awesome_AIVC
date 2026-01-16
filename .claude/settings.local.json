@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(while read concept)",
+      "Bash(do if [ -f \"/mnt/e/project/AIVC_comp/note/awesome_AIVC/02_Concepts/$concept.md\" ])",
+      "Bash(then echo \"OK: $concept\" else echo \"MISSING: $concept\" fi done)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
