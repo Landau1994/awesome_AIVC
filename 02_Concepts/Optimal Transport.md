@@ -34,10 +34,12 @@ $$W_p(P, Q) = \left(\inf_{\gamma \in \Gamma(P,Q)} \int c(x,y)^p d\gamma(x,y)\rig
 
 ## Application: CellOT
 
-```
-Control cells (P_control) ──[Neural OT]──→ Treated cells (P_treated)
-```
+Here is the Mermaid diagram corresponding to the selected text:
 
+```mermaid
+graph LR
+    A["Control cells (P_control)"] -- "Neural OT" --> B["Treated cells (P_treated)"]
+```
 - Uses Input Convex Neural Networks (ICNNs)
 - Learns transport map from unpaired observations
 - [[01_Papers/CellOT|CellOT paper]]
