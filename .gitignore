@@ -6,5 +6,22 @@
 .DS_Store
 Thumbs.db
 
+# Private content
+Private/
+Secrets/
+*.private.md
+
+# Plugin secrets (e.g., API keys)
+.obsidian/plugins/copilot/data.json
+# Consider ignoring all plugin settings if you use many AI plugins:
+# .obsidian/plugins/*/data.json
+
+# Copilot plugin data (conversations, memory, etc.)
+copilot/
+!copilot/copilot-custom-prompts/
+
+# Obsidian Trash
+.trash/
+
 # Attachments (if large)
 # Attachments/

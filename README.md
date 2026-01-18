@@ -130,11 +130,11 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 | Type | Models |
 |------|--------|
-| Transformers | scGPT, Geneformer, scFoundation, UCE |
+| Transformers | scGPT, Geneformer, scFoundation, UCE, Gemini |
 | GNN | GEARS |
 | VAE | CPA, scGen, scVI |
 | Optimal Transport | CellOT |
-| LLM | Cell2Sentence |
+| LLM | Cell2Sentence, Gemini |
 
 ---
 
@@ -170,6 +170,18 @@ Add new notes using the templates in `/Templates/`:
 ---
 
 ## Changelog
+
+### 2026-01-18 - Privacy & Multimodal Update
+
+**New Model:**
+- [[03_Models/GEMINI|Gemini]]: Added documentation for Google's multimodal LLM family.
+
+**Privacy & Security:**
+- Enhanced `.gitignore` to protect sensitive local data:
+    - Dedicated `Private/` and `Secrets/` folders for non-synced notes.
+    - Support for `*.private.md` file suffix for ad-hoc private notes.
+    - Protected Copilot plugin API keys and conversation history.
+    - Explicitly ignored Obsidian `.trash/` folder.
 
 ### 2026-01-16 - Initial Release
 

@@ -118,6 +118,12 @@ graph TD
 | Cell diffusion | Diffusion | State generation |
 | CellOT | Optimal Transport | Cell state transitions |
 
+## Multimodal LLMs
+
+| Model | Organization | Key Feature | Paper |
+|-------|--------------|-------------|-------|
+| **Gemini** | Google DeepMind | Native multimodality, long context | [[03_Models/GEMINI\|Link]] |
+
 ## Multi-modal Models
 
 | Model | Modalities |
