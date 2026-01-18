@@ -40,7 +40,13 @@ date_read:
 |        |       |          |
 
 ## Figures
-![[]]
+
+
+| Figure | Description |
+| ------ | ----------- |
+| Fig 1  |             |
+| Fig2   |             |
+
 
 ## Critical Analysis
 ### Strengths
@@ -65,7 +71,3 @@ date_read:
 ## Notes
 -
 
-## Citation
-```bibtex
-
-```
