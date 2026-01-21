@@ -1,13 +1,17 @@
 ---
-title: "Gemini"
-aliases: [Google Gemini, Gemini Pro, Gemini Ultra, Gemini Flash]
+title: Gemini
+aliases:
+  - Google Gemini
+  - Gemini Pro
+  - Gemini Ultra
+  - Gemini Flash
 tags:
   - model
   - LLM
   - multimodal
 type: Multimodal Large Language Model
-source_paper: "[[Gemini: A Family of Highly Capable Multimodal Models]]"
-github:
+source_paper: "Gemini: A Family of Highly Capable Multimodal Models"
+url: “https://gemini.google.com/app”
 year: 2023
 organization: Google DeepMind
 status: active
