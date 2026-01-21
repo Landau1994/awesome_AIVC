@@ -1,37 +1,145 @@
 ---
-title: "Cell2Sentence: Teaching Large Language Models the Language of Biology"
+title: "Scaling Large Language Models for Next-Generation Single-Cell Analysis"
 aliases: [Cell2Sentence, C2S, C2S-Scale]
 authors:
-  - Daniel Levine
   - Syed Asad Rizvi
-  - Sacha Lévy
-  - Nazreen Palani
+  - Daniel Levine
+  - Aakash Patel
+  - Shiyang Zhang
+  - Eric Wang
+  - Curtis Jamison Perry
+  - Ivan Vrkic
+  - Nicole Mayerli Constante
+  - Zirui Fu
+  - Sizhuang He
   - David Zhang
-  - Xingyu Chen
-  - Marco Hennig
-  - Erdem Varol
-  - Pascal Notin
-  - Debora Marks
+  - Cerise Tang
+  - Zhuoyang Lyu
+  - Rayyan Darji
+  - Chang Li
+  - Emily Sun
+  - David Jeong
+  - Lawrence Zhao
+  - Jennifer Kwan
+  - David Braun
+  - Brian Hafler
+  - Hattie Chung
+  - Rahul M. Dhodapkar
+  - Paul Jaeger
+  - Bryan Perozzi
+  - Jeffrey Ishizuka
+  - Shekoofeh Azizi
   - David van Dijk
-year: 2024
-journal: ICML 2024 / bioRxiv
+year: 2025
+journal: bioRxiv
 doi: 10.1101/2025.04.14.648850
-url: https://github.com/vandijklab/cell2sentence
+url: https://doi.org/10.1101/2025.04.14.648850
 tags:
   - paper
   - AIVC
-  - foundation-model
+  - Foundation-Models
+  - Single-cell
   - LLM
-  - single-cell
-  - Google
-  - instruction-tuning
-  - learning-path
 status: unread
 rating:
-priority: P1
-date_added: 2026-01-16
+date_added: 2025-12-31
 date_read:
 ---
+
+# Scaling Large Language Models for Next-Generation Single-Cell Analysis
+
+## Quick Summary
+This paper introduces **C2S-Scale**, a family of multimodal foundation models for single-cell biology ranging from 410 million to 27 billion parameters. Building on the [[Cell2Sentence]] framework, the authors train standard Large Language Models ([[LLMs]]) on a massive corpus of over 50 million single-cell transcriptomes converted into text, alongside biological literature. The study demonstrates that scaling model size and data volume yields predictable improvements in performance across diverse tasks, including cell annotation, perturbation prediction, and spatial reasoning. The utility of the model is experimentally validated through a "virtual screen" that identified **silmitasertib** as a context-dependent enhancer of antigen presentation in tumors.
+
+## Key Points
+- **Unified Framework**: C2S-Scale unifies transcriptomic data and natural language text into a single autoregressive training objective, avoiding bespoke architectures used in models like [[scGPT]] or [[Geneformer]].
+- **Scaling Laws**: Performance consistently improves with model size (up to 27B parameters) and training tokens (over 1 billion), adhering to scaling laws similar to those in NLP.
+- **Multimodal Capabilities**: The model performs annotation, generation, and reasoning tasks, integrating metadata, gene interaction networks, and spatial context natively via prompts.
+- **Reinforcement Learning Alignment**: Uses [[Group Relative Policy Optimization]] (GRPO) to align model outputs with biological ground truth, significantly improving performance in perturbation prediction and question answering.
+- **Experimental Validation**: A dual-context virtual screen predicted silmitasertib (CX-4945) would upregulate [[MHC-I]] specifically in interferon-low environments, a hypothesis confirmed via wet-lab experiments on tumor fragments and cell lines.
+- **New Metric**: Introduces **scFID** ([[Single-Cell Fréchet Inception Distance]]), adapting the computer vision metric to evaluate the realism of generated transcriptomic profiles in latent space.
+
+## Methods
+### Data
+- **Corpus**: Over **50 million single-cell transcriptomes** from 825 datasets sourced from [[CELLxGENE]] and the [[Human Cell Atlas]].
+- **Representation**: **"Cell Sentences"**: Gene expression profiles are converted into ordered text strings of gene names, ranked by expression level.
+- **Multimodality**: The corpus links transcriptomic profiles with cell, tissue, and donor metadata, as well as text from scientific abstracts and papers.
+- **Tasks**: Data is formatted for multi-task training including single-cell modeling, cell type annotation, cluster captioning, and perturbation prediction.
+
+### Model Architecture
+- **Base Models**: Initialized from pretrained [[Gemma-2]] (2B, 9B, 27B) and [[Pythia]] (410M, 1B, 6.9B) checkpoints.
+- **Architecture**: Standard decoder-only [[Transformer]] architecture with causal attention. No modifications to the tokenizer or internal architecture were made to accommodate biological data, relying entirely on the "Cell2Sentence" data transformation.
+- **Vocabulary**: Uses the existing natural language tokenizer; genes are treated as text tokens.
+
+### Training Strategy
+1.  **Continued Pretraining**: Autoregressive next-token prediction on the multimodal corpus (cell sentences + text).
+2.  **Supervised Fine-Tuning (SFT)**: Instruction fine-tuning on diverse tasks (e.g., "Predict the cell type of this cell", "Generate a cell sentence for...").
+3.  **Reinforcement Learning (RL)**:
+    -   **Algorithm**: [[Group Relative Policy Optimization]] (GRPO).
+    -   **Objectives**: Optimized for biological validity (e.g., maximizing [[BioBERTScore]] for QA, or correlation metrics for perturbation).
+    -   **Context**: Used specifically for Question Answering (scQA) and perturbation response prediction (e.g., [[L1000]] and cytokine datasets).
+
+## Results
+| Metric | Value (C2S-Scale) | Baseline (Best Alt) | Notes |
+|--------|-------|----------|-------|
+| Cell Type Accuracy (OOD) | ~88% | <80% (scGPT/Geneformer) | Out-of-distribution immune cells |
+| Perturbation scFID (Lower is better) | Lowest | Higher (ChemCPA/CondOT) | SciPlex3 dataset (unseen drugs) |
+| Perturbation Correlation ($\tau$) | High | Lower (Linear Models) | L1000 Dataset |
+| QA BioBERTScore | Highest | Lower (GPT-4o/Gemini) | Single-cell Question Answering (scQA) |
+| Spatial Neighborhood Acc. | >60% | ~50% (Nicheformer) | Spatial transcriptomics prediction |
+
+## Figures
+
+| Figure | Description |
+| ------ | ----------- |
+| **Fig 1**  | Overview of the C2S-Scale framework, illustrating the data corpus (>50M cells), scaling dimensions, cell sentence representation, and the three-stage training procedure (Pretrain -> SFT -> RL). |
+| **Fig 2**  | Scaling laws analysis showing performance improvements in annotation and generation as a function of FLOPs/parameters. Demonstrates C2S-Scale 27B superiority over baselines in OOD settings. |
+| **Fig 3**  | Natural language interpretation tasks. Shows performance in cell annotation, cluster captioning, and dataset summarization compared to general LLMs and expression-only models. |
+| **Fig 4**  | Spatial reasoning results. Shows the model can predict spatial neighborhoods and niches by implicitly learning from multi-cell context windows and interaction databases ([[BioGRID]], [[CellPhoneDB]]). |
+| **Fig 5**  | Single-cell Question Answering (scQA). Demonstrates that RL (GRPO) significantly boosts reasoning capabilities compared to SFT alone and outperforms GPT-4o. |
+| **Fig 6**  | Perturbation prediction benchmarks. Visualizes performance on Cytokine, L1000, and [[SciPlex3]] datasets using scFID and correlation metrics. Shows improved generalization to unseen compounds. |
+| **Fig 7**  | Virtual screening application. Workflow and experimental validation of **silmitasertib** as a context-specific modulator of antigen presentation (effective in low-IFN contexts). |
+
+## Critical Analysis
+### Strengths
+- **Scalability**: Effectively demonstrates that biological data can leverage the massive infrastructure and scaling laws of standard LLMs without custom biological architectures.
+- **Zero-Shot/OOD Generalization**: Strong performance on out-of-distribution tasks suggests the model learns transferable biological principles rather than just memorizing datasets.
+- **Interpretability**: The native natural language interface allows for complex queries and explanations, bridging the gap between numerical data and biological literature.
+- **Actionability**: Moving beyond benchmarks to an actual experimental discovery (Silmitasertib) validates the model's practical utility.
+
+### Weaknesses
+- **Computational Cost**: Processing "cell sentences" (thousands of tokens per cell) is computationally expensive compared to embedding-based models like [[scGPT]], especially for inference.
+- **Causal Attention Limitations**: The authors note that the left-to-right causal attention of standard LLMs may not perfectly model the bidirectional nature of gene regulatory networks (though they argue multi-cell context mitigates this).
+- **Hallucination Risk**: As with all LLMs, generative tasks (like abstract summarization) carry a risk of hallucination, though the paper attempts to benchmark this.
+
+### Questions
+- How does the fixed context window limit the number of genes ($K$) that can be represented in a cell sentence, and does this result in the loss of low-expression but biologically relevant genes?
+- Can this framework be efficiently extended to multi-omics (ATAC, Methylation) given the token length constraints?
+
+## Connections
+### Related Papers
+- **[[Cell2Sentence]]**: The foundational method this paper scales up.
+- **[[scGPT]]** & **[[Geneformer]]**: Key baselines; expression-only foundation models using custom Transformer architectures.
+- **[[ChemCPA]]**: Baseline for chemical perturbation prediction.
+- **[[Gemma-2]]**: The base LLM architecture used for the largest models.
+
+### Related Concepts
+- [[Foundation Models]]
+- [[Single-cell RNA sequencing]]
+- [[Reinforcement Learning from Human Feedback]] (RLHF/RLAIF)
+- [[Virtual Screening]]
+- [[Spatial Transcriptomics]]
+
+### Potential Applications
+- **In Silico Drug Screening**: Identifying context-specific drug targets and responses without large-scale physical screening.
+- **Virtual Cells**: Simulating cellular responses to perturbations (CRISPR, drugs, cytokines) for hypothesis generation.
+- **Automated Annotation**: High-quality, text-explained annotation of new single-cell atlases.
+- **Interactive Analysis**: Chat-based interfaces for biologists to query datasets (e.g., "What pathways are upregulated in this cluster?").
+
+## Notes
+- The introduction of **scFID** is a clever adaptation of FID to biology, using scGPT as the feature extractor instead of InceptionV3. This provides a distributional metric for generative quality.
+- The use of **GRPO** (Group Relative Policy Optimization) eliminates the need for a critic network, stabilizing training for biological rewards.
+
 
 # Cell2Sentence: Teaching Large Language Models the Language of Biology
 
