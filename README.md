@@ -145,6 +145,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - [Nature: Three Data Pillars for Virtual Cells](https://www.nature.com/articles/s41422-025-01101-y)
 - [Google: C2S-Scale Research Blog](https://research.google/blog/teaching-machines-the-language-of-biology-scaling-large-language-models-for-next-generation-single-cell-analysis/)
 - [Awesome Foundation Model Single-Cell Papers](https://github.com/OmicsML/awesome-foundation-model-single-cell-papers)
+- https://virtualcellmodels.cziscience.com/models
 
 ---
 
