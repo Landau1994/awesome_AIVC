@@ -1,5 +1,5 @@
 ---
-title: "Zero-shot evaluation reveals limitations of single-cell foundation models"
+title: Zero-shot evaluation reveals limitations of single-cell foundation models
 aliases: []
 authors:
   - Kasia Z. Kedzierska
@@ -16,6 +16,7 @@ tags:
   - single-cell
   - foundation-models
   - zero-shot
+  - benchmarking
 status: unread
 rating:
 date_added: 2025-05-18
