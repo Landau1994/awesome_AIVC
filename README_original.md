@@ -9,12 +9,13 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - **Deep learning architectures** (transformers, GNNs, diffusion models)
 - **Biological knowledge graphs**
 
-> The momentum that has been built with LLMs has also led to the aspiration for [building the AI virtual cell (AIVC)](https://www.cell.com/cell/fulltext/S0092-8674\(24\)01332-1?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867424013321%3Fshowall%3Dtrue) using multiple models to simulate the actions of molecules, cells, and tissues and enable understanding of their dynamic behavior. With the massive reference data accumulated from global initiatives over the past two decades, such as the Human Genome Project, the Human Cell Atlas, the Cancer Genome Atlas, ENCODE (Encyclopedia of DNA Elements), the Human Protein Atlas, and many others, there is no shortage of data for training machine learning models. The timeline for building the AIVC is unclear, but the optimism for its potential utility, [recently endorsed by more than 40 leading scientists](https://www.cell.com/cell/fulltext/S0092-8674\(24\)01332-1?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867424013321%3Fshowall%3Dtrue), is palpable: "AIVC has the potential to revolutionize the scientific process, leading to future breakthroughs in biomedical research, personalized medicine, drug discovery, cell engineering, and programmable biology."
-
-> With progress on so many fronts, we're seeing a takeoff for life science foundation models that are deepening our understanding of biomolecular structure, function, evolution, and interaction, along with the inner workings of cells. This has led some to equate digital biology to engineering. As [Jensen Huang, CEO of Nvidia, put it](https://x.com/antonioregalado/status/1732434327886053589): "For the first time in human history, biology has the opportunity to be engineering, not science." [Demis Hassabis of Google DeepMind](https://www.youtube.com/watch?v=nQKmVhLIGcs&list=PLqYmG7hTraZBwZQwCxzIlsyFxC3WKH_Ii&index=9) elaborates on this idea: "I call it an engineering science, because unlike the natural sciences, you have to build the artifact of interest first, and then, once you have it, you can use the scientific method to reduce it down and understand its components." Yet, it is important to remember, as Philip Ball opined in his book [How Life Works: A User's Guide to the New Biology](https://www.amazon.com/How-Life-Works-Users-Biology/dp/0226826686), that the language of life is far more complex than we fathom. He states, "Comparing life to a machine, a robot, a computer, sells it short." Going further, he writes that "life is a cascade of processes, each with a distinct integrity and autonomy, the logic of which has no parallel outside the living world." Ball may well be right, but we're beginning to see the ability of AI to deconvolute some of the utter complexity of the language of life—and there's much more to come.
-> [Eric J. Topol, Science 2025 Learning the language of life with AI](https://www.science.org/doi/10.1126/science.adv4414)
+> The momentum that has been built with LLMs has also led to the aspiration for [building the AI virtual cell (AIVC)](https://www.cell.com/cell/fulltext/S0092-8674\(24\)01332-1?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867424013321%3Fshowall%3Dtrue) using multiple models to simulate the actions of molecules, cells, and tissues and enable understanding of their dynamic behavior. With the massive reference data accumulated from global initiatives over the past two decades, such as the Human Genome Project, the Human Cell Atlas, the Cancer Genome Atlas, ENCODE (Encyclopedia of DNA Elements), the Human Protein Atlas, and many others, there is no shortage of data for training machine learning models. The timeline for building the AIVC is unclear, but the optimism for its potential utility, [recently endorsed by more than 40 leading scientists](https://www.cell.com/cell/fulltext/S0092-8674\(24\)01332-1?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867424013321%3Fshowall%3Dtrue), is palpable: “AIVC has the potential to revolutionize the scientific process, leading to future breakthroughs in biomedical research, personalized medicine, drug discovery, cell engineering, and programmable biology.”
+> 
+> With progress on so many fronts, we’re seeing a takeoff for life science foundation models that are deepening our understanding of biomolecular structure, function, evolution, and interaction, along with the inner workings of cells. This has led some to equate digital biology to engineering. As [Jensen Huang, CEO of Nvidia, put it](https://x.com/antonioregalado/status/1732434327886053589): “For the first time in human history, biology has the opportunity to be engineering, not science.” [Demis Hassabis of Google DeepMind](https://www.youtube.com/watch?v=nQKmVhLIGcs&list=PLqYmG7hTraZBwZQwCxzIlsyFxC3WKH_Ii&index=9) elaborates on this idea: “I call it an engineering science, because unlike the natural sciences, you have to build the artifact of interest first, and then, once you have it, you can use the scientific method to reduce it down and understand its components.” Yet, it is important to remember, as Philip Ball opined in his book [How Life Works: A User’s Guide to the New Biology](https://www.amazon.com/How-Life-Works-Users-Biology/dp/0226826686), that the language of life is far more complex than we fathom. He states, “Comparing life to a machine, a robot, a computer, sells it short.” Going further, he writes that “life is a cascade of processes, each with a distinct integrity and autonomy, the logic of which has no parallel outside the living world.” Ball may well be right, but we’re beginning to see the ability of AI to deconvolute some of the utter complexity of the language of life—and there’s much more to come.
+> [Eric J. Topol, Science 2025 Learning the language of life with AI](https://www.science.org/doi/10.1126/science.adv4414)
 
 ## Vault Structure
+
 
 > [!note]
 > 
@@ -22,9 +23,9 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 > 
 > ├── 00_Dashboard/     # Navigation and tracking
 > 
-> ├── 01_Papers/        # Paper notes (24 papers)
+> ├── 01_Papers/        # Paper notes (`$= dv.pages('"01_Papers"').length` papers)
 > 
-> ├── 02_Concepts/      # Core concepts (20 concepts)
+> ├── 02_Concepts/      # Core concepts (`$= dv.pages('"02_Concepts"').length` concepts)
 > 
 > ├── 03_Models/        # Model architectures and comparisons
 > 
@@ -39,6 +40,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 > ├── 08_Resources/     # Tutorials, courses, and links
 > 
 > └── Templates/        # Note templates
+> 
 
 ## Quick Links
 
@@ -49,7 +51,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (24)
+## Papers (`$= dv.pages('"01_Papers"').length`)
 
 ### Foundation Models 
 
@@ -78,7 +80,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Concepts (20)
+## Concepts (`$= dv.pages('"02_Concepts"').length`)
 
 ### Foundation & Embeddings
 - [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
@@ -159,34 +161,16 @@ Add new notes using the templates in `/Templates/`:
 
 ## Stats
 
+
 | Category  | Count                                 |
 | --------- | ------------------------------------- |
-| Papers    | 24                                    |
-| Concepts  | 20                                    |
-| Models    | 2                                     |
-| Templates | 3                                     |
+| Papers    | `$= dv.pages('"01_Papers"').length`   |
+| Concepts  | `$= dv.pages('"02_Concepts"').length` |
+| Templates | `$= dv.pages('"Templates"').length`   |
 
 ---
 
 ## Changelog
-
-### 2026-01-30 - Content Update
-
-**New Papers Added (9):**
-- AlphaGenome
-- arXiv 2026 Latent Causal Diffusions for Single-Cell Perturbation Modeling
-- bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models
-- bioRxiv 2026 STACK In-Context Learning of Single-Cell Biology
-- GB 2025 Zero-shot evaluation reveals limitations of single-cell foundation models
-- ncb 2025 Decoding heterogeneous single-cell perturbation responses
-- nmeth 2025 Benchmarking algorithms for generalizable single-cell perturbation response prediction
-- State.md
-- VariantFormer.md
-
-**Updated Statistics:**
-- Papers: 24 (previously 15)
-- Concepts: 20 (previously 20)
-- Models: 2 (previously 1)
 
 ### 2026-01-18 - Privacy & Multimodal Update
 
