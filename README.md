@@ -56,6 +56,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | Paper                                                             | Year | Key Innovation                         |
 | ----------------------------------------------------------------- | ---- | -------------------------------------- |
 | [[01_Papers/Bunne 2024 - How to Build Virtual Cell\|AIVC Vision]] | 2024 | Roadmap paper                          |
+| [[01_Papers/AlphaGenome\|AlphaGenome]]                           | 2026 | Unified deep learning model for regulatory variant prediction |
 | [[01_Papers/scGPT\|scGPT]]                                        | 2024 | Gene tokenization, multi-task          |
 | [[01_Papers/Geneformer\|Geneformer]]                              | 2023 | Rank-value encoding                    |
 | [[01_Papers/scFoundation\|scFoundation]]                          | 2024 | 100M params, read-depth aware          |
@@ -169,6 +170,16 @@ Add new notes using the templates in `/Templates/`:
 ---
 
 ## Changelog
+
+### 2026-01-30 - Highlighted AlphaGenome Paper
+
+**Highlighted Important Paper:**
+- [[01_Papers/AlphaGenome\|AlphaGenome]]: Added to Foundation Models section as a key paper for regulatory variant effect prediction with unified deep learning approach.
+
+**Updated Statistics:**
+- Papers: 24 (previously 24)
+- Concepts: 20 (previously 20)
+- Models: 2 (previously 2)
 
 ### 2026-01-30 - Content Update
 
