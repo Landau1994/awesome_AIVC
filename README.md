@@ -49,7 +49,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (24)
+## Papers (28)
 
 ### Foundation Models 
 
@@ -162,7 +162,7 @@ Add new notes using the templates in `/Templates/`:
 
 | Category  | Count                                 |
 | --------- | ------------------------------------- |
-| Papers    | 24                                    |
+| Papers    | 28                                    |
 | Concepts  | 20                                    |
 | Models    | 2                                     |
 | Templates | 3                                     |
@@ -170,6 +170,19 @@ Add new notes using the templates in `/Templates/`:
 ---
 
 ## Changelog
+
+### 2026-02-16 - RNA Velocity and Benchmarking Papers Added
+
+**New Papers Added (4):**
+- bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies
+- bioRxiv 2026 Benchmarking algorithms for RNA velocity inference
+- bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus
+- bioRxiv 2026 Practical utility of sequence-to-omics models for improving the reproducibility of genetic fine-mapping
+
+**Updated Statistics:**
+- Papers: 28 (previously 24)
+- Concepts: 20 (unchanged)
+- Models: 2 (unchanged)
 
 ### 2026-01-30 - Highlighted AlphaGenome Paper
 
