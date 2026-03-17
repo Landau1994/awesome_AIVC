@@ -98,4 +98,3 @@ Where:
 ## Notes
 - The transition from "Automated" (robot follows a script) to "Autonomous" (robot decides the script) is the defining feature of SDLs.
 - Integration challenges remain high: connecting legacy lab hardware to modern APIs is often the bottleneck.
-```
