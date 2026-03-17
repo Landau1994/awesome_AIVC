@@ -73,6 +73,10 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 |-------|------|----------------|
 | [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories\|PhysiCell Grammar]] | 2025 | Human-interpretable grammar for ABMs |
 | [[01_Papers/Cell 2026 Bringing the genetically minimal cell to life on a computer in 4D\|4DWCM]] | 2026 | 4D whole-cell model of minimal cell |
+### Self-Driving Laboratories
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
 | [[01_Papers/Cell 2026 LUMI-lab A foundation model-driven autonomous platform enabling discovery of ionizable lipid designs for mRNA delivery\|LUMI-lab]] | 2026 | FM-driven autonomous lab, mRNA delivery |
 
 ### Generative & Diffusion Models
