@@ -49,7 +49,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (28)
+## Papers (32)
 
 ### Foundation Models 
 
@@ -67,7 +67,22 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[01_Papers/scPRINT\|scPRINT]]                                    | 2025 | Zero-shot GRN inference                |
 | [[01_Papers/Cell2Sentence\|Cell2Sentence]]                        | 2024 | Google/Yale, LLM approach, 27B         |
 
-### Perturbation Models 
+### Virtual Cell Modeling
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories\|PhysiCell Grammar]] | 2025 | Human-interpretable grammar for ABMs |
+| [[01_Papers/Cell 2026 Bringing the genetically minimal cell to life on a computer in 4D\|4DWCM]] | 2026 | 4D whole-cell model of minimal cell |
+| [[01_Papers/Cell 2026 LUMI-lab A foundation model-driven autonomous platform enabling discovery of ionizable lipid designs for mRNA delivery\|LUMI-lab]] | 2026 | FM-driven autonomous lab, mRNA delivery |
+
+### Generative & Diffusion Models
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models\|scLDM]] | 2025 | Latent diffusion for gene expression |
+| [[01_Papers/arXiv 2026 Latent Causal Diffusions for Single-Cell Perturbation Modeling\|LCD]] | 2026 | Causal diffusion, perturbation |
+
+### Perturbation Models
 
 | Paper | Year | Key Innovation |
 |-------|------|----------------|
@@ -79,7 +94,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Concepts (20)
+## Concepts (22)
 
 ### Foundation & Embeddings
 - [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
@@ -91,6 +106,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - [[02_Concepts/Transformers for Biology|Transformers for Biology]]
 - [[02_Concepts/Graph Neural Networks|Graph Neural Networks]]
 - [[02_Concepts/Generative Models|Generative Models]]
+- [[02_Concepts/Flow Matching|Flow Matching]]
 - [[02_Concepts/Variational Autoencoders|Variational Autoencoders]]
 - [[02_Concepts/Optimal Transport|Optimal Transport]]
 - [[02_Concepts/Disentangled Representations|Disentangled Representations]]
@@ -109,6 +125,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 ### Applications
 - [[02_Concepts/Drug Discovery|Drug Discovery]]
 - [[02_Concepts/Molecular Representations|Molecular Representations]]
+- [[02_Concepts/Self-Driving Laboratories|Self-Driving Laboratories]]
 
 ---
 
@@ -133,7 +150,9 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | GNN | GEARS |
 | VAE | CPA, scGen, scVI |
 | Optimal Transport | CellOT |
+| Diffusion | scLDM, LCD |
 | LLM | Cell2Sentence, Gemini |
+| Whole-Cell Simulation | 4DWCM, PhysiCell |
 
 ---
 
@@ -162,10 +181,10 @@ Add new notes using the templates in `/Templates/`:
 
 | Category  | Count                                 |
 | --------- | ------------------------------------- |
-| Papers    | 28                                    |
-| Concepts  | 20                                    |
+| Papers    | 32                                    |
+| Concepts  | 22                                    |
 | Models    | 2                                     |
-| Templates | 3                                     |
+| Templates | 4                                     |
 
 ---
 
