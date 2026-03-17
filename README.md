@@ -53,19 +53,19 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ### Foundation Models 
 
-| Paper                                                             | Year | Key Innovation                         |
-| ----------------------------------------------------------------- | ---- | -------------------------------------- |
-| [[01_Papers/Bunne 2024 - How to Build Virtual Cell\|AIVC Vision]] | 2024 | Roadmap paper                          |
-| [[01_Papers/AlphaGenome\|AlphaGenome]]                           | 2026 | Unified deep learning model for regulatory variant prediction |
-| [[01_Papers/scGPT\|scGPT]]                                        | 2024 | Gene tokenization, multi-task          |
-| [[01_Papers/Geneformer\|Geneformer]]                              | 2023 | Rank-value encoding                    |
-| [[01_Papers/scFoundation\|scFoundation]]                          | 2024 | 100M params, read-depth aware          |
-| [[01_Papers/UCE\|UCE]]                                            | 2024 | 650M params, 8 species, best zero-shot |
-| [[01_Papers/scBERT\|scBERT]]                                      | 2022 | First BERT for single-cell             |
-| [[01_Papers/CellPLM\|CellPLM]]                                    | 2024 | Cells-as-tokens, 100x faster           |
-| [[01_Papers/GeneCompass\|GeneCompass]]                            | 2024 | Knowledge-informed, cross-species      |
-| [[01_Papers/scPRINT\|scPRINT]]                                    | 2025 | Zero-shot GRN inference                |
-| [[01_Papers/Cell2Sentence\|Cell2Sentence]]                        | 2024 | Google/Yale, LLM approach, 27B         |
+| Paper                                                                                        | Year | Key Innovation                                                |
+| -------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
+| [[01_Papers/Bunne 2024 - How to Build Virtual Cell\|AIVC Vision]]                            | 2024 | Roadmap paper                                                 |
+| [[nature 2026 Advancing regulatory variant effect prediction with AlphaGenome\|AlphaGenome]] | 2026 | Unified deep learning model for regulatory variant prediction |
+| [[01_Papers/scGPT\|scGPT]]                                                                   | 2024 | Gene tokenization, multi-task                                 |
+| [[01_Papers/Geneformer\|Geneformer]]                                                         | 2023 | Rank-value encoding                                           |
+| [[01_Papers/scFoundation\|scFoundation]]                                                     | 2024 | 100M params, read-depth aware                                 |
+| [[01_Papers/UCE\|UCE]]                                                                       | 2024 | 650M params, 8 species, best zero-shot                        |
+| [[01_Papers/scBERT\|scBERT]]                                                                 | 2022 | First BERT for single-cell                                    |
+| [[01_Papers/CellPLM\|CellPLM]]                                                               | 2024 | Cells-as-tokens, 100x faster                                  |
+| [[01_Papers/GeneCompass\|GeneCompass]]                                                       | 2024 | Knowledge-informed, cross-species                             |
+| [[01_Papers/scPRINT\|scPRINT]]                                                               | 2025 | Zero-shot GRN inference                                       |
+| [[01_Papers/Cell2Sentence\|Cell2Sentence]]                                                   | 2024 | Google/Yale, LLM approach, 27B                                |
 
 ### Virtual Cell Modeling
 
