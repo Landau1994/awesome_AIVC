@@ -49,7 +49,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (32)
+## Papers (36)
 
 ### Foundation Models 
 
@@ -85,6 +85,14 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 |-------|------|----------------|
 | [[01_Papers/arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models\|scLDM]] | 2025 | Latent diffusion for gene expression |
 | [[01_Papers/arXiv 2026 Latent Causal Diffusions for Single-Cell Perturbation Modeling\|LCD]] | 2026 | Causal diffusion, perturbation |
+| [[01_Papers/CFGen\|CFGen]] | 2024 | Flow matching in scVI latent space |
+
+### Architecture & Set Processing
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/Perceiver\|Perceiver]] | 2021 | Cross-attention, input-size agnostic |
+| [[01_Papers/SetTransformer\|Set Transformer]] | 2019 | ISAB, linear-complexity set processing |
 
 ### Perturbation Models
 
@@ -93,12 +101,13 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[01_Papers/GEARS\|GEARS]] | 2023 | GNN + knowledge graph, multi-gene |
 | [[01_Papers/CPA\|CPA]] | 2023 | Compositional VAE, drug combinations |
 | [[01_Papers/scGen\|scGen]] | 2019 | Latent arithmetic (foundational) |
+| [[01_Papers/scVI\|scVI]] | 2018 | VAE + negative binomial, foundational |
 | [[01_Papers/CellOT\|CellOT]] | 2023 | Optimal transport, patient transfer |
 | [[01_Papers/chemCPA\|chemCPA]] | 2022 | Novel drug prediction |
 
 ---
 
-## Concepts (22)
+## Concepts (27)
 
 ### Foundation & Embeddings
 - [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
@@ -114,12 +123,17 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - [[02_Concepts/Variational Autoencoders|Variational Autoencoders]]
 - [[02_Concepts/Optimal Transport|Optimal Transport]]
 - [[02_Concepts/Disentangled Representations|Disentangled Representations]]
+- [[02_Concepts/Latent Diffusion Models|Latent Diffusion Models]]
+- [[02_Concepts/Diffusion Transformer|Diffusion Transformer]]
+- [[02_Concepts/Classifier-Free Guidance|Classifier-Free Guidance]]
+- [[02_Concepts/Exchangeability|Exchangeability]]
 
 ### Biology & Networks
 - [[02_Concepts/Perturbation Prediction|Perturbation Prediction]]
 - [[02_Concepts/Gene Regulatory Networks|Gene Regulatory Networks]]
 - [[02_Concepts/Knowledge Graphs|Knowledge Graphs]]
 - [[02_Concepts/Cell State Transitions|Cell State Transitions]]
+- [[02_Concepts/ATAC-seq|ATAC-seq]]
 
 ### Multi-modal & Spatial
 - [[02_Concepts/Multi-modal Integration|Multi-modal Integration]]
@@ -155,8 +169,24 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | VAE | CPA, scGen, scVI |
 | Optimal Transport | CellOT |
 | Diffusion | scLDM, LCD |
+| Flow Matching | CFGen |
 | LLM | Cell2Sentence, Gemini |
+| Set Processing | Perceiver, Set Transformer |
 | Whole-Cell Simulation | 4DWCM, PhysiCell |
+
+---
+
+## Datasets (7)
+
+| Dataset | Type | Description |
+|---------|------|-------------|
+| [[04_Datasets/COVID-19\|COVID-19]] | scRNA-seq | COVID-19 immune response |
+| [[04_Datasets/Dentate Gyrus\|Dentate Gyrus]] | scRNA-seq | Neurogenesis, RNA velocity |
+| [[04_Datasets/Human Lung Cell Atlas\|Human Lung Cell Atlas]] | scRNA-seq | Lung reference atlas |
+| [[04_Datasets/Parse 1M\|Parse 1M]] | scRNA-seq | 1M cells, large-scale benchmark |
+| [[04_Datasets/Replogle\|Replogle]] | Perturb-seq | Genome-wide CRISPRi screen |
+| [[04_Datasets/Tabula Muris\|Tabula Muris]] | scRNA-seq | Mouse cross-tissue atlas |
+| [[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]] | scRNA-seq | Human cross-tissue atlas |
 
 ---
 
@@ -185,14 +215,39 @@ Add new notes using the templates in `/Templates/`:
 
 | Category  | Count                                 |
 | --------- | ------------------------------------- |
-| Papers    | 32                                    |
-| Concepts  | 22                                    |
+| Papers    | 36                                    |
+| Concepts  | 27                                    |
+| Datasets  | 7                                     |
 | Models    | 2                                     |
 | Templates | 4                                     |
 
 ---
 
 ## Changelog
+
+### 2026-03-17 - Generative Models, Datasets & Concepts Expansion
+
+**New Papers Added (4):**
+- [[01_Papers/CFGen|CFGen]]: Flow matching in scVI latent space for single-cell generation
+- [[01_Papers/Perceiver|Perceiver]]: Cross-attention based input-size agnostic architecture
+- [[01_Papers/SetTransformer|Set Transformer]]: ISAB for linear-complexity permutation-invariant set processing
+- [[01_Papers/scVI|scVI]]: Foundational VAE with negative binomial likelihood for scRNA-seq
+
+**New Concepts Added (5):**
+- [[02_Concepts/ATAC-seq|ATAC-seq]]: Chromatin accessibility assay
+- [[02_Concepts/Classifier-Free Guidance|Classifier-Free Guidance]]: Conditional generation technique
+- [[02_Concepts/Diffusion Transformer|Diffusion Transformer]]: DiT architecture
+- [[02_Concepts/Exchangeability|Exchangeability]]: Permutation invariance in statistics
+- [[02_Concepts/Latent Diffusion Models|Latent Diffusion Models]]: Diffusion in latent space
+
+**New Datasets Section Added (7):**
+- COVID-19, Dentate Gyrus, Human Lung Cell Atlas, Parse 1M, Replogle, Tabula Muris, Tabula Sapiens 2.0
+
+**Updated Statistics:**
+- Papers: 36 (previously 32)
+- Concepts: 27 (previously 22)
+- Datasets: 7 (new section)
+- Models: 2 (unchanged)
 
 ### 2026-02-16 - RNA Velocity and Benchmarking Papers Added
 

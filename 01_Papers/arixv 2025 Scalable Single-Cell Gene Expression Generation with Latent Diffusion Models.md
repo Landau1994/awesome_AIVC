@@ -1,6 +1,7 @@
 ---
-title: "Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models"
-aliases: []
+title: Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models
+aliases:
+  - scLDM
 authors:
   - Giovanni Palla
   - Sudarshan Babu
@@ -29,7 +30,7 @@ date_read:
 # Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models
 
 ## Quick Summary
-The authors propose **scLDM**, a generative model designed for single-cell gene expression data that treats gene profiles as exchangeable sets rather than fixed vectors. The architecture combines a fully transformer-based [[Variational Autoencoder]] (VAE) with a [[Latent Diffusion Model]] (specifically using [[Flow Matching]]). The VAE utilizes a novel Multi-head Cross-Attention Block (MCAB) to compress high-dimensional, sparse gene counts into fixed-size latent tokens. This approach achieves state-of-the-art performance in reconstruction, unconditional generation, and conditional generation on both observational and perturbational datasets, while also providing high-quality embeddings for downstream classification tasks.
+The authors propose **scLDM**, a generative model designed for single-cell gene expression data that treats gene profiles as exchangeable sets rather than fixed vectors. The architecture combines a fully transformer-based [[Variational Autoencoders|Variational Autoencoder]] (VAE) with a [[Latent Diffusion Models|Latent Diffusion Model]] (specifically using [[Flow Matching]]). The VAE utilizes a novel Multi-head Cross-Attention Block (MCAB) to compress high-dimensional, sparse gene counts into fixed-size latent tokens. This approach achieves state-of-the-art performance in reconstruction, unconditional generation, and conditional generation on both observational and perturbational datasets, while also providing high-quality embeddings for downstream classification tasks.
 
 ## Key Points
 - **Exchangeability**: The model respects the biological reality that gene expression profiles are unordered sets (exchangeable), avoiding artificial gene ordering or restriction to highly variable genes (HVGs).
@@ -48,7 +49,7 @@ The authors propose **scLDM**, a generative model designed for single-cell gene 
 ### Model Architecture
 - **Encoder**: A transformer stack using MCAB to pool variable-length gene inputs (counts + IDs) into fixed-size latent tokens ($\mathbf{Z}$). It uses a zero-padding strategy for non-expressed genes to handle sparsity efficiently.
 - **Decoder**: A transformer stack using MCAB to unpool latent tokens back to gene-specific parameters (Negative Binomial means/dispersions).
-- **Latent Prior**: Replaces the standard Gaussian prior with a [[Latent Diffusion Model]] (LDM).
+- **Latent Prior**: Replaces the standard Gaussian prior with a [[Latent Diffusion Models|Latent Diffusion Model]] (LDM).
 - **Diffusion Backbone**: Uses [[Diffusion Transformer]] (DiT) blocks.
 - **Guidance**: Implements Classifier-Free Guidance (CFG) with a joint conditioning strategy.
 
