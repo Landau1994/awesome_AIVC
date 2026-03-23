@@ -328,7 +328,7 @@ dv.table(["Category", "Count"], [
 ### 2026-01-30 - Highlighted AlphaGenome Paper
 
 **Highlighted Important Paper:**
-- [[01_Papers/AlphaGenome\|AlphaGenome]]: Added to Foundation Models section as a key paper for regulatory variant effect prediction with unified deep learning approach.
+- [[nature 2026 Advancing regulatory variant effect prediction with AlphaGenome|AlphaGenome]]: Added to Foundation Models section as a key paper for regulatory variant effect prediction with unified deep learning approach.
 
 **Updated Statistics:**
 - Papers: 24 (previously 24)
