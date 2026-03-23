@@ -10,7 +10,8 @@ github:
 year:
 organization:
 status:
-date_added: {{date}}
+date_added:
+  "{ date }":
 ---
 
 # {{title}}

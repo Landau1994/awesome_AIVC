@@ -6,8 +6,10 @@ tags:
   - AIVC
 category:
 importance:
-date_created: {{date}}
-last_updated: {{date}}
+date_created:
+  "{ date }":
+last_updated:
+  "{ date }":
 ---
 
 # {{title}}

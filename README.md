@@ -49,7 +49,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (36)
+## Papers (40)
 
 ### Foundation Models 
 
@@ -66,6 +66,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[01_Papers/GeneCompass\|GeneCompass]]                                                       | 2024 | Knowledge-informed, cross-species                             |
 | [[01_Papers/scPRINT\|scPRINT]]                                                               | 2025 | Zero-shot GRN inference                                       |
 | [[01_Papers/Cell2Sentence\|Cell2Sentence]]                                                   | 2024 | Google/Yale, LLM approach, 27B                                |
+| [[01_Papers/bioRxiv 2026 STACK In-Context Learning of Single-Cell Biology\|STACK]]           | 2026 | In-context learning for single-cell                           |
 
 ### Virtual Cell Modeling
 
@@ -73,6 +74,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 |-------|------|----------------|
 | [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories\|PhysiCell Grammar]] | 2025 | Human-interpretable grammar for ABMs |
 | [[01_Papers/Cell 2026 Bringing the genetically minimal cell to life on a computer in 4D\|4DWCM]] | 2026 | 4D whole-cell model of minimal cell |
+| [[01_Papers/nmeth 2026 stVCR spatiotemporal dynamics of single cells\|stVCR]] | 2026 | Spatiotemporal dynamics via dynamical OT |
 ### Self-Driving Laboratories
 
 | Paper | Year | Key Innovation |
@@ -104,6 +106,34 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[01_Papers/scVI\|scVI]] | 2018 | VAE + negative binomial, foundational |
 | [[01_Papers/CellOT\|CellOT]] | 2023 | Optimal transport, patient transfer |
 | [[01_Papers/chemCPA\|chemCPA]] | 2022 | Novel drug prediction |
+| [[01_Papers/State\|STATE]] | 2025 | Cross-context perturbation prediction |
+| [[01_Papers/ncb 2025 Decoding heterogeneous single-cell perturbation responses\|PerturbNet]] | 2025 | Heterogeneous perturbation decoding |
+| [[01_Papers/bioRxiv 2026 X-Cell Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models\|X-Cell]] | 2026 | 4.9B diffusion LM, scaling laws |
+
+### Benchmarking & Evaluation
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/GB 2025 Zero-shot evaluation reveals limitations of single-cell foundation models\|Zero-shot Eval]] | 2025 | Reveals scFM zero-shot limitations |
+| [[01_Papers/nmeth 2025 Benchmarking algorithms for generalizable single-cell perturbation response prediction\|Perturbation Bench]] | 2025 | Benchmark of perturbation prediction |
+| [[01_Papers/bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models\|scFM Bench]] | 2026 | Unified framework, 13 scFMs, 50+ datasets |
+| [[01_Papers/bioRxiv 2026 Benchmarking zero-shot single-cell foundation model embeddings for cellular dynamics reconstruction\|Dynamics Bench]] | 2026 | Zero-shot FM embeddings for dynamics |
+| [[01_Papers/bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies\|RNA Velocity Bench (17)]] | 2025 | 14 methods, 17 datasets |
+| [[01_Papers/bioRxiv 2026 Benchmarking algorithms for RNA velocity inference\|RNA Velocity Bench (29)]] | 2026 | 29 methods, 176 datasets |
+| [[01_Papers/bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus\|CellLink]] | 2026 | Cell phenotype text mining corpus |
+
+### Genomics & Variant Prediction
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/VariantFormer\|VariantFormer]] | 2025 | Hierarchical transformer, personalized expression |
+| [[01_Papers/bioRxiv 2026 Practical utility of sequence-to-omics models for improving the reproducibility of genetic fine-mapping\|S2O Fine-mapping]] | 2026 | S2O models improve fine-mapping reproducibility |
+
+### Drug Discovery & Therapeutics
+
+| Paper | Year | Key Innovation |
+|-------|------|----------------|
+| [[01_Papers/Cell 2026 Deep-learning-based de novo discovery and design of therapeutics that reverse disease-associated transcriptional phenotypes\|GPS]] | 2026 | De novo therapeutic design, reverse disease phenotypes |
 
 ---
 
@@ -151,24 +181,25 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ### By Capability
 
-| Task                        | Best Models                  |
-| --------------------------- | ---------------------------- |
-| Cell annotation (zero-shot) | UCE, Geneformer              |
-| Perturbation prediction     | GEARS, scGPT, CPA            |
-| Gene network inference      | scPRINT, GeneCompass         |
-| Cross-species               | UCE (8 species), GeneCompass |
-| Novel drug prediction       | chemCPA                      |
-| Speed                       | CellPLM (100x faster)        |
+| Task                        | Best Models                       |
+| --------------------------- | --------------------------------- |
+| Cell annotation (zero-shot) | UCE, Geneformer                   |
+| Perturbation prediction     | X-Cell, GEARS, scGPT, CPA, STATE |
+| Gene network inference      | scPRINT, GeneCompass              |
+| Cross-species               | UCE (8 species), GeneCompass      |
+| Novel drug prediction       | chemCPA, GPS                      |
+| Spatiotemporal dynamics     | stVCR                             |
+| Speed                       | CellPLM (100x faster)             |
 
 ### By Architecture
 
 | Type | Models |
 |------|--------|
-| Transformers | scGPT, Geneformer, scFoundation, UCE, Gemini |
+| Transformers | scGPT, Geneformer, scFoundation, UCE, STACK, VariantFormer, Gemini |
 | GNN | GEARS |
-| VAE | CPA, scGen, scVI |
-| Optimal Transport | CellOT |
-| Diffusion | scLDM, LCD |
+| VAE | CPA, scGen, scVI, PerturbNet |
+| Optimal Transport | CellOT, stVCR |
+| Diffusion | scLDM, LCD, X-Cell |
 | Flow Matching | CFGen |
 | LLM | Cell2Sentence, Gemini |
 | Set Processing | Perceiver, Set Transformer |
@@ -213,17 +244,49 @@ Add new notes using the templates in `/Templates/`:
 
 ## Stats
 
-| Category  | Count                                 |
-| --------- | ------------------------------------- |
-| Papers    | 36                                    |
-| Concepts  | 27                                    |
-| Datasets  | 7                                     |
-| Models    | 2                                     |
-| Templates | 4                                     |
+```dataviewjs
+const papers = dv.pages('#paper').length;
+const concepts = dv.pages('#concept').length;
+const datasets = dv.pages('#dataset').length;
+const models = dv.pages('#model').length;
+const templates = dv.pages('#template').length;
+
+dv.table(["Category", "Count"], [
+  ["Papers", papers],
+  ["Concepts", concepts],
+  ["Datasets", datasets],
+  ["Models", models],
+  ["Templates", templates+4]
+]);
+```
 
 ---
 
 ## Changelog
+
+### 2026-03-24 - Major Paper Tables Update & New Sections
+
+**New Papers Added (4):**
+- [[01_Papers/bioRxiv 2026 X-Cell Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models|X-Cell]]: 4.9B diffusion language model with perturbation scaling laws
+- [[01_Papers/nmeth 2026 stVCR spatiotemporal dynamics of single cells|stVCR]]: Spatiotemporal dynamics reconstruction via dynamical optimal transport
+- [[01_Papers/Cell 2026 Deep-learning-based de novo discovery and design of therapeutics that reverse disease-associated transcriptional phenotypes|GPS]]: De novo therapeutic design reversing disease transcriptional phenotypes
+- [[01_Papers/bioRxiv 2026 Benchmarking zero-shot single-cell foundation model embeddings for cellular dynamics reconstruction|Dynamics Bench]]: Zero-shot FM embeddings benchmark for cellular dynamics
+
+**Previously Unlisted Papers Now in Tables (11):**
+- STACK, STATE, PerturbNet, VariantFormer, S2O Fine-mapping, CellLink
+- Zero-shot Eval, Perturbation Bench, scFM Bench, RNA Velocity Bench (17), RNA Velocity Bench (29)
+
+**New Paper Sections:**
+- Benchmarking & Evaluation (7 papers)
+- Genomics & Variant Prediction (2 papers)
+- Drug Discovery & Therapeutics (1 paper)
+
+**Updated Model Comparison:**
+- By Capability: added X-Cell, STATE, GPS, stVCR
+- By Architecture: added STACK, VariantFormer, PerturbNet, stVCR, X-Cell
+
+**Updated Statistics:**
+- Papers: 40 (previously 36)
 
 ### 2026-03-17 - Generative Models, Datasets & Concepts Expansion
 
