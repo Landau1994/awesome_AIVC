@@ -134,7 +134,7 @@ date_read:
 
 ### Related Concepts
 
-- **[Optimal Transport]**: The paper theoretically links the ST model's objective to learning OT maps40.
+- **[Optimal Transport]**: The paper theoretically links the ST model's objective to learning OT maps40.[[Optimal Transport]]
     
 - **[Perturb-Seq]**: The experimental method the model is designed to simulate41.
     
