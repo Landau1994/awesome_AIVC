@@ -94,7 +94,7 @@ date_read:
 
 ## Connections
 ### Related Papers
-- *Predicting cellular responses to perturbation across diverse contexts with State* (Adduri et al., 2025) - The primary baseline STATE.
+- *Predicting cellular responses to perturbation across diverse contexts with State* (Adduri et al., 2025) - The primary baseline STATE.[[State]][[State|STATE]]
 - *Perturbdiff: Functional diffusion for single-cell perturbation modeling* (Yuan et al., 2026) - Another major baseline evaluated in the paper.
 - *CellFlow enables generative single-cell phenotype modeling with flow matching* (Klein et al., 2025).
 
