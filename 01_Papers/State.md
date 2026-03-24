@@ -37,7 +37,7 @@ date_read:
 
 - **Multi-scale Architecture**: STATE consists of two modules: a State Transition (ST) model that predicts perturbation effects across sets of cells, and a State Embedding (SE) model that learns robust cell representations from massive observational data4.
     
-- **Modeling Heterogeneity**: ST uses self-attention over sets of cells to capture biological heterogeneity within populations without explicit distributional assumptions, effectively simulating Perturb-Seq experiments555.
+- **Modeling Heterogeneity**: ST uses self-attention over sets of cells to capture biological heterogeneity within populations without explicit distributional assumptions, effectively simulating [[02_Concepts/Perturb-seq|Perturb-seq]] experiments555.
     
 - **Foundation Model Scale**: The embedding model (SE) is trained on 167 million human cells, while the transition model (ST) is trained on over 100 million perturbed cells6.
     
@@ -136,7 +136,7 @@ date_read:
 
 - **[Optimal Transport]**: The paper theoretically links the ST model's objective to learning OT maps40.[[Optimal Transport]]
     
-- **[Perturb-Seq]**: The experimental method the model is designed to simulate41.
+- **[[02_Concepts/Perturb-seq|Perturb-seq]]**: The experimental method the model is designed to simulate41.
     
 - **[Foundation Models]**: STATE creates a single-cell foundation model (SE) to generate transferrable representations42.
     

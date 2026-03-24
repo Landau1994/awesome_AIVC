@@ -35,7 +35,7 @@ date_created: 2026-01-16
 | Researcher | Affiliation | Focus |
 |------------|-------------|-------|
 | **Jure Leskovec** | Stanford | GEARS, graph methods |
-| **Jonathan Weissman** | Whitehead | Perturb-seq pioneer |
+| **Jonathan Weissman** | Whitehead | [[02_Concepts/Perturb-seq|Perturb-seq]] pioneer |
 | **Thomas Norman** | UCSF | CRISPRa screens |
 
 ## Key Institutions

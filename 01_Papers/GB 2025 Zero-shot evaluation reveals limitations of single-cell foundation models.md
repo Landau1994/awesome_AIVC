@@ -97,7 +97,7 @@ date_read:
 
 ### Related Concepts
 - [[Foundation Models]]
-- [[Single-cell RNA-seq]] (scRNA-seq)
+- [[02_Concepts/scRNA-seq|Single-cell RNA-seq]] (scRNA-seq)
 - [[Zero-shot Learning]]
 - [[Masked Language Modeling]] ([[MLM]])
 - [[Batch Effect Correction]]

@@ -106,7 +106,7 @@ STACK is a large-scale foundation model for single-cell biology trained on 149 m
 ### Related Concepts
 - [[Foundation Models]]
 - [[In-Context Learning]]
-- [[Single-cell RNA-seq]]
+- [[02_Concepts/scRNA-seq|Single-cell RNA-seq]]
 - [[Tabular Deep Learning]]
 - [[Perturbation Analysis]]
 

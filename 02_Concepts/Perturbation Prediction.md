@@ -65,10 +65,10 @@ $$\mathcal{L} = \|\mathbf{x}' - \hat{\mathbf{x}}'\|_2^2 + \lambda \cdot \text{re
 
 ## Data Sources
 
-### Perturb-seq Datasets
+### [[02_Concepts/Perturb-seq|Perturb-seq]] Datasets
 - **Norman 2019**: CRISPRa, K562 cells
 - **Replogle 2022**: Genome-wide CRISPRi, K562
-- **Dixit 2016**: Original Perturb-seq
+- **Dixit 2016**: Original [[02_Concepts/Perturb-seq|Perturb-seq]]
 
 ### Benchmarks
 - Virtual Cell Challenge (Arc Institute)

@@ -27,7 +27,7 @@ date_added: 2026-03-23
 
 ## Quick Summary
 
-> This study introduces **X-Atlas/Pisces**, the largest genome-wide CRISPRi Perturb-seq compendium to date, featuring 25.6 million single-cell transcriptomes across 16 diverse biological contexts. Leveraging this resource, the authors developed **X-Cell**, a 4.9-billion-parameter diffusion language model that predicts cellular responses to genetic perturbations by iteratively refining states through cross-attention to multi-modal biological priors (e.g., protein models, interaction networks). The work demonstrates for the first time that perturbation prediction follows universal **scaling laws** similar to large language models (LLMs) and achieves state-of-the-art **zero-shot generalization** to unseen primary human cells and novel cell lineages.
+> This study introduces **X-Atlas/Pisces**, the largest genome-wide CRISPRi [[02_Concepts/Perturb-seq|Perturb-seq]] compendium to date, featuring 25.6 million single-cell transcriptomes across 16 diverse biological contexts. Leveraging this resource, the authors developed **X-Cell**, a 4.9-billion-parameter diffusion language model that predicts cellular responses to genetic perturbations by iteratively refining states through cross-attention to multi-modal biological priors (e.g., protein models, interaction networks). The work demonstrates for the first time that perturbation prediction follows universal **scaling laws** similar to large language models (LLMs) and achieves state-of-the-art **zero-shot generalization** to unseen primary human cells and novel cell lineages.
 
 ## Key Points
 
@@ -48,7 +48,7 @@ date_added: 2026-03-23
 
 - **X-Atlas/Pisces Corpus**: Comprises 25.6 million cells and over 152,000 unique perturbation-context conditions.
     
-- **Optimized Workflows**: Uses "Fix-Freeze-Enrich" and Flex Perturb-seq protocols to handle fragile cell types and enable "super-loading" of single-cell lanes.
+- **Optimized Workflows**: Uses "Fix-Freeze-Enrich" and Flex [[02_Concepts/Perturb-seq|Perturb-seq]] protocols to handle fragile cell types and enable "super-loading" of single-cell lanes.
     
 
 ### Model Architecture
@@ -117,7 +117,7 @@ date_added: 2026-03-23
     
 - **STATE (Adduri et al., 2025)**: Served as a primary benchmark for perturbation prediction across diverse contexts.
     
-- Replogle et al. (2022): Provided the foundational large-scale Perturb-seq data for external validation.
+- Replogle et al. (2022): Provided the foundational large-scale [[02_Concepts/Perturb-seq|Perturb-seq]] data for external validation.
     
 
 ### Related Concepts

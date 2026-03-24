@@ -28,19 +28,18 @@ tags:
 status: unread
 rating:
 date_added:
-  "{ date }":
 date_read:
 ---
 
 # Cell phenotypes in the biomedical literature: a systematic analysis and text mining corpus
 
 ## Quick Summary
-> The authors introduce [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|CellLink]], a manually annotated corpus containing over 22,000 mentions of human and mouse cell populations derived from recent biomedical literature (2019–2024). This resource captures the shift in terminology driven by single-cell technologies, distinguishing between specific cell phenotypes, heterogeneous populations, and vague populations, while linking them to the [[Cell Ontology]] (CL). The paper demonstrates the corpus's utility by benchmarking NLP models (including [[BiomedBERT]] and [[GPT-5]]) on Named Entity Recognition and Entity Linking tasks, analyzing cell naming motifs, and using the data to refine the chondrocyte branch of the Cell Ontology.
+> The authors introduce [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|CellLink]], a manually annotated corpus containing over 22,000 mentions of human and mouse cell populations derived from recent biomedical literature (2019–2024). This resource captures the shift in terminology driven by single-cell technologies, distinguishing between specific cell phenotypes, heterogeneous populations, and vague populations, while linking them to the [[02_Concepts/Cell Ontology|Cell Ontology]] (CL). The paper demonstrates the corpus's utility by benchmarking NLP models (including BiomedBERT and GPT-5) on [[02_Concepts/Named Entity Recognition|Named Entity Recognition]] and [[02_Concepts/Entity Linking|Entity Linking]] tasks, analyzing cell naming motifs, and using the data to refine the chondrocyte branch of the Cell Ontology.
 
 ## Key Points
-- Creation of the [[CellLink]] corpus: 3,005 excerpts from 2,765 articles with 22,362 annotations focusing on naturally occurring human and mouse cells.
+- Creation of the [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|CellLink]] corpus: 3,005 excerpts from 2,765 articles with 22,362 annotations focusing on naturally occurring human and mouse cells.
 - Detailed annotation schema distinguishing **Cell Phenotypes** (82.8%), **Heterogeneous Cell Populations** (7.2%), and **Vague Cell Populations** (10.0%).
-- Annotations are linked to [[Cell Ontology]] (CL) terms as either **exact** or **related** matches, capturing novel cell types not yet in the ontology.
+- Annotations are linked to [[02_Concepts/Cell Ontology|Cell Ontology]] (CL) terms as either **exact** or **related** matches, capturing novel cell types not yet in the ontology.
 - Identification of 14 naming motifs (e.g., molecular signature, anatomical context) showing how naming conventions vary by lineage and technology (e.g., scRNA-seq).
 - [[BiomedBERT]] models fine-tuned on CellLink outperform large language models ([[GPT-4.1]], [[GPT-5.2]]) on Named Entity Recognition (NER).
 - An agentic AI approach using [[GPT-5.2]] outperforms embedding-based models ([[SapBERT]], [[MedCPT]]) on Entity Linking (EL) tasks.
@@ -81,7 +80,7 @@ date_read:
 | ------ | ----------- |
 | Fig 1  | Growth of single-cell genomics literature and vocabulary shifts (word clouds) from 2000-2018 vs 2019-2025. |
 | Fig 2  | Example of CellLink annotations illustrating the three entity types (phenotype, heterogeneous, vague) and linking types (exact, related). |
-| Fig 3  | Comparison of CellLink's coverage of the [[Cell Ontology]] (CL) against other corpora (BioID, CRAFT) by lineage and hierarchy depth. |
+| Fig 3  | Comparison of CellLink's coverage of the [[02_Concepts/Cell Ontology|Cell Ontology]] (CL) against other corpora (BioID, CRAFT) by lineage and hierarchy depth. |
 | Fig 4  | Analysis of [[SapBERT]] cosine similarity scores as a predictor of entity linking accuracy and match type (exact vs related). |
 | Fig 5  | Expansion of the chondrocyte branch in the CL, showing new terms added based on CellLink evidence (e.g., regulatory chondrocyte). |
 
@@ -111,8 +110,8 @@ date_read:
 ### Related Concepts
 - [[Named Entity Recognition]] (NER)
 - [[Entity Linking]] (EL)
-- [[Cell Ontology]] (CL)
-- [[Single-cell RNA sequencing]] (scRNA-seq)
+- [[02_Concepts/Cell Ontology|Cell Ontology]] (CL)
+- [[Single-Cell RNA-Seq]] (scRNA-seq)
 - [[Biocuration]]
 
 ### Potential Applications

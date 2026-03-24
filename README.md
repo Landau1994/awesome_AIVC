@@ -215,7 +215,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[04_Datasets/Dentate Gyrus\|Dentate Gyrus]] | scRNA-seq | Neurogenesis, RNA velocity |
 | [[04_Datasets/Human Lung Cell Atlas\|Human Lung Cell Atlas]] | scRNA-seq | Lung reference atlas |
 | [[04_Datasets/Parse 1M\|Parse 1M]] | scRNA-seq | 1M cells, large-scale benchmark |
-| [[04_Datasets/Replogle\|Replogle]] | Perturb-seq | Genome-wide CRISPRi screen |
+| [[04_Datasets/Replogle\|Replogle]] | [[02_Concepts/Perturb-seq\|Perturb-seq]] | Genome-wide CRISPRi screen |
 | [[04_Datasets/Tabula Muris\|Tabula Muris]] | scRNA-seq | Mouse cross-tissue atlas |
 | [[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]] | scRNA-seq | Human cross-tissue atlas |
 

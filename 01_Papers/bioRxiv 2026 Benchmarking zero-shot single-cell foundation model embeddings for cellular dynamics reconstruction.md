@@ -43,7 +43,7 @@ date_read:
 
 ## Methods
 ### Data
-- Five published time-series [[scRNA-seq]] snapshot datasets encompassing diverse biological processes (e.g., development, differentiation, and pathological transitions).
+- Five published time-series [[02_Concepts/scRNA-seq|scRNA-seq]] snapshot datasets encompassing diverse biological processes (e.g., development, differentiation, and pathological transitions).
 - Datasets include: EMT (epithelial-to-mesenchymal transition), Mouse HSPC, Veres (human pancreatic differentiation), EBdata (embryoid bodies), and HSPC (inflammatory response).
 - Dataset sizes range from approximately 3,000 to 49,000 cells. Minimal QC applied to prevent processing-dependent artifacts.
 

@@ -40,7 +40,7 @@ date_created: 2026-01-16
 |---------|------|-------|---------------|------|
 | Norman 2019 | 2019 | K562 | ~300 CRISPRa | Single + combo |
 | Replogle 2022 | 2022 | K562 | ~10K CRISPRi | Genome-wide |
-| Dixit 2016 | 2016 | BMDC | ~24 | Original Perturb-seq |
+| Dixit 2016 | 2016 | BMDC | ~24 | Original [[02_Concepts/Perturb-seq|Perturb-seq]] |
 | Adamson 2016 | 2016 | K562 | ~100 | CRISPRi |
 
 ### Drug Screens

@@ -13,7 +13,21 @@
       "Bash(git push:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/LangCell.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/CELLama.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/GenePT.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/CellFM.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/SCimilarity.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/04_Datasets/Dynverse.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/04_Datasets/scPerturb.md:*)",
+      "Bash(cd:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/velocyto.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/scvelo.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/DeepVelo.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/veloVI.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/01_Papers/latentVelo.md:*)",
+      "Bash(/mnt/e/project/AIVC_comp/note/awesome_AIVC/02_Concepts/Splicing_Kinetics.md:*)"
     ]
   }
 }

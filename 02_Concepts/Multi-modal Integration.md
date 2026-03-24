@@ -31,7 +31,7 @@ last_updated: 2026-01-16
 | RNA + Protein | CITE-seq | Transcription + translation |
 | RNA + ATAC | Multiome, SHARE-seq | Expression + chromatin |
 | RNA + Spatial | Spatial transcriptomics | Expression + location |
-| RNA + Perturbation | Perturb-seq | Expression + intervention |
+| RNA + Perturbation | [[02_Concepts/Perturb-seq|Perturb-seq]] | Expression + intervention |
 
 ## Integration Methods
 

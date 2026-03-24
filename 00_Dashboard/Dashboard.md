@@ -68,7 +68,7 @@ LIMIT 5
 ### Key Datasets
 - [[04_Datasets/Index - Datasets|All Datasets]]
 - Single-cell atlases (CELLxGENE, HCA)
-- Perturbation screens (Perturb-seq)
+- Perturbation screens ([[02_Concepts/Perturb-seq|Perturb-seq]])
 - Benchmark datasets
 
 ## Learning Path

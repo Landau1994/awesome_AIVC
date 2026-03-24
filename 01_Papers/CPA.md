@@ -100,14 +100,14 @@ Predicted Expression
 | Dose interpolation | Strong |
 | Cell type transfer | Works |
 
-### Genetic Perturbation (Perturb-seq)
+### Genetic Perturbation ([[02_Concepts/Perturb-seq|Perturb-seq]])
 - Imputed 5,329 missing combinations (97.6% of all)
 - Validated on Norman et al. dataset
 - Captures genetic interactions
 
 ### Key Datasets
 - **sci-Plex**: 188 drugs, 3 cancer cell lines
-- **Norman Perturb-seq**: CRISPRa combinations
+- **Norman [[02_Concepts/Perturb-seq|Perturb-seq]]**: CRISPRa combinations
 - **Lupus IFN-β**: Patient response data
 
 ## Capabilities

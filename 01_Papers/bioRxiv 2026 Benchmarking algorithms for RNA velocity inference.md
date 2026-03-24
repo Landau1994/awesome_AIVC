@@ -107,7 +107,7 @@ date_read:
 
 ### Related Concepts
 - [[RNA velocity]]
-- [[Single-cell RNA sequencing]] (scRNA-seq)
+- [[02_Concepts/scRNA-seq|Single-cell RNA sequencing]] (scRNA-seq)
 - [[Spatial Transcriptomics]]
 - [[Multi-omics]]
 - [[Trajectory Inference]]

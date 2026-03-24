@@ -32,7 +32,7 @@ date_read:
 ## Key Points
 - Introduction of a plain text modeling language to build virtual cell models without requiring extensive coding expertise.
 - Translates natural language cell behavior statements into mathematical equations (multivariate Hill response functions).
-- Integrates multi-omics data (e.g., [[scRNA-seq]] and spatial transcriptomics) to initialize and parameterize simulations.
+- Integrates multi-omics data (e.g., [[02_Concepts/scRNA-seq|scRNA-seq]] and spatial transcriptomics) to initialize and parameterize simulations.
 - Capable of modeling complex tumor microenvironment (TME) dynamics, including macrophage plasticity, CD8+ T cell exhaustion, and CAF-mediated invasion.
 - Facilitates *in silico* virtual clinical trials to test combination therapies (e.g., GVAX + ICI + URU) across heterogeneous patient profiles.
 - Demonstrates generalizability by simulating region-specific laminarization in neurodevelopment using Allen Brain Atlas data.

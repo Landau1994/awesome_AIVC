@@ -35,11 +35,11 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 - **Causal Interpretation (CLIPR):** A linearization technique that estimates a causal effect matrix $\mathbf{A}$ by analyzing how the learned drift function responds to perturbations (initial response vs. limit/steady-state response).
 - **Performance:** LCD outperforms state-of-the-art methods ([[GEARS]], [[CPA]]) and additive baselines ([[SALT]], [[PEPER]]) in predicting distributional shifts (MMD) for unseen gene perturbation combinations.
 - **Theoretical Guarantee:** CLIPR is provably identifiable for linear systems given sufficient perturbation diversity.
-- **Biological Insight:** Applied to large-scale [[Perturb-seq]] data, CLIPR identifies functional gene modules and causal links that align with known biology, disentangling direct causal effects from downstream differential expression.
+- **Biological Insight:** Applied to large-scale [[02_Concepts/Perturb-seq|Perturb-seq]] data, CLIPR identifies functional gene modules and causal links that align with known biology, disentangling direct causal effects from downstream differential expression.
 
 ## Methods
 ### Data
-- **Type:** Single-cell CRISPR perturbation screens ([[Perturb-seq]]).
+- **Type:** Single-cell CRISPR perturbation screens ([[02_Concepts/Perturb-seq|Perturb-seq]]).
 - **Datasets:**
   - [[Norman et al. (2019)]]: [[K562]] cells, bi-allelic CRISPRa (gain-of-function).
   - [[Wessels et al. (2023)]]: [[THP-1]] cells, CRISPR-Cas13 (loss-of-function).
@@ -78,12 +78,12 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 
 ## Figures
 
-| Figure | Description |
-| ------ | ----------- |
-| **Fig 1** | **Overview of LCD and CLIPR.** (A) Generative model structure (Latent SDE + ZIP observation). (B) Neural network architecture for drift $f$. (C) Logic of CLIPR: Linearizing dynamics via initial and limit perturbation responses. |
-| **Fig 2** | **Predictive Performance.** Comparisons against baselines (SALT, PEPER, CPA, GEARS) on unseen combinatorial perturbations. LCD shows superior MMD (distributional accuracy) and RMSE. Stratification by genetic interaction type (Synergy, Suppression, etc.). |
-| **Fig 3** | **Causal Recovery in Simulations.** Validation of CLIPR on linear systems. Heatmaps showing recovery of ground-truth causal matrices ($\mathbf{A}$) and shift vectors vs. learned estimates. |
-| **Fig 4** | **Genome-wide Application.** LCD-CLIPR applied to [[Replogle et al.]] data. (A) Gene clusters enriched for GO terms. (B) Inferred causal adjacency matrix. (E-F) Validation: predicted causal links strongly correlate with downstream differential expression (high lift/conviction scores). |
+| Figure    | Description                                                                                                                                                                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Fig 1** | **Overview of LCD and CLIPR.** (A) Generative model structure (Latent SDE + ZIP observation). (B) Neural network architecture for drift $f$. (C) Logic of CLIPR: Linearizing dynamics via initial and limit perturbation responses.                                                       |
+| **Fig 2** | **Predictive Performance.** Comparisons against baselines (SALT, PEPER, CPA, GEARS) on unseen combinatorial perturbations. LCD shows superior MMD (distributional accuracy) and RMSE. Stratification by genetic interaction type (Synergy, Suppression, etc.).                            |
+| **Fig 3** | **Causal Recovery in Simulations.** Validation of CLIPR on linear systems. Heatmaps showing recovery of ground-truth causal matrices ($\mathbf{A}$) and shift vectors vs. learned estimates.                                                                                              |
+| **Fig 4** | **Genome-wide Application.** LCD-CLIPR applied to Replogle et al. data. (A) Gene clusters enriched for GO terms. (B) Inferred causal adjacency matrix. (E-F) Validation: predicted causal links strongly correlate with downstream differential expression (high lift/conviction scores). |
 
 ## Critical Analysis
 ### Strengths
@@ -106,14 +106,14 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 - [[GEARS]] (Roohani et al., 2024): Graph neural network for perturbation prediction.
 - [[CPA]] (Lotfollahi et al., 2023): Compositional Perturbation Autoencoder.
 - [[scDiffEq]] (Vinyard et al., 2023): Neural ODE/SDE approaches for single-cell dynamics.
-- [[Norman et al. (2019)]] & [[Replogle et al. (2022)]]: Source papers for the Perturb-seq datasets.
+- [[Norman et al. (2019)]] & [[Replogle et al. (2022)]]: Source papers for the [[02_Concepts/Perturb-seq|Perturb-seq]] datasets.
 
 ### Related Concepts
 - [[Stochastic Differential Equations]]
 - [[Causal Inference]] (Structural Causal Models)
 - [[Score Matching]]
 - [[Gene Regulatory Networks]] (GRN)
-- [[Perturb-seq]]
+- [[02_Concepts/Perturb-seq|Perturb-seq]]
 
 ### Potential Applications
 - **In Silico Screening:** Predicting the effects of novel drug combinations or genetic knockouts to reduce experimental costs.

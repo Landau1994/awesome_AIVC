@@ -65,14 +65,14 @@ date_read:
 
 ## Figures
 
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Overview of [[LUMI-lab]] hardware/software architecture, demonstrating the closed-loop cycle of design, synthesis, formulation, and testing. |
-| Fig 2  | The three-stage training pipeline of [[LUMI-model]] and benchmark comparisons showing superior performance against GNNs and XGBoost. |
+| Figure | Description                                                                                                                                                     |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fig 1  | Overview of LUMI-lab hardware/software architecture, demonstrating the closed-loop cycle of design, synthesis, formulation, and testing.                        |
+| Fig 2  | The three-stage training pipeline of LUMI-model and benchmark comparisons showing superior performance against GNNs and XGBoost.                                |
 | Fig 3  | Visualization of the dual-plate [[active learning]] strategy (exploitation vs. exploration) and the rapid enrichment of high-potency lipids over 10 iterations. |
-| Fig 4  | UMAP analysis revealing the clustering of [[brominated lipids]] and their high prediction/experimental performance. |
-| Fig 5  | Identification of top candidates (LUMI-1 to LUMI-6) and *in vivo* validation in mice via intratracheal administration. |
-| Fig 6  | Evaluation of [[LUMI-6]] for [[CRISPR-Cas9]] gene editing in [[Ai9 mice]], showing high efficiency in lung epithelial cells. |
+| Fig 4  | UMAP analysis revealing the clustering of [[brominated lipids]] and their high prediction/experimental performance.                                             |
+| Fig 5  | Identification of top candidates (LUMI-1 to LUMI-6) and *in vivo* validation in mice via intratracheal administration.                                          |
+| Fig 6  | Evaluation of [[LUMI-6]] for [[CRISPR-Cas9]] gene editing in [[Ai9 mice]], showing high efficiency in lung epithelial cells.                                    |
 
 ## Critical Analysis
 ### Strengths

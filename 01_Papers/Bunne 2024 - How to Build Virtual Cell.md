@@ -1,6 +1,9 @@
 ---
 title: "How to Build the Virtual Cell with AI: Priorities and Opportunities"
-aliases: [Bunne 2024, AIVC Blueprint]
+aliases:
+  - Bunne 2024
+  - AIVC Blueprint
+  - AIVC vision
 authors:
   - Charlotte Bunne
   - et al.
@@ -68,7 +71,7 @@ date_read:
 | Transcriptomics | scRNA-seq | 100M+ cells |
 | Proteomics | Mass spec, imaging | Growing |
 | Spatial | Spatial transcriptomics | Emerging |
-| Perturbations | Perturb-seq, CRISPR screens | Critical |
+| Perturbations | [[02_Concepts/Perturb-seq|Perturb-seq]], CRISPR screens | Critical |
 | Temporal | Time-series | Limited |
 
 ## Architecture Considerations
