@@ -22,9 +22,9 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 > 
 > ├── 00_Dashboard/     # Navigation and tracking
 > 
-> ├── 01_Papers/        # Paper notes (24 papers)
+> ├── 01_Papers/        # Paper notes (`$= dv.pages('#paper').length` papers)
 > 
-> ├── 02_Concepts/      # Core concepts (20 concepts)
+> ├── 02_Concepts/      # Core concepts (`$= dv.pages('#concept').length` concepts)
 > 
 > ├── 03_Models/        # Model architectures and comparisons
 > 
@@ -49,7 +49,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Papers (40)
+## Papers (`$= dv.pages('#paper').length`)
 
 ### Foundation Models 
 
@@ -137,7 +137,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ---
 
-## Concepts (27)
+## Concepts (`$= dv.pages('#concept').length`)
 
 ### Foundation & Embeddings
 - [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
@@ -159,6 +159,8 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - [[02_Concepts/Exchangeability|Exchangeability]]
 
 ### Biology & Networks
+- [[02_Concepts/scRNA-seq|scRNA-seq]]
+- [[02_Concepts/Perturb-seq|Perturb-seq]]
 - [[02_Concepts/Perturbation Prediction|Perturbation Prediction]]
 - [[02_Concepts/Gene Regulatory Networks|Gene Regulatory Networks]]
 - [[02_Concepts/Knowledge Graphs|Knowledge Graphs]]
@@ -211,13 +213,13 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 | Dataset | Type | Description |
 |---------|------|-------------|
-| [[04_Datasets/COVID-19\|COVID-19]] | scRNA-seq | COVID-19 immune response |
-| [[04_Datasets/Dentate Gyrus\|Dentate Gyrus]] | scRNA-seq | Neurogenesis, RNA velocity |
-| [[04_Datasets/Human Lung Cell Atlas\|Human Lung Cell Atlas]] | scRNA-seq | Lung reference atlas |
-| [[04_Datasets/Parse 1M\|Parse 1M]] | scRNA-seq | 1M cells, large-scale benchmark |
+| [[04_Datasets/COVID-19\|COVID-19]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | COVID-19 immune response |
+| [[04_Datasets/Dentate Gyrus\|Dentate Gyrus]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Neurogenesis, RNA velocity |
+| [[04_Datasets/Human Lung Cell Atlas\|Human Lung Cell Atlas]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Lung reference atlas |
+| [[04_Datasets/Parse 1M\|Parse 1M]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | 1M cells, large-scale benchmark |
 | [[04_Datasets/Replogle\|Replogle]] | [[02_Concepts/Perturb-seq\|Perturb-seq]] | Genome-wide CRISPRi screen |
-| [[04_Datasets/Tabula Muris\|Tabula Muris]] | scRNA-seq | Mouse cross-tissue atlas |
-| [[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]] | scRNA-seq | Human cross-tissue atlas |
+| [[04_Datasets/Tabula Muris\|Tabula Muris]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Mouse cross-tissue atlas |
+| [[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Human cross-tissue atlas |
 
 ---
 
@@ -228,7 +230,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 - [Nature: Three Data Pillars for Virtual Cells](https://www.nature.com/articles/s41422-025-01101-y)
 - [Google: C2S-Scale Research Blog](https://research.google/blog/teaching-machines-the-language-of-biology-scaling-large-language-models-for-next-generation-single-cell-analysis/)
 - [Awesome Foundation Model Single-Cell Papers](https://github.com/OmicsML/awesome-foundation-model-single-cell-papers)
-- https://virtualcellmodels.cziscience.com/models
+- [CZI Virtual Cell Models](https://virtualcellmodels.cziscience.com/models)
 
 ---
 
@@ -263,6 +265,16 @@ dv.table(["Category", "Count"], [
 ---
 
 ## Changelog
+
+### 2026-03-25 - Concept Linking Update
+
+**New Concept Added (1):**
+- [[02_Concepts/Perturb-seq|Perturb-seq]]: CRISPR perturbation + single-cell RNA-seq concept note
+
+**README Updated:**
+- Added [[02_Concepts/scRNA-seq|scRNA-seq]] and [[02_Concepts/Perturb-seq|Perturb-seq]] to concept navigation
+- Unified dataset type labels to concept links in the Datasets table
+- Updated vault structure counters (Papers: 40, Concepts: 28)
 
 ### 2026-03-24 - Major Paper Tables Update & New Sections
 
