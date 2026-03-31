@@ -54,6 +54,7 @@ date_read:
 
 ## Results
 *Note: As a "Comment" article, this paper presents a vision and framework rather than new experimental benchmarks. It cites existing achievements as evidence of feasibility:*
+
 | Milestone | Achievement | Baseline/Scale |
 |--------|-------|----------|
 | MOSTA Atlas | Whole-embryo spatial transcriptome | 8 million cells (E9.5 & E11.5) |
@@ -76,6 +77,7 @@ date_read:
 - **Computational Cost**: Simulating hundreds of millions of cells with complex regulatory networks requires unprecedented resources.
 - **Interpretability**: AI-driven models risk becoming "black boxes" where predictions are hard for biologists to verify mechanistically.
 - **Data Gaps**: High-resolution, joint profiling across all modalities in 3D at the whole-embryo scale remains technically challenging.
+- **lack-model-assessment criteria：** Unlike protein structure prediction, where the Critical Assessment of Structure Prediction (CASP) benchmarks drove the field, embryogenesis lacks widely accepted model-assessment criteria
 
 ### Questions
 - How will the models account for the stochastic nature of cellular variation vs. the robustness of organogenesis?
@@ -92,7 +94,7 @@ date_read:
 - [[Digital Twins]]
 - [[Spatiotemporal Transcriptomics]]
 - [[Morphogenesis]]
-- [[Optimal Transport Theory]]
+- [[Optimal Transport]]
 
 ### Potential Applications
 - **Prenatal Diagnosis**: Predicting congenital disabilities before birth.
