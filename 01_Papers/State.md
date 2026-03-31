@@ -11,7 +11,7 @@ authors:
  - "Noam Teyssier"
  - "Rajesh Ilango"
  - "Yusuf H. Roohani" 
- - year:2025
+year: 2025
 journal: "bioRxiv"
 doi:
 url:
