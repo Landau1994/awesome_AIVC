@@ -78,6 +78,7 @@ date_read:
 
 ## Critical Analysis
 ### Strengths
+
 - Unusually rigorous and comprehensive benchmarking effort with 6,400 individual experiments.
 - Strong control over pretraining compute budgets, ensuring that "more data" did not just mean "more training steps."
 - Clear demonstration that complex models are often outperformed by standard, simpler statistical baselines.
