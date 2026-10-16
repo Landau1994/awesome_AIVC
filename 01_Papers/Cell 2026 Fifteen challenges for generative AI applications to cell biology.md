@@ -42,6 +42,8 @@ date_read:
 - Proposes 15 challenges categorized by level: Molecular Interactions, Molecular Function, Cellular/Systems Function, and Translation.
 - Emphasizes the need for "purposeful" data generation (e.g., perturbation-based atlases) rather than repurposing existing steady-state single-cell data.
 - Critiques current benchmarking, which often relies on retrospective datasets and statistical significance on trivial tasks (like cell-type classification) rather than prospective validation.
+- Fifteen challenges: 
+- 1. 
 
 ## Methods
 ### Data
