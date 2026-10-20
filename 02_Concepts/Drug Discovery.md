@@ -52,7 +52,7 @@ Cell state + Drug structure → Predicted expression change
 | Company | Focus |
 |---------|-------|
 | Cellarity | Cell-centric drug discovery |
-| Insitro | ML for drug discovery |
+| insitro | ML for drug discovery |
 | Recursion | Cellular imaging + ML |
 
 ## Related Concepts
@@ -63,3 +63,7 @@ Cell state + Drug structure → Predicted expression change
 - [[01_Papers/CPA|CPA]]
 - [[01_Papers/chemCPA|chemCPA]]
 - [[01_Papers/scFoundation|scFoundation]] - Drug response
+
+## Verification (2026-10-20)
+
+These are research applications and company examples, not evidence that a virtual-cell prediction establishes clinical benefit. Current company descriptions support the broad focus labels: [insitro](https://www.insitro.com/), [Recursion](https://www.recursion.com/). Cellarity’s cell-centric description is documented in its [2021 company announcement](https://cellarity.com/news_item/cellarity-raises-123-million-in-series-b-funding-to-pioneer-a-new-approach-to-drug-discovery-treating-disease-at-the-level-of-the-cell-as-opposed-to-a-single-molecular-target/); its current homepage was not accessible during this audit.

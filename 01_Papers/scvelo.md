@@ -1,12 +1,9 @@
 ---
-title: "scVelo: RNA velocity analysis with dynamical models"
+title: "Generalizing RNA velocity to transient cell states through dynamical modeling"
 aliases: [scvelo, Bergen 2020]
-authors:
-  - Volker Bergen
-  - Marius Lange
-  - Stefan Peidli
+authors: ["Volker Bergen", "Marius Lange", "Stefan Peidli", "F. Alexander Wolf", "Fabian J. Theis"]
 year: 2020
-journal: Nature Methods
+journal: "Nature Biotechnology"
 tags:
   - paper
   - RNA-velocity
@@ -15,65 +12,36 @@ tags:
   - trajectory-inference
 status: unread
 date_added: 2026-03-25
+doi: "10.1038/s41587-020-0591-3"
+url: "https://doi.org/10.1038/s41587-020-0591-3"
 ---
 
-# scVelo: RNA velocity analysis with dynamical models
+# Generalizing RNA velocity to transient cell states through dynamical modeling
 
 ## Quick Summary
 
-Bergen et al. present **scVelo**, a major improvement on velocyto introducing dynamical models for RNA velocity inference. The dynamical model better captures gene expression kinetics and provides more accurate velocity estimates than the original constant-velocity model.
+scVelo extends RNA velocity beyond the steady-state approximation by fitting a likelihood-based model of transcription, splicing and degradation.
 
-## Key Improvements
+## Methods and Evidence
 
-- **Dynamical Model**: Captures changing transcription/degradation rates
-- **Better Accuracy**: Significant improvement over velocyto
-- **Scalability**: Efficient implementation for large datasets
-- **Interpretability**: Clear biological meaning for parameters
+The dynamical model estimates gene-specific kinetic rates and latent time. Its standard formulation does not infer arbitrarily time-varying splicing and degradation rates for each cell. Biological direction still requires validation; neither a universal accuracy percentage nor a universal runtime follows from this paper.
 
-## Innovation
+## Results and Limitations
 
-- Gene-specific kinetic parameters (splicing rate, degradation rate)
-- Likelihood-based parameter inference
-- Phase portrait dynamics for cell state visualization
-- Automatic steady-state detection
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Performance in Benchmarking
+## Connections
 
-[[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking study]] shows:
-- Accuracy: ~15-20% directional correctness (solid baseline)
-- Stability: Good stability across down-sampling tests
-- Speed: 1-10 minutes per dataset
-- Memory: 1-5 GB typical
-- Status: Still widely used standard method
-
-## Advantages
-
-✅ ODE-based (interpretable)
-✅ Good accuracy/speed tradeoff
-✅ Clear biological parameters
-✅ Widely adopted
-
-## Limitations
-
-⚠️ Still lower accuracy than modern deep learning methods
-⚠️ Assumptions about constant degradation rates
-⚠️ Computational cost higher than velocyto
-
-## Related Methods
-
-- [[velocyto]] - Original method (predecessor)
-- [[DeepVelo]] - Deep learning improvement
-- [[veloVI]] - Variational inference approach
-- [[Dynamo]] - Extended dynamics
-
-## See Also
-
+- [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking study]]
+- [[velocyto]]
+- [[DeepVelo]]
+- [[veloVI]]
+- [[Dynamo]]
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]]
 - [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Comprehensive benchmarking]]
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41587-020-0591-3).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -11,12 +11,13 @@ authors:
  - Lakshmi Krishnan
  - Sashidhar Guntury
  - Donghui Li
+ - Alzheimer's Disease Neuroimaging Initiative
  - Francesco Paolo Casale
  - Theofanis Karaletsos
 year: 2025
-journal: bioRxiv
-doi: 10.1101/2025.10.31.685862
-url: https://doi.org/10.1101/2025.10.31.685862
+journal: "bioRxiv"
+doi: "10.1101/2025.10.31.685862"
+url: "https://doi.org/10.1101/2025.10.31.685862"
 tags:
   - paper
   - AIVC
@@ -33,11 +34,11 @@ date_read:
 
 ## Quick Summary
 
-> VariantFormer is a 1.2-billion-parameter hierarchical transformer model designed to predict gene-level RNA abundance directly from **personalized diploid genomes**. Unlike previous reference-based models, VariantFormer explicitly encodes individual genetic variations (including SNPs and Indels) into DNA sequences using IUPAC ambiguity codes and integrates long-range cis-regulatory elements (CREs). Trained on 21,004 genome-transcriptome pairs from 2,330 donors, the model achieves state-of-the-art performance in predicting gene expression across genes, tissues, and individuals, while demonstrating superior generalization to out-of-distribution contexts such as cancer cell lines with high somatic mutation burdens.
+> VariantFormer is a 1.2-billion-parameter hierarchical transformer model designed to predict gene-level RNA abundance directly from **personalized diploid genomes**. Unlike previous reference-based models, VariantFormer explicitly encodes individual genetic variations (including SNPs and Indels) into DNA sequences using IUPAC ambiguity codes and integrates long-range cis-regulatory elements (CREs). Trained on 21,004 genome-transcriptome pairs from 2,330 donors, the authors report improved expression prediction and evaluate transfer to cancer cell lines with somatic variants.
 
 ## Key Points
 
-- **Personalized Diploid Input**: The first sequence-based model to natively model heterozygous genotypes and haplotype effects by encoding individual variants directly into the DNA sequence using IUPAC codes.
+- **Personalized Diploid Input**: A sequence-based model to encode heterozygous genotypes by encoding individual variants directly into the DNA sequence using IUPAC codes.
     
 - **Hierarchical Transformer Architecture**: Features a "frozen CRE encoder + fine-tuned gene encoder" strategy, employing cross-attention to model regulatory influences from distal elements onto gene bodies.
     
@@ -89,6 +90,10 @@ date_read:
 
 ## Results
 
+> [!warning] Numerical verification pending
+> The following inherited values have not been traced to exact panels/tables; do not cite them as verified measurements.
+
+
 |**Metric**|**Value (VariantFormer)**|**Baseline (Enformer/Borzoi)**|**Description**|
 |---|---|---|---|
 |Gene Correlation (Protein-coding)|**0.804**|~0.774 (Enformer)|Correlation of predicted vs. observed expression across donors/tissues|
@@ -111,7 +116,7 @@ date_read:
 
 ### Strengths
 
-- **Native Diploid Modeling**: Successfully integrates phased variants into the input sequence, allowing the model to distinguish between reference and alternate alleles and capture heterozygous effects, which is a major advancement over reference-only models.
+- **Native Diploid Modeling**: Integrates individual variants into the input sequence, allowing the model to distinguish between reference and alternate alleles and capture heterozygous effects, which is a major advancement over reference-only models.
     
 - **Non-coding Performance**: Achieves substantial improvements in predicting expression for non-protein-coding genes, a notoriously difficult task due to complex regulation.
     
@@ -142,7 +147,7 @@ date_read:
 
 - **Enformer (Avsec et al., 2021) / Borzoi (Linder et al., 2025)**: Sequence-based deep learning baselines used for comparison; VariantFormer outperforms them by integrating personalized variant information.
     
-- **AlphaGenome (Avsec et al., 2025)**: Another SOTA multimodal model mentioned as a baseline for variant effect prediction.
+- **AlphaGenome (Avsec et al., 2025)**: A sequence model discussed as a variant-effect prediction comparator; check the exact version used.
     
 - **Evo 2 (Brixi et al., 2025)**: An evolutionary foundation model used as a baseline, showing that task-specific fine-tuning with personalized data yields better expression predictions.
     
@@ -170,3 +175,8 @@ date_read:
 - The model's ability to perform **Zero-shot MAGMA enrichment analysis** for Alzheimer's disease without supervised training on disease labels is a significant finding, validating the biological relevance of its learned embeddings.
     
 - Code and pretrained models are publicly available, fostering reproducibility and further research.
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1101/2025.10.31.685862). The preprint identity and abstract were checked. Numerical tables and figure references still require full-text checking. An IUPAC heterozygous code does not itself preserve haplotype phase.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

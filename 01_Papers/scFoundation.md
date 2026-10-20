@@ -1,5 +1,5 @@
 ---
-title: "scFoundation: Large-scale Foundation Model on Single-cell Transcriptomics"
+title: "Large-scale foundation model on single-cell transcriptomics"
 aliases: [scFoundation, xTrimoGene]
 authors:
   - Minsheng Hao
@@ -7,9 +7,9 @@ authors:
   - Xin Zeng
   - et al.
 year: 2024
-journal: Nature Methods
-doi: 10.1038/s41592-024-02305-7
-url: https://github.com/biomap-research/scFoundation
+journal: "Nature Methods"
+doi: "10.1038/s41592-024-02305-7"
+url: "https://doi.org/10.1038/s41592-024-02305-7"
 tags:
   - paper
   - AIVC
@@ -27,13 +27,13 @@ date_read:
 # scFoundation: Large-scale Foundation Model on Single-cell Transcriptomics
 
 ## Quick Summary
-> scFoundation is a 100-million parameter foundation model pretrained on over 50 million human single-cell transcriptomic profiles, achieving state-of-the-art performance across diverse single-cell analysis tasks including gene expression enhancement, drug response prediction, and perturbation prediction.
+> scFoundation is a 100-million-parameter foundation model pretrained on over 50 million human single-cell transcriptomic profiles. Its paper evaluates gene expression enhancement, drug response prediction and perturbation prediction; reported advantages are specific to the evaluated tasks, datasets and baselines.
 
 ## Key Points
-- Largest single-cell foundation model (100M parameters, ~20K genes)
+- 100M-parameter single-cell foundation model covering approximately 20K genes
 - Trained on 50M+ cells from GEO, HCA, Single Cell Portal, EMBL-EBI
 - Asymmetric transformer architecture with read-depth awareness
-- State-of-the-art on multiple downstream tasks
+- Reports competitive results on the downstream tasks evaluated in the paper
 
 ## Methods
 
@@ -117,3 +117,8 @@ Task-specific decoders
   year={2024}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-024-02305-7).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

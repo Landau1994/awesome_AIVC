@@ -11,7 +11,7 @@ category:
   - Diffusion model
 importance: Medium
 date_created: 2026-03-17
-last_updated: 2026-03-17
+last_updated: 2026-10-20
 ---
 
 # Classifier-Free Guidance
@@ -22,7 +22,7 @@ last_updated: 2026-03-17
 ## Key Ideas
 - Trade-off between sample quality and diversity via guidance scale ω
 - No need for a separate classifier network
-- Joint conditioning (single embedding for combined attributes) can outperform additive conditioning
+- Joint versus additive multi-condition guidance is an empirical design choice; neither universally dominates
 
 ## In Single-Cell Biology
 - [[arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models|scLDM]] uses CFG with joint conditioning for cell type + perturbation generation
@@ -30,3 +30,7 @@ last_updated: 2026-03-17
 ## Related Concepts
 - [[Latent Diffusion Models]]
 - [[Flow Matching]]
+
+## Verification (2026-10-20)
+
+Higher guidance does not guarantee greater biological validity or diversity. [Classifier-Free Diffusion Guidance](https://arxiv.org/abs/2207.12598); [scLDM](https://arxiv.org/abs/2511.02986).

@@ -1,9 +1,9 @@
 ---
-title: "LangCell: Language-Augmented Single-Cell Foundation Model"
+title: "LangCell: Language-Cell Pre-training for Cell Identity Understanding"
 aliases: [LangCell, Language-cell]
-authors: []
+authors: ["Suyuan Zhao", "Jiahuan Zhang", "Yushuai Wu", "Yizhen Luo", "Zaiqing Nie"]
 year: 2024
-journal: bioRxiv
+journal: "ICML 2024"
 tags:
   - paper
   - AIVC
@@ -14,6 +14,9 @@ status: unread
 rating:
 date_added: 2026-03-25
 date_read:
+doi: null
+url: "https://proceedings.mlr.press/v235/zhao24u.html"
+doi_status: "Article DOI not listed in the official proceedings page; use the proceedings URL"
 ---
 
 # LangCell: Language-Augmented Single-Cell Foundation Model
@@ -51,3 +54,8 @@ LangCell is a cell-centric transformer encoder that incorporates natural languag
 **Status**: Note skeleton - expand with detailed information when paper is read
 
 **Last Updated**: 2026-03-25
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://proceedings.mlr.press/v235/zhao24u.html).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

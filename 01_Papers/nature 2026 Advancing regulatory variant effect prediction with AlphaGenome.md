@@ -13,6 +13,7 @@ authors:
   - Lauren Nicolaisen
   - Eirini Arvaniti
   - Joshua Pan
+author_list: selected authors; see source for the complete list
 year: 2026
 journal: Nature
 doi: 10.1038/s41586-025-10014-0
@@ -31,6 +32,9 @@ date_read:
 ---
 
 # Advancing regulatory variant effect prediction with AlphaGenome
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41586-025-10014-0). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
 
 ## Quick Summary
 

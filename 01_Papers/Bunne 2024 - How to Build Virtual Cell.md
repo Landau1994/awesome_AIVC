@@ -1,5 +1,5 @@
 ---
-title: "How to Build the Virtual Cell with AI: Priorities and Opportunities"
+title: "How to build the virtual cell with artificial intelligence: Priorities and opportunities"
 aliases:
   - Bunne 2024
   - AIVC Blueprint
@@ -8,9 +8,9 @@ authors:
   - Charlotte Bunne
   - et al.
 year: 2024
-journal: Cell
-doi: 10.1016/j.cell.2024.12.001
-url: https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1
+journal: "Cell"
+doi: "10.1016/j.cell.2024.11.015"
+url: "https://doi.org/10.1016/j.cell.2024.11.015"
 tags:
   - paper
   - AIVC
@@ -31,7 +31,7 @@ date_read:
 
 ## Key Points
 - AIVCs integrate multi-omics data with AI to create predictive models of cellular function
-- Three core capabilities: simulate, predict, and generate
+- Core AI capabilities highlighted by the paper: predictive, generative, and queryable
 - Requires massive multi-modal datasets, novel architectures, and evaluation frameworks
 - Potential to revolutionize drug discovery, disease understanding, and synthetic biology
 
@@ -48,7 +48,7 @@ date_read:
 2. **Models**: Foundation models with biological inductive biases
 3. **Evaluation**: Benchmarks and validation frameworks
 
-## Core Capabilities
+## Illustrative Applications (note synthesis)
 
 ### 1. Simulate
 - Predict cellular states under various conditions
@@ -68,10 +68,10 @@ date_read:
 ## Data Requirements
 | Data Type | Examples | Scale |
 |-----------|----------|-------|
-| Transcriptomics | scRNA-seq | 100M+ cells |
+| Transcriptomics | scRNA-seq | Large existing atlases; no fixed minimum established here |
 | Proteomics | Mass spec, imaging | Growing |
 | Spatial | Spatial transcriptomics | Emerging |
-| Perturbations | [[02_Concepts/Perturb-seq|Perturb-seq]], CRISPR screens | Critical |
+| Perturbations | [[02_Concepts/Perturb-seq\|Perturb-seq]], CRISPR screens | Critical |
 | Temporal | Time-series | Limited |
 
 ## Architecture Considerations
@@ -118,6 +118,11 @@ date_read:
   author={Bunne, Charlotte and others},
   journal={Cell},
   year={2024},
-  doi={10.1016/j.cell.2024.12.001}
+  doi={10.1016/j.cell.2024.11.015}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1016/j.cell.2024.11.015). Corrected the DOI from 10.1016/j.cell.2024.11.015. This is a roadmap: prospective capabilities and data needs are not achieved system performance.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

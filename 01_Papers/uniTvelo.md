@@ -1,13 +1,12 @@
 ---
-title: "UniTVelo"
+title: "UniTVelo: temporally unified RNA velocity reinforces single-cell trajectory inference"
 aliases:
   - uniTvelo
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Mingze Gao", "Chen Qiao", "Yuanhua Huang"]
+year: 2022
+journal: "Nature Communications"
+doi: "10.1038/s41467-022-34188-7"
+url: "https://doi.org/10.1038/s41467-022-34188-7"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# UniTVelo
+# UniTVelo: temporally unified RNA velocity reinforces single-cell trajectory inference
 
 ## Quick Summary
-> `UniTVelo` is an RNA velocity method that learns a unified velocity trend with reduced dependence on strict steady-state assumptions.
 
-## Key Points
-- Aims for robust direction inference under diverse dynamics.
-- Balances modeling flexibility and computational practicality.
-- Commonly evaluated against scVelo/veloVI baselines.
+UniTVelo models spliced expression curves and supports a shared latent time across genes to strengthen the inferred ordering of cells.
 
-## Methods
-### Data
-- Spliced and unspliced single-cell RNA counts.
+## Methods and Evidence
 
-### Model Architecture
-- Unified trend modeling of transcriptional progression.
+A radial basis function describes expression dynamics; velocities follow from the fitted spliced-expression curve. Unified-time and independent-time modes have different assumptions. The paper evaluates ten datasets; its performance is not a universal directional-accuracy percentage.
 
-### Training Strategy
-- Fits dynamic trends to infer cell-level directional velocity.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Direction robustness | Moderate to good | Typically competitive with classical baselines |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Unified trend formulation |
-| Fig2   | Velocity field comparisons |
-
-## Critical Analysis
-### Strengths
-- Reduced reliance on strict steady-state assumptions.
-
-### Weaknesses
-- Performance may vary across highly heterogeneous datasets.
-
-### Questions
-- Which gene-selection strategy best supports stable trend fitting?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/scvelo|scvelo]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]]
 
-### Potential Applications
-- General-purpose velocity analysis in varied differentiation settings.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; fill metadata after source verification.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41467-022-34188-7).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

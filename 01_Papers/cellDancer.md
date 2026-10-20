@@ -1,13 +1,12 @@
 ---
-title: "cellDancer"
+title: "A relay velocity model infers cell-dependent RNA velocity"
 aliases:
   - CellDancer
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Shengyu Li", "Pengzhi Zhang", "Weiqing Chen", "et al."]
+year: 2024
+journal: "Nature Biotechnology"
+doi: "10.1038/s41587-023-01728-5"
+url: "https://doi.org/10.1038/s41587-023-01728-5"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# cellDancer
+# A relay velocity model infers cell-dependent RNA velocity
 
 ## Quick Summary
-> `cellDancer` is a deep-learning RNA velocity method designed to infer transcriptional dynamics and directional transitions from single-cell expression states.
 
-## Key Points
-- Learns nonlinear velocity functions from cell states.
-- Often shows strong benchmark performance in complex systems.
-- Useful for differentiation processes with nonlinear trajectories.
+cellDancer uses neural networks to infer local, cell-dependent RNA kinetics and relays local velocities across neighboring cells.
 
-## Methods
-### Data
-- Single-cell spliced/unspliced expression matrices.
+## Methods and Evidence
 
-### Model Architecture
-- Deep neural framework for nonlinear velocity dynamics.
+Spliced and unspliced expression are used to estimate cell-specific transcription, splicing and degradation rates. The original paper evaluates simulations and developmental datasets. General rankings and resource requirements depend on the benchmark implementation.
 
-### Training Strategy
-- Fits velocity function to reconstruct directional cell transitions.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Benchmark competitiveness | High in many settings | Often stronger than classical baselines |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | cellDancer architecture and workflow |
-| Fig2   | Nonlinear velocity field examples |
-
-## Critical Analysis
-### Strengths
-- Captures nonlinear dynamics beyond simple parametric assumptions.
-
-### Weaknesses
-- Compute requirements and reproducibility may vary by setup.
-
-### Questions
-- Which training settings most improve cross-dataset stability?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/DeepVelo|DeepVelo]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]]
 
-### Potential Applications
-- Complex lineage and branch-structure dynamics modeling.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; complete metadata after source confirmation.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41587-023-01728-5). Published online 3 April 2023; the journal issue is dated 2024.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -26,6 +26,9 @@ date_read:
 
 # Benchmarking all-atom biomolecular structure prediction with FoldBench
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41467-025-67127-3). The publisher records online publication on 4 December 2025 but cites volume 17, article 442 (2026). Thus the filename and frontmatter reflect different publication dates, not two papers. Identity and the 1,522-assembly/nine-task abstract were checked; precise performance tables were not fully re-audited.
+
 ## Quick Summary
 > The paper introduces FoldBench, a comprehensive, low-homology benchmark dataset comprising 1,522 biological assemblies to evaluate the performance of all-atom biomolecular structure prediction models (AlphaFold 3, Boltz-1, Chai-1, HelixFold 3, and Protenix). The study reveals that while AlphaFold 3 consistently achieves superior accuracy across diverse tasks—including monomers, protein-ligand interactions, protein-protein interactions, and antibody-antigen complexes—current models struggle with data-scarce domains, allosteric sites, and long-range interactions in complex nucleic acids.
 
@@ -43,7 +46,7 @@ date_read:
 - Includes monomers (protein, RNA, DNA) and interface types (protein-protein, antibody-antigen, protein-ligand, protein-RNA, protein-DNA, protein-peptide).
 
 ### Model Architecture
-- Evaluates five leading models: [[AlphaFold 3]], [[Boltz-1]], [[Chai-1]], [[HelixFold 3]], and [[Protenix]].
+- Evaluates five leading models: [[05_Tools/Methods and Data Resources#AlphaFold 3|AlphaFold 3]], [[05_Tools/Methods and Data Resources#Boltz-1|Boltz-1]], [[05_Tools/Methods and Data Resources#Chai-1|Chai-1]], [[05_Tools/Methods and Data Resources#HelixFold 3|HelixFold 3]], and [[05_Tools/Methods and Data Resources#Protenix|Protenix]].
 - Inference performed using a 5 × 5 sampling strategy (5 seeds × 5 samples) with 10 recycles.
 
 ### Training Strategy
@@ -85,17 +88,17 @@ date_read:
 
 ## Connections
 ### Related Papers
-- [[AlphaFold 3]] (Abramson et al., 2024)
-- [[Boltz-1]] (Wohlwend et al., 2024)
-- [[Chai-1]] (Chai Discovery team, 2024)
-- [[HelixFold 3]] (Liu et al., 2024)
-- [[Protenix]] (ByteDance AI4Science, 2025)
+- [[05_Tools/Methods and Data Resources#AlphaFold 3|AlphaFold 3]] (Abramson et al., 2024)
+- [[05_Tools/Methods and Data Resources#Boltz-1|Boltz-1]] (Wohlwend et al., 2024)
+- [[05_Tools/Methods and Data Resources#Chai-1|Chai-1]] (Chai Discovery team, 2024)
+- [[05_Tools/Methods and Data Resources#HelixFold 3|HelixFold 3]] (Liu et al., 2024)
+- [[05_Tools/Methods and Data Resources#Protenix|Protenix]] (ByteDance AI4Science, 2025)
 
 ### Related Concepts
-- [[Protein-ligand docking]]
-- [[Antibody-antigen interface prediction]]
-- [[Conformational sampling]]
-- [[Structural bioinformatics]]
+- [[01_Papers/NC 2025 Benchmarking all-atom biomolecular structure prediction with FoldBench|Protein-ligand docking]]
+- [[01_Papers/NC 2025 Benchmarking all-atom biomolecular structure prediction with FoldBench|Antibody-antigen interface prediction]]
+- [[01_Papers/NC 2025 Benchmarking all-atom biomolecular structure prediction with FoldBench|Conformational sampling]]
+- [[01_Papers/NC 2025 Benchmarking all-atom biomolecular structure prediction with FoldBench|Structural bioinformatics]]
 
 ### Potential Applications
 - Benchmarking the next generation of generative protein and interface models.

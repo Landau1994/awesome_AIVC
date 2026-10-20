@@ -9,7 +9,7 @@ tags:
 category: Core Concept
 importance: critical
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Cell Foundation Models
@@ -20,7 +20,7 @@ last_updated: 2026-01-16
 ## Key Ideas
 - **Pre-training**: Learn from millions of cells without task-specific labels
 - **Transfer learning**: Fine-tune for specific tasks with small datasets
-- **Universal representations**: Capture cell states across tissues and conditions
+- **Transferable representations**: Aim to capture cell states across tissues and conditions; universality is not guaranteed
 - **Multi-task capability**: Single model serves multiple applications
 
 ## Mathematical Formulation
@@ -32,7 +32,7 @@ $$\mathbf{h} = f_\theta(\mathbf{x})$$
 
 where $\mathbf{h} \in \mathbb{R}^{d}$ is the learned cell embedding.
 
-### Pre-training Objective (Masked Language Modeling)
+### Example Pre-training Objective (masked prediction; model-specific likelihood)
 $$\mathcal{L} = -\sum_{i \in \mathcal{M}} \log p(x_i | \mathbf{x}_{\backslash \mathcal{M}}; \theta)$$
 
 where $\mathcal{M}$ is the set of masked gene indices.
@@ -44,8 +44,8 @@ where $\mathcal{M}$ is the set of masked gene indices.
 | [[01_Papers/scGPT\|scGPT]] | 33M cells | Transformer | Gene tokenization |
 | [[01_Papers/Geneformer\|Geneformer]] | 30M cells | Transformer | Rank-value encoding |
 | scFoundation | 50M cells | Transformer | Read depth aware |
-| scBERT | 1M cells | BERT | Early pioneer |
-| UCE | Multiple species | Cross-species | Universal embeddings |
+| scBERT | Record corpus/checkpoint from the original paper | Performer-based transformer | Early gene-expression pretraining |
+| UCE | Multiple species | Transformer with protein-derived gene embeddings | Cross-species representation |
 
 ## Applications in AIVC
 
@@ -91,3 +91,7 @@ where $\mathcal{M}$ is the set of masked gene indices.
 - How to handle batch effects in pre-training?
 - Can models generalize across species?
 - What biological knowledge is captured vs. missed?
+
+## Verification (2026-10-20)
+
+Pretraining corpus sizes describe particular releases, not every checkpoint. Masked prediction targets differ: gene identity, expression values and reconstruction are not interchangeable. [scGPT paper](https://www.nature.com/articles/s41592-024-02201-0); [Geneformer original model card](https://huggingface.co/ctheodoris/Geneformer).

@@ -7,13 +7,13 @@ tags:
 category: AI for Science
 importance: High
 date_created: 2026-02-25
-last_updated: 2026-02-25
+last_updated: 2026-10-20
 ---
 
 # Self-Driving Laboratories
 
 ## Definition
-> **Self-Driving Laboratories (SDLs)** are autonomous research platforms that integrate **artificial intelligence (AI)**, **robotics**, and **high-throughput experimentation** to accelerate scientific discovery. Unlike traditional automation, SDLs utilize a "closed-loop" system where the AI analyzes experimental results in real-time to decide and execute the next set of experiments without human intervention.
+> **Self-Driving Laboratories (SDLs)** are autonomous research platforms that integrate **artificial intelligence (AI)**, **robotics**, and **high-throughput experimentation** to accelerate scientific discovery. Unlike traditional automation, SDLs utilize a "closed-loop" system where the AI analyzes experimental results in real-time to decide and execute the next set of experiments within a defined operational scope; humans still specify objectives, maintain equipment and handle exceptions.
 
 ## Key Ideas
 - **Closed-Loop Cycle (DMTA):** The core workflow follows the Design-Make-Test-Analyze cycle.
@@ -23,7 +23,7 @@ last_updated: 2026-02-25
     - **Analyze:** AI updates its internal model based on new data.
 - **Active Learning:** Instead of testing random points or grid searches, SDLs use active learning (often Bayesian Optimization) to select experiments that maximize information gain or performance improvement.
 - **Robotic Automation:** Physical execution of tasks (pipetting, mixing, heating, measuring) is handled by modular robotic arms or liquid handlers (e.g., Opentrons).
-- **Acceleration:** SDLs can reduce the time required for discovery from years to months or days by running 24/7 and exploring chemical/biological spaces more efficiently.
+- **Acceleration:** Closed-loop selection can improve experimental efficiency; speedup must be measured against a specified baseline and operational scope.
 
 ## Mathematical Formulation
 The "brain" of an SDL is typically governed by **Bayesian Optimization**.
@@ -45,7 +45,7 @@ Where:
 - $\alpha(x)$ balances **exploration** (high uncertainty) and **exploitation** (high predicted value).
 
 ## Visual Explanation
-```excalidraw
+```text
 [Conceptual Diagram of SDL]
 
       +-----------------+
@@ -73,16 +73,16 @@ Where:
 - **Synthetic Biology:** Optimizing genetic circuits by varying promoter strengths and gene combinations autonomously.
 
 ## Related Concepts
-- [[Bayesian Optimization]]
-- [[Active Learning]]
-- [[High-Throughput Screening]]
-- [[Robotics in Biology]]
+- [[02_Concepts/Methods and Metrics Glossary#Bayesian Optimization|Bayesian Optimization]]
+- [[02_Concepts/Methods and Metrics Glossary#Active Learning|Active Learning]]
+- [[02_Concepts/Drug Discovery|High-Throughput Screening]]
+- [[02_Concepts/Self-Driving Laboratories|Robotics in Biology]]
 - [[Generative Models]] (often used to propose new molecular structures for the SDL to test)
 
 ## Key Papers
-- **"Automation of the Design-Make-Test-Analyze Cycle for Discovery of Materials"** (Burger et al., 2020) - *Demonstrated a mobile robot chemist.*
-- **"Accelerated discovery of organic polymer solar cells"** (MacLeod et al., 2020).
-- **"Self-driving laboratories to autonomously navigate the chemical space"** (Aspuru-Guzik group).
+- [A mobile robotic chemist](https://doi.org/10.1038/s41586-020-2442-2) (Burger et al., 2020).
+- [Self-driving laboratory for accelerated discovery of thin-film materials](https://doi.org/10.1126/sciadv.aaz8867) (MacLeod et al., 2020).
+- [A self-driving laboratory advances the Pareto front for material properties](https://doi.org/10.1038/s41467-022-28580-6) (MacLeod et al., 2022).
 
 ## Tools & Implementations
 - **ChemOS:** A software orchestration layer for autonomous labs.
@@ -98,3 +98,7 @@ Where:
 ## Notes
 - The transition from "Automated" (robot follows a script) to "Autonomous" (robot decides the script) is the defining feature of SDLs.
 - Integration challenges remain high: connecting legacy lab hardware to modern APIs is often the bottleneck.
+
+## Verification (2026-10-20)
+
+Corrected misattributed paper titles and years. The examples above demonstrate particular experimental platforms; they do not establish a universal discovery speedup.

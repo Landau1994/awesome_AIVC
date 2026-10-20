@@ -9,7 +9,7 @@ tags:
 category: Core Concept
 importance: critical
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Perturbation Prediction
@@ -26,7 +26,8 @@ last_updated: 2026-01-16
 ## Types of Perturbations
 
 ### Genetic Perturbations
-- **CRISPR knockout (CRISPRi)**: Gene inactivation
+- **CRISPR knockout**: Nuclease-mediated DNA editing that can disrupt gene function
+- **CRISPR interference (CRISPRi)**: dCas9-based transcriptional repression; typically knockdown rather than DNA knockout
 - **CRISPR activation (CRISPRa)**: Gene overexpression
 - **RNAi**: Gene knockdown
 - **Combinatorial**: Multiple genes simultaneously
@@ -54,12 +55,14 @@ Predict:
 ### Common Objectives
 $$\mathcal{L} = \|\mathbf{x}' - \hat{\mathbf{x}}'\|_2^2 + \lambda \cdot \text{regularization}$$
 
+This is a schematic supervised objective. Destructive scRNA-seq generally provides unpaired before/after cells, so individual counterfactual targets are not observed; training and evaluation may use population summaries or distributional objectives.
+
 ## Key Methods
 
 | Method | Type | Key Idea |
 |--------|------|----------|
 | [[01_Papers/GEARS\|GEARS]] | GNN | Gene interaction graph |
-| [[01_Papers/CPA\|CPA]] | VAE | Compositional disentanglement |
+| [[01_Papers/CPA\|CPA]] | Adversarial autoencoder | Compositional disentanglement |
 | scGPT | Transformer | Foundation model fine-tuning |
 | CellOT | Optimal transport | Cell state transitions |
 
@@ -109,3 +112,11 @@ $$\mathcal{L} = \|\mathbf{x}' - \hat{\mathbf{x}}'\|_2^2 + \lambda \cdot \text{re
 - [GEARS](https://github.com/snap-stanford/GEARS)
 - [CPA](https://github.com/facebookresearch/CPA)
 - [Pertpy](https://github.com/theislab/pertpy)
+
+## Verification (2026-10-20)
+
+Corrected the distinction between CRISPR knockout and transcriptional repression. CPA uses a compositional perturbation autoencoder; a latent representation alone does not make a method a VAE. [CRISPRi original study](https://doi.org/10.1016/j.cell.2013.02.022); [CPA original study](https://doi.org/10.15252/msb.202211517).
+
+## Leave-one-context-out evaluation
+
+LOCO means leave-one-context-out in the cited benchmarking context. A context can be a cell type, cell line or another grouping defined by the study. Hold out the whole specified context, and report which perturbations and other covariates remain seen during training. LOCO is distinct from holding out perturbation identities or entire studies.

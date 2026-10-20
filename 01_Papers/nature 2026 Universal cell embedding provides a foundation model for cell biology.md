@@ -25,28 +25,31 @@ date_read:
 
 # Universal cell embedding provides a foundation model for cell biology
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41586-026-10689-z). Checked the 2026 journal record, model description and Tabula Sapiens v.2 comparison. The note [[UCE]] concerns the earlier model/preprint. Zero-shot embedding does not imply that every downstream classifier is trained without labels; additional figures and settings remain reading notes.
+
 ## Quick Summary
-> The paper introduces the Universal Cell Embedding (UCE), a 33-layer, 650-million-parameter transformer-based foundation model designed for single-cell gene expression analysis. By leveraging a protein language model ([[ESM2]]) to tokenize genes, UCE is genome-agnostic, enabling it to represent cells across diverse tissues and species without the need for model retraining or fine-tuning. Trained on a 36-million-cell [[Integrated Mega-scale Atlas (IMA)]], the model demonstrates emergent biological organization and superior performance in zero-shot cell type classification and cross-species data integration compared to existing state-of-the-art methods like [[Geneformer]] and [[scGPT]].
+> The paper introduces the Universal Cell Embedding (UCE), a 33-layer, 650-million-parameter transformer-based foundation model designed for single-cell gene expression analysis. By leveraging a protein language model ([[05_Tools/Methods and Data Resources#ESM2|ESM2]]) to tokenize genes, UCE is genome-agnostic, enabling it to represent cells across diverse tissues and species without the need for model retraining or fine-tuning. Trained on a 36-million-cell [[01_Papers/nature 2026 Universal cell embedding provides a foundation model for cell biology|Integrated Mega-scale Atlas (IMA)]], the model demonstrates emergent biological organization and strong zero-shot cell embeddings and cross-species integration in the reported benchmarks; label-transfer experiments can train a classifier on reference labels compared to existing state-of-the-art methods like [[Geneformer]] and [[scGPT]].
 
 ## Key Points
 - [[UCE]] architecture: 33-layer transformer model utilizing protein-product embeddings for gene tokenization.
 - Genome-agnostic design allows embedding of cells from species not included in the training set.
-- Achieves high-quality zero-shot performance, matching or exceeding fine-tuned methods like [[scVI]] and [[scArches]].
+- Achieves high-quality zero-shot performance, matching or exceeding fine-tuned methods like [[scVI]] and [[05_Tools/Methods and Data Resources#scArches|scArches]].
 - Demonstrates emergent properties, including the identification of developmental lineages and cross-tissue homogeneity (e.g., macrophage identity).
 - Provides a new workflow for identifying and characterizing novel cell types (e.g., Norn cells) across datasets without explicit retraining.
 - Trained on 36 million cells from 300+ datasets, representing a significant scale in biological foundation modeling.
 
 ## Methods
 ### Data
-- [[scRNA-seq]] count data from the [[CellXGene (CxG) Census]] and other public sources.
-- Protein sequences for gene tokenization via [[ESM2]].
+- [[scRNA-seq]] count data from the [[05_Tools/Methods and Data Resources#CELLxGENE|CellXGene (CxG) Census]] and other public sources.
+- Protein sequences for gene tokenization via [[05_Tools/Methods and Data Resources#ESM2|ESM2]].
 - Tabula Sapiens v.2 as a gold-standard benchmarking dataset.
 - Novel species data: green monkey, naked mole rat, chicken (retina/heart).
 
 ### Model Architecture
 - Transformer neural network (33 layers, 650M parameters).
 - Gene input: Weighted, normalized samples of expressed genes (1,024 genes).
-- Gene tokenization: Average embedding of protein products via [[ESM2]] (15B-parameter model).
+- Gene tokenization: Average embedding of protein products via [[05_Tools/Methods and Data Resources#ESM2|ESM2]] (15B-parameter model).
 - Cell representation: CLS token at the final transformer layer.
 
 ### Training Strategy
@@ -55,6 +58,8 @@ date_read:
 - Trained on 24 A100 80 GB GPUs for 40 days.
 
 ## Results
+These relative improvements are for Tabula Sapiens v.2 integration scores against Geneformer (Supplementary Table 1), not percentage-point increases in annotation accuracy. Zero-shot refers to keeping the UCE encoder frozen; downstream supervised classifiers are a separate step.
+
 | Metric | Value | Baseline |
 |--------|-------|----------|
 | Overall score (vs Geneformer) | +13.9% | Geneformer |
@@ -85,19 +90,19 @@ date_read:
 
 ### Questions
 - How can interpretability tools be integrated to map the transformer's attention weights to specific biological gene pathways?
-- Could the architecture be optimized using state space models (e.g., [[Mamba]]) to overcome the quadratic scaling of standard transformers and allow for larger context lengths?
+- Could the architecture be optimized using state space models (e.g., [[02_Concepts/Methods and Metrics Glossary#State-space models|Mamba]]) to overcome the quadratic scaling of standard transformers and allow for larger context lengths?
 
 ## Connections
 ### Related Papers
-- [[]]
+- [[UCE]] — earlier preprint/model note; this note describes the 2026 Nature article.
 - Theodoris, C. V. et al. "Transfer learning enables predictions in network biology." *Nature* (2023).
 - Cui, H. et al. "scGPT: toward building a foundation model for single-cell multi-omics using generative AI." *Nat. Methods* (2024).
 
 ### Related Concepts
-- [[Foundation Models]]
-- [[Transfer Learning]]
-- [[Single-cell Omics]]
-- [[Bioinformatics]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
+- [[02_Concepts/Transfer Learning Biology|Transfer Learning]]
+- [[02_Concepts/scRNA-seq|Single-cell Omics]]
+- [[05_Tools/AI and Scientific Computing Reference#Bioinformatics|Bioinformatics]]
 
 ### Potential Applications
 - Rapid annotation of large-scale single-cell atlases.

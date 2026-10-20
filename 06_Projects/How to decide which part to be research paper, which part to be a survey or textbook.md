@@ -15,12 +15,11 @@ end_date:
 # How to decide which part to be research paper, which part to be a survey or textbook
 
 ## Objective
-> What are you trying to achieve?
 To establish a systematic decision-making framework for categorizing AI Virtual Cell (AIVC) knowledge and projects into **Original Research Papers**, **Survey/Review Articles**, or **Textbook/Tutorial Content**. This directly supports Phase 7 (Research & Publication) and Phase 8 (Academic Contribution & Scholarly Writing) of the [[00_Dashboard/Learning Path|Learning Path]].
 
 ## Background
 - AIVC is a rapidly evolving, interdisciplinary field merging multi-omics data, deep learning architectures (Transformers, GNNs, Diffusion), and biological knowledge graphs.
-- With the explosive growth of literature (e.g., the 40 core papers tracked in the `README`), there are three simultaneous demands in the community:
+- With the explosive growth of literature (e.g., the papers tracked in the `README`), there are three simultaneous demands in the community:
   1. **Frontier Breakthroughs**: Solving current limitations in foundation models (e.g., zero-shot generalization, causal perturbation).
   2. **Systematic Synthesis**: Horizontally comparing and benchmarking the flood of new models.
   3. **Educational Onboarding**: Lowering the barrier to entry for biologists and computer scientists entering the field.
@@ -30,7 +29,7 @@ To establish a systematic decision-making framework for categorizing AI Virtual 
 Based on the phase divisions in the [[00_Dashboard/Learning Path|Learning Path]] and the vault's `README` structure, use the following criteria to decide the output type:
 
 #### 1. Research Paper (Original Contribution)
-- **When to choose**: When proposing a novel architecture, a new multi-modal integration method, or achieving SOTA results on a specific task (e.g., perturbation prediction, spatiotemporal dynamics).
+- **When to choose**: When proposing a novel architecture, a new multi-modal integration method, or achieving a well-supported improvement or informative finding on a specific task (e.g., perturbation prediction, spatiotemporal dynamics).
 - **Corresponding Phase**: Phase 7 (Research Implementation & Publication Ready).
 - **Characteristics**: Requires rigorous experimental design, comparison against existing baselines (e.g., scGPT, UCE), and validation on large-scale datasets (e.g., Parse 1M, Replogle).
 - **Potential Topics**: Addressing pain points highlighted in the README, such as "cross-species generalization," "causal perturbation via diffusion (e.g., X-Cell)," or "de novo drug design (e.g., GPS)."
@@ -38,8 +37,8 @@ Based on the phase divisions in the [[00_Dashboard/Learning Path|Learning Path]]
 #### 2. Survey / Review Article
 - **When to choose**: When a subfield has accumulated significant literature but lacks a unified evaluation standard or taxonomy.
 - **Corresponding Phase**: Phase 8 (Educational Content & Reviews).
-- **Characteristics**: Does not require proposing a new model, but demands a novel taxonomy or a unified benchmarking framework.
-- **Potential Topics**: 
+- **Characteristics**: Does not require proposing a new model, but requires a clear synthesis question and a defensible review method; a new taxonomy or benchmark is optional.
+- **Potential Topics**:
   - Architectural comparisons of AIVC foundation models (Transformer vs. GNN vs. Diffusion).
   - Benchmarking single-cell perturbation prediction algorithms (referencing Perturbation Bench, scFM Bench).
   - A horizontal evaluation of RNA velocity inference methods (referencing RNA Velocity Bench 17/29).
@@ -61,7 +60,7 @@ Based on the phase divisions in the [[00_Dashboard/Learning Path|Learning Path]]
 
 ### Datasets
 *Select datasets based on the output type:*
-- **For Research / Benchmarks**: [[04_Datasets/Parse 1M|Parse 1M]] (Large-scale pre-training), [[04_Datasets/Replogle|Replogle]] (Genome-wide CRISPRi perturbation testing)
+- **For Research / Benchmarks**: [[04_Datasets/Parse 1M|Parse 1M]] (cytokine perturbation benchmark subset), [[04_Datasets/Replogle|Replogle]] (Genome-wide CRISPRi perturbation testing)
 - **For Textbooks / Tutorials**: [[04_Datasets/Dentate Gyrus|Dentate Gyrus]] (Classic small dataset for demonstrating RNA velocity and neurogenesis trajectories)
 
 ## Progress Log
@@ -81,7 +80,7 @@ Based on the phase divisions in the [[00_Dashboard/Learning Path|Learning Path]]
 ### Key Findings
 - **Textbook content** should be strictly limited to mature concepts found in the `02_Concepts` folder (e.g., [[02_Concepts/Single-Cell Embeddings|Single-Cell Embeddings]]).
 - **Survey content** should heavily leverage the `Model Comparison` tables in the README (categorizing by capability and architecture).
-- **Research papers** must directly target the model flaws and limitations revealed in recent Benchmarking papers (e.g., [[01_Papers/GB 2025 Zero-shot evaluation reveals limitations of single-cell foundation models|Zero-shot Eval]]).
+- **Research papers** may investigate model limitations, new biology, datasets or methods, with claims matched to evidence; recent benchmarks provide candidate questions (e.g., [[01_Papers/GB 2025 Zero-shot evaluation reveals limitations of single-cell foundation models|Zero-shot Eval]]).
 
 ## Code Repository
 - [ ] Create `awesome-aivc-tutorials` repository (for Textbook/Tutorial code).

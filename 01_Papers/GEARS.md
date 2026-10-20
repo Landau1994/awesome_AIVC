@@ -1,14 +1,14 @@
 ---
-title: "GEARS: Predicting Transcriptional Outcomes of Novel Multi-gene Perturbations"
+title: "Predicting transcriptional outcomes of novel multigene perturbations with GEARS"
 aliases: [GEARS]
 authors:
   - Yusuf Roohani
   - Kexin Huang
   - Jure Leskovec
-year: 2023
-journal: Nature Biotechnology
-doi: 10.1038/s41587-023-01905-6
-url: https://github.com/snap-stanford/GEARS
+year: 2024
+journal: "Nature Biotechnology"
+doi: "10.1038/s41587-023-01905-6"
+url: "https://doi.org/10.1038/s41587-023-01905-6"
 tags:
   - paper
   - AIVC
@@ -27,13 +27,13 @@ date_read:
 # GEARS: Predicting Transcriptional Outcomes of Novel Multi-gene Perturbations
 
 ## Quick Summary
-> GEARS (Graph-Enhanced Gene Activation and Repression Simulator) is a geometric deep learning model that predicts outcomes of novel single and multi-gene perturbations by leveraging gene-gene relationships from knowledge graphs. It is the first method to predict combinatorial genetic perturbations not seen during training.
+> GEARS (Graph-Enhanced Gene Activation and Repression Simulator) predicts transcriptional responses to single- and multi-gene perturbations using gene relationships as prior information. Held-out-combination prediction was evaluated within the study's perturbation datasets; the official implementation requires some combination data for reliable combinatorial prediction.
 
 ## Key Points
 - **Multi-gene perturbations**: Predicts unseen gene combinations
 - **Knowledge graph**: Uses gene-gene relationships as inductive bias
 - **Graph neural network**: Propagates perturbation effects through network
-- **State-of-the-art**: Best performance on perturbation prediction benchmarks
+- **Evaluation**: Improvements over the paper's selected baselines depend on the dataset, split and metric
 - **Stanford + Leskovec lab**: Same team as UCE
 
 ## The Problem
@@ -44,9 +44,9 @@ date_read:
 - Need to generalize to unseen combinations
 
 ### Previous Limitations
-- Existing methods only predict single-gene perturbations
-- Cannot generalize to novel combinations
-- Don't leverage biological knowledge
+- Existing methods differ in their ability to transfer across genes and combinations.
+- Predicting a held-out combination is different from predicting an entirely unseen perturbed gene.
+- Generalization depends on the coverage of training perturbations and prior gene relationships.
 
 ## Methods
 
@@ -56,7 +56,6 @@ Perturbation (gene set to perturb)
 ↓
 Gene-Gene Knowledge Graph
   - GO annotations
-  - Protein-protein interactions
   - Co-expression networks
 ↓
 Graph Neural Network
@@ -74,7 +73,6 @@ Gene Expression Prediction
 | Source | Information |
 |--------|-------------|
 | Gene Ontology | Functional relationships |
-| STRING | Protein interactions |
 | Co-expression | Expression correlation |
 
 #### How It Works
@@ -93,9 +91,9 @@ Gene Expression Prediction
 ### Benchmark Performance
 | Setting | GEARS vs Baselines |
 |---------|-------------------|
-| Single-gene | State-of-the-art |
-| Two-gene (seen genes) | State-of-the-art |
-| Two-gene (unseen genes) | **First to work** |
+| Single-gene | Evaluated against baseline predictors in the paper |
+| Two-gene (seen genes) | Evaluated on held-out combinations |
+| Two-gene (unseen genes) | More demanding generalization split; not a guarantee for arbitrary genes |
 
 ### Key Datasets
 - **Norman et al. 2019**: CRISPRa, K562 cells
@@ -114,7 +112,7 @@ Gene Expression Prediction
 
 ## Critical Analysis
 ### Strengths
-- First method for multi-gene perturbation prediction
+- Models gene relationships when predicting single- and multi-gene perturbations
 - Principled use of biological knowledge
 - Strong empirical performance
 - Well-designed experiments and ablations
@@ -156,6 +154,12 @@ Gene Expression Prediction
   journal={Nature Biotechnology},
   volume={42},
   pages={927--935},
-  year={2023}
+  year={2024},
+  doi={10.1038/s41587-023-01905-6}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41587-023-01905-6). Published online 17 August 2023; the journal issue is dated 2024. The [official implementation](https://github.com/snap-stanford/GEARS) does not support cross-cell-type transfer, and training on single-gene perturbations alone does not support reliable combinatorial prediction.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

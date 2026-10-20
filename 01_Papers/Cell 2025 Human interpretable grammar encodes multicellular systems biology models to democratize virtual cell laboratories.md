@@ -8,6 +8,7 @@ authors:
   - Genevieve L. Stein-O'Brien
   - Elana J. Fertig
   - Paul Macklin
+author_list: selected authors; see source for the complete list
 year: 2025
 journal: Cell
 doi: 10.1016/j.cell.2025.06.048
@@ -25,6 +26,9 @@ date_read:
 ---
 
 # Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/40713951/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
 
 ## Quick Summary
 > The authors developed a human-interpretable "cell behavior hypothesis grammar" that translates plain-text descriptions of cellular rules into mathematical expressions for Agent-Based Models (ABMs). Built on the [[Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories|Physicell]] framework, this grammar allows scientists to easily integrate biological knowledge and multi-omics data to simulate complex multicellular dynamics. The study demonstrates the platform's utility by creating virtual "thought experiments" that model tumor hypoxia, cancer-associated fibroblast (CAF) interactions, immune evasion, virtual clinical trials of combination immunotherapies in pancreatic cancer, and even cortical layer formation in brain development.
@@ -45,8 +49,8 @@ date_read:
 - **Reference Atlases**: Allen Brain Atlas for calibrating the neurodevelopment model.
 
 ### Model Architecture
-- **Agent-Based Modeling (ABM)**: Built on the open-source [[PhysiCell]] framework.
-- **Hypothesis Grammar**: A custom parser that reads CSV files containing behavioral rules formatted as `[cell type], [signal], [response], [behavior], [parameters]`. 
+- **Agent-Based Modeling (ABM)**: Built on the open-source [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories|PhysiCell]] framework.
+- **Hypothesis Grammar**: A custom parser that reads CSV files containing behavioral rules formatted as `[cell type], [signal], [response], [behavior], [parameters]`.
 - **Mathematical Translation**: Individual rules are translated into sigmoidal (Hill), linear, or step response functions that modulate a baseline behavioral parameter based on incoming signals (e.g., oxygen, physical pressure, chemokines).
 
 ### Training Strategy
@@ -95,11 +99,11 @@ date_read:
 - Rozenblatt-Rosen et al. (2020). *The Human Tumor Atlas Network.* (Context for integrating omics into dynamic models).
 
 ### Related Concepts
-- [[Agent-Based Modeling]]
-- [[Digital Twins]]
+- [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories|Agent-Based Modeling]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Digital Twins]]
 - [[Spatial Transcriptomics]]
-- [[Tumor Microenvironment]]
-- [[Systems Biology]]
+- [[02_Concepts/Biological Context Glossary#cellular morphology|Tumor Microenvironment]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Systems Biology]]
 
 ### Potential Applications
 - **Virtual Clinical Trials**: Pre-screening combination therapies (e.g., immunotherapies) in heterogeneous patient cohorts to prioritize clinical trial arms.

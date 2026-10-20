@@ -13,13 +13,13 @@ category:
   - Diffusion model
 importance: High
 date_created: 2026-03-17
-last_updated: 2026-03-17
+last_updated: 2026-10-20
 ---
 
 # Latent Diffusion Models
 
 ## Definition
-> **Latent Diffusion Models (LDMs)** perform the diffusion process in a learned latent space rather than pixel/feature space. A VAE first compresses data into a compact latent representation, then a diffusion model (often a U-Net or Transformer) learns to denoise in that space. This dramatically reduces computational cost while preserving generation quality.
+> **Latent Diffusion Models (LDMs)** perform the diffusion process in a learned latent space rather than pixel/feature space. An autoencoder (for example, with KL or vector-quantization regularization) first compresses data into a compact latent representation, then a diffusion model (often a U-Net or Transformer) learns to denoise in that space. This can reduce the cost of the generative stage; reconstruction quality limits what can be recovered.
 
 ## Key Ideas
 - Two-stage training: (1) train an autoencoder, (2) train diffusion in latent space
@@ -34,3 +34,7 @@ last_updated: 2026-03-17
 - [[Diffusion Transformer]]
 - [[Variational Autoencoders]]
 - [[Classifier-Free Guidance]]
+
+## Verification (2026-10-20)
+
+An LDM can use different autoencoder regularizers; a VAE is not mandatory in the general definition. [Original LDM](https://arxiv.org/abs/2112.10752); [scLDM](https://arxiv.org/abs/2511.02986).

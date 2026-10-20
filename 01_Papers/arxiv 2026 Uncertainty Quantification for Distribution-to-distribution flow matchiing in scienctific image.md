@@ -9,7 +9,7 @@ authors:
   - Emily B. Fox
 year: 2026
 journal: arXiv Preprint
-doi: 
+doi: 10.48550/arXiv.2603.21717
 url: "https://arxiv.org/abs/2603.21717v3"
 tags:
   - paper
@@ -25,6 +25,9 @@ date_read:
 ---
 
 # Uncertainty Quantification for Distribution-to-Distribution Flow Matching in Scientific Imaging
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/abs/2603.21717v3). The recorded title and terminology refer to v3. [v4](https://arxiv.org/abs/2603.21717v4), dated 20 May 2026, is titled “Uncertainty-Aware Distribution-to-Distribution Flow Matching for Scientific Imaging” and uses AVUQ terminology. The arXiv DOI has been completed; detailed results below have not been re-audited across versions.
 
 ## Quick Summary
 The paper introduces **Bayesian Stochastic Flow Matching (BSFM)**, a unified framework for uncertainty quantification (UQ) in distribution-to-distribution generative models, which are critical for scientific imaging tasks like predicting cellular perturbation responses. The framework disentangles **aleatoric uncertainty** (data variability) via Stochastic Flow Matching (SFM) and **epistemic uncertainty** (model uncertainty) via a scalable Bayesian method called **MCD-Antithetic**. Experimental results across cellular imaging (BBBC021, JUMP) and brain fMRI datasets demonstrate that SFM enhances model reliability (generalization), while MCD-Antithetic improves accountability by effectively detecting out-of-distribution (OOD) scenarios.
@@ -96,9 +99,9 @@ The paper introduces **Bayesian Stochastic Flow Matching (BSFM)**, a unified fra
 
 ### Related Concepts
 - [[Flow Matching]]
-- [[Stochastic Differential Equations (SDEs)]]
-- [[Out-of-Distribution (OOD) Detection]]
-- [[Aleatoric vs Epistemic Uncertainty]]
+- [[02_Concepts/Dynamical Systems|Stochastic Differential Equations (SDEs)]]
+- [[02_Concepts/Generalization|Out-of-Distribution (OOD) Detection]]
+- [[02_Concepts/Methods and Metrics Glossary#Aleatoric vs Epistemic Uncertainty|Aleatoric vs Epistemic Uncertainty]]
 
 ### Potential Applications
 - **Drug Discovery**: Flagging novel chemical compounds where the model's morphology predictions are unreliable.

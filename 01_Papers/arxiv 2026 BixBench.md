@@ -13,7 +13,7 @@ authors:
   - Samuel G Rodriques
 year: 2025
 journal: arXiv
-doi: 
+doi: 10.48550/arXiv.2503.00096
 url: "https://arxiv.org/abs/2503.00096"
 tags:
   - paper
@@ -28,6 +28,9 @@ date_read:
 ---
 
 # BixBench: a Comprehensive Benchmark for LLM-based Agents in Computational Biology
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/html/2503.00096v3). The v3 HTML reports 61 capsules, 205 questions and open-answer accuracy of 21% versus 15%. The arXiv abstract page currently says nearly 300 questions and 17%, so this note explicitly follows the v3 full text. The filename says 2026, but the paper was first submitted in 2025. The approximate MCQ table still requires figure-level verification.
 
 ## Quick Summary
 BixBench is a specialized benchmark designed to evaluate the ability of Large Language Model (LLM) agents to perform end-to-end bioinformatics data analysis. It comprises 61 real-world analytical scenarios ("capsules") with over 200 associated open-answer questions that require agents to explore biological datasets, execute multi-step code trajectories in a Jupyter environment, and interpret results. The study reveals that current frontier models (GPT-4o and Claude 3.5 Sonnet) perform poorly, achieving only ~21% accuracy in open-answer formats, which underscores a significant gap between current AI capabilities and the requirements for autonomous scientific discovery in computational biology.
@@ -98,10 +101,10 @@ BixBench is a specialized benchmark designed to evaluate the ability of Large La
 - **CORE-Bench** (Siegel et al., 2024): Evaluation of computational reproducibility.
 
 ### Related Concepts
-- [[Autonomous AI Agents]]
-- [[Computational Biology]]
-- [[LLM-as-a-Judge]]
-- [[Agentic Workflows]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Autonomous AI Agents]]
+- [[05_Tools/AI and Scientific Computing Reference#Bioinformatics|Computational Biology]]
+- [[05_Tools/AI and Scientific Computing Reference#LLM Benchmarking|LLM-as-a-Judge]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Agentic Workflows]]
 
 ### Potential Applications
 - Automated bioinformatics pipelines for high-throughput screening.

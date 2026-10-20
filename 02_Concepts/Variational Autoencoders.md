@@ -10,13 +10,13 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Variational Autoencoders
 
 ## Definition
-> Variational Autoencoders (VAEs) are generative models that learn a probabilistic latent representation of data. In AIVC, they power batch correction (scVI), perturbation prediction (CPA, scGen), and cell state modeling.
+> Variational Autoencoders (VAEs) are generative models that learn a probabilistic latent representation of data. In AIVC, they power batch correction (scVI), perturbation prediction (scGen), and cell state modeling.
 
 ## Key Ideas
 - **Encoder**: Maps data to latent distribution parameters (μ, σ)
@@ -26,7 +26,7 @@ last_updated: 2026-01-16
 
 ## Mathematical Formulation
 
-### ELBO (Evidence Lower Bound)
+### ELBO (Evidence Lower Bound; maximize this objective)
 $$\mathcal{L} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - D_{KL}(q(z|x) \| p(z))$$
 
 - **Reconstruction term**: Generate realistic cells
@@ -41,7 +41,6 @@ $$z = \mu + \sigma \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 |-------|-------------|------------|
 | **scVI** | Batch correction | NB likelihood |
 | **scANVI** | Annotation | Semi-supervised |
-| **CPA** | Perturbation | Compositional |
 | **scGen** | Perturbation | Latent arithmetic |
 
 ## Related Concepts
@@ -50,5 +49,9 @@ $$z = \mu + \sigma \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 - [[02_Concepts/Disentangled Representations|Disentangled Representations]]
 
 ## Key Papers
-- [[01_Papers/CPA|CPA]]
+- [[01_Papers/CPA|CPA]] — related adversarial autoencoder; not a standard VAE
 - [[01_Papers/scGen|scGen]]
+
+## Verification (2026-10-20)
+
+The ELBO is maximized; training commonly minimizes its negative. CPA is a related adversarial autoencoder rather than a standard VAE. [VAE original paper](https://arxiv.org/abs/1312.6114); [CPA](https://doi.org/10.15252/msb.202211517).

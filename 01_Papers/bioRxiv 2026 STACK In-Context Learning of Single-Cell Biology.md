@@ -13,7 +13,7 @@ authors:
   - Yusuf H. Roohani
 year: 2026
 journal: bioRxiv
-doi: https://doi.org/10.64898/2026.01.09.698608
+doi: 10.64898/2026.01.09.698608
 url: https://doi.org/10.64898/2026.01.09.698608
 tags:
   - paper
@@ -29,12 +29,15 @@ date_read:
 
 # STACK: In-Context Learning of Single-Cell Biology
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.01.09.698608v1). This note follows v1, including 201 perturbations. [v2](https://www.biorxiv.org/content/10.64898/2026.01.09.698608v2), posted 8 June 2026, expands authors and Perturb Sapiens to 892 perturbations, and adds DiseasePert-3M validation. Its new results should not be silently substituted into the v1 notes.
+
 ## Quick Summary
 STACK is a large-scale foundation model for single-cell biology trained on 149 million human cells. Unlike previous models that process cells independently, STACK utilizes a novel tabular attention architecture that processes sets of cells, allowing it to leverage the cellular context (e.g., other cells in the same batch or donor) to refine representations. This architecture enables "cell prompting," where the model performs in-context learning to predict perturbation effects or generate counterfactual cell states (e.g., predicting how a specific donor's cells would react to a drug) without gradient updates. The authors demonstrate superior zero-shot performance and use the model to generate *Perturb Sapiens*, a virtual atlas of perturbation effects across 28 tissues.
 
 ## Key Points
 - **Context-Aware Architecture**: Processes cells as sets (contexts) rather than independent instances, using inter-cellular attention to improve signal-to-noise ratios and capture population-level shifts.
-- **Massive Scale**: Pre-trained on [[scBaseCount]], comprising 149 million uniformly preprocessed human single cells.
+- **Massive Scale**: Pre-trained on [[05_Tools/Methods and Data Resources#scBaseCount|scBaseCount]], comprising 149 million uniformly preprocessed human single cells.
 - **In-Context Learning (ICL)**: Enables "cell prompting"—using a set of "prompt" cells (e.g., perturbed cells) to guide predictions on "query" cells (e.g., control cells from a new donor) without fine-tuning.
 - **Trainable Tokenization**: Projects gene expression vectors into "gene module tokens" rather than tokenizing individual genes, improving scalability and capturing gene dependencies.
 - **Perturb Sapiens**: Application of STACK to generate a whole-organism atlas spanning 28 tissues, 40 cell classes, and 201 perturbations.
@@ -42,9 +45,9 @@ STACK is a large-scale foundation model for single-cell biology trained on 149 m
 
 ## Methods
 ### Data
-- **Pre-training**: [[scBaseCount]] dataset containing 149 million human cells from 19,978 SRX samples.
-- **Post-training**: A curated collection of ~55 million cells, including large datasets from [[CELLxGENE]] and the [[Parse PBMC]] dataset (90 cytokine perturbations).
-- **Evaluation**: Diverse datasets including [[Tabular Sapiens]], [[OpenProblems]] drug perturbation, and specific organ atlases (Kidney, Lung, etc.).
+- **Pre-training**: [[05_Tools/Methods and Data Resources#scBaseCount|scBaseCount]] dataset containing 149 million human cells from 19,978 SRX samples.
+- **Post-training**: A curated collection of ~55 million cells, including large datasets from [[05_Tools/Methods and Data Resources#CELLxGENE|CELLxGENE]] and the [[04_Datasets/Parse 1M|Parse PBMC]] dataset (90 cytokine perturbations).
+- **Evaluation**: Diverse datasets including [[04_Datasets/Tabula Sapiens|Tabula Sapiens]], [[05_Tools/Methods and Data Resources#OpenProblems|OpenProblems]] drug perturbation, and specific organ atlases (Kidney, Lung, etc.).
 
 ### Model Architecture
 - **Input**: A collection of cells (cell set).
@@ -52,12 +55,12 @@ STACK is a large-scale foundation model for single-cell biology trained on 149 m
 - **Transformer**: Uses a **Tabular Transformer** block consisting of:
     - **Intra-cellular Attention**: Multi-head attention (MHA) across gene tokens within a single cell.
     - **Inter-cellular Attention**: MHA across the different cells in the input set (context).
-- **Decoder**: A cell-wise [[MLP]] that maps embeddings back to gene expression space (Negative Binomial distribution parameters).
+- **Decoder**: A cell-wise [[02_Concepts/Methods and Metrics Glossary#MLP|MLP]] that maps embeddings back to gene expression space (Negative Binomial distribution parameters).
 
 ### Training Strategy
 - **Pre-training Objective**:
     - **Masked Gene Reconstruction**: Random subsets of genes are masked; the model reconstructs expression distributions.
-    - **Distributional Regularization**: Enforces embeddings to decompose into a per-cell-set constant plus standard normal samples (Sliced Wasserstein distance) to ensure [[Linear Identifiability]].
+    - **Distributional Regularization**: Enforces embeddings to decompose into a per-cell-set constant plus standard normal samples (Sliced Wasserstein distance) to ensure [[02_Concepts/Disentangled Representations|Linear Identifiability]].
 - **Post-training (Alignment)**:
     - **Self-Distillation**: A teacher-student framework where the model learns to reconstruct held-out "target" cells from "query" cells, conditioned on "prompt" cells.
     - **Inference**: Operates as a conditional generative model (analogous to masked diffusion) to iteratively predict counterfactual cell states.
@@ -104,11 +107,11 @@ STACK is a large-scale foundation model for single-cell biology trained on 149 m
 - [[State]]: Specifically mentioned as a baseline for perturbation prediction; STACK outperforms it in low-data regimes.
 
 ### Related Concepts
-- [[Foundation Models]]
-- [[In-Context Learning]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
+- [[02_Concepts/Methods and Metrics Glossary#In-Context Learning|In-Context Learning]]
 - [[02_Concepts/scRNA-seq|Single-cell RNA-seq]]
-- [[Tabular Deep Learning]]
-- [[Perturbation Analysis]]
+- [[05_Tools/AI and Scientific Computing Reference#AutoML|Tabular Deep Learning]]
+- [[02_Concepts/Perturbation Prediction|Perturbation Analysis]]
 
 ### Potential Applications
 - **Virtual Clinical Trials**: Predicting patient-specific drug responses by using patient control cells as query and drug-perturbed reference cells as prompts.

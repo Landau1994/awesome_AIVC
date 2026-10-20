@@ -26,6 +26,9 @@ date_read:
 
 # scConcept: Contrastive pretraining for technology-agnostic single-cell representations beyond reconstruction
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.1101/2025.10.14.682419v1). This is a 2025 preprint despite the 2026 filename. The record and contrastive-pretraining objective were checked. Dataset-specific scores and figure descriptions were not independently reproduced.
+
 ## Quick Summary
 > The authors present **scConcept**, a transformer-based contrastive learning framework designed to learn robust, technology-agnostic cell embeddings for single-cell transcriptomics. Moving away from traditional reconstruction-based methods like masked language modeling (which are often poorly aligned with cell-level representation requirements), scConcept employs a cell-level identification task that optimizes embeddings by contrasting multiple views (subsets of genes) of the same cell. The model demonstrates superior performance in downstream tasks including cell-type annotation, spatial transcriptomic label transfer, gene imputation, and integration across diverse sequencing and imaging technologies.
 
@@ -42,22 +45,22 @@ date_read:
 - Evaluated on diverse datasets: Bone marrow (NeurIPS 2021), Alzheimer’s Brain (Allen Brain Map), Skeletal muscle aging atlas, Ovarian cancer (CosMx/Xenium/MERFISH), and Human Lung Cell Atlas (HLCA).
 
 ### Model Architecture
-- [[Transformer]] encoder-only architecture (8 layers, 512 embedding dimension).
+- [[02_Concepts/Transformers for Biology|Transformer]] encoder-only architecture (8 layers, 512 embedding dimension).
 - 16.8 million trainable parameters.
 - Uses a [CLS] token for cell-level representation.
-- Employs [[Flash Attention]] for efficient sequence processing.
+- Employs [[05_Tools/Methods and Data Resources#FlashAttention|Flash Attention]] for efficient sequence processing.
 
 ### Training Strategy
-- [[Contrastive Learning]] using a modified [[InfoNCE loss]] function.
+- [[02_Concepts/Methods and Metrics Glossary#Contrastive Learning|Contrastive Learning]] using a modified [[02_Concepts/Methods and Metrics Glossary#Contrastive Learning|InfoNCE loss]] function.
 - Input data encoded via local rank encoding (ordering non-zero genes).
-- Trained using a multi-GPU [[Distributed Data Parallel]] (DDP) strategy.
+- Trained using a multi-GPU [[02_Concepts/Methods and Metrics Glossary#Distributed Data Parallel|Distributed Data Parallel]] (DDP) strategy.
 
 ## Results
 | Metric | Value | Baseline |
 |--------|-------|----------|
 | Bone marrow Cell-type (Macro F1) | ~5% improvement | Zero-shot foundation models |
 | Spatial label transfer | Superior performance | PCA/Normalized counts |
-| Gene imputation (PCC) | Highest performance | [[Tangram]], scVI, PCA |
+| Gene imputation (PCC) | Highest performance | [[05_Tools/Methods and Data Resources#Tangram\|Tangram]], scVI, PCA |
 
 ## Figures
 
@@ -91,16 +94,16 @@ date_read:
 ### Related Papers
 - [[scGPT]]
 - [[Geneformer]]
-- [[Nicheformer]]
-- [[Tangram]]
-- [[scArches]]
+- [[05_Tools/Additional Model References#Nicheformer|Nicheformer]]
+- [[05_Tools/Methods and Data Resources#Tangram|Tangram]]
+- [[05_Tools/Methods and Data Resources#scArches|scArches]]
 - [[scVI]]
 
 ### Related Concepts
-- [[Self-supervised learning]]
-- [[Mutual information estimation]]
-- [[Foundation models]]
-- [[Domain adaptation]]
+- [[02_Concepts/Self-Supervised Learning|Self-supervised learning]]
+- [[02_Concepts/Methods and Metrics Glossary#Mutual information estimation|Mutual information estimation]]
+- [[02_Concepts/Cell Foundation Models|Foundation models]]
+- [[02_Concepts/Transfer Learning Biology|Domain adaptation]]
 
 ### Potential Applications
 - Designing targeted gene panels for custom spatial transcriptomics experiments.

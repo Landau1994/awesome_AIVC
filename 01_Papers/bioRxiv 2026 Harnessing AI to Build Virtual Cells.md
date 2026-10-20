@@ -28,30 +28,33 @@ date_read:
 
 # Harnessing AI to Build Virtual Cells
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.04.11.717183v1). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
-> VCHarness is an autonomous AI system designed for the construction of cellular perturbation-response models. By framing the entire model-building process—including architecture search, data processing, and training pipelines—as a single searchable loop, the system leverages a coding agent, a library of [[Foundation Models]], and [[Monte Carlo tree search (MCTS)]] to iteratively generate, evaluate, and refine candidate models. VCHarness demonstrates that autonomous systems can outperform expert-designed architectures while reducing development timelines from months to days.
+> VCHarness is an autonomous AI system designed for the construction of cellular perturbation-response models. By framing the entire model-building process—including architecture search, data processing, and training pipelines—as a single searchable loop, the system leverages a coding agent, a library of [[02_Concepts/Cell Foundation Models|Foundation Models]], and [[02_Concepts/Methods and Metrics Glossary#MCTS|Monte Carlo tree search (MCTS)]] to iteratively generate, evaluate, and refine candidate models. VCHarness demonstrates that autonomous systems can outperform expert-designed architectures while reducing development timelines from months to days.
 
 ## Key Points
 - VCHarness treats model development as a search problem over executable programs, automating manual tasks like hyperparameter tuning and architecture design.
-- The system employs an LLM-based coding agent to synthesize and debug ML pipelines, utilizing a specialized library of ~100 skills and biological [[Foundation Models]].
+- The system employs an LLM-based coding agent to synthesize and debug ML pipelines, utilizing a specialized library of ~100 skills and biological [[02_Concepts/Cell Foundation Models|Foundation Models]].
 - MCTS balances exploration and exploitation in the model architecture space, guided by empirical evaluation feedback.
 - Consistent performance improvements were observed across four diverse cell lines (HepG2, Jurkat, K562, and hTERT-RPE1) in CRISPR knockdown perturbation-response tasks.
 - The system discovered non-obvious architectural patterns, such as hybrid encoders and context-dependent fusion modules, that generalize effectively across different datasets.
 
 ## Methods
 ### Data
-- CRISPR knockdown datasets for four cell lines: [[HepG2]], [[Jurkat]], [[K562]], and [[hTERT-RPE1]].
-- Evaluation metric: [[Macro-F1]] score.
+- CRISPR knockdown datasets for four cell lines: [[02_Concepts/Biological Context Glossary#HepG2|HepG2]], [[02_Concepts/Biological Context Glossary#Jurkat|Jurkat]], [[02_Concepts/Biological Context Glossary#K562|K562]], and [[02_Concepts/Biological Context Glossary#hTERT-RPE1|hTERT-RPE1]].
+- Evaluation metric: [[02_Concepts/Methods and Metrics Glossary#Macro-F1|Macro-F1]] score.
 
 ### Model Architecture
-- Modular construction using building blocks from a biological [[Foundation Models]] library (e.g., [[AIDO]], [[ESM2]], [[STRING GNN]]).
+- Modular construction using building blocks from a biological [[02_Concepts/Cell Foundation Models|Foundation Models]] library (e.g., [[05_Tools/Additional Model References#AIDO|AIDO]], [[05_Tools/Methods and Data Resources#ESM2|ESM2]], [[02_Concepts/Gene Regulatory Networks|STRING GNN]]).
 - Assembled architecture generally follows a three-stage layout: foundation-model encoders, a fusion module (e.g., sigmoidal gated fusion), and a task-specific prediction head.
 
 ### Training Strategy
 - Closed-loop construction: Generation, debugging, execution, evaluation, and MCTS-based refinement.
-- [[Distributed execution]] across multiple workers and GPUs.
+- [[02_Concepts/Methods and Metrics Glossary#Distributed Data Parallel|Distributed execution]] across multiple workers and GPUs.
 - Structured feedback memory records failure modes and successful motifs to guide the coding agent’s proposals.
-- Optimization includes techniques such as [[Muon]], [[AdamW]], [[Focal Loss]], [[Label Smoothing]], and [[LoRA]] fine-tuning.
+- Optimization includes techniques such as [[05_Tools/AI and Scientific Computing Reference#Muon|Muon]], [[02_Concepts/Methods and Metrics Glossary#AdamW|AdamW]], [[02_Concepts/Methods and Metrics Glossary#Focal Loss|Focal Loss]], [[02_Concepts/Methods and Metrics Glossary#Label Smoothing|Label Smoothing]], and [[02_Concepts/Methods and Metrics Glossary#LoRA|LoRA]] fine-tuning.
 
 ## Results
 | Metric | Value | Baseline |
@@ -72,7 +75,7 @@ date_read:
 ## Critical Analysis
 ### Strengths
 - Highly autonomous system that significantly accelerates model development cycles.
-- Effectively uses [[MCTS]] to structure search, avoiding random trial-and-error.
+- Effectively uses [[02_Concepts/Methods and Metrics Glossary#MCTS|MCTS]] to structure search, avoiding random trial-and-error.
 - Demonstrates consistent generalizability across diverse biological contexts.
 - Provides insights into "non-obvious" model architectures that human experts might overlook.
 
@@ -83,7 +86,7 @@ date_read:
 
 ### Questions
 - Can the learned architectural motifs be explicitly transferred to new cell types to "warm-start" future campaigns?
-- How could the system integrate more complex mechanistic or structural biological priors (e.g., from [[AlphaFold]]) to improve interpretability?
+- How could the system integrate more complex mechanistic or structural biological priors (e.g., from [[05_Tools/Methods and Data Resources#AlphaFold|AlphaFold]]) to improve interpretability?
 - What are the limitations of the current LLM (Claude Sonnet 4.6) when scaling the system to significantly larger and more complex model search spaces?
 
 ## Connections
@@ -91,13 +94,13 @@ date_read:
 - [[GEARS]] (Roohani et al.)
 - [[scGPT]] (Cui et al.)
 - [[scFoundation]] (Hao et al.)
-- [[AlphaEvolve]] (Novikov et al.)
+- [[05_Tools/AI and Scientific Computing Reference#AlphaEvolve|AlphaEvolve]] (Novikov et al.)
 
 ### Related Concepts
-- [[AutoML]]
-- [[Agentic AI]]
-- [[World Model]]
-- [[Biological Foundation Models]]
+- [[05_Tools/AI and Scientific Computing Reference#AutoML|AutoML]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Agentic AI]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|World Model]]
+- [[02_Concepts/Cell Foundation Models|Biological Foundation Models]]
 
 ### Potential Applications
 - Drug target identification.

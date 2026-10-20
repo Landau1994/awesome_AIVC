@@ -1,13 +1,12 @@
 ---
-title: "MultiVelo"
+title: "Multi-omic single-cell velocity models epigenome–transcriptome interactions and improves cell fate prediction"
 aliases:
   - multi-velo
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Chen Li", "Maria C. Virgilio", "Kathleen L. Collins", "Joshua D. Welch"]
+year: 2023
+journal: "Nature Biotechnology"
+doi: "10.1038/s41587-022-01476-y"
+url: "https://doi.org/10.1038/s41587-022-01476-y"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# MultiVelo
+# Multi-omic single-cell velocity models epigenome–transcriptome interactions and improves cell fate prediction
 
 ## Quick Summary
-> `MultiVelo` extends RNA velocity modeling to multi-omics settings (especially RNA + chromatin accessibility), improving trajectory inference with regulatory context.
 
-## Key Points
-- Integrates transcriptomic and epigenomic signals.
-- Better suited for paired multi-omics data than RNA-only methods.
-- Useful when regulatory context is essential for direction inference.
+MultiVelo jointly models chromatin accessibility, unspliced RNA and spliced RNA to infer the relative timing of epigenomic and transcriptional changes.
 
-## Methods
-### Data
-- Paired single-cell multi-omics data (e.g., RNA + ATAC).
+## Methods and Evidence
 
-### Model Architecture
-- Joint modeling of expression and chromatin dynamics for velocity.
+Uses coupled differential equations and latent switch times/rates. The study reports improved fate prediction on its evaluated multi-omic datasets and identifies coupled and decoupled regulatory states. This does not establish an advantage for every paired dataset.
 
-### Training Strategy
-- Learns coordinated dynamics across modalities to infer transition direction.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Multi-omics compatibility | Strong | Better fit than RNA-only methods on paired data |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Multi-omics velocity workflow |
-| Fig2   | Comparison against RNA-only baselines |
-
-## Critical Analysis
-### Strengths
-- Leverages regulatory signals beyond RNA alone.
-
-### Weaknesses
-- Requires paired data, which is less common and often noisier.
-
-### Questions
-- How robust is performance on sparse ATAC features?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/scvelo|scvelo]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/scRNA-seq|scRNA-seq]]
 
-### Potential Applications
-- Multi-omics developmental lineage reconstruction.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; add canonical citation when confirmed.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41587-022-01476-y). Published online 13 October 2022; the journal issue is dated 2023.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

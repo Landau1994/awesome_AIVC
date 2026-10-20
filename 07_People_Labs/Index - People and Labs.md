@@ -16,10 +16,10 @@ date_created: 2026-01-16
 | Researcher | Affiliation | Focus |
 |------------|-------------|-------|
 | **Bo Wang** | U Toronto / Vector | scGPT, cell foundation models |
-| **Christina Theodoris** | Gladstone | Geneformer |
-| **Charlotte Bunne** | EPFL / Stanford | AIVC vision, optimal transport |
-| **Aviv Regev** | Genentech (prev. Broad) | Single-cell pioneer |
-| **Jian Tang** | Mila / BioMap | Large-scale cell models |
+| **[Christina Theodoris](https://gladstone.org/people/christina-theodoris/)** | Gladstone / UCSF | Geneformer |
+| **[Charlotte Bunne](https://people.epfl.ch/383421?lang=en)** | EPFL | AIVC vision, optimal transport |
+| **[Aviv Regev](https://www.gene.com/scientists/our-scientists/aviv-regev)** | Genentech (previously Broad) | Single-cell pioneer |
+| **[Jian Tang](https://jian-tang.com/)** | Mila / HEC Montréal; BioGeometry founder | Graph learning and molecular modeling |
 
 ### Single-Cell Biology
 
@@ -35,8 +35,8 @@ date_created: 2026-01-16
 | Researcher | Affiliation | Focus |
 |------------|-------------|-------|
 | **Jure Leskovec** | Stanford | GEARS, graph methods |
-| **Jonathan Weissman** | Whitehead | [[02_Concepts/Perturb-seq|Perturb-seq]] pioneer |
-| **Thomas Norman** | UCSF | CRISPRa screens |
+| **Jonathan Weissman** | Whitehead | [[02_Concepts/Perturb-seq\|Perturb-seq]] pioneer |
+| **[Thomas Norman](https://www.mskcc.org/research/ski/labs/thomas-norman/overview)** | Memorial Sloan Kettering | CRISPRa screens |
 
 ## Key Institutions
 
@@ -50,11 +50,11 @@ date_created: 2026-01-16
 | **Vector Institute** | scGPT |
 | **EPFL** | Optimal transport methods |
 
-### Industry
+### Research Institutes and Companies
 
 | Organization | Focus |
 |--------------|-------|
-| **Arc Institute** | Virtual Cell Challenge |
+| **Arc Institute** | Independent nonprofit research institute; Virtual Cell Challenge |
 | **Genentech** | Drug discovery applications |
 | **Cellarity** | Cell-centric drug discovery |
 | **BioMap** | Large-scale models |
@@ -90,7 +90,9 @@ date_created: 2026-01-16
 ### Wang Lab (scGPT)
 - scGPT foundation model
 - scFormer
-- Cell2Sentence
+
+### Yale / Google collaboration
+- [[Cell2Sentence]]; [institutional research description](https://engineering.yale.edu/news-and-events/news/reading-language-cells)
 
 ### Theodoris (Geneformer)
 - Geneformer
@@ -107,11 +109,8 @@ date_created: 2026-01-16
 
 ## Following the Field
 
-### Twitter/X Accounts
-- @BoWang87 (Bo Wang)
-- @ctheodoris (Christina Theodoris)
-- @faaborka (Fabian Theis)
-- @rahuliyer (Rahul Satija)
+### Researcher links
+Use institutional profiles and lab sites to verify identities and current affiliations; the previous unsourced social handles were removed.
 
 ### Preprint Servers
 - bioRxiv (Bioinformatics, Genomics)
@@ -120,3 +119,5 @@ date_created: 2026-01-16
 ### Newsletters
 - Single Cell Digest
 - Biotech Weekly
+
+Checked 2026-10-20: Bunne/Norman affiliations, Arc institute category and Cell2Sentence group attribution. Other affiliations remain a discovery list and should be rechecked before outreach.

@@ -1,14 +1,13 @@
 ---
-title: "Pyro-Velocity"
+title: "Pyro-Velocity: Probabilistic RNA Velocity inference from single-cell data"
 aliases:
   - pyro-velocity
   - pyrovelocity
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Qian Qin", "Eli Bingham", "Gioele La Manno", "David M. Langenau", "Luca Pinello"]
+year: 2022
+journal: "bioRxiv"
+doi: "10.1101/2022.09.12.507691"
+url: "https://doi.org/10.1101/2022.09.12.507691"
 tags:
   - paper
   - AIVC
@@ -18,59 +17,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# Pyro-Velocity
+# Pyro-Velocity: Probabilistic RNA Velocity inference from single-cell data
 
 ## Quick Summary
-> `Pyro-Velocity` is a probabilistic RNA velocity framework implemented with Bayesian modeling tools, aiming to quantify uncertainty in inferred velocity fields.
 
-## Key Points
-- Emphasizes uncertainty-aware inference.
-- Uses flexible probabilistic modeling for gene-level dynamics.
-- In benchmarks, resource usage can be high on large datasets.
+Pyro-Velocity uses a Bayesian generative model of spliced and unspliced RNA counts to estimate cell dynamics and uncertainty.
 
-## Methods
-### Data
-- Single-cell spliced/unspliced RNA counts.
+## Methods and Evidence
 
-### Model Architecture
-- Bayesian/probabilistic velocity model in the Pyro ecosystem.
+The model infers a shared latent time and posterior velocity distributions using Pyro. Uncertainty reflects the specified model and inference procedure; it is not a guarantee of biological correctness. Memory and runtime comparisons require the same dataset, hardware and settings.
 
-### Training Strategy
-- Posterior inference to estimate dynamics and uncertainty.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Memory usage | High on large datasets | Higher than many lightweight baselines |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Probabilistic model schematic |
-| Fig2   | Uncertainty-aware velocity outputs |
-
-## Critical Analysis
-### Strengths
-- Provides uncertainty estimates that can improve interpretability.
-
-### Weaknesses
-- Computational cost is often high.
-
-### Questions
-- How much accuracy gain comes from uncertainty modeling in practice?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/cell2fate|cell2fate]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/scRNA-seq|scRNA-seq]]
 
-### Potential Applications
-- High-confidence trajectory analysis where uncertainty is critical.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; metadata can be completed after literature check.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1101/2022.09.12.507691). This record identifies the verified 2022 preprint; it does not imply journal publication.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

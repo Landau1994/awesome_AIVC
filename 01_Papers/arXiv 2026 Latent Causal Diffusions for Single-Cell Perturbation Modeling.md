@@ -27,13 +27,16 @@ date_read:
 
 # Latent Causal Diffusions for Single-Cell Perturbation Modeling
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/abs/2601.15341). Checked the arXiv record and core LCD/CLIPR claims. It now links to [PNAS 2026](https://doi.org/10.1073/pnas.2602630123). Causal identification is proved under stated assumptions such as linear drift; it is not unconditional recovery of every biological causal effect. Numerical tables below remain preprint reading notes.
+
 ## Quick Summary
 This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework that models single-cell gene expression as a stationary stochastic process governed by stochastic differential equations (SDEs), observed under measurement noise. To make the learned nonlinear dynamics interpretable, the authors propose **CLIPR (Causal Linearization via Perturbation Responses)**, a method to approximate direct causal effects between genes. The framework outperforms existing deep learning and additive baselines in predicting transcriptomic responses to unseen combinatorial perturbations and successfully recovers causal gene regulatory networks in both simulations and genome-wide screens.
 
 ## Key Points
 - **Generative Model (LCD):** Frames gene expression as a latent stationary diffusion process, explicitly separating biological stochasticity (diffusion) from technical measurement noise (Zero-Inflated Poisson).
 - **Causal Interpretation (CLIPR):** A linearization technique that estimates a causal effect matrix $\mathbf{A}$ by analyzing how the learned drift function responds to perturbations (initial response vs. limit/steady-state response).
-- **Performance:** LCD outperforms state-of-the-art methods ([[GEARS]], [[CPA]]) and additive baselines ([[SALT]], [[PEPER]]) in predicting distributional shifts (MMD) for unseen gene perturbation combinations.
+- **Performance:** LCD outperforms state-of-the-art methods ([[GEARS]], [[CPA]]) and additive baselines ([[05_Tools/Additional Model References#SALT|SALT]], [[05_Tools/Additional Model References#PEPER|PEPER]]) in predicting distributional shifts (MMD) for unseen gene perturbation combinations.
 - **Theoretical Guarantee:** CLIPR is provably identifiable for linear systems given sufficient perturbation diversity.
 - **Biological Insight:** Applied to large-scale [[02_Concepts/Perturb-seq|Perturb-seq]] data, CLIPR identifies functional gene modules and causal links that align with known biology, disentangling direct causal effects from downstream differential expression.
 
@@ -41,16 +44,16 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 ### Data
 - **Type:** Single-cell CRISPR perturbation screens ([[02_Concepts/Perturb-seq|Perturb-seq]]).
 - **Datasets:**
-  - [[Norman et al. (2019)]]: [[K562]] cells, bi-allelic CRISPRa (gain-of-function).
-  - [[Wessels et al. (2023)]]: [[THP-1]] cells, CRISPR-Cas13 (loss-of-function).
-  - [[Replogle et al. (2022)]]: [[K562]] cells, genome-wide CRISPRi (loss-of-function).
+  - [[08_Resources/Foundational Methods References#Norman|Norman et al. (2019)]]: [[02_Concepts/Biological Context Glossary#K562|K562]] cells, bi-allelic CRISPRa (gain-of-function).
+  - [[08_Resources/Foundational Methods References#Wessels et al. (2023)|Wessels et al. (2023)]]: [[02_Concepts/Biological Context Glossary#THP-1|THP-1]] cells, CRISPR-Cas13 (loss-of-function).
+  - [[04_Datasets/Replogle|Replogle et al. (2022)]]: [[02_Concepts/Biological Context Glossary#K562|K562]] cells, genome-wide CRISPRi (loss-of-function).
 - **Preprocessing:** Selection of 1,000 highly variable genes; outliers filtered based on mitochondrial RNA and total counts.
 
 ### Model Architecture
 - **Latent Causal Diffusion (LCD):**
-  - Models the state $\mathbf{x}(t)$ via an [[Stochastic Differential Equation]] (SDE): $dx_g(t) = [f(\mathbf{x}(t))]_g dt + \sigma dW_g(t)$.
-  - **Drift Function ($f$):** Parameterized by a Neural Network ([[MLP]]) with shared hidden states to capture regulatory circuitry. Perturbations are modeled as embeddings $\mathbf{e}_q$ that shift the hidden state.
-  - **Measurement Model:** Observed counts $\mathbf{y}$ follow a [[Zero-Inflated Poisson]] (ZIP) distribution conditioned on the latent state $\mathbf{x}$.
+  - Models the state $\mathbf{x}(t)$ via an [[02_Concepts/Dynamical Systems|Stochastic Differential Equation]] (SDE): $dx_g(t) = [f(\mathbf{x}(t))]_g dt + \sigma dW_g(t)$.
+  - **Drift Function ($f$):** Parameterized by a Neural Network ([[02_Concepts/Methods and Metrics Glossary#MLP|MLP]]) with shared hidden states to capture regulatory circuitry. Perturbations are modeled as embeddings $\mathbf{e}_q$ that shift the hidden state.
+  - **Measurement Model:** Observed counts $\mathbf{y}$ follow a [[02_Concepts/Methods and Metrics Glossary#Zero-Inflated Poisson|Zero-Inflated Poisson]] (ZIP) distribution conditioned on the latent state $\mathbf{x}$.
 - **CLIPR:**
   - Approximates the nonlinear drift $f$ with a linear system $\tilde{f}_q(\mathbf{x}) = \mathbf{A}\mathbf{x} + \mathbf{b} + \mathbf{c}_q$.
   - Uses the **Initial Perturbation Response** ($\mathbf{v}_{f_q} = f_q(\mathbf{0})$) and **Limit Perturbation Response** ($\mathbf{l}_{f_q} = \text{steady state}$) to solve for the causal matrix $\mathbf{A}$ via regularized least squares ($\mathbf{A} \approx -\mathbf{V}\mathbf{L}^+$).
@@ -59,7 +62,7 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 - **Two-Step Inference:**
   1.  **Empirical Bayes:** Infer likelihood parameters $\pi$ and latent state densities $p(\mathbf{x})$ by maximizing the evidence of observed readouts $\mathbf{Y}_q$.
   2.  **Score Matching:** Train the drift $f$ and perturbation embeddings $\mathbf{e}_q$ to fit the inferred densities $p(\mathbf{x})$ using denoising score matching principles.
-- **Optimization:** [[Adam]] optimizer; distinct losses for the implicit prior ($\mathcal{L}_{\text{IP}}$) and the diffusion drift ($\mathcal{L}_{\text{D}}$).
+- **Optimization:** [[02_Concepts/Methods and Metrics Glossary#Adam|Adam]] optimizer; distinct losses for the implicit prior ($\mathcal{L}_{\text{IP}}$) and the diffusion drift ($\mathcal{L}_{\text{D}}$).
 
 ## Results
 **Comparison on combinatorial perturbation prediction (Norman et al. & Wessels et al. datasets):**
@@ -103,15 +106,15 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 
 ## Connections
 ### Related Papers
-- [[GEARS]] (Roohani et al., 2024): Graph neural network for perturbation prediction.
+- [[GEARS]] (Roohani et al., 2023): Graph neural network for perturbation prediction.
 - [[CPA]] (Lotfollahi et al., 2023): Compositional Perturbation Autoencoder.
-- [[scDiffEq]] (Vinyard et al., 2023): Neural ODE/SDE approaches for single-cell dynamics.
-- [[Norman et al. (2019)]] & [[Replogle et al. (2022)]]: Source papers for the [[02_Concepts/Perturb-seq|Perturb-seq]] datasets.
+- [[05_Tools/Additional Model References#scDiffEq|scDiffEq]] (Vinyard et al., 2023): Neural ODE/SDE approaches for single-cell dynamics.
+- [[08_Resources/Foundational Methods References#Norman|Norman et al. (2019)]] & [[04_Datasets/Replogle|Replogle et al. (2022)]]: Source papers for the [[02_Concepts/Perturb-seq|Perturb-seq]] datasets.
 
 ### Related Concepts
-- [[Stochastic Differential Equations]]
-- [[Causal Inference]] (Structural Causal Models)
-- [[Score Matching]]
+- [[02_Concepts/Dynamical Systems|Stochastic Differential Equations]]
+- [[02_Concepts/Causal Inference|Causal Inference]] (Structural Causal Models)
+- [[02_Concepts/Methods and Metrics Glossary#Score Matching|Score Matching]]
 - [[Gene Regulatory Networks]] (GRN)
 - [[02_Concepts/Perturb-seq|Perturb-seq]]
 
@@ -122,4 +125,4 @@ This paper introduces **Latent Causal Diffusion (LCD)**, a generative framework 
 
 ## Notes
 - The paper notably distinguishes between "Differential Expression" (total effect, downstream correlation) and "Causal Effect" (direct regulation). CLIPR specifically targets the latter.
-- The date of the paper is listed as Jan 2026, suggesting this is a future-dated preprint or dataset transcription.
+- The arXiv version was submitted on 20 January 2026. Its record now links to the peer-reviewed [PNAS article](https://doi.org/10.1073/pnas.2602630123), published in 2026; the present methods/results notes concern the arXiv version.

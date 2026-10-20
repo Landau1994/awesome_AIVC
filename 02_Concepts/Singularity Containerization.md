@@ -14,18 +14,18 @@ status: draft
 
 ## Overview
 
-**Singularity** (now called **Apptainer**) is a container platform optimized for high-performance computing (HPC) clusters. Unlike Docker, Singularity doesn't require root privileges, making it ideal for shared computing environments where users have limited permissions.
+**Apptainer** and **SingularityCE** are related, separately maintained HPC container projects descended from Singularity. Ordinary execution commonly uses the invoking user’s permissions. Build/setup requirements depend on the site and user-namespace configuration; Docker also supports rootless operation.
 
 ## Why Singularity for HPC?
 
 ### Problem with Docker on HPC
-- Requires root/admin privileges → Not allowed on shared clusters
+- A rootful Docker daemon may conflict with a shared cluster’s security policy; rootless installations are also possible
 - Can run arbitrary host code → Security risk on multi-user systems
-- Heavy resource overhead → Wastes computational resources
+- Scheduler integration, filesystems and site policy affect deployment; Docker is not inherently computationally heavyweight
 
 ### Singularity Solution
 ✅ **No Root Required**: Run with user permissions
-✅ **Secure**: Can't access privileged system resources
+✅ **Permission model**: Normally retains user permissions; it is not an absolute security boundary
 ✅ **Lightweight**: Direct kernel access, minimal overhead
 ✅ **Docker Compatible**: Reads Docker images natively
 ✅ **HPC Integration**: Works with job schedulers (SLURM, PBS)
@@ -35,12 +35,13 @@ status: draft
 ### SIF (Singularity Image Format)
 - Single, immutable image file
 - Portable across systems
-- Faster than Docker layers
+- Convenient to distribute as one file; relative I/O speed depends on filesystem, image and workload
 
 ### From Docker
 ```bash
 # Convert Docker image to Singularity
-singularity pull docker://scgpt:latest
+singularity pull python310.sif docker://python:3.10
+# Illustrative base image, not a packaged scGPT environment
 # Creates: scgpt_latest.sif
 ```
 
@@ -89,7 +90,7 @@ singularity build scanalysis.sif Singularity.def
 # Run on cluster
 singularity exec scanalysis.sif python analysis.py
 
-# Works every time, everywhere
+# Requires a compatible host and runtime configuration
 ```
 
 ## Using on HPC Clusters
@@ -110,9 +111,7 @@ singularity exec scanalysis.sif \
 ### Scaling to Multiple Jobs
 ```bash
 for sample in sample1 sample2 sample3; do
-    sbatch -J $sample \
-        singularity exec scanalysis.sif \
-        python analysis.py --input $sample.h5ad
+    sbatch -J "$sample" --wrap="singularity exec scanalysis.sif python analysis.py --input ${sample}.h5ad"
 done
 # 3 parallel containers, no conflicts!
 ```
@@ -122,8 +121,10 @@ done
 ### Option 1: Pull from Docker Hub
 ```bash
 singularity pull docker://ubuntu:22.04
-singularity pull docker://nvidia/cuda:11.8.0
-singularity pull docker://scgpt:latest
+
+# For GPU workloads, choose an existing CUDA image tag compatible with the host driver.
+singularity pull python310.sif docker://python:3.10
+# Illustrative base image, not a packaged scGPT environment
 ```
 
 ### Option 2: Build from Dockerfile
@@ -143,10 +144,10 @@ Each model in Singularity container:
 
 ### 2. Distributed Benchmarking
 [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|Benchmarking paper]] uses:
-- 13 models × 50 datasets = 650 jobs
+- Launch independent model/dataset jobs; the exact job count depends on the experimental configuration
 - Each model in Singularity container
 - Run on HPC cluster in parallel
-- Identical environment guaranteed
+- Record image digest, workflow version and host dependencies
 
 ### 3. Multi-GPU Analysis
 ```bash
@@ -159,7 +160,7 @@ singularity exec --nv scgpt.sif \
 - Develop locally with Docker
 - Convert to Singularity
 - Run on HPC cluster unchanged
-- Results identical
+- Verify results; hardware and numerical kernels can change them
 
 ## Advantages
 
@@ -181,11 +182,11 @@ singularity exec --nv scgpt.sif \
 
 | Feature | Docker | Singularity |
 |---------|--------|------------|
-| Root required | ✅ Yes | ❌ No |
+| Root privileges | Rootful or rootless configuration | User execution; setup/build requirements vary |
 | Local development | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 | HPC clusters | ⭐ | ⭐⭐⭐⭐⭐ |
 | Cloud platforms | ⭐⭐⭐⭐⭐ | ⭐⭐ |
-| Image size | Large | Medium |
+| Image size | Contents/layers dependent | Contents/compression dependent |
 | Performance | Slight overhead | Minimal |
 | Learning curve | Easy | Medium |
 
@@ -228,8 +229,8 @@ singularity exec \
 
 ## Tools & Resources
 
-- **Singularity Hub**: Central registry (like Docker Hub)
-- **Apptainer**: Official new name
+- **OCI registries**: Pull compatible Docker/OCI images and convert to SIF
+- [Apptainer](https://apptainer.org/) and [SingularityCE](https://docs.sylabs.io/guides/latest/user-guide/) have separate releases
 - **Conda**: Often used inside containers
 - **BioContainers**: Pre-built Singularity images for bioinformatics
 
@@ -251,4 +252,8 @@ singularity exec \
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Apptainer history](https://github.com/apptainer/apptainer#history); [fakeroot prerequisites](https://apptainer.org/docs/user/main/fakeroot.html); [Docker rootless mode](https://docs.docker.com/engine/security/rootless/). The examples retain the singularity command; Apptainer sites normally use apptainer. Placeholder model images are not verified distribution endpoints.

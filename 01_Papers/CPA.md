@@ -1,5 +1,5 @@
 ---
-title: "CPA: Predicting Cellular Responses to Complex Perturbations in High-throughput Screens"
+title: "Predicting cellular responses to complex perturbations in high-throughput screens"
 aliases: [CPA, Compositional Perturbation Autoencoder]
 authors:
   - Mohammad Lotfollahi
@@ -7,14 +7,14 @@ authors:
   - Carlo De Donno
   - et al.
 year: 2023
-journal: Molecular Systems Biology
-doi: 10.15252/msb.202211517
-url: https://github.com/facebookresearch/CPA
+journal: "Molecular Systems Biology"
+doi: "10.15252/msb.202211517"
+url: "https://doi.org/10.15252/msb.202211517"
 tags:
   - paper
   - AIVC
   - perturbation
-  - VAE
+  - autoencoder
   - compositional
   - drug-response
   - single-cell
@@ -57,7 +57,7 @@ date_read:
 ```
 Single-cell Gene Expression
 ↓
-Encoder (VAE)
+Encoder (autoencoder)
 ↓
 Disentangled Latent Space:
   ├── Basal state (z_basal)
@@ -171,3 +171,8 @@ Predicted Expression
   year={2023}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.15252/msb.202211517). CPA uses a compositional autoencoder with adversarial disentanglement; the standard method should not be labeled a variational autoencoder. The selected record is the 2023 journal publication, following a 2021 preprint.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

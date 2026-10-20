@@ -27,3 +27,7 @@ Trajectory inference estimates how cell states evolve over developmental or resp
 ## Related
 - [[02_Concepts/scRNA-seq|scRNA-seq]]
 - [[02_Concepts/Dynamical Systems|Dynamical Systems]]
+
+## Verification (2026-10-20)
+
+Pseudotime is an inferred relative ordering, not necessarily elapsed time or a uniquely identified lineage. Roots, topology and sampling assumptions influence the result. [Trajectory-inference benchmark](https://doi.org/10.1038/s41587-019-0071-9).

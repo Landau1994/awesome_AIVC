@@ -1,15 +1,11 @@
 ---
-title: "scGPT: Toward Building a Foundation Model for Single-Cell Multi-omics"
+title: "scGPT: toward building a foundation model for single-cell multi-omics using generative AI"
 aliases: [scGPT]
-authors:
-  - Haotian Cui
-  - Chloe Wang
-  - Hassaan Maan
-  - Bo Wang
+authors: ["Haotian Cui", "Chloe Wang", "Hassaan Maan", "Kuan Pang", "Fengning Luo", "Nan Duan", "Bo Wang"]
 year: 2024
-journal: Nature Methods
-doi: 10.1038/s41592-024-02201-0
-url: https://github.com/bowang-lab/scGPT
+journal: "Nature Methods"
+doi: "10.1038/s41592-024-02201-0"
+url: "https://doi.org/10.1038/s41592-024-02201-0"
 tags:
   - paper
   - AIVC
@@ -56,7 +52,7 @@ Task-specific heads (fine-tuning)
 ### Pre-training
 - **Data**: 33M cells from CELLxGENE
 - **Objective**: Masked gene expression prediction
-- **Masking**: Random gene masking (15-40%)
+- **Masking**: Task-specific gene-expression masking; consult the relevant pretraining or fine-tuning configuration.
 
 ### Fine-tuning Tasks
 1. Cell type annotation
@@ -66,11 +62,8 @@ Task-specific heads (fine-tuning)
 5. Gene network inference
 
 ## Results
-| Task | Dataset | Metric | Score |
-|------|---------|--------|-------|
-| Cell annotation | Multiple | Accuracy | 90%+ |
-| Perturbation | Norman 2019 | MSE | State-of-art |
-| Integration | Multiple | iLISI/cLISI | Competitive |
+
+The paper evaluates annotation, perturbation response and integration. The former generic “90%+” and “state-of-art” table lacked dataset-specific evidence and is not retained as a verified result.
 
 ## Key Innovations
 - Gene-centric tokenization scheme
@@ -79,15 +72,8 @@ Task-specific heads (fine-tuning)
 - Zero-shot generalization capabilities
 
 ## Usage
-```python
-# Installation
-pip install scgpt
 
-# Basic usage
-from scgpt import scGPT
-model = scGPT.from_pretrained("scgpt_human")
-embeddings = model.encode(adata)
-```
+Use the [official tutorials](https://github.com/bowang-lab/scGPT/tree/main/tutorials) for the installed version. The previous `scGPT.from_pretrained` example was not a verified public API and has been removed.
 
 ## Critical Analysis
 ### Strengths
@@ -115,8 +101,13 @@ embeddings = model.encode(adata)
 ```bibtex
 @article{cui2024scgpt,
   title={scGPT: toward building a foundation model for single-cell multi-omics using generative AI},
-  author={Cui, Haotian and Wang, Chloe and Maan, Hassaan and Wang, Bo},
+  author={Cui, Haotian and Wang, Chloe and Maan, Hassaan and Pang, Kuan and Luo, Fengning and Duan, Nan and Wang, Bo},
   journal={Nature Methods},
   year={2024}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-024-02201-0).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

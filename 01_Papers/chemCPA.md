@@ -1,18 +1,22 @@
 ---
-title: "chemCPA: Predicting Unseen Drug Perturbations with Chemical Structure"
+title: "Predicting Cellular Responses to Novel Drug Perturbations at a Single-Cell Resolution"
 aliases: [chemCPA]
 authors:
   - Leon Hetzel
-  - et al.
+  - Simon Boehm
+  - Niki Kilbertus
+  - Stephan Günnemann
+  - Mohammad Lotfollahi
+  - Fabian J. Theis
 year: 2022
-journal: NeurIPS Workshop / Preprint
-doi:
-url: https://github.com/facebookresearch/CPA
+journal: "NeurIPS 2022"
+doi: "10.52202/068431-1937"
+url: "https://papers.neurips.cc/paper_files/paper/2022/hash/aa933b5abc1be30baece1d230ec575a7-Abstract-Conference.html"
 tags:
   - paper
   - AIVC
   - perturbation
-  - VAE
+  - autoencoder
   - drug-discovery
   - chemical-structure
   - single-cell
@@ -126,7 +130,7 @@ Predicted Gene Expression
 | Method | Novel Drugs | Combinations | Architecture |
 |--------|-------------|--------------|--------------|
 | scGen | No | No | VAE + arithmetic |
-| CPA | No | Yes | VAE + disentangled |
+| CPA | No | Yes | Autoencoder + disentanglement |
 | **chemCPA** | **Yes** | Yes | CPA + mol encoder |
 | GEARS | No | Yes | GNN |
 
@@ -150,10 +154,8 @@ Predicted Gene Expression
 
 ## Successors and Related Work
 
-### PerturbNet (2025)
-- More flexible deep generative model
-- Outperforms chemCPA on benchmarks
-- Handles both chemical and genetic perturbations
+> [!note] Source correction (2026-10-20)
+> Removed an unverified PerturbNet comparison. The previously associated Song et al. paper, [Decoding heterogeneous single-cell perturbation responses](https://doi.org/10.1038/s41556-025-01626-9), introduces a perturbation-response score (PS); it does not support the claimed PerturbNet architecture or superiority over chemCPA.
 
 ### PRnet (2024)
 - Perturbation-conditioned generative model
@@ -172,15 +174,21 @@ Predicted Gene Expression
 - [[02_Concepts/Molecular Representations|Molecular Representations]]
 
 ## Tools & Code
-- GitHub: https://github.com/facebookresearch/CPA (integrated)
-- Uses same codebase as CPA with additional modules
+- GitHub: https://github.com/theislab/chemCPA
+- Follow the official repository for implementation and reproduction instructions.
 
 ## Citation
 ```bibtex
-@article{hetzel2022chemcpa,
-  title={Predicting single-cell perturbation responses for unseen drugs},
+@inproceedings{hetzel2022chemcpa,
+  title={Predicting Cellular Responses to Novel Drug Perturbations at a Single-Cell Resolution},
   author={Hetzel, Leon and others},
-  journal={NeurIPS Workshop on Learning Meaningful Representations of Life},
-  year={2022}
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2022},
+  doi={10.52202/068431-1937}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://papers.neurips.cc/paper_files/paper/2022/hash/aa933b5abc1be30baece1d230ec575a7-Abstract-Conference.html). This is a NeurIPS 2022 main conference paper, not a workshop-only publication. Official code: [theislab/chemCPA](https://github.com/theislab/chemCPA).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

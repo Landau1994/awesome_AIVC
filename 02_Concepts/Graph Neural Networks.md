@@ -10,7 +10,7 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Graph Neural Networks
@@ -20,7 +20,7 @@ last_updated: 2026-01-16
 
 ## Key Ideas
 - **Message passing**: Nodes exchange information with neighbors
-- **Permutation invariance**: Order of nodes doesn't matter
+- **Permutation equivariance**: Relabeling nodes relabels node outputs consistently; a graph-level readout may be permutation-invariant
 - **Relational inductive bias**: Explicitly model relationships
 - **Flexible structure**: Handle varying graph sizes/topologies
 
@@ -67,7 +67,7 @@ Propagate through gene-gene knowledge graph
 ↓
 Predict downstream expression changes
 ```
-- Uses GO, STRING, co-expression networks
+- The original GEARS uses a GO-derived perturbation graph and a co-expression graph
 - Enables multi-gene perturbation prediction
 - [[01_Papers/GEARS|GEARS paper]]
 
@@ -114,7 +114,7 @@ Model signaling patterns
 | Source | Information | Used By |
 |--------|-------------|---------|
 | Gene Ontology | Functional annotations | GEARS |
-| STRING | Protein interactions | GEARS, GeneCompass |
+| STRING | Functional protein associations | Possible prior knowledge; not an input claimed for original GEARS |
 | Reactome | Pathways | Various |
 | KEGG | Metabolic pathways | Various |
 
@@ -146,9 +146,10 @@ class GeneGNN(torch.nn.Module):
         x = self.conv2(x, edge_index)
         return x
 
-# Gene-gene graph from STRING/GO
+# Illustrative graph and feature loaders must be implemented
 edge_index = load_gene_network()
 gene_features = get_perturbation_encoding()
+model = GeneGNN(in_dim=gene_features.shape[1], hidden_dim=64, out_dim=1)
 output = model(gene_features, edge_index)
 ```
 
@@ -179,3 +180,7 @@ output = model(gene_features, edge_index)
 - Stanford CS224W: Machine Learning with Graphs
 - PyTorch Geometric tutorials
 - "A Gentle Introduction to GNNs" (Distill)
+
+## Verification (2026-10-20)
+
+Original GEARS uses GO and training-data co-expression graphs; these are not validated causal GRNs. Node outputs are generally permutation-equivariant, while a graph-level pooling can be invariant. [GEARS](https://www.nature.com/articles/s41587-023-01905-6); [GCN](https://arxiv.org/abs/1609.02907).

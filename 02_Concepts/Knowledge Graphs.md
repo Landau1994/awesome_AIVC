@@ -10,7 +10,7 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Knowledge Graphs in Biology
@@ -29,7 +29,7 @@ last_updated: 2026-01-16
 | Source | Content | Used By |
 |--------|---------|---------|
 | **Gene Ontology (GO)** | Gene functions, processes | GEARS |
-| **STRING** | Protein-protein interactions | GEARS, GeneCompass |
+| **STRING** | Functional protein associations | General biological prior; do not assume use by a named model |
 | **Reactome** | Biological pathways | Various |
 | **KEGG** | Metabolic pathways | Various |
 | **ChEMBL** | Drug-target interactions | Drug discovery |
@@ -37,7 +37,7 @@ last_updated: 2026-01-16
 ## Applications in AIVC
 
 ### GEARS
-- Uses GO + STRING as gene-gene graph
+- Uses a GO-derived perturbation similarity graph and a training-data co-expression graph
 - GNN propagates perturbation effects
 - Enables multi-gene prediction
 
@@ -54,3 +54,7 @@ last_updated: 2026-01-16
 ## Key Papers
 - [[01_Papers/GEARS|GEARS]]
 - [[01_Papers/GeneCompass|GeneCompass]]
+
+## Verification (2026-10-20)
+
+Corrected the original GEARS graph sources. Edges can denote functional association, physical interaction or regulation; retain relation type and evidence. [GEARS](https://www.nature.com/articles/s41587-023-01905-6).

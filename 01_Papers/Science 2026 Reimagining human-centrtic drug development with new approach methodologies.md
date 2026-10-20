@@ -27,6 +27,9 @@ date_read:
 
 # Reimagining human-centric drug development with new approach methodologies
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/41990130/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > This review article explores the transition from traditional animal-based drug development to a human-centric paradigm using New Approach Methodologies (NAMs). By integrating human-derived cellular systems (like iPSCs and organoids), microphysiological systems (organs-on-chips), and artificial intelligence (including LLMs and digital twins), the authors argue that the pharmaceutical industry can bridge the "translational gap" that causes over 90% of drug candidates to fail in human trials. The paper outlines a four-step roadmap for implementing these technologies within the context of recent landmark regulatory shifts like the US FDA Modernization Act 3.0.
 
@@ -34,7 +37,7 @@ date_read:
 - **The Translational Gap:** Traditional animal models only approximate human biology, leading to high clinical failure rates, especially for modern modalities like oligonucleotide drugs and antibody-drug conjugates.
 - **Biological NAMs:** Progress in induced pluripotent stem cells (iPSCs), 3D organoids, and organs-on-chips allows for more faithful replication of human physiology and disease states.
 - **Computational NAMs:** AI is shifting from simple prediction to "agentic intelligence" (e.g., Virtual Lab), utilizing generative design for molecules and multimodal foundation models for disease modeling.
-- **Regulatory Shift:** The enactment of the FDA Modernization Act 2.0 (2022) and 3.0 (2025) officially positions NAMs as suitable substitutes or complements to animal studies.
+- **Regulatory context:** The review discusses FDA modernization initiatives supporting the evaluation of NAMs. Its discussion does not itself establish a particular bill's enactment date or blanket acceptance of NAMs for every regulatory use; consult the applicable primary legal and FDA records.
 - **Roadmap for Integration:** The authors propose a four-step evolution: 1) Lab-in-a-loop discovery, 2) Human organs-on-chips for safety/PK, 3) Clinical trial-in-a-dish for population diversity, and 4) Digital-experimental twins for longitudinal prediction.
 
 ## Methods
@@ -52,6 +55,8 @@ date_read:
 - **Federated Learning:** Proposed to allow collaborative training without compromising data privacy.
 
 ## Results
+These are examples attributed to different studies by a review, not outcomes of one shared experiment. Specific numerical claims require checking the cited original studies.
+
 | Metric / Discovery | Value | Note |
 |--------|-------|----------|
 | Drug Attrition | >90% | Percentage of drugs that pass preclinical but fail human trials. |
@@ -71,7 +76,7 @@ date_read:
 ## Critical Analysis
 ### Strengths
 - **Interdisciplinary Synthesis:** Successfully bridges the gap between high-end bioengineering and state-of-the-art computational science.
-- **Regulatory Context:** Provides a clear legal and ethical framework for why these changes are happening now (FDA 3.0).
+- **Regulatory Context:** Discusses policy changes relevant to NAM adoption; the review is not a substitute for the governing legislation or FDA guidance.
 - **Practical Roadmap:** Moves beyond theory to suggest specific operational steps for industry adoption.
 
 ### Weaknesses
@@ -90,11 +95,11 @@ date_read:
 - **ISTAND Program:** FDA pathway for qualifying new drug development tools.
 
 ### Related Concepts
-- [[Induced Pluripotent Stem Cells (iPSCs)]]
-- [[Organ-on-a-Chip (OoC)]]
-- [[Digital Twins in Healthcare]]
-- [[Generative AI for Drug Design]]
-- [[Microphysiological Systems (MPS)]]
+- [[02_Concepts/Biological Context Glossary#Induced Pluripotent Stem Cells (iPSCs)|Induced Pluripotent Stem Cells (iPSCs)]]
+- [[02_Concepts/Biological Context Glossary#Microphysiological Systems (MPS)|Organ-on-a-Chip (OoC)]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Digital Twins in Healthcare]]
+- [[02_Concepts/Drug Discovery|Generative AI for Drug Design]]
+- [[02_Concepts/Biological Context Glossary#Microphysiological Systems (MPS)|Microphysiological Systems (MPS)]]
 
 ### Potential Applications
 - **Rare Disease Modeling:** Using patient-specific iPSCs where animal models do not exist.

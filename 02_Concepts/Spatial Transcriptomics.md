@@ -10,7 +10,7 @@ tags:
 category: Technology
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Spatial Transcriptomics
@@ -28,17 +28,18 @@ last_updated: 2026-01-16
 
 | Technology | Resolution | Genes |
 |------------|------------|-------|
-| **10x Visium** | ~50μm spots | Transcriptome-wide |
+| **10x Visium (original)** | 55 μm spots, often multiple cells | Transcriptome-wide assay, chemistry-dependent |
+| **Visium HD** | 2 μm capture squares; analysis often bins/segments them | Chemistry/panel-dependent |
 | **Slide-seq** | ~10μm | Transcriptome-wide |
-| **MERFISH** | Single-cell | 100-1000 genes |
-| **Xenium** | Subcellular | 100s genes |
-| **CosMx** | Subcellular | 1000+ genes |
+| **MERFISH** | Single-molecule localization, then cell segmentation | Targeted panel; size varies by implementation |
+| **Xenium** | Subcellular transcript localization | Panel-dependent, including Prime 5K |
+| **CosMx** | Subcellular transcript localization | Panel-dependent: 1K, 6K and whole-transcriptome offerings |
 
 ## Applications in AIVC
 
 ### CellPLM
 - Pre-trains on spatial data
-- Learns cell-cell relationships from physical proximity
+- Learns cross-cell context; attention or co-occurrence does not independently establish physical signaling
 - [[01_Papers/CellPLM|CellPLM]]
 
 ### Future Directions
@@ -57,3 +58,7 @@ last_updated: 2026-01-16
 
 ## Key Papers
 - [[01_Papers/CellPLM|CellPLM]] - Uses spatial pre-training
+
+## Verification (2026-10-20)
+
+Hardware resolution, capture-bin size and effective cell-level resolution differ. Record the chemistry/panel version with every comparison. [Visium HD specifications](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression); [Xenium Prime 5K](https://www.10xgenomics.com/products/xenium-5k-panel); [CosMx panel brochure](https://nanostring.com/wp-content/uploads/2022/11/BR_MK5188_CosMx_Brochure_r24.pdf).

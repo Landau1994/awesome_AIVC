@@ -46,7 +46,8 @@ authors:
 year: 2026
 journal: Preprints.org
 doi: 10.20944/preprints202608.1166.v1
-url: https://github.com/OmicsML/awesome-foundation-model-single-cell-papers
+url: https://www.preprints.org/manuscript/202608.1166/v1
+resource_url: https://github.com/OmicsML/awesome-foundation-model-single-cell-papers
 tags:
   - paper
   - AIVC
@@ -60,26 +61,29 @@ date_read:
 
 # The Landscape of Single-Cell Foundation Models: Design Principles, Applications, and Open Challenges
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.preprints.org/manuscript/202608.1166/v1). The work is a Preprints.org review posted on 18 August 2026, not an arXiv paper despite the filename. The primary paper link now replaces the bibliography repository as the main URL. Bibliographic identity and review scope were checked; the detailed taxonomy and figure descriptions remain reading notes.
+
 ## Quick Summary
 > This comprehensive review surveys the emerging field of single-cell foundation models (scFMs), synthesizing recent progress across model architectures, data tokenization strategies, and pretraining objectives. The authors evaluate how these frameworks move single-cell biology from task-specific pipelines toward unified, generalizable, and predictive systems. Furthermore, they identify key challenges—including generalization failures, evaluation limitations, and data privacy—and provide a structured guide for future research toward the development of AI-driven "virtual cells" and autonomous scientific discovery agents.
 
 ## Key Points
 - scFMs leverage large-scale pretraining to learn transferable representations of cellular states, genes, and modalities.
 - Tokenization strategies (e.g., discrete vs. continuous, rank-based, or latent) are critical inductive biases that significantly impact downstream performance.
-- Current backbone architectures include [[Transformers]], [[Hyena]] operators, [[State-space models]] (e.g., [[Mamba]]), [[Graph neural networks]], and [[Diffusion model]]-based frameworks.
+- Current backbone architectures include [[02_Concepts/Transformers for Biology|Transformers]], [[02_Concepts/Methods and Metrics Glossary#Hyena|Hyena]] operators, [[02_Concepts/Methods and Metrics Glossary#State-space models|State-space models]] (e.g., [[02_Concepts/Methods and Metrics Glossary#State-space models|Mamba]]), [[02_Concepts/Graph Neural Networks|Graph neural networks]], and [[02_Concepts/Generative Models|Diffusion model]]-based frameworks.
 - Scaling in scFMs is complex; data diversity and context coverage often prove more impactful than raw data volume.
 - There is a transition from static representation learning to dynamic, intervention-sensitive models capable of simulating cellular behavior under perturbation.
 - Future directions emphasize "lab-in-the-loop" discovery, where foundation models guide wet-lab experimental design and prioritization.
 
 ## Methods
 ### Data
-- Large-scale integrated atlases (e.g., [[Human Cell Atlas]], [[CELLxGENE]]).
+- Large-scale integrated atlases (e.g., [[05_Tools/Methods and Data Resources#Human Cell Atlas|Human Cell Atlas]], [[05_Tools/Methods and Data Resources#CELLxGENE|CELLxGENE]]).
 - Multimodal data: Transcriptomic, epigenomic (scATAC-seq), proteomic, spatial transcriptomics, and perturbational (Perturb-seq).
 
 ### Model Architecture
-- [[Transformers]] (using efficient attention mechanisms like [[FlashAttention]]).
-- [[LLMs]] adapted for biological sequence modeling.
-- Alternative structured backbones: [[Hyena]], [[State-space models]], [[Graph neural networks]], and [[Diffusion model]]s.
+- [[02_Concepts/Transformers for Biology|Transformers]] (using efficient attention mechanisms like [[05_Tools/Methods and Data Resources#FlashAttention|FlashAttention]]).
+- [[05_Tools/AI and Scientific Computing Reference#LLMs|LLMs]] adapted for biological sequence modeling.
+- Alternative structured backbones: [[02_Concepts/Methods and Metrics Glossary#Hyena|Hyena]], [[02_Concepts/Methods and Metrics Glossary#State-space models|State-space models]], [[02_Concepts/Graph Neural Networks|Graph neural networks]], and [[02_Concepts/Generative Models|Diffusion model]]s.
 
 ### Training Strategy
 - Reconstruction (masked modeling/denoising).
@@ -124,21 +128,21 @@ date_read:
 - [[Geneformer]]
 - [[scGPT]]
 - [[scFoundation]]
-- [[Tabula]]
+- [[05_Tools/Additional Model References#Tabula|Tabula]]
 - [[Perturb-seq]]
 
 ### Related Concepts
-- [[AI virtual cell]]
-- [[Foundation models]]
+- [[01_Papers/Bunne 2024 - How to Build Virtual Cell|AI virtual cell]]
+- [[02_Concepts/Cell Foundation Models|Foundation models]]
 - [[scRNA-seq]]
-- [[Spatial transcriptomics]]
-- [[Multi-omics]]
-- [[Generative AI]]
+- [[02_Concepts/Spatial Transcriptomics|Spatial transcriptomics]]
+- [[02_Concepts/Multi-modal Integration|Multi-omics]]
+- [[02_Concepts/Generative Models|Generative AI]]
 
 ### Potential Applications
 - In-silico drug screening.
 - Causal perturbation effect prediction.
-- Automated experimental design via [[AI agents]].
+- Automated experimental design via [[05_Tools/AI and Scientific Computing Reference#AI agents|AI agents]].
 - Patient-level clinical stratification.
 
 ## Notes

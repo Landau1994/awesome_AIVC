@@ -30,11 +30,14 @@ date_read:
 
 # Benchmarking zero-shot single-cell foundation model embeddings for cellular dynamics reconstruction
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.03.10.710748v1). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > This paper systematically benchmarks zero-shot embeddings from five large single-cell foundation models (scFMs) against a traditional highly variable gene (HVG) PCA baseline for reconstructing cellular dynamics using dynamic optimal transport. Surprisingly, the study reveals that the simple HVG baseline consistently outperforms zero-shot scFM embeddings across diverse biological datasets and dynamical tasks (backtracking, interpolation, and extrapolation). Mechanistic analyses show that scFMs tend to over-compress subtle temporal signals and linearize branched biological structures—treating temporal variation as batch-like noise—highlighting a fundamental "temporal-compression" bottleneck in current representation learning for single-cell biology.
 
 ## Key Points
-- Evaluated five zero-shot scFMs ([[Geneformer]], [[Genecompass]], [[scGPT]], [[UCE]], and [[scFoundation]]) alongside an [[HVG-PCA]] baseline.
+- Evaluated five zero-shot scFMs ([[Geneformer]], [[01_Papers/GeneCompass|Genecompass]], [[scGPT]], [[UCE]], and [[scFoundation]]) alongside an [[02_Concepts/Principal Component Analysis|HVG-PCA]] baseline.
 - Assessed performance across three dynamical reconstruction scenarios: backtracking (inferring progenitors), interpolation (recovering intermediates), and extrapolation (predicting future states).
 - Employed multiple [[Optimal Transport]] (OT) methods: DOT, UOT, Dynamical Schrödinger Bridge, and RUOT.
 - Used a shared, aligned consensus space (via Generalized Procrustes Analysis) to ensure fair comparisons between heterogeneous embedding spaces.
@@ -54,7 +57,7 @@ date_read:
 
 ### Training Strategy
 - The scFMs were strictly used in a **zero-shot** manner (no fine-tuning) to extract time-series cell embeddings.
-- Data for each dataset was partitioned temporally to create training and held-out test sets for the three dynamical tasks. 
+- Data for each dataset was partitioned temporally to create training and held-out test sets for the three dynamical tasks.
 - OT-based models were fit on the training time points in the respective low-dimensional embedding spaces, and the inferred target states were projected into a consensus latent space using Generalized Procrustes Analysis (GPA) to compute unbiased metrics.
 
 ## Results
@@ -98,10 +101,10 @@ date_read:
 
 ### Related Concepts
 - [[Optimal Transport]]
-- [[Single-cell Foundation Models]]
+- [[02_Concepts/Cell Foundation Models|Single-cell Foundation Models]]
 - [[Trajectory Inference]]
-- [[Batch Effect Correction]] vs. Biological Variation
-- [[Pseudotime]]
+- [[02_Concepts/Batch Correction|Batch Effect Correction]] vs. Biological Variation
+- [[02_Concepts/Trajectory Inference|Pseudotime]]
 
 ### Potential Applications
 - Informing the development of the next generation of "dynamics-aware" foundational models in bioinformatics.

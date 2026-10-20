@@ -1,13 +1,13 @@
 ---
-title: "Geneformer: Transfer Learning Enables Predictions in Network Biology"
+title: "Transfer learning enables predictions in network biology"
 aliases: [Geneformer]
 authors:
   - Christina Theodoris
   - et al.
 year: 2023
-journal: Nature
-doi: 10.1038/s41586-023-06139-9
-url: https://huggingface.co/ctheodoris/Geneformer
+journal: "Nature"
+doi: "10.1038/s41586-023-06139-9"
+url: "https://doi.org/10.1038/s41586-023-06139-9"
 tags:
   - paper
   - AIVC
@@ -92,3 +92,8 @@ Instead of using raw expression values:
   year={2023}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41586-023-06139-9).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -44,6 +44,9 @@ date_read:
 
 # Deep-learning-based de novo discovery and design of therapeutics that reverse disease-associated transcriptional phenotypes
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/41850287/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > The authors present a deep-learning-based drug discovery platform called GPS (gene expression profile predictor on chemical structures) that infers compound-induced transcriptomic perturbation signatures from chemical structures to screen ultra-large libraries. By combining a robust collaborative learning (RCL) strategy to handle noisy training data with a Monte Carlo tree search (MolSearch) for lead optimization, the authors successfully identified and optimized novel therapeutic compounds for hepatocellular carcinoma (HCC) and idiopathic pulmonary fibrosis (IPF) that reverse disease-specific gene expression phenotypes.
 
@@ -57,13 +60,13 @@ date_read:
 
 ## Methods
 ### Data
-- **Training Data**: [[LINCS L1000]] Phase I dataset containing transcriptomic profiles (978 landmark genes) for 18,746 compounds across 4 well-studied cell lines (HEPG2, MCF7, PC3, VCAP) at 10 μM, 24 h. 
-- **Screening Libraries**: [[ZINC]] database (7 million drug-like compounds) and Enamine HTS library.
+- **Training Data**: [[05_Tools/Methods and Data Resources#LINCS L1000|LINCS L1000]] Phase I dataset containing transcriptomic profiles (978 landmark genes) for 18,746 compounds across 4 well-studied cell lines (HEPG2, MCF7, PC3, VCAP) at 10 μM, 24 h.
+- **Screening Libraries**: [[05_Tools/Methods and Data Resources#ZINC|ZINC]] database (7 million drug-like compounds) and Enamine HTS library.
 - **Disease Signatures**: HCC bulk RNA-seq signatures; IPF single-cell RNA-seq and bulk RNA-seq signatures.
 
 ### Model Architecture
 - **GPS Neural Network**: Fully connected neural networks with hidden layers of (2131, 128, 32, 3) neurons and Leaky ReLU activations.
-- **Inputs**: Chemical structures encoded as Extended-Connectivity Fingerprints ([[ECFP4]], 2048 bits) and gene features encoded as 1107 Gene Ontology ([[GO]]) terms.
+- **Inputs**: Chemical structures encoded as Extended-Connectivity Fingerprints ([[02_Concepts/Molecular Representations|ECFP4]], 2048 bits) and gene features encoded as 1107 Gene Ontology ([[05_Tools/Methods and Data Resources#GO|GO]]) terms.
 - **Outputs**: Classification probabilities of a specific gene being upregulated, downregulated, or unchanged by a given compound.
 
 ### Training Strategy
@@ -93,7 +96,7 @@ date_read:
 - Bridges the gap between phenotypic screening (using rich transcriptomic signatures) and massive virtual libraries, enabling de novo drug discovery previously limited to target-based docking.
 - The use of robust collaborative learning significantly improves model tolerance to the inherently noisy and inconsistent L1000 dataset.
 - Integrates a complete pipeline from initial deep learning predictions to wet-lab validations, structural optimization (MolSearch), and in vivo animal testing.
-- Showcases cutting-edge use of [[Single-Cell RNA-Seq]] to tackle complex diseases (IPF) by targeting specific sub-populations of cells rather than relying on bulk tissue approximations.
+- Showcases cutting-edge use of [[02_Concepts/scRNA-seq|Single-Cell RNA-Seq]] to tackle complex diseases (IPF) by targeting specific sub-populations of cells rather than relying on bulk tissue approximations.
 
 ### Weaknesses
 - GPS predictions currently rely on a fixed context (10 μM dose, 24-hour timepoint) and are trained on only four canonical cancer cell lines, limiting generalizability to varied physiological conditions and tissues.
@@ -110,10 +113,10 @@ date_read:
 - *OCTAD: an open workspace for virtually screening therapeutics targeting precise cancer patient groups using gene expression features* (Zeng et al. 2020) - Platform utilized in this study for benchmarking and repurposing.
 
 ### Related Concepts
-- [[Transcriptomics-guided Drug Discovery]]
-- [[Phenotypic Drug Discovery]]
-- [[Robust Collaborative Learning]]
-- [[Structure-Gene-Activity Relationship (SGAR)]]
+- [[02_Concepts/Drug Discovery|Transcriptomics-guided Drug Discovery]]
+- [[02_Concepts/Drug Discovery|Phenotypic Drug Discovery]]
+- [[01_Papers/Cell 2026 Deep-learning-based de novo discovery and design of therapeutics that reverse disease-associated transcriptional phenotypes|Robust Collaborative Learning]]
+- [[01_Papers/Cell 2026 Deep-learning-based de novo discovery and design of therapeutics that reverse disease-associated transcriptional phenotypes|Structure-Gene-Activity Relationship (SGAR)]]
 
 ### Potential Applications
 - Rapid screening of ultra-large virtual chemical libraries for complex or rare diseases lacking clear single-protein targets.

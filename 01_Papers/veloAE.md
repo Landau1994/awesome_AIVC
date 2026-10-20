@@ -1,13 +1,12 @@
 ---
-title: "veloAE"
+title: "Representation learning of RNA velocity reveals robust cell transitions"
 aliases:
   - VeloAE
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Chen Qiao", "Yuanhua Huang"]
+year: 2021
+journal: "Proceedings of the National Academy of Sciences"
+doi: "10.1073/pnas.2105859118"
+url: "https://doi.org/10.1073/pnas.2105859118"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# veloAE
+# Representation learning of RNA velocity reveals robust cell transitions
 
 ## Quick Summary
-> `veloAE` is an autoencoder-based RNA velocity approach that learns compact latent representations to improve denoising and direction estimation.
 
-## Key Points
-- Uses latent embedding learning for velocity robustness.
-- Improves signal quality in noisy scRNA-seq scenarios.
-- Often compared against DeepVelo and veloVI.
+VeloAE learns low-dimensional representations of expression and RNA velocity to improve the estimation of cell transitions under noisy measurements.
 
-## Methods
-### Data
-- Spliced/unspliced counts from scRNA-seq datasets.
+## Methods and Evidence
 
-### Model Architecture
-- Autoencoder for low-dimensional latent representations and velocity prediction.
+A tailored autoencoder aggregates expression information before estimating velocity in the learned space. Results were evaluated on stimulation and differentiation datasets. Denoising and smoothness do not by themselves establish correct biological direction.
 
-### Training Strategy
-- Learns denoised latent states, then infers directional transitions.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Noise robustness | Improved | Better than naive count-space inference |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Autoencoder velocity framework |
-| Fig2   | Latent vs raw-space velocity comparison |
-
-## Critical Analysis
-### Strengths
-- Denoising through latent representation learning.
-
-### Weaknesses
-- Quality depends on latent space calibration and hyperparameters.
-
-### Questions
-- How sensitive is performance to latent dimension choice?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/DeepVelo|DeepVelo]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Single-Cell Embeddings|Single-Cell Embeddings]]
 
-### Potential Applications
-- Velocity analysis in noisy or low-depth single-cell datasets.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; add publication details after verification.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1073/pnas.2105859118).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

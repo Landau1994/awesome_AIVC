@@ -1,14 +1,14 @@
 ---
-title: "scGen: Predicts Single-Cell Perturbation Responses"
+title: "scGen predicts single-cell perturbation responses"
 aliases: [scGen]
 authors:
   - Mohammad Lotfollahi
   - F. Alexander Wolf
   - Fabian J. Theis
 year: 2019
-journal: Nature Methods
-doi: 10.1038/s41592-019-0494-8
-url: https://github.com/theislab/scgen
+journal: "Nature Methods"
+doi: "10.1038/s41592-019-0494-8"
+url: "https://doi.org/10.1038/s41592-019-0494-8"
 tags:
   - paper
   - AIVC
@@ -164,3 +164,8 @@ Predicted Perturbed Expression
   year={2019}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-019-0494-8).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -25,11 +25,14 @@ date_read:
 
 # Zero-shot evaluation reveals limitations of single-cell foundation models
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://link.springer.com/article/10.1186/s13059-025-03574-x). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
-> This paper critically evaluates two prominent single-cell foundation models, [[Geneformer]] and [[scGPT]], in a zero-shot setting, assessing their ability to generate useful cell embeddings and integrate batches without fine-tuning. The authors demonstrate that these complex models frequently underperform compared to simpler baselines like selecting highly variable genes ([[HVG]]), [[scVI]], and [[Harmony]] across diverse datasets. The study suggests that current pretraining objectives (masked language modeling) may not be effectively learning transferable biological representations, as evidenced by poor performance in gene expression reconstruction tasks, underscoring the need for rigorous zero-shot benchmarking in the field.
+> This paper critically evaluates two prominent single-cell foundation models, [[Geneformer]] and [[scGPT]], in a zero-shot setting, assessing their ability to generate useful cell embeddings and integrate batches without fine-tuning. The authors demonstrate that these complex models frequently underperform compared to simpler baselines like selecting highly variable genes ([[02_Concepts/Highly Variable Genes|HVG]]), [[scVI]], and [[05_Tools/Methods and Data Resources#Harmony|Harmony]] across diverse datasets. The study suggests that current pretraining objectives (masked language modeling) may not be effectively learning transferable biological representations, as evidenced by poor performance in gene expression reconstruction tasks, underscoring the need for rigorous zero-shot benchmarking in the field.
 
 ## Key Points
-- Foundation models ([[Geneformer]], [[scGPT]]) were evaluated zero-shot (as feature extractors) against standard baselines ([[HVG]], [[scVI]], [[Harmony]]).
+- Foundation models ([[Geneformer]], [[scGPT]]) were evaluated zero-shot (as feature extractors) against standard baselines ([[02_Concepts/Highly Variable Genes|HVG]], [[scVI]], [[05_Tools/Methods and Data Resources#Harmony|Harmony]]).
 - **Cell Type Clustering**: Both models generally performed worse than HVG and established methods; [[scGPT]] showed some strength on the PBMC 12k dataset but was inconsistent elsewhere.
 - **Batch Integration**: [[Geneformer]] failed to correct batch effects. [[scGPT]] outperformed established baselines on complex batches (biological + technical) but overlapped with its training data; it underperformed on purely technical batches.
 - **Pretraining Analysis**: Increasing pretraining data size for [[scGPT]] did not consistently improve zero-shot performance.
@@ -50,16 +53,16 @@ date_read:
 - **[[scGPT]]**: 12 Transformer layers with 8 attention heads (30M parameters). Input involves binned gene expression values (0-50) and gene tokens.
 
 ### Training Strategy
-- **Pretraining Objective**: Both utilize Masked Language Modeling ([[MLM]]).
+- **Pretraining Objective**: Both utilize Masked Language Modeling ([[02_Concepts/Self-Supervised Learning|MLM]]).
     - [[Geneformer]]: Predicts the identity of masked genes based on ranking.
     - [[scGPT]]: Predicts the expression bin of masked genes and learns a cell embedding.
-- **Evaluation Strategy**: Models were applied zero-shot (weights frozen). Baselines ([[scVI]], [[Harmony]]) were trained on the target datasets (reflecting a "resource-constrained" vs. "fine-tuning" trade-off).
+- **Evaluation Strategy**: Models were applied zero-shot (weights frozen). Baselines ([[scVI]], [[05_Tools/Methods and Data Resources#Harmony|Harmony]]) were trained on the target datasets (reflecting a "resource-constrained" vs. "fine-tuning" trade-off).
 
 ## Results
 | Metric | Value | Baseline |
 |--------|-------|----------|
-| **AvgBIO Score** (Cell Type) | **Highest** (General) | [[HVG]] (Baselines consistently outperformed models) |
-| **Batch Integration Score** | **Highest** (General) | [[HVG]] / [[scVI]] / [[Harmony]] |
+| **AvgBIO Score** (Cell Type) | **Highest** (General) | [[02_Concepts/Highly Variable Genes\|HVG]] (Baselines consistently outperformed models) |
+| **Batch Integration Score** | **Highest** (General) | [[02_Concepts/Highly Variable Genes\|HVG]] / [[scVI]] / [[05_Tools/Methods and Data Resources#Harmony\|Harmony]] |
 | **Gene Rank Correlation** | 0.56 (Median) | [[Geneformer]] (vs True Ranking) |
 | **Reconstruction MSE** | High (Mean prediction) | [[scGPT]] (vs Mean Baseline) |
 
@@ -67,18 +70,18 @@ date_read:
 
 | Figure | Description |
 | ------ | ----------- |
-| **Fig 1** | **Evaluation of cell embedding space.** (A) Overview of tasks. (B) AvgBIO scores showing [[HVG]], [[Harmony]], and [[scVI]] generally outperforming [[scGPT]] and [[Geneformer]]. (C-D) UMAPs of Pancreas dataset showing [[Geneformer]] driven by batch effects. (E) Batch integration scores. |
+| **Fig 1** | **Evaluation of cell embedding space.** (A) Overview of tasks. (B) AvgBIO scores showing [[02_Concepts/Highly Variable Genes\|HVG]], [[05_Tools/Methods and Data Resources#Harmony\|Harmony]], and [[scVI]] generally outperforming [[scGPT]] and [[Geneformer]]. (C-D) UMAPs of Pancreas dataset showing [[Geneformer]] driven by batch effects. (E) Batch integration scores. |
 | **Fig 2** | **Gene expression reconstruction.** (A-B) [[scGPT]] predicts mean bin values; conditioning on cell embeddings improves this slightly. (C) [[Geneformer]] predicted ranking vs true ranking. (D) MSE for [[scGPT]] vs naive mean baseline. (E) Correlation of [[Geneformer]] rankings. |
 
 ## Critical Analysis
 ### Strengths
 - **Rigorous Benchmarking**: Addresses a gap in the field by focusing on zero-shot performance, which is crucial for discovery tasks where labels are absent.
-- **Appropriate Baselines**: Compares deep learning models against simple but effective heuristics ([[HVG]]) and standard integration tools ([[Harmony]], [[scVI]]).
+- **Appropriate Baselines**: Compares deep learning models against simple but effective heuristics ([[02_Concepts/Highly Variable Genes|HVG]]) and standard integration tools ([[05_Tools/Methods and Data Resources#Harmony|Harmony]], [[scVI]]).
 - **Mechanism Check**: Investigates *why* models fail by evaluating their success at their own pretraining objectives (reconstruction).
 - **Transparency**: Openly discusses data leakage (overlap between training and evaluation sets) and its potential impact.
 
 ### Weaknesses
-- **Baseline Comparison nuance**: The baselines ([[scVI]], [[Harmony]]) are trained on the specific evaluation datasets, whereas the foundation models are zero-shot. While this mimics a "download and use" scenario vs. "train a lightweight model" scenario, it is not a strictly "zero-shot vs zero-shot" comparison.
+- **Baseline Comparison nuance**: The baselines ([[scVI]], [[05_Tools/Methods and Data Resources#Harmony|Harmony]]) are trained on the specific evaluation datasets, whereas the foundation models are zero-shot. While this mimics a "download and use" scenario vs. "train a lightweight model" scenario, it is not a strictly "zero-shot vs zero-shot" comparison.
 - **Dataset Overlap**: The scGPT model had seen the Immune and Tabula Sapiens datasets during training, confounding generalization claims (though the paper notes this).
 - **Scope**: Limited to transcriptomic data and two specific foundation models.
 
@@ -92,16 +95,16 @@ date_read:
 - **[[scGPT]]**: Cui et al., 2024 (The model evaluated).
 - **[[Geneformer]]**: Theodoris et al., 2023 (The model evaluated).
 - **[[scVI]]**: Lopez et al., 2018 (Baseline generative model).
-- **[[Harmony]]**: Korsunsky et al., 2019 (Baseline integration method).
+- **[[05_Tools/Methods and Data Resources#Harmony|Harmony]]**: Korsunsky et al., 2019 (Baseline integration method).
 - **[[scBERT]]**: Yang et al., 2022 (Another foundation model mentioned).
 
 ### Related Concepts
-- [[Foundation Models]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
 - [[02_Concepts/scRNA-seq|Single-cell RNA-seq]] (scRNA-seq)
 - [[Zero-shot Learning]]
-- [[Masked Language Modeling]] ([[MLM]])
-- [[Batch Effect Correction]]
-- [[Embedding Space]]
+- [[02_Concepts/Self-Supervised Learning|Masked Language Modeling]] ([[02_Concepts/Self-Supervised Learning|MLM]])
+- [[02_Concepts/Batch Correction|Batch Effect Correction]]
+- [[02_Concepts/Cell Embeddings|Embedding Space]]
 
 ### Potential Applications
 - **Benchmarking Standards**: Establishing a standard suite of "unseen" datasets for evaluating future single-cell foundation models.

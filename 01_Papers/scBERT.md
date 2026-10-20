@@ -1,5 +1,5 @@
 ---
-title: "scBERT: Large-scale Pretrained Deep Language Model for Cell Type Annotation"
+title: "scBERT as a large-scale pretrained deep language model for cell type annotation of single-cell RNA-seq data"
 aliases: [scBERT]
 authors:
   - Fan Yang
@@ -7,9 +7,9 @@ authors:
   - Fang Wang
   - et al.
 year: 2022
-journal: Nature Machine Intelligence
-doi: 10.1038/s42256-022-00534-z
-url: https://github.com/TencentAILabHealthcare/scBERT
+journal: "Nature Machine Intelligence"
+doi: "10.1038/s42256-022-00534-z"
+url: "https://doi.org/10.1038/s42256-022-00534-z"
 tags:
   - paper
   - AIVC
@@ -29,10 +29,10 @@ date_read:
 # scBERT: Large-scale Pretrained Deep Language Model for Cell Type Annotation
 
 ## Quick Summary
-> scBERT is the first single-cell pre-training model based on BERT architecture, trained on over 1 million cells from PanglaoDB. It addresses key challenges in scRNA-seq analysis including high dimensionality, data sparsity, and batch effects through pre-training and fine-tuning paradigm.
+> scBERT is a model using BERT-style pretraining with Performer attention, trained on over 1 million cells from PanglaoDB. It addresses cell annotation through pretraining on unlabeled expression data followed by supervised fine-tuning.
 
 ## Key Points
-- First BERT-based model for single-cell analysis
+- BERT-style pretraining for single-cell annotation
 - Pre-trained on 1M+ cells from PanglaoDB
 - Uses gene2vec for gene embeddings
 - Expression binning for value encoding
@@ -104,10 +104,10 @@ Cell Type Prediction Head
 - Smaller pre-training corpus (1M vs 30M+)
 - Limited to annotation task
 - Cell type imbalance affects performance
-- Superseded by newer models
+- Performance relative to newer models depends on the task and evaluation protocol
 
 ### Historical Significance
-- First BERT-style model for single-cell
+- Early BERT-style pretraining approach for single-cell annotation
 - Established pre-train/fine-tune paradigm
 - Inspired subsequent models (scGPT, Geneformer)
 
@@ -135,3 +135,8 @@ Cell Type Prediction Head
   doi={10.1038/s42256-022-00534-z}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s42256-022-00534-z). Extended Data Fig. 1 confirms pretraining on over 1,000,000 PanglaoDB cells. Independent re-evaluation found that logistic regression matched or exceeded annotation performance in its tested settings: [Deeper evaluation](https://doi.org/10.1038/s42256-024-00949-w). Original benchmark advantages are not universal.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

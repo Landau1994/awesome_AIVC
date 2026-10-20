@@ -18,7 +18,8 @@ authors:
 year: 2026
 journal: Preprint (arXiv)
 doi: 10.48550/arXiv.2605.10876
-url: https://github.com/Genentech/AssayBench
+url: https://arxiv.org/abs/2605.10876
+code_url: https://github.com/Genentech/AssayBench
 tags:
   - paper
   - AIVC
@@ -33,36 +34,41 @@ date_read:
 
 # AssayBench: An Assay-Level Virtual Cell Benchmark for LLMs and Agents
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/html/2605.10876v1). Checked v1 dataset counts, AnDCG definition and the quoted Table 2 values. The 1,920 entries are not 1,920 independent experiments. Model rankings are those of this benchmark/version, not a current general ranking of LLMs.
+
 ## Quick Summary
-> ASSAYBENCH is a large-scale benchmark for in silico phenotypic screen prediction, containing 1,920 human CRISPR screens. It frames screen prediction as a gene-ranking task conditioned on free-text experiment descriptions, providing a rigorous testbed for evaluating LLMs and agentic systems as "virtual cells." The study finds that while frontier generalist LLMs outperform biology-specific models, their performance remains significantly below an empirically estimated ceiling based on technical replicates, highlighting both the potential and the remaining challenges in modeling cellular responses to genetic perturbations.
+> ASSAYBENCH is a large-scale benchmark for in silico phenotypic screen prediction, containing 1,920 human CRISPR benchmark entries (1,584 unique screens including merged replicates). It frames screen prediction as a gene-ranking task conditioned on free-text experiment descriptions, providing a rigorous testbed for evaluating LLMs and agentic systems as "virtual cells." The study finds that while frontier generalist LLMs outperform biology-specific models, their performance remains significantly below an empirically estimated ceiling based on technical replicates, highlighting both the potential and the remaining challenges in modeling cellular responses to genetic perturbations.
 
 ## Key Points
-- Introduces [[ASSAYBENCH]], a comprehensive benchmark comprising 1,920 human CRISPR screens categorized into five broad phenotype classes.
+- Introduces [[01_Papers/arxiv 2026 AssayBench An Assay-Level Virtual Cell Benchmark for LLMs and Agents|ASSAYBENCH]], a comprehensive benchmark comprising 1,920 benchmark entries derived from human CRISPR screens, categorized into five broad phenotype classes.
 - Implements a temporal train/test split to evaluate generalization to novel, unseen experimental screens.
-- Proposes [[Adjusted nDCG]] (AnDCG), a novel continuous metric that enables performance comparison across heterogeneous assays by accounting for screen-specific random baselines.
+- Proposes [[01_Papers/arxiv 2026 AssayBench An Assay-Level Virtual Cell Benchmark for LLMs and Agents|Adjusted nDCG]] (AnDCG), a novel continuous metric that enables performance comparison across heterogeneous assays by accounting for screen-specific random baselines.
 - Evaluates various frontier LLMs, biology-specific models, and neural predictors, finding that generalist LLMs (like Gemini 3 Pro and GPT-5.4) currently lead on the benchmark.
 - Uses technical replicates to estimate an "empirical performance ceiling," revealing that current state-of-the-art models are still far from solving the task.
 - Demonstrates that performance is influenced by screen characteristics, such as citation count and phenotype type (e.g., higher performance in viability screens).
-- Explores optimization techniques including [[Supervised Fine-Tuning]], [[GRPO]] (reinforcement learning), and ensemble strategies like reciprocal rank fusion.
+- Explores optimization techniques including [[02_Concepts/Methods and Metrics Glossary#Supervised Fine-Tuning|Supervised Fine-Tuning]], [[02_Concepts/Group Relative Policy Optimization|GRPO]] (reinforcement learning), and ensemble strategies like reciprocal rank fusion.
 
 ## Methods
 ### Data
-- Compiled from 1,952 human CRISPR screens in [[BioGRID ORCS]] and 19 recent publications (the LaTest split).
-- Harmonized textual descriptions, gene symbols (normalized to [[HGNC]]), and relevance scores.
+- Starts from 1,952 human CRISPR screens in [[05_Tools/Methods and Data Resources#BioGRID ORCS|BioGRID ORCS]] plus 19 recent-literature screens. Direction-specific entries and replicate merging yield 1,920 benchmark entries; LaTest contains 19 screens (source Table 1).
+- Harmonized textual descriptions, gene symbols (normalized to [[05_Tools/Methods and Data Resources#HGNC|HGNC]]), and relevance scores.
 - Screen entries include five broad categories: Fitness/Proliferation, Chemical Response, Host-Pathogen Response, Molecular Output, and Trafficking/Localization.
 
 ### Model Architecture
-- Evaluated frontier [[LLMs]] (e.g., [[Gemini 3 Pro]], [[GPT-5.4]], [[Qwen3.5]]).
-- Evaluated domain-specific agents and models like [[Biomni]] and [[C2S-Scale]].
-- Developed a [[DeepSet]]-based neural gene-relevance predictor.
-- Implemented retrieval-based baselines ([[kNN]]) and frequency-based models.
+- Evaluated frontier [[05_Tools/AI and Scientific Computing Reference#LLMs|LLMs]] (e.g., [[05_Tools/AI and Scientific Computing Reference#Gemini 3 Pro|Gemini 3 Pro]], [[05_Tools/AI and Scientific Computing Reference#GPT-5.4|GPT-5.4]], [[05_Tools/AI and Scientific Computing Reference#Qwen3.5|Qwen3.5]]).
+- Evaluated domain-specific agents and models like [[01_Papers/Science 2026 Autonomous biomedical research with an artificial intelligence agent|Biomni]] and [[01_Papers/Cell2Sentence|C2S-Scale]].
+- Developed a [[02_Concepts/Methods and Metrics Glossary#DeepSets|DeepSet]]-based neural gene-relevance predictor.
+- Implemented retrieval-based baselines ([[02_Concepts/Methods and Metrics Glossary#kNN|kNN]]) and frequency-based models.
 
 ### Training Strategy
 - Used zero-shot evaluation for frontier models.
-- Applied [[Supervised Fine-Tuning]] (SFT) and [[GRPO]] for task-optimized variants.
-- Utilized Bayesian optimization to discover effective [[Reciprocal Rank Fusion]] ensemble strategies.
+- Applied [[02_Concepts/Methods and Metrics Glossary#Supervised Fine-Tuning|Supervised Fine-Tuning]] (SFT) and [[02_Concepts/Group Relative Policy Optimization|GRPO]] for task-optimized variants.
+- Utilized Bayesian optimization to discover effective [[02_Concepts/Methods and Metrics Glossary#Reciprocal Rank Fusion|Reciprocal Rank Fusion]] ensemble strategies.
 
 ## Results
+AnDCG@k = (nDCG@k − random-baseline nDCG@k) / (1 − random-baseline nDCG@k), after condensing unassayed genes. Zero denotes random ranking, one ideal ranking; negative values are possible. Oracle kNN uses target ground truth and is an oracle retrieval reference, not a deployable predictor or the technical-replicate ceiling.
+
 | Metric | Value | Baseline |
 |--------|-------|----------|
 | AnDCG@100 (Test) | 0.1570 (Gemini 3 Pro) | 0.2918 (Oracle kNN) |
@@ -90,7 +96,7 @@ date_read:
 
 ### Weaknesses
 - Strong dependence on the pretraining corpus of LLMs, raising significant questions about potential data memorization rather than biological reasoning.
-- Ensemble methods showed significant overfitting on the test set during optimization.
+- Ensemble strategies optimized on validation data showed a validation-to-test generalization gap; the test set must remain held out during optimization.
 - The "empirical ceiling" is conservative, as technical replicates may not be perfectly identical in practice.
 
 ### Questions
@@ -102,15 +108,15 @@ date_read:
 ### Related Papers
 - [[GEARS]] (Roohani et al., 2024)
 - [[scGPT]] (Cui et al., 2024)
-- [[biolord]] (Piran et al., 2024)
-- [[Bixbench]] (Mitchener et al., 2025)
+- [[05_Tools/Methods and Data Resources#biolord|biolord]] (Piran et al., 2024)
+- [[01_Papers/arxiv 2026 BixBench|Bixbench]] (Mitchener et al., 2025)
 
 ### Related Concepts
-- [[Virtual Cell]]
-- [[Phenotypic Screening]]
-- [[CRISPR screens]]
-- [[LLM Benchmarking]]
-- [[Gene Ranking]]
+- [[01_Papers/Bunne 2024 - How to Build Virtual Cell|Virtual Cell]]
+- [[02_Concepts/Drug Discovery|Phenotypic Screening]]
+- [[02_Concepts/Biological Context Glossary#CRISPR screens|CRISPR screens]]
+- [[05_Tools/AI and Scientific Computing Reference#LLM Benchmarking|LLM Benchmarking]]
+- [[02_Concepts/Gene Regulatory Networks|Gene Ranking]]
 
 ### Potential Applications
 - Accelerated drug discovery and target prioritization.

@@ -1,5 +1,5 @@
 ---
-title: "scVI: Single-cell Variational Inference"
+title: "Deep generative modeling for single-cell transcriptomics"
 aliases:
   - scVI
   - single-cell Variational Inference
@@ -10,8 +10,8 @@ authors:
   - Michael I. Jordan
   - Nir Yosef
 year: 2018
-journal: Nature Methods
-doi: 10.1038/s41592-018-0229-2
+journal: "Nature Methods"
+doi: "10.1038/s41592-018-0229-2"
 tags:
   - paper
   - AIVC
@@ -22,6 +22,7 @@ status: unread
 rating:
 date_added: 2026-03-17
 date_read:
+url: "https://doi.org/10.1038/s41592-018-0229-2"
 ---
 
 # scVI: Single-cell Variational Inference
@@ -38,3 +39,8 @@ date_read:
 ## Related Papers
 - [[CPA]] — builds on scVI's latent space for perturbation modeling
 - [[arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models|scLDM]] — uses scVI as baseline
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-018-0229-2).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

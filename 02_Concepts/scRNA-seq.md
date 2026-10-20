@@ -11,7 +11,7 @@ tags:
 category: Core Technology
 importance: high
 date_created: 2026-03-25
-last_updated: 2026-03-25
+last_updated: 2026-10-20
 status: complete
 ---
 
@@ -19,11 +19,12 @@ status: complete
 
 ## Overview
 
-**Single-cell RNA sequencing (scRNA-seq)** is a high-throughput genomics technology that profiles the transcriptome (all expressed RNA) of individual cells simultaneously. Unlike bulk RNA-seq, which averages expression across thousands to millions of cells, scRNA-seq preserves cell-to-cell heterogeneity — enabling the discovery of rare cell types, cell states, and developmental trajectories.
+**Single-cell RNA sequencing (scRNA-seq)** is a high-throughput genomics technology that samples RNA expression (typically a subset of captured polyadenylated transcripts) of individual cells simultaneously. Unlike bulk RNA-seq, which averages expression across thousands to millions of cells, scRNA-seq preserves cell-to-cell heterogeneity — enabling the discovery of rare cell types, cell states, and developmental trajectories.
 
 ## How It Works
 
 ### Workflow
+Typical UMI-based workflow; not all platforms use UMIs.
 ```
 Tissue/Sample
     ↓ (dissociation)
@@ -64,13 +65,13 @@ Reads → Count matrix (cells × genes)
 ### Count Matrix
 - **Rows**: Cells (barcodes)
 - **Columns**: Genes (~20,000-33,000)
-- **Values**: UMI counts (integers, sparse)
-- **Typical sparsity**: ~90% zeros (dropout)
+- **Values**: UMI counts for UMI-based assays; full-length protocols such as Smart-seq2 instead produce read-derived counts
+- **Sparsity**: Often high, but varies with depth and cell type; zeros reflect both biology and sampling
 
 ### Spliced/Unspliced Counts
 Some tools (e.g., velocyto, STARsolo) also quantify:
 - **Spliced counts**: Mature mRNA reads
-- **Unspliced counts**: Pre-mRNA reads (intron-spanning reads)
+- **Unspliced counts**: Reads assigned to intronic/unspliced features according to the quantifier; exon–exon junction reads usually support spliced RNA
 - Used for [[02_Concepts/RNA Velocity|RNA velocity]] inference
 
 ## Preprocessing Pipeline
@@ -81,7 +82,7 @@ Raw reads (FASTQ)
     ↓ STARsolo / CellRanger / Kallisto
 Count matrix (h5ad/loom)
     ↓ Quality control (filter dead cells, doublets)
-    ↓ Normalization (log1p + scran)
+    ↓ Size-factor/library normalization, then log1p where required
     ↓ Feature selection (Highly Variable Genes)
     ↓ Dimensionality reduction (PCA → UMAP)
     ↓ Clustering (Leiden / Louvain)
@@ -91,14 +92,14 @@ Cell type annotation
 ### Quality Control Metrics
 - **n_genes_per_cell**: Number of detected genes (filter low-quality cells)
 - **total_counts**: Total UMI counts per cell
-- **pct_counts_mt**: % mitochondrial reads (high → dying cell)
+- **pct_counts_mt**: Fraction of counts assigned to mitochondrial genes; interpret in tissue and protocol context
 - **Doublet score**: Two cells captured together
 
 ## Key Concepts in scRNA-seq Analysis
 
 ### Batch Effects
 - Technical variation between samples/experiments
-- Removed using Harmony, scVI, BBKNN, scANVI
+- Addressed with methods such as Harmony, scVI, BBKNN and scANVI; evaluate both batch mixing and preservation of biology
 
 ### Dropout
 - Zero counts may be technical (gene not captured) or biological
@@ -141,7 +142,7 @@ Landmark example: Human Cell Atlas (HCA)
 |----------|------|----------|
 | Alignment | CellRanger, STARsolo, Kallisto | - |
 | Analysis | Scanpy, Seurat | Python, R |
-| Integration | Harmony, scVI | Python |
+| Integration | Harmony, scVI | R/Python (implementation-dependent) |
 | Visualization | UMAP, t-SNE | Python, R |
 | Velocity | scVelo, velocyto | Python |
 | Trajectory | Monocle3, PAGA | R, Python |
@@ -153,8 +154,11 @@ import scanpy as sc
 adata = sc.read_10x_h5("filtered_feature_bc_matrix.h5")
 
 # QC
-sc.pp.calculate_qc_metrics(adata, inplace=True)
-adata = adata[adata.obs.pct_counts_mt < 20]
+adata.var["mt"] = adata.var_names.str.startswith("MT-")  # human gene symbols
+sc.pp.calculate_qc_metrics(adata, qc_vars=["mt"], inplace=True)
+adata = adata[adata.obs.pct_counts_mt < 20].copy()
+# 20% is illustrative; choose thresholds for the tissue/protocol.
+# For Ensembl IDs or other species, obtain the appropriate mitochondrial annotation.
 
 # Normalize
 sc.pp.normalize_total(adata, target_sum=1e4)
@@ -175,7 +179,7 @@ sc.tl.leiden(adata)
 | Resolution | Single cell | Population average |
 | Throughput | 10k-1M cells | Any |
 | Cost | Higher | Lower |
-| Sensitivity | ~2,000 genes/cell | Full transcriptome |
+| Sensitivity | Depends on protocol, depth and cell type | Depends on depth and expression; not complete observation |
 | Applications | Heterogeneity, trajectory | Differential expression |
 
 ## Recent Extensions
@@ -184,7 +188,7 @@ sc.tl.leiden(adata)
 |-----------|-----------|
 | **Spatial transcriptomics** | Adds tissue location to expression |
 | **CITE-seq** | Simultaneous RNA + protein (ADT) |
-| [[02_Concepts/Perturb-seq|**Perturb-seq**]] | scRNA-seq + CRISPR perturbations |
+| [[02_Concepts/Perturb-seq\|**Perturb-seq**]] | scRNA-seq + CRISPR perturbations |
 | **snRNA-seq** | Nuclear RNA (frozen/hard-to-dissociate tissue) |
 | **Multiome** | RNA + ATAC in same cell |
 
@@ -209,7 +213,7 @@ The [[01_Papers/bioRxiv 2025 Benchmarking RNA velocity methods across 17 indepen
 
 - [[01_Papers/scvelo|scVelo]] — Bergen et al. 2020 (dynamical model)
 - [[01_Papers/velocyto|velocyto]] — La Manno et al. 2018 (foundational velocity)
-- [[01_Papers/veloVI|veloVI]] — Best accuracy in 2025 benchmark
+- [[01_Papers/veloVI|veloVI]] — Variational inference for RNA velocity; benchmark ranking depends on metric and dataset
 
 ## Learning Resources
 
@@ -217,3 +221,7 @@ The [[01_Papers/bioRxiv 2025 Benchmarking RNA velocity methods across 17 indepen
 - [Single Cell Best Practices](https://www.sc-best-practices.org/)
 - [OSCA book](https://bioconductor.org/books/release/OSCA/) (Bioconductor/R)
 - [10x Genomics documentation](https://support.10xgenomics.com/)
+
+## Verification (2026-10-20)
+
+[Scanpy QC documentation](https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.calculate_qc_metrics.html). Platform scale/gene-detection figures above are rough historical examples, not product limits or guaranteed sensitivity. Corrected the QC example and distinctions between UMI counts, read counts and unspliced reads.

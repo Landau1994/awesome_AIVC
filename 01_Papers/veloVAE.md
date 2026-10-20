@@ -1,13 +1,12 @@
 ---
-title: "veloVAE"
+title: "Variational Mixtures of ODEs for Inferring Cellular Gene Expression Dynamics"
 aliases:
   - VeloVAE
-authors:
-  -
+authors: ["Yichen Gu", "David T. Blaauw", "Joshua D. Welch"]
 year: 2022
-journal: bioRxiv
-doi:
-url:
+journal: "ICML 2022"
+doi: null
+url: "https://proceedings.mlr.press/v162/gu22a.html"
 tags:
   - paper
   - AIVC
@@ -15,61 +14,32 @@ status: unread
 rating:
 date_added: 2026-03-25
 date_read:
+doi_status: "Article DOI not listed in the official proceedings page; use the proceedings URL"
 ---
 
-# veloVAE
+# Variational Mixtures of ODEs for Inferring Cellular Gene Expression Dynamics
 
 ## Quick Summary
-> `veloVAE` is a deep generative RNA velocity method based on variational autoencoders, designed to model transcriptional dynamics from spliced/unspliced counts in single-cell data.
 
-## Key Points
-- Uses latent-variable modeling for denoising and dynamic inference.
-- Can capture nonlinear cell-state transitions.
-- In the 2025 benchmark, it sometimes inferred reversed transitions.
+VeloVAE combines a deep generative model with biochemical ODE constraints to infer latent cell time, cell state and expression dynamics.
 
-## Methods
-### Data
-- Single-cell spliced/unspliced RNA count matrices.
+## Methods and Evidence
 
-### Model Architecture
-- Variational autoencoder for latent dynamics and velocity estimation.
+The generative model is a variational mixture of ODEs whose parameters vary across latent cell states. This is not the same method as veloVI. Comparisons require an identified version and dataset; generic reversed-transition or superiority claims are not retained without the corresponding figure and metric.
 
-### Training Strategy
-- Probabilistic training with latent-variable inference for denoising and trajectory dynamics.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Direction quality in benchmark | Variable | Worse stability than [[01_Papers/veloVI\|veloVI]] in some datasets |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Model overview and latent dynamics |
-| Fig2   | Velocity field comparison with baselines |
-
-## Critical Analysis
-### Strengths
-- Captures nonlinear dynamics in a generative framework.
-
-### Weaknesses
-- Direction inference can be unstable depending on dataset/preprocessing.
-
-### Questions
-- Which preprocessing settings most improve direction robustness?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
+- [[01_Papers/veloVI|veloVI]]
 - [[01_Papers/veloVI|veloVI]]
 - [[01_Papers/DeepVelo|DeepVelo]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/scRNA-seq|scRNA-seq]]
 
-### Potential Applications
-- Developmental trajectory and cell fate dynamics inference.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; can be expanded after full reading.
+- Checked title, year, venue and identifier against the [primary source](https://proceedings.mlr.press/v162/gu22a.html). This record identifies the ICML 2022 VeloVAE paper. The same project also has the expanded preprint Bayesian Inference of RNA Velocity from Multi-Lineage Single-Cell Data; do not combine its title with the conference citation.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -10,7 +10,7 @@ tags:
 category: Core Concept
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Single-Cell Embeddings
@@ -101,16 +101,17 @@ High-dim embedding → UMAP/t-SNE → 2D plot
 ### Comparison
 | Source | Training | Quality | Speed |
 |--------|----------|---------|-------|
-| PCA | Per-dataset | Basic | Fast |
-| scVI | Per-dataset | Good | Medium |
-| scGPT | 33M cells | Excellent | Slow |
-| UCE | 36M cells | Excellent | Medium |
+| PCA | Per-dataset | Task-dependent linear baseline | Usually inexpensive |
+| scVI | Per-dataset or reference mapping | Task-dependent latent model | Depends on training/inference |
+| scGPT | Original human pretraining: >33M cells | Task-dependent pretrained embedding | Hardware/implementation-dependent |
+| UCE | Multi-species pretraining; record checkpoint | Task-dependent pretrained embedding | Hardware/implementation-dependent |
 
 ## Code Example
 
 ```python
 import scanpy as sc
-from scgpt import scGPT
+import scgpt as scg
+from pathlib import Path
 
 # Traditional: PCA + UMAP
 adata = sc.read_h5ad("data.h5ad")
@@ -119,9 +120,13 @@ sc.pp.neighbors(adata)
 sc.tl.umap(adata)
 
 # Foundation model: scGPT
-model = scGPT.from_pretrained("scgpt_human")
-embeddings = model.encode(adata)  # (n_cells, 512)
-adata.obsm["X_scgpt"] = embeddings
+model_dir = Path("path/to/downloaded/scGPT_human")
+embedded = scg.tasks.embed_data(
+    adata, model_dir, gene_col="index",
+    device="cpu", use_fast_transformer=False, return_new_adata=True,
+)
+adata.obsm["X_scgpt"] = embedded.X
+# Use gene_col="index" only when var_names are compatible gene symbols.
 ```
 
 ## Related Concepts
@@ -142,3 +147,7 @@ adata.obsm["X_scgpt"] = embeddings
 ## Learning Resources
 - [Single Cell Best Practices: Dimensionality Reduction](https://www.sc-best-practices.org/)
 - Scanpy tutorials
+
+## Verification (2026-10-20)
+
+[Official scGPT embedding tutorial](https://scgpt.readthedocs.io/en/stable/tutorial_reference_mapping.html). Replaced nonexistent convenience APIs; checkpoint files and input gene identifiers must be prepared first. Removed unsupported model-quality rankings.

@@ -10,7 +10,7 @@ tags:
 category: Core Concept
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Cell State Transitions
@@ -46,7 +46,7 @@ last_updated: 2026-01-16
 - [[01_Papers/scGen|scGen]]
 
 ### RNA Velocity
-- Infer direction of cell movement
+- Infer local change in transcriptomic state, not physical cell migration
 - Use spliced/unspliced ratios
 - Velocyto, scVelo
 
@@ -58,3 +58,7 @@ last_updated: 2026-01-16
 ## Key Papers
 - [[01_Papers/CellOT|CellOT]]
 - [[01_Papers/scGen|scGen]]
+
+## Verification (2026-10-20)
+
+Unpaired population snapshots do not uniquely identify individual-cell trajectories. Transport maps and RNA velocity require distinct modeling assumptions. [CellOT](https://doi.org/10.1038/s41592-023-01969-x); [scVelo](https://doi.org/10.1038/s41587-020-0591-3).

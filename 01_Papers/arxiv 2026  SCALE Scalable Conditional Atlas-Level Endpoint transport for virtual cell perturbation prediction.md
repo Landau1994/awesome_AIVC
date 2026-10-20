@@ -17,7 +17,7 @@ authors:
   - Zhangyang Gao
 year: 2026
 journal: arXiv preprint
-doi: N/A
+doi: 10.48550/arXiv.2603.17380
 url: https://arxiv.org/abs/2603.17380v1
 tags:
   - paper
@@ -32,6 +32,9 @@ date_read:
 ---
 
 # SCALE: Scalable Conditional Atlas-Level Endpoint transport for virtual cell perturbation prediction
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/abs/2603.17380v1). This note follows v1. A substantially revised [v3](https://arxiv.org/abs/2603.17380v3), dated 31 August 2026, has an expanded author list and validation; do not mix its results with v1. The DOI has been completed. Detailed v1 performance numbers remain unverified reading notes.
 
 ## Quick Summary
 > The paper introduces SCALE, a large-scale foundation model designed for virtual cell perturbation prediction that frames the task as conditional latent flow transport between control and perturbed cell populations. By combining a hierarchical set-aware encoder, endpoint-oriented flow matching (JiT), and a scalable BioNeMo-based infrastructure, SCALE overcomes the "mean-effect trap" of traditional autoencoders, achieving state-of-the-art performance on biologically grounded metrics (like DE gene overlap and PDCorr) across massive datasets like Tahoe-100M.
@@ -48,17 +51,17 @@ date_read:
 - **Tahoe-100M:** A giga-scale chemical perturbation benchmark (100M+ cells, 50 cancer cell lines, 1,100+ conditions).
 - **PBMC:** A dense cytokine signaling perturbation dataset (12 donors, 90 conditions).
 - **Replogle-Nadig:** A large-scale genetic CRISPRi perturbation dataset.
-- All datasets were preprocessed by library size normalization, log(1+x) transformation, rescaling, and subsetting to the top 2,000 highly variable genes ([[HVGs]]).
+- All datasets were preprocessed by library size normalization, log(1+x) transformation, rescaling, and subsetting to the top 2,000 highly variable genes ([[02_Concepts/Highly Variable Genes|HVGs]]).
 
 ### Model Architecture
-- **Hierarchical Set-Aware Encoder:** Uses a shared LLaMA-style [[Transformer]] for gene-wise encoding within individual cells, followed by a [[DeepSets]] permutation-invariant layer to aggregate cell embeddings into a population-level summary.
+- **Hierarchical Set-Aware Encoder:** Uses a shared LLaMA-style [[02_Concepts/Transformers for Biology|Transformer]] for gene-wise encoding within individual cells, followed by a [[02_Concepts/Methods and Metrics Glossary#DeepSets|DeepSets]] permutation-invariant layer to aggregate cell embeddings into a population-level summary.
 - **Conditional JiT-based Velocity Field Network:** Injects perturbation, cell type, and batch conditions using a learnable seed attention mechanism.
 - **Decoder:** Reconstructs the cell population in the expression space from the transported latent representation.
 
 ### Training Strategy
-- **Autoencoding Objective:** Jointly optimizes point-wise reconstruction fidelity ([[MSE]]) and population-level distribution alignment ([[MMD]]) in the latent space.
+- **Autoencoding Objective:** Jointly optimizes point-wise reconstruction fidelity ([[02_Concepts/Methods and Metrics Glossary#MSE|MSE]]) and population-level distribution alignment ([[02_Concepts/Maximum Mean Discrepancy|MMD]]) in the latent space.
 - **Latent Transport Objective:** Trained using endpoint-oriented paired supervision under the JiT framework. The model directly predicts the final perturbed latent endpoint (x-pred) and optimizes the loss in the endpoint space (x-loss) rather than predicting intermediate velocity vectors.
-- **Infrastructure:** Preprocessed data is stored in LMDB shards. Uses a [[BioNeMo]]-based distributed training stack with batch-aware sampling for highly imbalanced perturbation groups.
+- **Infrastructure:** Preprocessed data is stored in LMDB shards. Uses a [[05_Tools/AI and Scientific Computing Reference#BioNeMo|BioNeMo]]-based distributed training stack with batch-aware sampling for highly imbalanced perturbation groups.
 
 ## Results
 | Metric | Value (SCALE) | Baseline (STATE) | Dataset |
@@ -80,13 +83,13 @@ date_read:
 
 ## Critical Analysis
 ### Strengths
-- **Biological Focus:** Explicitly targets the recovery of differential expression ([[DEGs]]) and directional changes rather than blindly minimizing MSE, which often leads models into a "mean-effect trap."
+- **Biological Focus:** Explicitly targets the recovery of differential expression ([[02_Concepts/Differential Expression|DEGs]]) and directional changes rather than blindly minimizing MSE, which often leads models into a "mean-effect trap."
 - **Scalability:** The integration with BioNeMo and LMDB sharding allows the model to scale to atlas-level datasets (Tahoe-100M) efficiently, solving a major bottleneck in virtual cell modeling.
 - **Robust Ablations:** Thoroughly investigates the mechanics of Flow Matching in this domain, demonstrating that direct endpoint prediction is more effective than standard velocity prediction for short/structured perturbation shifts.
 
 ### Weaknesses
 - **Scaling Saturation:** The scaling study reveals that increasing model parameters from 184M to 280M yields negligible or slightly worse performance on strict biological metrics, suggesting current data diversity or formulation limits unbounded scaling benefits.
-- **Metric Sensitivity:** The authors acknowledge that the strict [[Cell-Eval]] protocol is highly sensitive to implementation details (preprocessing, aggregation), complicating cross-paper comparisons.
+- **Metric Sensitivity:** The authors acknowledge that the strict [[05_Tools/Methods and Data Resources#Cell-Eval|Cell-Eval]] protocol is highly sensitive to implementation details (preprocessing, aggregation), complicating cross-paper comparisons.
 
 ### Questions
 - Can SCALE effectively predict combinatorial (multi-gene or multi-drug) perturbation responses, or is it strictly bounded to the types of singular perturbations seen in the training sets?
@@ -99,11 +102,11 @@ date_read:
 - *CellFlow enables generative single-cell phenotype modeling with flow matching* (Klein et al., 2025).
 
 ### Related Concepts
-- [[Virtual Cell]]
-- [[Single-cell transcriptomics]]
+- [[01_Papers/Bunne 2024 - How to Build Virtual Cell|Virtual Cell]]
+- [[02_Concepts/scRNA-seq|Single-cell transcriptomics]]
 - [[Flow Matching]]
 - [[Optimal Transport]]
-- [[Differential Expression]]
+- [[02_Concepts/Differential Expression|Differential Expression]]
 
 ### Potential Applications
 - *In silico* high-throughput drug screening.

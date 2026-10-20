@@ -24,6 +24,9 @@ date_read:
 
 # Towards predictive virtual embryos with genomics and AI
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41592-026-03055-4). The publisher classifies this as a Comment (26 March 2026). It proposes a research direction; it does not report a completed predictive embryo system. The accessible preview supports the broad scope, but subscription-only details were not checked.
+
 ## Quick Summary
 > This perspective paper proposes the development of "Virtual Embryos," which are data-backed digital twins of mammalian embryogenesis. By integrating high-resolution spatiotemporal single-cell omics, live imaging, and lineage tracing with advanced AI (such as foundation models and graph neural networks), these systems aim to move developmental biology from a descriptive discipline to a predictive one. Unlike traditional biophysical models based on fixed equations, Virtual Embryos leverage data-driven inference to simulate multiscale dynamics—from molecular regulation to organogenesis—offering new avenues for understanding congenital disorders, drug toxicity, and regenerative medicine.
 
@@ -91,9 +94,9 @@ date_read:
 - **Qiu et al. (2025)**: *Spateo* (Spatiotemporal modeling framework).
 
 ### Related Concepts
-- [[Digital Twins]]
-- [[Spatiotemporal Transcriptomics]]
-- [[Morphogenesis]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Digital Twins]]
+- [[02_Concepts/Spatial Transcriptomics|Spatiotemporal Transcriptomics]]
+- [[02_Concepts/Cell State Transitions|Morphogenesis]]
 - [[Optimal Transport]]
 
 ### Potential Applications

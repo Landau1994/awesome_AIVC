@@ -1,5 +1,5 @@
 ---
-title: "CellOT: Learning Single-Cell Perturbation Responses using Neural Optimal Transport"
+title: "Learning single-cell perturbation responses using neural optimal transport"
 aliases: [CellOT, Cell Optimal Transport]
 authors:
   - Charlotte Bunne
@@ -7,9 +7,9 @@ authors:
   - Gabriele Gut
   - et al.
 year: 2023
-journal: Nature Methods
-doi: 10.1038/s41592-023-01969-x
-url: https://github.com/bunnech/cellot
+journal: "Nature Methods"
+doi: "10.1038/s41592-023-01969-x"
+url: "https://doi.org/10.1038/s41592-023-01969-x"
 tags:
   - paper
   - AIVC
@@ -163,3 +163,8 @@ Minimize Wasserstein distance between:
   year={2023}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-023-01969-x). The publisher lists an author correction dated 30 October 2023; consult the updated article.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

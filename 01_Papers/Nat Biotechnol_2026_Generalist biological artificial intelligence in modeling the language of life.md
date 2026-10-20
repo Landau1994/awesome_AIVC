@@ -29,6 +29,9 @@ date_read:
 
 # Generalist biological artificial intelligence in modeling the language of life
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41587-026-03064-w). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 This review article defines and synthesizes the emerging field of Generalist Biological Artificial Intelligence (GBAI). GBAI represents a transformative approach to modeling the "language of life" by creating unified systems capable of concurrently processing and predicting across diverse biological domains—from DNA and RNA sequences to protein structures, cellular imaging, and tissue-level processes. The authors chart a course for how these generalist systems can accelerate scientific discovery, automate therapeutic design, and eventually realize the vision of the AI Virtual Cell (AIVC).
 

@@ -10,7 +10,7 @@ tags:
 category: Core Concept
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Multi-modal Integration
@@ -22,16 +22,16 @@ last_updated: 2026-01-16
 - **Complementary information**: Each modality captures different aspects
 - **Shared latent space**: Unified representation across modalities
 - **Cross-modal prediction**: Infer one modality from another
-- **Holistic cell state**: Complete picture of cellular behavior
+- **Complementary cell state**: Broader but still incomplete measurements of cellular behavior
 
 ## Common Modality Combinations
 
 | Combination | Technology | Information |
 |-------------|------------|-------------|
-| RNA + Protein | CITE-seq | Transcription + translation |
+| RNA + Protein | CITE-seq | RNA counts + selected antibody-tagged protein epitopes; does not directly measure translation rates |
 | RNA + ATAC | Multiome, SHARE-seq | Expression + chromatin |
 | RNA + Spatial | Spatial transcriptomics | Expression + location |
-| RNA + Perturbation | [[02_Concepts/Perturb-seq|Perturb-seq]] | Expression + intervention |
+| RNA + Perturbation | [[02_Concepts/Perturb-seq\|Perturb-seq]] | Expression + intervention |
 
 ## Integration Methods
 
@@ -55,3 +55,7 @@ last_updated: 2026-01-16
 ## Key Papers
 - [[01_Papers/Bunne 2024 - How to Build Virtual Cell|AIVC Vision]] - Multi-modal emphasis
 - [[01_Papers/scGPT|scGPT]] - Multi-omic integration
+
+## Verification (2026-10-20)
+
+[Original CITE-seq study](https://doi.org/10.1038/nmeth.4380). Multi-modal measurements remain incomplete and differ in detection limits, feature panels and technical effects.

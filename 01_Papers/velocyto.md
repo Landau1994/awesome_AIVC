@@ -1,12 +1,9 @@
 ---
-title: "velocyto: RNA velocity of single cells"
+title: "RNA velocity of single cells"
 aliases: [velocyto, La Manno 2018]
-authors:
-  - Gioele La Manno
-  - Ruslan Nematzadeh
-  - Yun Yao
+authors: ["Gioele La Manno", "Ruslan Soldatov", "Amit Zeisel", "et al."]
 year: 2018
-journal: Nature Methods
+journal: "Nature"
 tags:
   - paper
   - RNA-velocity
@@ -15,62 +12,35 @@ tags:
   - trajectory-inference
 status: unread
 date_added: 2026-03-25
+doi: "10.1038/s41586-018-0414-6"
+url: "https://doi.org/10.1038/s41586-018-0414-6"
 ---
 
-# velocyto: RNA velocity of single cells
+# RNA velocity of single cells
 
 ## Quick Summary
 
-The foundational paper introducing **RNA velocity** analysis. La Manno et al. present the first method to infer transcriptomic dynamics from single-cell RNA-seq by analyzing unspliced vs spliced mRNA ratios. This seminal work enables prediction of cell fate transitions without explicit time series data.
+La Manno et al. introduced RNA velocity: estimating a local direction of transcriptomic change from spliced and unspliced RNA in snapshot single-cell data.
 
-## Key Contribution
+## Methods and Evidence
 
-- **First RNA Velocity Method**: Original mathematical framework
-- **Unspliced/Spliced Ratio**: Novel biological insight for temporal dynamics
-- **Cell Fate Prediction**: Enables trajectory inference from snapshots
-- **Mathematical Model**: Simple but powerful ODE-based approach
+The original steady-state framework uses deviations from expected RNA processing relationships. It does not directly observe future cell fates. Directional results depend on kinetic assumptions, preprocessing and available transitional states. Benchmark cosine scores must not be converted to percentages of correctly predicted cells.
 
-## Impact
+## Results and Limitations
 
-- Foundational for the field (~10K+ citations)
-- Inspired 14+ follow-up methods
-- Enables new understanding of development without time-series data
-- Opens computational investigation of cell state transitions
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Key Concepts
+## Connections
 
-- Splicing kinetics as transcriptional momentum
-- Phase portrait analysis (spliced vs unspliced)
-- Velocity vectors in transcriptomic space
-
-## Performance Characteristics
-
-- Accuracy: Baseline for comparison (~14% in modern benchmarks)
-- Stability: Variable across datasets
-- Speed: Fast (minutes)
-- Interpretability: High (clear ODE model)
-
-## Related Methods
-
-- [[scvelo]] (Bergen et al. 2020) - Improved dynamical model
-- [[DeepVelo]] - Deep learning approach
-- [[Dynamo]] - Advanced dynamics
-
-## Benchmark Comparison
-
-[[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Recent benchmarking (2025)]] shows:
-- velocyto: ODE-based baseline
-- Accuracy: ~14% average directional correctness
-- Useful for initial trajectory exploration
-
-## See Also
-
-- [[02_Concepts/RNA Velocity|RNA Velocity]] - Concept overview
+- [[scvelo]]
+- [[DeepVelo]]
+- [[Dynamo]]
+- [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Recent benchmarking (2025)]]
+- [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]]
 - [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Comprehensive benchmarking study]]
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41586-018-0414-6).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -11,7 +11,7 @@ tags:
   - multimodal
 type: Multimodal Large Language Model
 source_paper: "Gemini: A Family of Highly Capable Multimodal Models"
-url: “https://gemini.google.com/app”
+url: https://arxiv.org/abs/2312.11805
 year: 2023
 organization: Google DeepMind
 status: active
@@ -54,13 +54,13 @@ graph TD
 ## Performance
 | Task | Dataset | Metric | Score |
 |------|---------|--------|-------|
-| General Reasoning | MMLU | Accuracy | 90.0% (Ultra) |
-| Coding | HumanEval | Pass@1 | 74.4% (Pro) |
+| General Reasoning | MMLU | Accuracy | 90.0% (Gemini 1.0 Ultra; uncertainty-routed chain-of-thought) |
+| Coding | HumanEval | Pass@1 | 74.4% (Gemini 1.0 Ultra; 0-shot, instruction-tuned) |
 
 ## Training Details
 - **Data**: Large-scale multimodal and multilingual dataset.
 - **Hardware**: Google TPU v4 and v5e.
-- **Time**: Months of training.
+- **Time**: Not specified here; do not infer a duration without a source.
 
 ## Usage
 Available via Google AI Studio, Vertex AI, and the Gemini API.
@@ -76,8 +76,12 @@ Available via Google AI Studio, Vertex AI, and the Gemini API.
 - Proprietary model with restricted access to weights.
 
 ## Related Models
-- [[GPT-4]]
-- [[Claude 3]]
+- [[05_Tools/AI and Scientific Computing Reference#GPT-4|GPT-4]]
+- [[05_Tools/AI and Scientific Computing Reference#Claude 3|Claude 3]]
 
 ## Notes
 - Frequently used as a backend for AI-assisted research and coding tools.
+
+## Version scope and sources
+
+The table records the [Gemini 1.0 technical report](https://arxiv.org/html/2312.11805v3), not the current Gemini product lineup. Ultra/Pro/Nano were the original sizes; Flash and million-token context are described in the later [Gemini 1.5 report](https://arxiv.org/abs/2403.05530). Capabilities, available modalities and limits are version-specific. The architecture diagram is schematic, not a disclosure of the complete implementation. Checked 2026-10-20.

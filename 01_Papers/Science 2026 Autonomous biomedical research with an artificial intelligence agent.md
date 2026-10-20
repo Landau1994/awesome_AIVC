@@ -48,6 +48,9 @@ date_read:
 
 # Autonomous biomedical research with an artificial intelligence agent
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/42424436/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > The paper introduces "Biomni," a general-purpose biomedical AI agent capable of autonomously executing diverse research tasks. By constructing a unified action space—integrating 150 tools, 105 software packages, and 59 databases—Biomni utilizes an LLM-based architecture to plan and execute complex, code-driven workflows without predefined templates. The system demonstrates expert-level performance across tasks including bioinformatics analysis, rare disease diagnosis, molecular cloning, and wet-lab hardware orchestration, significantly shortening analysis times while maintaining high accuracy.
 
@@ -57,7 +60,7 @@ date_read:
 - **Expert-Level Generalization**: Achieved 57% accuracy on benchmarks (Biomni-Eval1), outperforming specialized agents and base models like Claude Sonnet 4.5.
 - **Reinforcement Learning**: Introduced Biomni-R0 (RL-trained models) to optimize task success, demonstrating consistent improvement over teacher models across specialized tasks.
 - **Real-World Validation**: Validated the agent's ability to autonomously perform complex multi-omics analysis, design experimental protocols for cloning (verified by wet-lab output), and optimize protein thermostability.
-- **Automation**: Bridged the "dry-lab" to "wet-lab" gap by integrating with [[PyLabRobot]] to execute liquid-handling protocols on physical hardware.
+- **Automation**: Bridged the "dry-lab" to "wet-lab" gap by integrating with [[05_Tools/Methods and Data Resources#PyLabRobot|PyLabRobot]] to execute liquid-handling protocols on physical hardware.
 
 ## Methods
 ### Data
@@ -111,19 +114,19 @@ date_read:
 
 ## Connections
 ### Related Papers
-- [[CRISPR-GPT]]
-- [[BioDiscoveryAgent]]
-- [[SpatialAgent]]
-- [[CellAgent]]
-- [[AlphaFold-2]]
+- [[05_Tools/Additional Model References#CRISPR-GPT|CRISPR-GPT]]
+- [[05_Tools/Additional Model References#BioDiscoveryAgent|BioDiscoveryAgent]]
+- [[05_Tools/Additional Model References#SpatialAgent|SpatialAgent]]
+- [[01_Papers/nbe 2026 Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses|CellAgent]]
+- [[05_Tools/Methods and Data Resources#AlphaFold|AlphaFold-2]]
 
 ### Related Concepts
-- [[Agentic AI]]
-- [[Bioinformatics]]
-- [[Reinforcement Learning]]
-- [[Multi-Omics]]
-- [[Protein Engineering]]
-- [[Laboratory Automation]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Agentic AI]]
+- [[05_Tools/AI and Scientific Computing Reference#Bioinformatics|Bioinformatics]]
+- [[02_Concepts/Methods and Metrics Glossary#Reinforcement Learning|Reinforcement Learning]]
+- [[02_Concepts/Multi-modal Integration|Multi-Omics]]
+- [[02_Concepts/Biological Context Glossary#protein structures|Protein Engineering]]
+- [[02_Concepts/Self-Driving Laboratories|Laboratory Automation]]
 
 ### Potential Applications
 - Automated drug repurposing and target identification.

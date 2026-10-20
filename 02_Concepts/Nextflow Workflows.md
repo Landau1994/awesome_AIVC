@@ -1,6 +1,6 @@
 ---
 title: "Nextflow: Bioinformatics Workflow Engine"
-aliases: [Nextflow, nf-core]
+aliases: [Nextflow]
 tags:
   - tool
   - workflow
@@ -34,45 +34,41 @@ status: draft
 ### Simple Workflow Example
 
 ```groovy
-// Define input data
-input_files = Channel.fromPath('*.h5ad')
-
-// Process 1: QC
+// Build scanalysis:v1 locally and put qc.py and cluster.py in project bin/.
 process QualityControl {
-    container 'scanpy:latest'
-
+    container 'scanalysis:v1'
     input:
-    file(h5ad) from input_files
-
+    path h5ad
     output:
-    file("${h5ad.baseName}_qc.h5ad") into qc_results
-
+    path "${h5ad.baseName}_qc.h5ad"
     script:
     """
-    python qc.py --input $h5ad --output ${h5ad.baseName}_qc.h5ad
+    python ${projectDir}/bin/qc.py --input ${h5ad} --output ${h5ad.baseName}_qc.h5ad
     """
 }
 
-// Process 2: Clustering
 process Clustering {
-    container 'scanpy:latest'
-
+    container 'scanalysis:v1'
     input:
-    file(h5ad) from qc_results
-
+    path h5ad
     output:
-    file("${h5ad.baseName}_clustered.h5ad") into final_results
-
+    path "${h5ad.baseName}_clustered.h5ad"
     script:
     """
-    python cluster.py --input $h5ad --output ${h5ad.baseName}_clustered.h5ad
+    python ${projectDir}/bin/cluster.py --input ${h5ad} --output ${h5ad.baseName}_clustered.h5ad
     """
+}
+
+workflow {
+    input_files = channel.fromPath('*.h5ad')
+    qc_results = QualityControl(input_files)
+    Clustering(qc_results)
 }
 ```
 
 Run:
 ```bash
-nextflow run analysis.nf
+nextflow run analysis.nf -with-docker
 # Automatically parallelizes across all inputs!
 ```
 
@@ -86,7 +82,7 @@ Each step in its own container, parallelized across samples.
 
 ### 2. Multi-Model Benchmarking
 [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|Benchmarking framework]] uses Nextflow to:
-- Run 13 models on 50+ datasets
+- Run multiple models and datasets; cite the exact benchmark version for counts
 - Each model in own container
 - Automatic resource allocation
 - Reproducible results
@@ -110,7 +106,7 @@ Batch3 → QC → Normalization ─→
 ## Ecosystem
 
 ### nf-core
-Central repository of curated bioinformatics workflows:
+A community providing curated Nextflow pipelines; nf-core is not an alias for Nextflow:
 - `nf-core/rnaseq` - RNA-seq standard pipeline
 - `nf-core/scrnaseq` - Single-cell RNA-seq
 - `nf-core/sarek` - Variant calling
@@ -121,12 +117,12 @@ Central repository of curated bioinformatics workflows:
 ### Channels
 Data streams between processes:
 ```groovy
-// Create channel from files
-data = Channel.fromPath('*.h5ad')
-
-// Processes consume and emit channels
-process A { input: file from data output: file into processed }
-process B { input: file from processed output: file into results }
+// Within a workflow block, using the process definitions above:
+workflow {
+    data = channel.fromPath('*.h5ad')
+    processed = QualityControl(data)
+    Clustering(processed)
+}
 ```
 
 ### Operators
@@ -191,9 +187,9 @@ Run with: `nextflow run workflow.nf -profile hpc`
 | Tool | Syntax | Parallelization | Containers | HPC Support |
 |------|--------|-----------------|-----------|-------------|
 | **Nextflow** | Groovy | Implicit | ✅ | ✅✅✅ |
-| Snakemake | Python | Implicit | ⚠️ | ✅✅ |
+| Snakemake | Python-based workflow DSL | Implicit | Supported | Supported |
 | WDL | Domain-specific | Explicit | ✅ | ✅✅ |
-| Bash | Bash | Manual | ❌ | ⚠️ |
+| Bash | Shell | Manual | Can invoke container engines | Manual scheduler integration |
 
 ## Resources
 
@@ -210,4 +206,8 @@ Run with: `nextflow run workflow.nf -profile hpc`
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Current Nextflow process/workflow syntax](https://nextflow.io/docs/latest/process.html); [DSL1 removal history](https://training.nextflow.io/latest/info/nxf_versions/). Examples were migrated to DSL2. Scripts and a built image must exist before execution; no full pipeline run was performed during this content audit.

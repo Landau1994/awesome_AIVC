@@ -15,7 +15,7 @@ status: draft
 
 ## Overview
 
-**RNA Velocity** is a computational method that predicts the future transcriptomic state of individual cells by analyzing the ratio of unspliced (nascent) to spliced (mature) mRNA. High RNA velocity in a gene indicates the cell is rapidly transcribing it and will increase expression; low velocity indicates expression will decrease. This enables inference of cellular trajectories and developmental dynamics without explicit time series data.
+**RNA Velocity** is a computational method that predicts the future transcriptomic state of individual cells by analyzing the ratio of unspliced (nascent) to spliced (mature) mRNA. Positive estimated velocity predicts increasing mature-RNA abundance and negative velocity predicts decreasing abundance; a small positive velocity is still an increase. These are local, model-dependent estimates, not direct measurements of a cell’s future. This enables inference of cellular trajectories and developmental dynamics without explicit time series data.
 
 ## Core Concept
 
@@ -29,10 +29,10 @@ DNA → (transcription) → Unspliced RNA (pre-mRNA)
                           Lost
 ```
 
-**Key Insight**: The unspliced/spliced ratio reveals transcriptional momentum
-- High unspliced: Cell is transcribing → expression will increase
-- Low unspliced, high spliced: Old transcription, expression will decrease
-- Ratio change = velocity vector
+**Key Insight**: Velocity depends on the balance of splicing and degradation.
+- Positive mature-RNA velocity when $\beta u > \gamma s$
+- Negative mature-RNA velocity when $\beta u < \gamma s$
+- The threshold depends on gene-specific kinetics; a raw ratio alone is insufficient.
 
 ## Historical Development
 
@@ -40,27 +40,29 @@ DNA → (transcription) → Unspliced RNA (pre-mRNA)
 |------|--------|-----------|
 | 2018 | [[velocyto]] | First RNA velocity tool (foundational) |
 | 2020 | [[scvelo]] | Dynamical model (major improvement) |
-| 2023-2024 | Deep Learning methods | [[DeepVelo]], [[veloVI]], [[latentVelo]] |
-| 2025 | Benchmarking | This paper: comprehensive evaluation |
+| 2022-2024 | Deep Learning methods | [[DeepVelo]], [[veloVI]], [[latentVelo]] |
+| 2025–2026 | Benchmarking | Study of 15 methods on 17 datasets; consult the linked version |
 
 ## Velocity Inference Methods
 
 ### Categories
 
+These are overlapping descriptions, not mutually exclusive classes: Bayesian and neural methods may also use splicing ODEs.
+
 **1. ODE-Based Methods**
 - Model gene expression as ODE system
 - Examples: [[velocyto]], [[scvelo]] (dynamical)
-- Interpret: Physics-based gene regulatory dynamics
+- Interpret: Mechanistic transcription–splicing–degradation dynamics; this is not by itself a gene regulatory network
 
 **2. Machine Learning Methods**
 - Use statistical models for velocity
-- Examples: [[Dynamo]], [[UniTVelo]], [[Pyro-Velocity]]
+- Examples: [[Dynamo]], [[01_Papers/uniTvelo|UniTVelo]], [[Pyro-Velocity]]
 - Flexible but interpretability challenges
 
 **3. Deep Learning Methods**
 - Neural networks learn velocity patterns
 - Examples: [[DeepVelo]], [[veloVI]], [[veloVAE]], [[latentVelo]]
-- High performance but expensive computationally
+- Performance and computational cost depend on the method and dataset
 
 ## Biological Applications
 
@@ -85,12 +87,9 @@ DNA → (transcription) → Unspliced RNA (pre-mRNA)
 
 For gene $g$ in cell $i$:
 
-$$\text{Velocity}_{i,g} = \alpha_{g} - \beta_{g} \cdot M_{i,g}$$
+$$\frac{du_{i,g}}{dt}=\alpha_g(t)-\beta_g u_{i,g}, \qquad v_{i,g}=\frac{ds_{i,g}}{dt}=\beta_g u_{i,g}-\gamma_g s_{i,g}.$$
 
-Where:
-- $\alpha_{g}$: Transcription rate (unspliced)
-- $\beta_{g}$: Degradation rate (spliced)
-- $M_{i,g}$: Current spliced mRNA level
+Here $u$ and $s$ denote unspliced and spliced abundance; $\alpha$ is transcription, $\beta$ splicing, and $\gamma$ mature-RNA degradation. The basic model neglects unspliced-RNA degradation. [scVelo model documentation](https://scvelo.readthedocs.io/en/stable/about.html)
 
 ### Interpretation
 - Positive velocity: Expression increasing
@@ -109,27 +108,21 @@ Where:
 
 ### Recent Benchmark Findings
 
-From [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|comprehensive benchmarking]]:
+From [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|the benchmark preprint]] and its [2026 journal update](https://doi.org/10.1016/j.crmeth.2026.101367):
 
 | Metric | Finding |
 |--------|---------|
-| **Accuracy** | Best methods (veloVI) reach only 28% directional correctness |
-| **Agreement** | Methods agree <30% on velocity direction |
+| **Directional score** | CBDir is an averaged cosine similarity, not a percentage of correct predictions; 0.28 must not be reported as 28% accuracy |
+| **Agreement** | Method agreement varies by dataset and comparison metric; it is not a universal percentage of matching directions |
 | **Stability** | Some methods (latentVelo) very stable; others (veloVAE) inconsistent |
-| **Speed** | Range: 16s (DeepVelo) to hours (complex methods) |
+| **Speed** | Runtime depends on dataset, hardware, preprocessing and implementation; consult the benchmark configuration |
 
 **Key Finding**: No universally best method; choice depends on trade-offs
 
 ## Practical Considerations
 
 ### Computational Requirements
-```
-Method          Memory    Time        Accuracy
-DeepVelo        543 MB    16s         Medium
-scvelo          1-5 GB    1-10 min    Good
-veloVI          2-10 GB   5-30 min    Best
-cell2fate       >22 GB    >1 hour     Medium
-```
+Record cell/gene count, CPU/GPU, thread count, software version and whether preprocessing is timed when comparing resources. The former fixed runtime/memory table lacked this context and should not be used for capacity planning.
 
 ### Stability
 - Methods differ drastically in robustness to noise
@@ -145,21 +138,21 @@ cell2fate       >22 GB    >1 hour     Medium
 
 ## Limitations
 
-⚠️ **Low Accuracy**: Best methods only ~28% correct directions
+⚠️ **Validation Limits**: Directional cosine scores do not establish the fraction of biologically correct cell-fate predictions
 ⚠️ **Method Disagreement**: Different tools give conflicting results
 ⚠️ **Splicing Assumptions**: Relies on unspliced/spliced ratio being informative
 ⚠️ **Cell Type Dependent**: Works better in some cell types than others
 ⚠️ **Computational Cost**: Modern methods require significant resources
 
-## Recent Developments (2025)
+## Benchmark Context (2025 preprint; 2026 journal update)
 
 [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Benchmarking study]] shows:
 
 ### Best for Different Needs
-- **Accuracy**: veloVI (directional correctness = 0.28)
-- **Stability**: latentVelo (coherence = 0.99)
-- **Speed**: DeepVelo (16s, minimal memory)
-- **Interpretability**: scvelo (clear mathematical model)
+- **Directionality**: Compare CBDir and other metrics on the relevant dataset; 0.28 is a cosine-based score, not 28% accuracy.
+- **Stability**: Check sensitivity to seeds, subsampling and preprocessing.
+- **Speed**: Benchmark the selected implementation on the intended hardware.
+- **Interpretability**: Inspect kinetic fits, uncertainty and biological consistency. No overall winner follows from a single score.
 
 ### Future Directions
 - Ensemble methods combining multiple approaches
@@ -170,7 +163,7 @@ cell2fate       >22 GB    >1 hour     Medium
 ## Related Concepts
 
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]] - Broader field
-- [[Splicing Kinetics]] - Underlying biology
+- [[Splicing_Kinetics|Splicing Kinetics]] - Underlying biology
 - [[02_Concepts/Single-Cell Embeddings|Single-cell Analysis]] - Data source
 - Pseudotime vs Velocity - Different approaches
 
@@ -198,4 +191,8 @@ For AIVC research:
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+Corrected the mature-RNA ODE and the interpretation of CBDir. Runtime, memory, coherence and rankings require the study setting. The 2026 journal version evaluates 15 methods across 17 datasets; the earlier preprint used 14. [Journal benchmark](https://doi.org/10.1016/j.crmeth.2026.101367); [scVelo original study](https://doi.org/10.1038/s41587-020-0591-3).

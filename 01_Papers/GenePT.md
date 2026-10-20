@@ -1,9 +1,9 @@
 ---
-title: "GenePT: Gene Pre-Trained Foundation Model"
+title: "Simple and effective embedding model for single-cell biology built from ChatGPT"
 aliases: [GenePT, Gene pretrained]
-authors: []
-year: 2024
-journal: bioRxiv
+authors: ["Yiqun Chen", "James Zou"]
+year: 2025
+journal: "Nature Biomedical Engineering"
 tags:
   - paper
   - AIVC
@@ -14,42 +14,34 @@ status: unread
 rating:
 date_added: 2026-03-25
 date_read:
+doi: "10.1038/s41551-024-01284-6"
+url: "https://doi.org/10.1038/s41551-024-01284-6"
 ---
 
-# GenePT: Gene Pre-Trained Foundation Model
+# Simple and effective embedding model for single-cell biology built from ChatGPT
 
 ## Quick Summary
 
-GenePT is an LLM-adapted single-cell model that applies pre-training on gene sequences and expression patterns. It represents an approach to adapting large language model paradigms to genomics data through comprehensive pre-training on gene-level information.
+GenePT builds gene representations from language-model embeddings of gene descriptions and forms cell embeddings using expression-weighted gene embeddings or expression-ranked gene-name sentences.
 
-## Key Points
+## Methods and Evidence
 
-- **Gene-Focused Pre-training**: Emphasis on gene sequence and expression learning
-- **LLM Architecture**: Leverages transformer-based language model design
-- **Transfer Learning**: Strong pre-training for downstream tasks
-- Competitive baseline in benchmarking studies
+The method reuses pretrained language-model embeddings. It does not train a new sequence model on DNA or require large-scale single-cell pretraining. The paper reports gene-property and cell-type classification evaluations; its advantages are task-specific.
 
-## Applications
+## Results and Limitations
 
-- Gene-level representation learning
-- Cell type prediction
-- Transfer learning to new datasets
-- Foundation model comparisons
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Related Models
+## Connections
 
 - [[Cell2Sentence|Cell2Sentence]]
 - [[01_Papers/CELLama|CELLama]]
 - [[01_Papers/scGPT|scGPT]]
-
-## See Also
-
 - [[02_Concepts/Cell Foundation Models|Foundation Models]]
 - [[02_Concepts/Transformers for Biology|Transformers for Biology]]
 - [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|Benchmarking paper]]
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41551-024-01284-6). Published online 6 December 2024; the journal issue is dated 2025. The record now cites the journal article.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

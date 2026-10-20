@@ -18,3 +18,9 @@ last_updated: 2026-03-17
 ## Usage
 - Benchmark for reconstruction and generation quality in [[arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models|scLDM]]
 - Cross-tissue cell type annotation benchmark
+
+## Source and scope
+
+[Original Nature paper (2018)](https://doi.org/10.1038/s41586-018-0590-4); [GEO GSE109774](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE109774).
+
+The 2018 atlas, later Tabula Muris Senis releases and benchmark-specific processed matrices are distinct. Do not transfer the original atlas count to a differently processed benchmark. Checked 2026-10-20.

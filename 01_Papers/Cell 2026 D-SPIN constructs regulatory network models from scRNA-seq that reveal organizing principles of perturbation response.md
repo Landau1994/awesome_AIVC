@@ -33,14 +33,17 @@ date_read:
 
 # D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/42127893/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
-D-SPIN (Dimension-scalable single-cell perturbation integration network) is a computational framework for constructing mechanistically interpretable, generative models of cellular regulatory networks from single-cell mRNA-seq data across thousands of perturbation conditions. By leveraging [[Spin network model]] architecture—a specific form of [[Markov random field]]—D-SPIN infers how perturbations reconfigure regulatory interactions, allowing it to reveal global organization, identify key regulators of cell fate, and simulate cellular responses to unobserved conditions, such as combinatorial drug dosages.
+D-SPIN (Dimension-scalable single-cell perturbation integration network) is a computational framework for constructing mechanistically interpretable, generative models of cellular regulatory networks from single-cell mRNA-seq data across thousands of perturbation conditions. By leveraging [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Spin network model]] architecture—a specific form of [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Markov random field]]—D-SPIN infers how perturbations reconfigure regulatory interactions, allowing it to reveal global organization, identify key regulators of cell fate, and simulate cellular responses to unobserved conditions, such as combinatorial drug dosages.
 
 ## Key Points
-- D-SPIN integrates large-scale perturbation data into a unified, generative [[Gene Regulatory Network]] (GRN) model.
+- D-SPIN integrates large-scale perturbation data into a unified, generative [[02_Concepts/Gene Regulatory Networks|Gene Regulatory Network]] (GRN) model.
 - The framework uses a spin network approach to learn interaction parameters and condition-dependent bias vectors (perturbation responses).
-- It outperforms existing methods (like [[GENIE3]], [[PIDC]], [[GRNBoost2]]) in network reconstruction accuracy by effectively integrating perturbation information.
-- D-SPIN enables [[Dimension-scalable]] modeling by identifying [[Gene programs]] via [[oNMF]] (orthogonal nonnegative matrix factorization).
+- It outperforms existing methods (like [[05_Tools/Methods and Data Resources#GENIE3|GENIE3]], [[05_Tools/RNA Velocity Methods Reference#PIDC|PIDC]], [[05_Tools/Methods and Data Resources#GRNBoost2|GRNBoost2]]) in network reconstruction accuracy by effectively integrating perturbation information.
+- D-SPIN enables [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Dimension-scalable]] modeling by identifying [[02_Concepts/Gene Regulatory Networks|Gene programs]] via [[02_Concepts/Methods and Metrics Glossary#oNMF|oNMF]] (orthogonal nonnegative matrix factorization).
 - The framework successfully models combinatorial drug responses using an additive model with interaction strengths, enabling interpolation of cell-state distributions at unobserved dosages.
 - Identified mechanisms include the additive recruitment of gene programs in macrophages under multi-drug treatments.
 
@@ -50,15 +53,15 @@ D-SPIN (Dimension-scalable single-cell perturbation integration network) is a co
 - Custom drug-response profiling dataset in human peripheral blood mononuclear cells (PBMCs) across 502 small molecules.
 
 ### Model Architecture
-- [[Probabilistic graphical model]] based on the [[Ising model]] / [[Spin glass]] formalism.
-- [[Markov random field]] to simulate gene interactions.
-- [[oNMF]] used for unsupervised [[Gene program]] discovery.
-- [[Pseudolikelihood method]] used for scalable inference on large networks.
+- [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Probabilistic graphical model]] based on the [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Ising model]] / [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Spin glass]] formalism.
+- [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Markov random field]] to simulate gene interactions.
+- [[02_Concepts/Methods and Metrics Glossary#oNMF|oNMF]] used for unsupervised [[02_Concepts/Gene Regulatory Networks|Gene program]] discovery.
+- [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Pseudolikelihood method]] used for scalable inference on large networks.
 
 ### Training Strategy
 - Gradient ascent on the log-likelihood function.
-- Parallelized optimization using the [[Adam optimizer]] and [[Backtracking line search]].
-- [[L1 Regularization]] used for network sparsity and [[L2 Regularization]] for response vector constraints.
+- Parallelized optimization using the [[02_Concepts/Methods and Metrics Glossary#Adam|Adam optimizer]] and [[02_Concepts/Methods and Metrics Glossary#Backtracking line search|Backtracking line search]].
+- [[02_Concepts/Methods and Metrics Glossary#L1 Regularization|L1 Regularization]] used for network sparsity and [[02_Concepts/Methods and Metrics Glossary#L1 Regularization|L2 Regularization]] for response vector constraints.
 
 ## Results
 | Metric | Value | Baseline |
@@ -102,10 +105,10 @@ D-SPIN (Dimension-scalable single-cell perturbation integration network) is a co
 - Hopfield (1982) - *Neural networks and physical systems with emergent collective computational abilities.*
 
 ### Related Concepts
-- [[Gene Regulatory Network]]
-- [[Ising Model]]
-- [[Dimensionality Reduction]]
-- [[Combinatorial Drug Design]]
+- [[02_Concepts/Gene Regulatory Networks|Gene Regulatory Network]]
+- [[01_Papers/Cell 2026 D-SPIN constructs regulatory network models from scRNA-seq that reveal organizing principles of perturbation response|Ising Model]]
+- [[02_Concepts/Dimensionality Reduction|Dimensionality Reduction]]
+- [[02_Concepts/Drug Discovery|Combinatorial Drug Design]]
 
 ### Potential Applications
 - **Drug Discovery:** Predicting the synergistic effects of drug combinations in complex immune contexts.

@@ -21,6 +21,9 @@ date_read:
 
 # stVCR: spatiotemporal dynamics of single cells
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41592-026-03010-3). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > The paper introduces stVCR (spatiotemporal video cassette recorder), a generative deep-learning framework based on dynamical optimal transport that reconstructs continuous spatiotemporal trajectories—including cell differentiation, proliferation, and physical migration—from destructive, unpaired spatial transcriptomic snapshots. By uniquely integrating rigid-body transformation invariant optimal transport, unbalanced population matching, and biological priors, stVCR aligns temporal slices from different coordinate systems and enables interpretable downstream analysis of complex gene-space interactions.
 
@@ -34,8 +37,8 @@ date_read:
 ## Methods
 ### Data
 - **Simulated datasets**: Synthetic gene circuits with toggle switch dynamics, incorporating cell proliferation and spatial migration.
-- **Axolotl brain regeneration**: Time-series [[Stereo-seq]] data (2 to 20 days post-injury) to reconstruct wound response and regeneration.
-- **3D Drosophila embryo**: [[Stereo-seq]] data spanning E7–9 h to E9–10 h.
+- **Axolotl brain regeneration**: Time-series [[05_Tools/Methods and Data Resources#Stereo-seq|Stereo-seq]] data (2 to 20 days post-injury) to reconstruct wound response and regeneration.
+- **3D Drosophila embryo**: [[05_Tools/Methods and Data Resources#Stereo-seq|Stereo-seq]] data spanning E7–9 h to E9–10 h.
 
 ### Model Architecture
 - **Dimensionality Reduction**: An autoencoder projects the top 2,000 highly variable genes to a 10-dimensional embedded space.
@@ -92,7 +95,7 @@ date_read:
 ### Related Concepts
 - [[Spatial Transcriptomics]]
 - [[Optimal Transport]]
-- [[Neural ODEs]]
+- [[02_Concepts/Methods and Metrics Glossary#Continuous Normalizing Flows|Neural ODEs]]
 - [[Trajectory Inference]]
 - [[Gene Regulatory Networks]]
 

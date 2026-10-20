@@ -10,7 +10,7 @@ tags:
 category: Core Technique
 importance: medium
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Molecular Representations
@@ -20,7 +20,7 @@ last_updated: 2026-01-16
 
 ## Key Ideas
 - **Structure encoding**: Convert molecules to vectors
-- **Structure-activity relationships**: Similar structures → similar effects
+- **Structure-activity relationships**: Similar structures can have similar effects, but activity cliffs and cellular context can break this heuristic
 - **Transfer learning**: Pre-trained chemical embeddings
 - **Novel drug prediction**: Predict effects of unseen compounds
 
@@ -39,7 +39,7 @@ last_updated: 2026-01-16
 Drug SMILES → Molecule Encoder → Perturbation Embedding → Cell Response
 ```
 
-- Pre-trained molecule encoder (CDDD, MolBERT)
+- Encodes molecular information to condition response prediction; record the specific encoder and checkpoint used
 - Maps structure to perturbation effect
 - Enables novel drug prediction
 - [[01_Papers/chemCPA|chemCPA]]
@@ -55,3 +55,7 @@ Drug SMILES → Molecule Encoder → Perturbation Embedding → Cell Response
 
 ## Key Papers
 - [[01_Papers/chemCPA|chemCPA]]
+
+## Verification (2026-10-20)
+
+[chemCPA paper](https://arxiv.org/abs/2204.13545). Prediction for an unseen compound is a testable generalization claim, not guaranteed by using a molecular encoder.

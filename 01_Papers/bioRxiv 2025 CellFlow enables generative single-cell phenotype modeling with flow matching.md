@@ -6,8 +6,22 @@ authors:
   - Dominik Klein
   - Jonas Simon Fleck
   - Daniil Bobrovskiy
-  - Fabian J. Theis
+  - Lea Zimmermann
+  - Sören Becker
+  - Alessandro Palma
+  - Leander Dony
+  - Alejandro Tejada-Lapuerta
+  - Guillaume Huguet
+  - Hsiu-Chuan Lin
+  - Nadezhda Azbukina
+  - Fátima Sanchís-Calleja
+  - Theo Uscidda
+  - Artur Szalata
+  - Manuel Gander
+  - Aviv Regev
+  - Barbara Treutlein
   - J. Gray Camp
+  - Fabian J. Theis
 year: 2025
 journal: bioRxiv
 doi: 10.1101/2025.04.11.648220
@@ -25,6 +39,9 @@ date_read:
 ---
 
 # CellFlow enables generative single-cell phenotype modeling with flow matching
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.1101/2025.04.11.648220v1). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
 
 ## Quick Summary
 CellFlow is a flexible generative framework based on flow matching and optimal transport designed to model and predict single-cell transcriptomic phenotypes induced by complex, combinatorial perturbations. By leveraging a neural ordinary differential equation (ODE) and a permutation-invariant condition encoder, CellFlow accurately extrapolates to unseen biological contexts—including cytokine stimulations, drug treatments, and gene knockouts—across diverse systems ranging from peripheral blood cells to developing zebrafish embryos and brain organoids.
@@ -94,9 +111,9 @@ CellFlow is a flexible generative framework based on flow matching and optimal t
 
 ### Related Concepts
 - [[Optimal Transport]]
-- [[Neural Ordinary Differential Equations]]
+- [[02_Concepts/Methods and Metrics Glossary#Continuous Normalizing Flows|Neural Ordinary Differential Equations]]
 - [[Flow Matching]]
-- [[Single-cell Perturbational Proteomics]]
+- [[01_Papers/Cell 2026 Fifteen challenges for generative AI applications to cell biology|Single-cell Perturbational Proteomics]]
 
 ### Potential Applications
 - **Drug Discovery:** Prioritizing drug combinations for specific patient backgrounds.

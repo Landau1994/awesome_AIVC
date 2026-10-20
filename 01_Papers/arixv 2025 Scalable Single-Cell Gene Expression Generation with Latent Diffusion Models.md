@@ -29,6 +29,9 @@ date_read:
 
 # Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://arxiv.org/html/2511.02986v1). Checked the v1 source, including the Parse subset and downstream-task definitions. COVID-19 classification concerns infection status, and the Tabula Sapiens 2.0 evaluation uses a supervised classifier. Other individual table entries have not all been independently checked.
+
 ## Quick Summary
 The authors propose **scLDM**, a generative model designed for single-cell gene expression data that treats gene profiles as exchangeable sets rather than fixed vectors. The architecture combines a fully transformer-based [[Variational Autoencoders|Variational Autoencoder]] (VAE) with a [[Latent Diffusion Models|Latent Diffusion Model]] (specifically using [[Flow Matching]]). The VAE utilizes a novel Multi-head Cross-Attention Block (MCAB) to compress high-dimensional, sparse gene counts into fixed-size latent tokens. This approach achieves state-of-the-art performance in reconstruction, unconditional generation, and conditional generation on both observational and perturbational datasets, while also providing high-quality embeddings for downstream classification tasks.
 
@@ -42,7 +45,7 @@ The authors propose **scLDM**, a generative model designed for single-cell gene 
 ## Methods
 ### Data
 - **Observational Benchmarks**: [[Dentate Gyrus]], [[Tabula Muris]], and [[Human Lung Cell Atlas]] (HLCA).
-- **Perturbational Datasets**: [[Parse 1M]] (cytokine perturbations) and [[Replogle]] (CRISPR gene knockouts).
+- **Perturbational Datasets**: [[Parse 1M]] (the paper's curated single-donor subset of the 10-million-cell cytokine PBMC experiment; 18 cell types, 90 cytokines, 2,000 HVGs) and [[Replogle]] (CRISPRi gene knockdown). The Parse subset is distinct from the separate healthy/diabetic PBMC 1-million-cell dataset.
 - **Pre-training**: Human Census Data (CellxGene) containing ~33M cells.
 - **Downstream Evaluation**: [[COVID-19]] lung atlas and [[Tabula Sapiens 2.0]].
 
@@ -78,7 +81,8 @@ The authors propose **scLDM**, a generative model designed for single-cell gene 
 | Fréchet Dist ($\downarrow$) | **18.136** | 181.324 | 523.932 |
 | MMD$^2$ RBF ($\downarrow$) | **0.027** | 1.117 | 2.203 |
 
-### Downstream Classification (COVID-19)
+### Downstream Classification (COVID-19 infection status)
+Frozen embeddings are evaluated with a supervised classifier. The reported F1 is for infection-status detection, not cell-type annotation. The separate Tabula Sapiens 2.0 experiment uses logistic regression on six selected tissues; it is not label-free annotation.
 | Model | F1 Score | Recall | Precision |
 |-------|----------|--------|-----------|
 | **scLDM (270M)** | **0.820** | **0.836** | **0.806** |

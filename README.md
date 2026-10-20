@@ -4,7 +4,7 @@
 
 ## What is AI Virtual Cell?
 
-AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that simulate molecules, cells, and tissues across diverse states. They integrate:
+AI Virtual Cells (AIVCs) are a research vision for computational models that represent and predict biological processes across scales. Existing methods implement parts of this vision; a general, validated simulator of molecules, cells and tissues is not implied. Relevant inputs and methods include:
 - **Multi-omics data** (transcriptomics, proteomics, metabolomics)
 - **Deep learning architectures** (transformers, GNNs, diffusion models)
 - **Biological knowledge graphs**
@@ -17,30 +17,32 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 ## Vault Structure
 
 > [!note]
-> 
+>
 > awesome_AIVC/
-> 
+>
 > ├── 00_Dashboard/     # Navigation and tracking
-> 
+>
 > ├── 01_Papers/        # Paper notes (`$= dv.pages('#paper').length` papers)
-> 
+>
 > ├── 02_Concepts/      # Core concepts (`$= dv.pages('#concept').length` concepts)
-> 
+>
 > ├── 03_Models/        # Model architectures and comparisons
-> 
+>
 > ├── 04_Datasets/      # Datasets and benchmarks
-> 
+>
 > ├── 05_Tools/         # Software tools and libraries
-> 
+>
 > ├── 06_Projects/      # Personal projects and experiments
-> 
+>
 > ├── 07_People_Labs/   # Key researchers and institutions
-> 
+>
 > ├── 08_Resources/     # Tutorials, courses, and links
-> 
+>
 > └── Templates/        # Note templates
 
 ## Quick Links
+
+- [[00_Dashboard/Knowledge Base Audit 2026-10-20|Verification report and remaining uncertainties]]
 
 - [[00_Dashboard/Dashboard|Main Dashboard]]
 - [[00_Dashboard/Reading Queue|Reading Queue]]
@@ -51,7 +53,7 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ## Papers (`$= dv.pages('#paper').length`)
 
-### Foundation Models 
+### Foundation Models
 
 | Paper                                                                                        | Year | Key Innovation                                                |
 | -------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
@@ -60,12 +62,12 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 | [[01_Papers/scGPT\|scGPT]]                                                                   | 2024 | Gene tokenization, multi-task                                 |
 | [[01_Papers/Geneformer\|Geneformer]]                                                         | 2023 | Rank-value encoding                                           |
 | [[01_Papers/scFoundation\|scFoundation]]                                                     | 2024 | 100M params, read-depth aware                                 |
-| [[01_Papers/UCE\|UCE]]                                                                       | 2024 | 650M params, 8 species, best zero-shot                        |
-| [[01_Papers/scBERT\|scBERT]]                                                                 | 2022 | First BERT for single-cell                                    |
-| [[01_Papers/CellPLM\|CellPLM]]                                                               | 2024 | Cells-as-tokens, 100x faster                                  |
+| [[01_Papers/UCE\|UCE]] | 2024 preprint v2 | 650M-parameter version; cross-species embeddings |
+| [[01_Papers/scBERT\|scBERT]] | 2022 | BERT-style pretraining with Performer attention for cell annotation |
+| [[01_Papers/CellPLM\|CellPLM]]                                                               | 2024 | Cell-context modeling; task-specific efficiency results                                  |
 | [[01_Papers/GeneCompass\|GeneCompass]]                                                       | 2024 | Knowledge-informed, cross-species                             |
 | [[01_Papers/scPRINT\|scPRINT]]                                                               | 2025 | Zero-shot GRN inference                                       |
-| [[01_Papers/Cell2Sentence\|Cell2Sentence]]                                                   | 2024 | Google/Yale, LLM approach, 27B                                |
+| [[01_Papers/Cell2Sentence\|C2S-Scale]] | 2026 v4 (first posted 2025) | Scaled language models for single-cell analysis; distinct from original Cell2Sentence |
 | [[01_Papers/bioRxiv 2026 STACK In-Context Learning of Single-Cell Biology\|STACK]]           | 2026 | In-context learning for single-cell                           |
 
 ### Virtual Cell Modeling
@@ -87,27 +89,27 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 |-------|------|----------------|
 | [[01_Papers/arixv 2025 Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models\|scLDM]] | 2025 | Latent diffusion for gene expression |
 | [[01_Papers/arXiv 2026 Latent Causal Diffusions for Single-Cell Perturbation Modeling\|LCD]] | 2026 | Causal diffusion, perturbation |
-| [[01_Papers/CFGen\|CFGen]] | 2024 | Flow matching in scVI latent space |
+| [[01_Papers/CFGen\|CFGen]] | 2025 ICLR | Latent flow matching with modality-specific count decoders |
 
 ### Architecture & Set Processing
 
 | Paper | Year | Key Innovation |
 |-------|------|----------------|
 | [[01_Papers/Perceiver\|Perceiver]] | 2021 | Cross-attention, input-size agnostic |
-| [[01_Papers/SetTransformer\|Set Transformer]] | 2019 | ISAB, linear-complexity set processing |
+| [[01_Papers/SetTransformer\|Set Transformer]] | 2019 | ISAB attention costs O(nm) for n inputs and m inducing points; linear in n for fixed m |
 
 ### Perturbation Models
 
 | Paper | Year | Key Innovation |
 |-------|------|----------------|
 | [[01_Papers/GEARS\|GEARS]] | 2023 | GNN + knowledge graph, multi-gene |
-| [[01_Papers/CPA\|CPA]] | 2023 | Compositional VAE, drug combinations |
+| [[01_Papers/CPA\|CPA]] | 2023 | Compositional autoencoder, drug combinations |
 | [[01_Papers/scGen\|scGen]] | 2019 | Latent arithmetic (foundational) |
 | [[01_Papers/scVI\|scVI]] | 2018 | VAE + negative binomial, foundational |
 | [[01_Papers/CellOT\|CellOT]] | 2023 | Optimal transport, patient transfer |
 | [[01_Papers/chemCPA\|chemCPA]] | 2022 | Novel drug prediction |
 | [[01_Papers/State\|STATE]] | 2025 | Cross-context perturbation prediction |
-| [[01_Papers/ncb 2025 Decoding heterogeneous single-cell perturbation responses\|PerturbNet]] | 2025 | Heterogeneous perturbation decoding |
+| [[01_Papers/ncb 2025 Decoding heterogeneous single-cell perturbation responses\|Perturbation-response score]] | 2025 | Quantifies heterogeneous perturbation responses (PS) |
 | [[01_Papers/bioRxiv 2026 X-Cell Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models\|X-Cell]] | 2026 | 4.9B diffusion LM, scaling laws |
 
 ### Benchmarking & Evaluation
@@ -183,15 +185,17 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 
 ### By Capability
 
-| Task                        | Best Models                       |
+These are examples, not a ranking. Compare matched data splits, baselines, model versions and evaluation metrics.
+
+| Task                        | Example Models                       |
 | --------------------------- | --------------------------------- |
-| Cell annotation (zero-shot) | UCE, Geneformer                   |
+| Cell representations and annotation | UCE, Geneformer (evaluation protocol matters)                   |
 | Perturbation prediction     | X-Cell, GEARS, scGPT, CPA, STATE |
 | Gene network inference      | scPRINT, GeneCompass              |
 | Cross-species               | UCE (8 species), GeneCompass      |
 | Novel drug prediction       | chemCPA, GPS                      |
 | Spatiotemporal dynamics     | stVCR                             |
-| Speed                       | CellPLM (100x faster)             |
+| Efficient cell modeling     | CellPLM (compare on matched tasks and hardware)             |
 
 ### By Architecture
 
@@ -199,24 +203,25 @@ AI Virtual Cells (AIVCs) are multi-scale, multimodal neural network models that 
 |------|--------|
 | Transformers | scGPT, Geneformer, scFoundation, UCE, STACK, VariantFormer, Gemini |
 | GNN | GEARS |
-| VAE | CPA, scGen, scVI, PerturbNet |
+| VAE | scGen, scVI |
+| Compositional autoencoder | CPA, chemCPA |
 | Optimal Transport | CellOT, stVCR |
 | Diffusion | scLDM, LCD, X-Cell |
 | Flow Matching | CFGen |
-| LLM | Cell2Sentence, Gemini |
+| LLM | C2S-Scale, Gemini |
 | Set Processing | Perceiver, Set Transformer |
 | Whole-Cell Simulation | 4DWCM, PhysiCell |
 
 ---
 
-## Datasets (7)
+## Selected Datasets
 
 | Dataset | Type | Description |
 |---------|------|-------------|
 | [[04_Datasets/COVID-19\|COVID-19]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | COVID-19 immune response |
 | [[04_Datasets/Dentate Gyrus\|Dentate Gyrus]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Neurogenesis, RNA velocity |
 | [[04_Datasets/Human Lung Cell Atlas\|Human Lung Cell Atlas]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Lung reference atlas |
-| [[04_Datasets/Parse 1M\|Parse 1M]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | 1M cells, large-scale benchmark |
+| [[04_Datasets/Parse 1M\|Parse 1M]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Single-donor subset of the Parse 10M cytokine dataset |
 | [[04_Datasets/Replogle\|Replogle]] | [[02_Concepts/Perturb-seq\|Perturb-seq]] | Genome-wide CRISPRi screen |
 | [[04_Datasets/Tabula Muris\|Tabula Muris]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Mouse cross-tissue atlas |
 | [[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]] | [[02_Concepts/scRNA-seq\|scRNA-seq]] | Human cross-tissue atlas |
@@ -258,7 +263,7 @@ dv.table(["Category", "Count"], [
   ["Concepts", concepts],
   ["Datasets", datasets],
   ["Models", models],
-  ["Templates", templates+4]
+  ["Templates", dv.pages('"Templates"').length]
 ]);
 ```
 
@@ -285,7 +290,7 @@ dv.table(["Category", "Count"], [
 - [[01_Papers/bioRxiv 2026 Benchmarking zero-shot single-cell foundation model embeddings for cellular dynamics reconstruction|Dynamics Bench]]: Zero-shot FM embeddings benchmark for cellular dynamics
 
 **Previously Unlisted Papers Now in Tables (11):**
-- STACK, STATE, PerturbNet, VariantFormer, S2O Fine-mapping, CellLink
+- STACK, STATE, perturbation-response score (originally mislabeled PerturbNet; corrected 2026-10-20), VariantFormer, S2O Fine-mapping, CellLink
 - Zero-shot Eval, Perturbation Bench, scFM Bench, RNA Velocity Bench (17), RNA Velocity Bench (29)
 
 **New Paper Sections:**
@@ -295,7 +300,7 @@ dv.table(["Category", "Count"], [
 
 **Updated Model Comparison:**
 - By Capability: added X-Cell, STATE, GPS, stVCR
-- By Architecture: added STACK, VariantFormer, PerturbNet, stVCR, X-Cell
+- By Architecture: added STACK, VariantFormer, stVCR, X-Cell. The historical PerturbNet entry was a misidentification of the perturbation-response score, not a model architecture (corrected 2026-10-20).
 
 **Updated Statistics:**
 - Papers: 40 (previously 36)
@@ -303,9 +308,9 @@ dv.table(["Category", "Count"], [
 ### 2026-03-17 - Generative Models, Datasets & Concepts Expansion
 
 **New Papers Added (4):**
-- [[01_Papers/CFGen|CFGen]]: Flow matching in scVI latent space for single-cell generation
+- [[01_Papers/CFGen|CFGen]]: Latent flow matching with modality-specific count decoders for single-cell generation
 - [[01_Papers/Perceiver|Perceiver]]: Cross-attention based input-size agnostic architecture
-- [[01_Papers/SetTransformer|Set Transformer]]: ISAB for linear-complexity permutation-invariant set processing
+- [[01_Papers/SetTransformer|Set Transformer]]: ISAB attention costs O(nm) for n inputs and m inducing points, linear in n when m is fixed
 - [[01_Papers/scVI|scVI]]: Foundational VAE with negative binomial likelihood for scRNA-seq
 
 **New Concepts Added (5):**

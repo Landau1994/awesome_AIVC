@@ -12,134 +12,26 @@ status: draft
 
 # Dynverse: Trajectory Inference Benchmarks
 
-## Overview
+Dynverse is an ecosystem for running and comparing single-cell trajectory inference methods. Its reference implementation is built around R packages (`dyno`, `dynwrap`, `dynmethods`, `dyneval`) and containerized method wrappers. It is not a Python package with the API `import dynverse` shown in the previous note.
 
-**Dynverse** is a comprehensive benchmark collection and evaluation framework for trajectory inference methods in single-cell analysis. It provides standardized datasets and metrics for comparing algorithms that reconstruct cellular trajectories and developmental pathways.
+## Data and evaluation
 
-## What It Is
+Wrapped expression data and trajectory objects describe milestones, their network and cell progressions. AnnData files can be converted for particular workflows, but `dpt_pseudotime` is not a mandatory Dynverse field. Inferred topology, cell ordering and branch assignments should be assessed separately; biological annotations are imperfect reference standards.
 
-Dynverse contains:
-- **Simulated Datasets**: Synthetic trajectories with known ground truth
-- **Real Datasets**: Curated single-cell datasets with known biology
-- **Gold Standard Trajectories**: Expert-curated reference trajectories
-- **Evaluation Metrics**: Standardized comparison methods
+## Official workflow
 
-## Key Components
+Use the [official R quick start](https://dynverse.org/users/3-user-guide/3-running/) with a supported container runtime and compatible package versions. Its documented sequence is `wrap_expression(...)`, then `infer_trajectory(dataset, ti_comp1())`. This note does not claim that a local environment has been installed or executed.
 
-### Datasets Provided
+## Sources
 
-1. **Linear Trajectories**
-   - Simple cell differentiation paths
-   - Single lineage progression
+- [Dynverse user documentation](https://dynverse.org/users/)
+- [Function reference](https://dynverse.org/dyno/reference/infer_trajectories.html)
+- [Saelens et al., A comparison of single-cell trajectory inference methods (2019)](https://doi.org/10.1038/s41587-019-0071-9)
 
-2. **Branching Trajectories**
-   - Bifurcation points (cell fate decisions)
-   - Multiple differentiation pathways
+## Related notes
 
-3. **Tree-Structured Trajectories**
-   - Complex multi-lineage differentiation
-   - Realistic developmental scenarios
+- [[02_Concepts/Trajectory Inference]]
+- [[02_Concepts/Principal Component Analysis]]
+- [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models]]
 
-### Benchmark Metrics
-
-- **Correlation of distances**: Do inferred and true distances match?
-- **Neighborhood preservation**: Are local neighborhoods preserved?
-- **Bifurcation detection**: Are branch points correctly identified?
-- **Overall trajectory similarity**: Global structure accuracy
-
-## Applications in Single-Cell Analysis
-
-### 1. Method Evaluation
-- Compare new trajectory inference algorithms
-- Fair, standardized comparison
-- Identify strengths/weaknesses
-
-### 2. Benchmarking Studies
-- Foundation model trajectory quality
-- PCA vs deep learning comparison
-- Assess embedding methods
-
-### 3. Integration with AIVC
-
-[[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|Comprehensive scFM benchmarks]] use Dynverse to:
-- Evaluate 13 foundation models on trajectories
-- Compare to classical methods (PCA)
-- Show PCA preserves continuity better than some transformers
-
-## Data Format
-
-- **AnnData objects** (standard single-cell format)
-- Metadata fields:
-  - `dpt_pseudotime`: Pseudotime along trajectory
-  - `branch_id`: Branch assignment
-  - `milestone_id`: Trajectory milestone
-
-## Available Datasets
-
-Examples include:
-- Fibroblast to myofibroblast differentiation
-- Hematopoietic stem cell differentiation
-- T cell activation and differentiation
-- Simulated branching scenarios
-
-## Using Dynverse
-
-```python
-import dynverse as dyn
-from anndata import read_h5ad
-
-# Load dataset
-adata = read_h5ad('trajectory_dataset.h5ad')
-
-# Run trajectory method
-trajectory = dyn.infer_trajectory(adata, method='slingshot')
-
-# Evaluate against gold standard
-metrics = dyn.evaluate_trajectory(
-    trajectory, 
-    gold_standard=adata.obs['true_trajectory']
-)
-print(metrics)
-```
-
-## Key Findings
-
-Recent benchmarking reveals:
-- **PCA Strength**: Often preserves trajectory continuity better than transformers
-- **Method Variation**: Large differences between trajectory methods
-- **Dataset-Dependent**: No universal winner; context matters
-
-## Advantages
-
-✅ **Standardized Evaluation**: Fair comparison framework
-✅ **Comprehensive Datasets**: Diverse trajectory types
-✅ **Reproducibility**: Published benchmarks
-✅ **Active Development**: Regularly updated with new methods
-
-## Limitations
-
-⚠️ **Synthetic Bias**: Simulated data may not match real biology
-⚠️ **Limited Real Data**: Relatively few real datasets with ground truth
-⚠️ **Metric Limitations**: No single perfect metric
-
-## Related Resources
-
-- [[02_Concepts/Trajectory Inference|Trajectory Inference]]
-- [[02_Concepts/Principal Component Analysis|PCA]]
-- Foundation model evaluations
-
-## Tools Using Dynverse
-
-- scVelo: Velocity-based trajectory inference
-- Slingshot: Curve-based trajectories
-- Pseudotime algorithms
-
-## See Also
-
-- Trajectory inference methods
-- Single-cell analysis benchmarks
-- Developmental biology applications
-
----
-
-**Last Updated**: 2026-03-25
+Checked 2026-10-20: implementation language and documented object/API structure. Comparative model results belong to their individual benchmark protocols.

@@ -16,19 +16,19 @@ authors:
   - Josh Kaminker
   - Jason A. Vander Heiden
   - Aviv Regev
-year: 2024
-journal: Nature
-doi: 10.1038/s41586-024-08411-y
-url: https://doi.org/10.1038/s41586-024-08411-y
+year: 2025
+journal: "Nature"
+doi: "10.1038/s41586-024-08411-y"
+url: "https://doi.org/10.1038/s41586-024-08411-y"
 tags:
   - paper
   - AIVC
   - Foundation-Models
   - scRNA-seq
 status: unread
-rating: 
+rating:
 date_added: 2024-05-24
-date_read: 
+date_read:
 ---
 
 # A cell atlas foundation model for scalable search of similar human cells
@@ -37,16 +37,16 @@ date_read:
 > The authors introduce SCimilarity, a deep metric learning foundation model trained on over 23 million single-cell RNA-seq profiles across diverse human tissues. By combining supervised triplet loss and unsupervised reconstruction loss, SCimilarity learns a unified and interpretable 128-dimensional representation of cell states. This framework enables rapid, scalable searches for transcriptionally similar cells across hundreds of studies without the need for manual batch correction or harmonized annotations. As a proof of concept, the authors utilized SCimilarity to identify fibrosis-associated macrophages (FMΦs) across multiple fibrotic diseases and uncovered a 3D hydrogel in vitro culture system that replicates this specific in vivo cell state.
 
 ## Key Points
-- Uses [[Metric Learning]] to embed single-cell profiles into a shared hyperspherical latent space where similar cells are close and dissimilar cells are far apart.
+- Uses [[02_Concepts/Prototypical Learning|Metric Learning]] to embed single-cell profiles into a shared hyperspherical latent space where similar cells are close and dissimilar cells are far apart.
 - Trained on 7.9 million cells from 56 studies and evaluated against a reference atlas of 23.4 million cells from 412 studies.
 - Avoids the need for explicit batch correction during queries by forcing cross-study anchor/positive pairs during triplet loss training.
-- Scales efficiently to millions of cells, taking ~50 milliseconds to retrieve nearest neighbors using [[hnswlib]] approximate nearest-neighbor search.
-- Integrates an explainability framework based on [[Integrated Gradients]] to identify key genes driving the similarity between cell profiles.
+- Scales efficiently to millions of cells, taking ~50 milliseconds to retrieve nearest neighbors using [[05_Tools/Methods and Data Resources#hnswlib|hnswlib]] approximate nearest-neighbor search.
+- Integrates an explainability framework based on [[02_Concepts/Methods and Metrics Glossary#Integrated Gradients|Integrated Gradients]] to identify key genes driving the similarity between cell profiles.
 - Identified FMΦ-like cells not only in interstitial lung disease but also in COVID-19, various cancers, and an ex vivo 3D hematopoietic stem cell culture model.
 
 ## Methods
 ### Data
-- **Corpus**: 412 sc/snRNA-seq studies generated primarily with the 10x Genomics Chromium platform, totaling 23.4 million cells. 
+- **Corpus**: 412 sc/snRNA-seq studies generated primarily with the 10x Genomics Chromium platform, totaling 23.4 million cells.
 - **Training Set**: 7.9 million single-cell profiles from 56 studies with author-provided annotations mapped to 203 Cell Ontology terms.
 - **Validation Set**: 15 studies (1.4 million cells) explicitly held out from the training phase to evaluate zero-shot generalization and integration.
 
@@ -57,7 +57,7 @@ date_read:
 - Incorporates 40% input dropout and 50% hidden layer dropout for regularization.
 
 ### Training Strategy
-- Simultaneously optimizes two objectives: (1) a supervised [[Triplet Loss]] with semi-hard negative mining to cluster similar cell types across studies, and (2) an unsupervised [[Reconstruction Loss]] to preserve subtle intra-cell-type transcriptional variation.
+- Simultaneously optimizes two objectives: (1) a supervised [[02_Concepts/Methods and Metrics Glossary#Triplet Loss|Triplet Loss]] with semi-hard negative mining to cluster similar cell types across studies, and (2) an unsupervised [[02_Concepts/Methods and Metrics Glossary#MSE|Reconstruction Loss]] to preserve subtle intra-cell-type transcriptional variation.
 - Triplet selection strictly required positive cells (same Cell Ontology term) to come from a different study than the anchor, forcing the model to learn batch-invariant biology.
 - Relationships with vertical (ancestor-descendant) Cell Ontology links were excluded to prevent ambiguous comparisons.
 
@@ -100,11 +100,11 @@ date_read:
 - Mapping single-cell data to reference atlases by transfer learning [scArches] (Lotfollahi et al., 2022)
 
 ### Related Concepts
-- [[Metric Learning]]
-- [[Foundation Models]]
+- [[02_Concepts/Prototypical Learning|Metric Learning]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
 - [[02_Concepts/scRNA-seq|Single-cell RNA-seq]]
-- [[Batch Correction]]
-- [[Explainable AI]]
+- [[02_Concepts/Batch Correction|Batch Correction]]
+- [[05_Tools/AI and Scientific Computing Reference#Explainable AI|Explainable AI]]
 
 ### Potential Applications
 - Automated, fast cell-type annotation for newly sequenced scRNA-seq datasets.
@@ -113,3 +113,8 @@ date_read:
 
 ## Notes
 -
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41586-024-08411-y). Published online 20 November 2024; the journal issue is dated 2025.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

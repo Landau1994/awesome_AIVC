@@ -9,7 +9,7 @@ authors:
   - Xiang Zhou
 year: 2026
 journal: bioRxiv
-doi: https://doi.org/10.64898/2026.01.06.698060
+doi: 10.64898/2026.01.06.698060
 url: https://doi.org/10.64898/2026.01.06.698060
 tags:
   - paper
@@ -24,6 +24,9 @@ date_read:
 ---
 
 # A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.01.06.698060v1). This note summarizes v1. [v2](https://www.biorxiv.org/content/10.64898/2026.01.06.698060v2) is titled “Accessible and reproducible deployment reveals the practical boundaries of single-cell foundation models”, adds authors, and expands to nearly 100 datasets. Preserve the v1 title/counts here; do not cite them as the latest version.
 
 ## Quick Summary
 > This paper presents a standardized, fully automated, and containerized computational framework for benchmarking single-cell foundation models (scFMs). The authors use this infrastructure to systematically evaluate 13 scFMs alongside classical baselines across more than 50 datasets in zero-shot, few-shot, and fine-tuning settings. The study reveals that while scFMs provide distinct advantages in low-label (few-shot) scenarios and transfer learning, they frequently fail to outperform simple baselines like PCA in zero-shot embedding quality, batch correction, and spatial transcriptomics generalization, suggesting that model scale alone does not guarantee superior performance.

@@ -11,7 +11,7 @@ tags:
 category: Core Technique
 importance: critical
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Transformers for Biology
@@ -61,8 +61,8 @@ Input → LayerNorm → MultiHeadAttention → + → LayerNorm → FFN → + →
 **scRNA-seq**: Genes have no inherent order
 
 **Solutions**:
-- Geneformer: Rank genes by expression (most → least expressed)
-- scGPT: Learn positional embeddings per gene
+- Geneformer: Rank genes after library-size and corpus gene-specific normalization
+- scGPT: Combine gene-identity embeddings with expression-value embeddings; gene identity is not an arbitrary sequence-position encoding
 - CellPLM: Treat cells as tokens, tissues as sentences
 
 ### Challenge 2: Expression Values are Continuous
@@ -102,7 +102,7 @@ Cell Embedding / Gene Predictions
 ```
 Gene Expression Vector
 ↓
-Rank Encoding (sort genes by expression)
+Rank Encoding (sort corpus-normalized expression)
 ↓
 Gene Embeddings (ordered by rank)
 ↓
@@ -122,9 +122,9 @@ Cell Embedding
 
 ## Attention Patterns in Biology
 
-### What Attention Captures
+### Candidate Associations in Attention
 - **Gene-gene co-expression**: Functionally related genes attend to each other
-- **Regulatory relationships**: TFs attend to target genes
+- **Candidate regulatory relationships**: Attention-derived edges require independent validation
 - **Pathway membership**: Genes in same pathway attend together
 
 ### Extracting Biological Insights
@@ -133,7 +133,7 @@ Cell Embedding
 attention_weights = model.get_attention(cell)
 
 # Attention can reveal gene relationships
-# High attention between gene A and B suggests functional link
+# High attention is a model association, not proof of a functional or causal link
 ```
 
 ## Pre-training Objectives
@@ -187,8 +187,8 @@ class CellTransformer(nn.Module):
 | Aspect | Transformer | GNN | VAE |
 |--------|-------------|-----|-----|
 | Inductive bias | Attention (implicit) | Graph structure (explicit) | Latent distribution |
-| Scalability | O(n²) attention | O(edges) | O(n) |
-| Pre-training | Easy (MLM) | Harder | Reconstruction |
+| Scalability | Dense attention is quadratic in token count | Depends on graph, width and message-passing steps | Depends on encoder/decoder architecture |
+| Pre-training | Masked or autoregressive objectives | Many self-supervised objectives available | Variational reconstruction objective |
 | Knowledge integration | Implicit | Explicit edges | Implicit |
 
 ## Related Concepts
@@ -211,3 +211,7 @@ class CellTransformer(nn.Module):
 - "Attention Is All You Need" (original paper)
 - Stanford CS224N: NLP with Deep Learning
 - Jay Alammar's "The Illustrated Transformer"
+
+## Verification (2026-10-20)
+
+[scGPT paper](https://www.nature.com/articles/s41592-024-02201-0); [Geneformer rank-value encoding](https://huggingface.co/ctheodoris/Geneformer). VAE denotes a modeling framework and can itself use transformer or graph components, so these categories are not mutually exclusive.

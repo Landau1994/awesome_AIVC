@@ -10,7 +10,7 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Optimal Transport
@@ -22,19 +22,21 @@ last_updated: 2026-01-16
 - **Transport map**: Function T that transforms distribution P to Q
 - **Minimal effort**: Find T that minimizes total "cost"
 - **Unpaired data**: Works without matched before/after samples
-- **Distribution-level**: Models population shifts, not single cells
+- **Distribution constraints**: Fit population distributions; an inferred map may act on individual cells but does not identify their true counterfactual fates
 
 ## Mathematical Formulation
 
 ### Monge Problem
-$$T^* = \arg\min_T \int c(x, T(x)) dP(x)$$
+$$T^* = \arg\min_{T:\,T_\#P=Q} \int c(x, T(x))\,dP(x).$$
+
+The pushforward constraint $T_\#P=Q$ is essential; a deterministic transport map need not exist for every pair of distributions.
 
 ### Wasserstein Distance
-$$W_p(P, Q) = \left(\inf_{\gamma \in \Gamma(P,Q)} \int c(x,y)^p d\gamma(x,y)\right)^{1/p}$$
+$$W_p(P,Q)=\left(\inf_{\pi\in\Pi(P,Q)}\int d(x,y)^p\,d\pi(x,y)\right)^{1/p},\qquad p\ge1.$$
+
+Here $d$ is a metric and $\Pi(P,Q)$ contains couplings with marginals $P,Q$; finite $p$th moments are assumed.
 
 ## Application: CellOT
-
-Here is the Mermaid diagram corresponding to the selected text:
 
 ```mermaid
 graph LR
@@ -51,3 +53,7 @@ graph LR
 
 ## Key Papers
 - [[01_Papers/CellOT|CellOT]]
+
+## Verification (2026-10-20)
+
+Restored the pushforward constraint in the Monge problem and specified the metric/moment assumptions for Wasserstein distance. [Computational Optimal Transport](https://arxiv.org/abs/1803.00567); [CellOT](https://doi.org/10.1038/s41592-023-01969-x).

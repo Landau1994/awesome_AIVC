@@ -15,7 +15,6 @@ end_date:
 # How to measure the performance of an aivc-like model
 
 ## Objective
-> What are you trying to achieve?
 To establish a comprehensive, multi-task evaluation framework for assessing the performance, generalizability, and biological fidelity of AI Virtual Cell (AIVC) and single-cell foundation models (scFMs) across diverse biological contexts.
 
 ## Background
@@ -32,7 +31,7 @@ To fully evaluate an AIVC-like model, we must measure performance across several
   - **Goal:** Assess how well the model's latent space separates distinct cell types without prior specific training on that dataset.
 - **2. Perturbation Response Prediction:**
   - **Metrics:** Pearson/Spearman correlation (predicted vs. actual post-perturbation gene expression), Mean Squared Error (MSE), Directional Accuracy (for up/down-regulated genes).
-  - **Goal:** Evaluate the model's causal understanding of genetic or chemical perturbations (e.g., CRISPR knockouts).
+  - **Goal:** Evaluate predictive transfer under specified genetic or chemical interventions. Predictive accuracy alone does not establish a causal mechanism; distinguish CRISPRi, CRISPRa and knockout experiments.
 - **3. Gene Regulatory Network (GRN) Inference:**
   - **Metrics:** AUPRC (Area Under the Precision-Recall Curve), AUROC.
   - **Goal:** Measure the accuracy of inferred gene-gene interactions and regulatory edges.
@@ -75,7 +74,7 @@ To fully evaluate an AIVC-like model, we must measure performance across several
 - *(To be filled after running initial benchmarks)*
 
 ## Code Repository
-- [Link to local benchmarking scripts / scverse ecosystem tools]
+- Benchmark scripts: not yet recorded. Reference tools are listed in [[05_Tools/Index - Tools]].
 
 ## Related Work
 - [[01_Papers/bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|scFM Bench]]
@@ -92,3 +91,13 @@ To fully evaluate an AIVC-like model, we must measure performance across several
 ## Notes
 - **Crucial Consideration:** As noted in the GBAI review, foundation models sometimes fail to outperform simpler, specialized baselines on specific tasks. We must include simple baselines (e.g., mean expression prediction for perturbations) to prove true emergent capabilities.
 - Ensure that the evaluation metrics account for the "black box" nature of generalist models by incorporating biological ground-truth validations where possible.
+
+## Evaluation protocol clarification — 2026-10-20
+
+- Separate frozen embeddings, a classifier fitted on labeled target data (linear probing), and a genuinely label-free/zero-shot task. A frozen encoder with a trained classifier is not automatically zero-shot annotation.
+- Partition donors, studies, perturbations or contexts according to the claim; check pretraining overlap before computing results.
+- Report effect changes from control as well as expression correlations, add mean/linear baselines, and aggregate uncertainty at independent donor/perturbation units.
+- Integration metrics must balance batch mixing with biological conservation; raw cLISI and rescaled benchmark cLISI need explicit direction conventions.
+- The blank Results table is a planned experiment, not measured evidence.
+
+Sources: [scPerturb](https://doi.org/10.1038/s41592-023-02144-y), [single-cell integration benchmark](https://doi.org/10.1038/s41592-021-01336-8), and the linked benchmark notes.

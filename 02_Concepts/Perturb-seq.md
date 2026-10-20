@@ -30,7 +30,7 @@ status: complete
 
 ## Experimental Workflow
 1. Design and deliver pooled CRISPR guides.
-2. Capture edited cells and their guide identities.
+2. Capture perturbed cells and their guide identities; CRISPRi/CRISPRa alter transcription without requiring DNA cutting.
 3. Perform scRNA-seq and build cell-by-gene count matrices.
 4. Compare perturbed cells with controls for causal analysis.
 
@@ -54,5 +54,5 @@ status: complete
 - Public resources such as scPerturb and Replogle datasets.
 
 ## Learning Resources
-- Review papers on single-cell perturbation screening.
-- Protocol papers from early Perturb-seq studies.
+- [Dixit et al., Perturb-seq (Cell, 2016)](https://doi.org/10.1016/j.cell.2016.11.038)
+- [Replogle et al., genome-scale Perturb-seq (Cell, 2022)](https://doi.org/10.1016/j.cell.2022.05.013)

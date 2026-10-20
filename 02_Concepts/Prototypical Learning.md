@@ -1,6 +1,6 @@
 ---
 title: Prototypical Learning
-aliases: [Prototypical Networks, Prototype Learning, Few-shot]
+aliases: [Prototypical Networks, Prototype Learning]
 tags:
   - concept
   - machine-learning
@@ -65,8 +65,8 @@ where $d$ is typically Euclidean or cosine distance.
 ✅ **Low Sample Complexity**: Works with 1-5 examples
 ✅ **Simple**: Easy to implement and understand
 ✅ **Fast**: No retraining needed; just compute prototypes
-✅ **Interpretable**: Prototypes are actual examples (or their mean)
-✅ **Generalizes**: Works across different domains
+✅ **Interpretable**: Prototypes are mean embedding vectors; they need not correspond to an observed or biologically valid cell
+✅ **Transferable in suitable settings**: Cross-domain performance must be measured
 
 ## Applications in Single-Cell Biology
 
@@ -91,18 +91,16 @@ where $d$ is typically Euclidean or cosine distance.
 ## Workflow Example
 
 ```python
-# 1. Learn embeddings on large labeled dataset
-encoder = train_encoder(large_dataset)
+import numpy as np
 
-# 2. For new task (e.g., rare cell type):
-support_set = [example1, example2]  # Few examples
-support_emb = encoder(support_set)
-prototype = support_emb.mean(axis=0)
-
-# 3. Classify query cells
-query_emb = encoder(query_cells)
-distances = euclidean(query_emb, prototype)
-predictions = argmin(distances)
+# support_embeddings: (n_support, d); query_embeddings: (n_query, d)
+# support_labels supplies one class label per support example.
+classes = np.unique(support_labels)
+prototypes = np.stack([
+    support_embeddings[support_labels == c].mean(axis=0) for c in classes
+])
+distances = ((query_embeddings[:, None, :] - prototypes[None, :, :]) ** 2).sum(axis=2)
+predictions = classes[distances.argmin(axis=1)]
 ```
 
 ## Comparison with Other Few-Shot Methods
@@ -117,14 +115,14 @@ predictions = argmin(distances)
 ## Key Parameters
 
 ### Distance Metric
-- **Euclidean**: Common, assumes Gaussian
+- **Squared Euclidean**: Used in the original formulation; it is compatible with a spherical Gaussian class model, but applying the distance alone does not prove Gaussian data
 - **Cosine**: Better for normalized embeddings
 - **Learnable**: Can learn metric end-to-end
 
 ### Number of Shots
 - **1-shot**: Very few examples, harder
 - **5-shot**: More stable, practical
-- **10-shot**: Often performs similarly to 5-shot
+- **10-shot**: Additional labels may help; the gain depends on the task
 
 ### Embedding Dimension
 - Larger → more expressive but slower
@@ -152,10 +150,7 @@ predictions = argmin(distances)
 
 ## Recent Work in Single-Cell
 
-Recent benchmarking shows [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|prototypical learning with foundation model embeddings]] achieves:
-- ~85% accuracy with 1-shot on liver cell types
-- Comparable to fine-tuning with much less computation
-- Works across multiple datasets with same prototypes
+[[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|The single-cell benchmark]] evaluates few-shot classification with pretrained embeddings. The former ~85% liver accuracy and “same prototypes across datasets” claims lack a pinpointed experimental setting here and are withdrawn.
 
 ## See Also
 
@@ -165,4 +160,8 @@ Recent benchmarking shows [[bioRxiv 2026 A unified framework enables accessible 
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Prototypical Networks original paper](https://arxiv.org/abs/1703.05175). The encoder is learned on training tasks; fixed-encoder inference still requires a prototype for every supported class. No-shot labels require additional semantic information.

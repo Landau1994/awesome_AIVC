@@ -1,13 +1,12 @@
 ---
-title: "Dynamo"
+title: "Mapping transcriptomic vector fields of single cells"
 aliases:
   - dynamo
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Xiaojie Qiu", "Yan Zhang", "Jorge D. Martin-Rufino", "et al."]
+year: 2022
+journal: "Cell"
+doi: "10.1016/j.cell.2021.12.045"
+url: "https://doi.org/10.1016/j.cell.2021.12.045"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# Dynamo
+# Mapping transcriptomic vector fields of single cells
 
 ## Quick Summary
-> `Dynamo` is a framework for modeling vector-field dynamics in single-cell data, supporting RNA velocity analysis and continuous trajectory reconstruction.
 
-## Key Points
-- Learns vector fields in transcriptomic state space.
-- Supports downstream tasks such as fate prediction and fixed-point analysis.
-- Bridges RNA velocity and dynamical systems analysis.
+Dynamo reconstructs continuous transcriptomic vector fields from estimated cellular velocities, enabling analysis of cell-state transitions, fixed points and putative regulatory relationships.
 
-## Methods
-### Data
-- Single-cell expression data with optional spliced/unspliced counts.
+## Methods and Evidence
 
-### Model Architecture
-- Vector-field learning over reduced-dimensional cell-state manifolds.
+Uses RNA splicing and/or metabolic-labeling measurements with kinetic models. Absolute velocity estimation depends on suitable labeling information and modeling assumptions. Vector-field extrapolation and proposed perturbation effects require independent validation.
 
-### Training Strategy
-- Estimates local directions, then reconstructs global dynamics.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| Dynamics interpretability | High | Strong advantage over purely black-box approaches |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Vector field learning pipeline |
-| Fig2   | Attractor/trajectory visualization |
-
-## Critical Analysis
-### Strengths
-- Rich downstream dynamical interpretation.
-
-### Weaknesses
-- Can be sensitive to embedding and preprocessing choices.
-
-### Questions
-- How stable are inferred vector fields across random seeds and batches?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/scvelo|scvelo]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Dynamical Systems|Dynamical Systems]]
 
-### Potential Applications
-- Developmental landscape reconstruction and fate attractor analysis.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; enrich with official citation details later.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1016/j.cell.2021.12.045).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

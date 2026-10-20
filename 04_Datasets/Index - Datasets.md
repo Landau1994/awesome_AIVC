@@ -15,9 +15,9 @@ date_created: 2026-01-16
 
 | Repository | Scale | Description |
 |------------|-------|-------------|
-| **CELLxGENE** | 100M+ cells | Curated single-cell data |
+| **CELLxGENE** | Release-dependent | Curated single-cell data; pin a Census release |
 | **Human Cell Atlas** | Multi-tissue | Human reference atlas |
-| **Tabula Sapiens** | 500K cells | Cross-tissue human atlas |
+| **[[04_Datasets/Tabula Sapiens 2.0\|Tabula Sapiens 2.0]]** | >1.1M cells | 28 tissues, 24 donors |
 | **Tabula Muris** | 100K cells | Mouse atlas |
 
 ### Access
@@ -36,11 +36,11 @@ date_created: 2026-01-16
 
 ### CRISPR Screens
 
-| Dataset | Year | Cells | Perturbations | Type |
+| Dataset | Year | Cell context | Perturbations | Type |
 |---------|------|-------|---------------|------|
-| Norman 2019 | 2019 | K562 | ~300 CRISPRa | Single + combo |
-| Replogle 2022 | 2022 | K562 | ~10K CRISPRi | Genome-wide |
-| Dixit 2016 | 2016 | BMDC | ~24 | Original [[02_Concepts/Perturb-seq|Perturb-seq]] |
+| Norman 2019 | 2019 | K562 | CRISPRa; counts depend on retained conditions | Single + combination |
+| [[04_Datasets/Replogle\|Replogle 2022]] | 2022 | K562 and RPE1 | CRISPRi; screen-specific targets | Genome-wide and essential-gene screens |
+| Dixit 2016 | 2016 | BMDC | ~24 | Original [[02_Concepts/Perturb-seq\|Perturb-seq]] |
 | Adamson 2016 | 2016 | K562 | ~100 | CRISPRi |
 
 ### Drug Screens
@@ -112,3 +112,7 @@ adata = sc.datasets.pbmc3k()
 
 ### Preprocessing Standards
 - Refer to [Single-cell Best Practices](https://www.sc-best-practices.org/)
+
+## Versioning
+
+Check each linked dataset note for primary sources and the distinction between full releases and benchmark subsets. The screening table’s “Cell context” column contains cell lines, not cell counts. Technology resolution also depends on the platform generation and segmentation procedure.

@@ -14,7 +14,7 @@ status: draft
 
 ## Overview
 
-**Highly Variable Genes (HVGs)** are genes whose expression varies significantly across cells in a population. By selecting only HVGs, researchers reduce dimensionality from ~20,000 genes to 1,000-5,000 genes while retaining most biological signal. This preprocessing step is fundamental to nearly all single-cell analysis pipelines.
+**Highly Variable Genes (HVGs)** are genes whose expression varies significantly across cells in a population. By selecting only HVGs, researchers reduce dimensionality from ~20,000 genes to 1,000-5,000 genes while aiming to retain useful variation. This is common but not mandatory, and rare-cell markers can be lost.
 
 ## Key Concepts
 
@@ -33,7 +33,7 @@ HVGs are disproportionately enriched for **cell-type marker genes** and genes in
 ✅ **Dimensionality Reduction**: 2,000 genes vs 20,000 reduces computation 10x
 ✅ **Robustness**: Removes noisy, uninformative genes
 ✅ **Better Clustering**: HVGs improve cell type separation
-✅ **Interpretability**: Marker genes are in the HVG set
+✅ **Interpretability**: Inspect selected genes; known markers are not guaranteed to be selected
 
 ## Methods for HVG Selection
 
@@ -47,10 +47,8 @@ HVG = genes with variance >> expected_variance(mean)
 
 **Tools**: Seurat, Scanpy (default), Scran
 
-### 2. Deviance / Dispersion
-**Idea**: Fit NB (Negative Binomial) distribution, select genes with high deviance/overdispersion.
-
-**Tools**: Scran's `modelGeneVar()`, specialized methods
+### 2. Count-model statistics
+Deviance or Pearson residuals can rank genes under a specified count model. This is distinct from `scran::modelGeneVar()`, which decomposes variance of log-expression around a mean–variance trend.
 
 ### 3. Coefficient of Variation (CV)
 **Simple approach**: Select genes with high CV = std/mean.
@@ -86,9 +84,9 @@ sc.tl.pca(adata, n_comps=50)
 
 | Parameter | Effect | Default | Notes |
 |-----------|--------|---------|-------|
-| `n_top_genes` | Number of HVGs to select | 2000 | Higher = more genes, slower |
-| `flavor` | Selection method | 'seurat' | 'seurat', 'cell_ranger', 'scran' |
-| `batch_key` | Correct for batch effects | None | Important for multi-batch data |
+| `n_top_genes` | Number of HVGs to select | None | 2000 is a common explicit choice, not the API default |
+| `flavor` | Selection method | 'seurat' | Standard API supports seurat, cell_ranger, seurat_v3 and seurat_v3_paper; scran is a separate R package |
+| `batch_key` | Select HVGs within batches | None | Does not itself correct expression values or integrate batches |
 | `min_mean` | Minimum mean expression | - | Filter out lowly expressed |
 | `max_mean` | Maximum mean expression | - | Filter out ubiquitous genes |
 
@@ -124,9 +122,8 @@ Research shows HVGs are enriched for:
 - Solution: Condition-aware HVG selection
 
 ### Over-selection is Risky
-- Selecting 5,000+ genes instead of 2,000 adds noise
-- Marginally improves downstream results
-- Slows computation significantly
+- More genes increase computation but can recover additional signal.
+- Choose the feature count using the task and dataset; 2,000 is not a universal optimum.
 
 ## Advantages
 
@@ -142,13 +139,9 @@ Research shows HVGs are enriched for:
 ⚠️ **Rare Cells**: May miss rare cell type markers
 ⚠️ **Discrete Data**: Less reliable with very sparse data
 
-## Comparison with Modern Approaches
+## Relationship to Modern Approaches
 
-| Approach | Speed | Interpretability | Automation |
-|----------|-------|-----------------|------------|
-| **HVG Selection** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| Foundation Models | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
-| scVI/scArches | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+HVG selection chooses input features. Foundation models and scVI/scArches learn or transfer representations and may themselves use selected genes. These are not interchangeable methods with a meaningful universal speed/quality ranking.
 
 ## Related Concepts
 
@@ -164,4 +157,8 @@ Research shows HVGs are enriched for:
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Scanpy HVG documentation](https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.highly_variable_genes.html). Input requirements differ: dispersion flavors expect log-normalized expression, whereas Seurat v3 flavors expect counts. Former speed/quality star ratings are qualitative and should not be treated as benchmark results.

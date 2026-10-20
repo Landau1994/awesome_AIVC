@@ -14,14 +14,14 @@ status: draft
 
 ## Overview
 
-**Docker** is a containerization platform that packages software, dependencies, and environment into isolated, portable units called **containers**. In bioinformatics and computational biology, Docker ensures reproducible pipelines by eliminating "works on my machine" problems.
+**Docker** is a containerization platform that packages software, dependencies, and environment into isolated, portable units called **containers**. In bioinformatics and computational biology, Docker helps reproduce software environments; reproducibility also requires pinned data, code, parameters, random seeds and compatible hardware.
 
 ## Core Concepts
 
 ### Container vs Image
 
 **Image**: Blueprint or template
-- Contains OS, libraries, code, data
+- Contains a user-space filesystem, libraries and application files; Linux containers share a host/VM kernel
 - Read-only, immutable
 - Example: `scgpt:v1.0`
 
@@ -35,7 +35,7 @@ status: draft
 ✅ **Reproducibility**: Same environment everywhere (laptop, HPC, cloud)
 ✅ **Dependency Management**: All libraries bundled, no conflicts
 ✅ **Version Control**: Pin exact versions of tools
-✅ **Portability**: Run on Mac/Linux/Windows identically
+✅ **Portability**: Linux containers can run through compatible hosts or a VM; architecture and accelerator support still matter
 ✅ **Scalability**: Easy to deploy 1000 containers in parallel
 
 ## Key Components
@@ -77,7 +77,7 @@ Define multi-container applications:
 1. Write Dockerfile
 2. docker build -t scanalysis:v1 .
 3. docker run -v /data:/data scanalysis:v1
-4. Works identically on colleague's machine
+4. Run on a compatible host and compare results
 5. Success! ✅
 ```
 
@@ -98,7 +98,7 @@ Define multi-container applications:
 - Single-cell QC pipeline in Docker
 - Version all components
 - Publish alongside paper
-- Others can reproduce exactly
+- Others can reproduce the environment and compare results
 
 ### 4. HPC Integration
 - Singularity (see below) reads Docker images
@@ -109,7 +109,7 @@ Define multi-container applications:
 
 ✅ **Reproducibility**: Environment is code
 ✅ **Speed**: No installation on deployment
-✅ **Isolation**: Can't break host system
+✅ **Isolation**: Provides configurable isolation; host mounts, privileges and vulnerabilities affect its strength
 ✅ **Sharing**: Easy to distribute reproducible code
 ✅ **Versioning**: Tag images with version numbers
 
@@ -124,9 +124,9 @@ Define multi-container applications:
 
 | Feature | Docker | Singularity |
 |---------|--------|-------------|
-| Requires root | ✅ Yes | ❌ No |
+| Root privileges | Rootful daemon by default; rootless mode available | Ordinary execution as user; setup/build requirements vary |
 | HPC-friendly | ⚠️ Limited | ✅ Yes |
-| Image size | Large | Medium |
+| Image size | Depends on image contents/layers | Depends on contents/compression |
 | Community | Large | Growing |
 | Learning curve | Medium | Steeper |
 
@@ -141,10 +141,11 @@ Define multi-container applications:
 
 2. **Multi-stage builds**: Keep images small
    ```dockerfile
-   FROM python:3.10 as builder
-   RUN pip install packages
+   FROM python:3.10 AS builder
+   COPY requirements.txt /tmp/requirements.txt
+   RUN pip install --prefix=/install -r /tmp/requirements.txt
    FROM python:3.10
-   COPY --from=builder /packages /packages
+   COPY --from=builder /install /usr/local
    ```
 
 3. **Document environment**:
@@ -157,13 +158,13 @@ Define multi-container applications:
 4. **Test locally first**:
    ```bash
    docker build -t myimage:v1 .
-   docker run myimage:v1 python -c "import scanpy; print(scanpy.__version__)"
+   docker run --entrypoint python myimage:v1 -c "import scanpy; print(scanpy.__version__)"
    ```
 
 ## Related Tools
 
 - **Singularity**: Container format for HPC (Docker-compatible)
-- **Podman**: Docker alternative (more secure)
+- **Podman**: Alternative container engine with rootless operation
 - **Nextflow**: Workflow manager that uses Docker/Singularity
 - **GitHub Actions**: CI/CD with Docker containers
 
@@ -181,4 +182,8 @@ Define multi-container applications:
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Docker rootless mode](https://docs.docker.com/engine/security/rootless/); [Docker security model](https://docs.docker.com/engine/security/). Version tags can be mutable; pin image digests and lock dependencies for stronger reproducibility. The multi-stage example requires a real requirements.txt and compatible runtime system libraries.

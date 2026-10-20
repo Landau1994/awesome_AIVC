@@ -1,13 +1,13 @@
 ---
-title: "GeneCompass: Knowledge-Informed Cross-Species Foundation Model"
+title: "GeneCompass: deciphering universal gene regulatory mechanisms with a knowledge-informed cross-species foundation model"
 aliases: [GeneCompass]
 authors:
   - Xiaodong Yang
   - et al.
 year: 2024
-journal: Cell Research
-doi: 10.1038/s41422-024-01034-y
-url:
+journal: "Cell Research"
+doi: "10.1038/s41422-024-01034-y"
+url: "https://doi.org/10.1038/s41422-024-01034-y"
 tags:
   - paper
   - AIVC
@@ -28,10 +28,10 @@ date_read:
 # GeneCompass: Knowledge-Informed Cross-Species Foundation Model
 
 ## Quick Summary
-> GeneCompass is a knowledge-informed cross-species foundation model trained on 120+ million cells from humans and mice. It uniquely integrates prior biological knowledge including promoter sequences, gene regulatory networks, gene families, and co-expression data to enable cross-species biological investigations.
+> GeneCompass is a knowledge-informed cross-species foundation model using a corpus of over 100 million human and mouse cells. It integrates promoter sequences, gene regulatory networks, gene families and co-expression information for cross-species investigations. The paper's corpus descriptions contain differing cell counts, detailed below.
 
 ## Key Points
-- **Largest corpus**: 120M+ cells (scCompass-126M)
+- **Large corpus**: scCompass-126M; reported counts differ between the overview and Methods
 - **Cross-species**: Human and mouse unified
 - **Knowledge-informed**: Integrates GRNs, promoters, gene families
 - **Absolute expression**: Quantitative encoding (not just ranks)
@@ -67,9 +67,9 @@ Task-specific Fine-tuning
 | Co-expression | Functional modules |
 
 ### Training Data
-- **scCompass-126M**: Largest single-cell corpus
-- ~50M human cells
-- ~50M mouse cells
+- **scCompass-126M**: The paper describes a corpus of over 120M cells and names it scCompass-126M
+- **Methods enumeration**: 53,568,337 human cells and 48,200,083 mouse cells, totaling 101,768,420
+- These descriptions are inconsistent within the source; the overview count and the enumerated total should not be treated as interchangeable verified training counts
 - Multiple tissues and conditions
 
 ### Expression Encoding
@@ -147,3 +147,8 @@ Unlike Geneformer (rank-based):
   year={2024}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41422-024-01034-y). Its overview/discussion describes scCompass-126M, whereas Methods enumerates 101,768,420 human and mouse cells. The discrepancy remains unresolved; this note retains both descriptions and avoids a current "largest corpus" claim.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

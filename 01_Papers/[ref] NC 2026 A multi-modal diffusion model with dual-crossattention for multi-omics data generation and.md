@@ -25,6 +25,9 @@ date_read:
 
 # A multi-modal diffusion model with dual-cross-attention for multi-omics data generation and translation
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41467-026-71744-x). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 The paper introduces **scDiffusion-X**, a deep generative latent diffusion model specifically designed for single-cell multi-omics data integration, generation, and translation. Its core innovation is a **Dual-Cross-Attention (DCA)** module that adaptively captures dependencies between molecular modalities (e.g., scRNA-seq and scATAC-seq), allowing the model to generate high-fidelity synthetic data, perform accurate cross-modality translation with uncertainty quantification, and infer cell-type-specific gene regulatory networks (GRNs) using a gradient-based interpretation framework.
 
@@ -48,7 +51,7 @@ The paper introduces **scDiffusion-X**, a deep generative latent diffusion model
 - **Dual-Cross-Attention (DCA):** A specialized module integrated into the denoising blocks to facilitate information exchange between modalities without simple concatenation.
 
 ### Training Strategy
-- **Two-Stage Training:** 
+- **Two-Stage Training:**
   1. Train the multimodal autoencoder to reconstruct the input.
   2. Train the diffusion denoising network in the fixed latent space using conditional labels (cell type, etc.) and time-step embeddings.
 
@@ -95,10 +98,10 @@ The paper introduces **scDiffusion-X**, a deep generative latent diffusion model
 
 ### Related Concepts
 - [[Latent Diffusion Models]]
-- [[Multi-omics Integration]]
-- [[Cross-Attention Mechanisms]]
-- [[Gene Regulatory Networks (GRN)]]
-- [[In silico Perturbation]]
+- [[02_Concepts/Multi-modal Integration|Multi-omics Integration]]
+- [[02_Concepts/Transformers for Biology|Cross-Attention Mechanisms]]
+- [[02_Concepts/Gene Regulatory Networks|Gene Regulatory Networks (GRN)]]
+- [[02_Concepts/Perturbation Prediction|In silico Perturbation]]
 
 ### Potential Applications
 - **Data Augmentation:** Increasing the representation of rare cell types to improve classifier performance.

@@ -15,7 +15,6 @@ end_date:
 # How to build an AIVC knowledge database for your research
 
 ## Objective
-> What are you trying to achieve?
 To construct a comprehensive, scalable, and highly organized Obsidian knowledge base (an "Awesome AIVC" vault) that tracks the rapidly evolving landscape of AI Virtual Cell models, multi-omics datasets, core biological concepts, and foundational papers.
 
 ## Background
@@ -71,7 +70,7 @@ To construct a comprehensive, scalable, and highly organized Obsidian knowledge 
 
 ## Code Repository
 - [Awesome Foundation Model Single-Cell Papers](https://github.com/OmicsML/awesome-foundation-model-single-cell-papers)
-- [Link to your local/private GitHub sync for this Obsidian Vault]
+- Vault synchronization repository: not specified in this project note.
 
 ## Related Work
 - [[01_Papers/Bunne 2024 - How to Build Virtual Cell|AIVC Vision]] (Roadmap paper for the field)

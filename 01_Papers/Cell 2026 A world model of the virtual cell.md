@@ -23,30 +23,33 @@ date_read:
 
 # A world model of the virtual cell
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/42753692/). The Cell record identifies this as a review. The summary was corrected to distinguish a proposed world-model roadmap from a completed, experimentally validated simulator. The architecture and figure details below remain reading notes.
+
 ## Quick Summary
-> The paper introduces the "Virtual Cell World Model" (VCWM), a novel computational framework that treats the cell as a dynamic, stateful system rather than a target for isolated predictive tasks. By leveraging [[multi-modal]] foundation models and [[Graph neural networks|graph neural networks]], the VCWM simulates cellular behavior across genetic, chemical, and environmental interventions. It transitions biological research from trial-and-error experimentation toward "simulative biology," where complex, multi-step biological trajectories can be explored in silico, enabling rational intervention design and programmable cell biology.
+> This review proposes a Virtual Cell World Model (VCWM): an architecture and research roadmap for representing cellular states and intervention-dependent trajectories. Multimodal encoders, transition models and decoders are proposed components. The vision concerns future simulation and intervention design; this article does not demonstrate a completed, generally validated cellular simulator.
 
 ## Key Points
-- The VCWM acts as a generative, action-conditioned simulator rather than an endpoint predictor.
-- Key components include a shared latent cellular manifold ($M$), a [[structured encoder]], an action-conditioned transition operator ($F$), and a [[structured decoder]].
+- The proposed VCWM would act as a generative, action-conditioned simulator.
+- Key components include a shared latent cellular manifold ($M$), a [[01_Papers/Cell 2026 A world model of the virtual cell|structured encoder]], an action-conditioned transition operator ($F$), and a [[01_Papers/Cell 2026 A world model of the virtual cell|structured decoder]].
 - The model treats the cell as an evolving dynamical system, supporting counterfactual reasoning and long-horizon planning.
 - Proposes a roadmap for "virtual biology" involving vertical expansion (cell banks) and horizontal expansion (hierarchical assembly into tissues, organs, and organisms).
 - Emphasizes the need for a shift from siloed prediction models to an integrated, executable "world model."
 
 ## Methods
 ### Data
-- Integrates heterogeneous data including [[genome]], [[epigenome]], [[transcriptome]], [[proteome]], [[protein structures]], [[protein-protein interactions]], and [[cellular morphology]] (imaging).
+- Integrates heterogeneous data including [[02_Concepts/Biological Context Glossary#genome|genome]], [[02_Concepts/Biological Context Glossary#genome|epigenome]], [[02_Concepts/scRNA-seq|transcriptome]], [[02_Concepts/Biological Context Glossary#genome|proteome]], [[02_Concepts/Biological Context Glossary#protein structures|protein structures]], [[02_Concepts/Biological Context Glossary#protein structures|protein-protein interactions]], and [[02_Concepts/Biological Context Glossary#cellular morphology|cellular morphology]] (imaging).
 - Utilizes a combination of fully paired single-cell multi-omics, partially paired datasets, and large-scale unpaired unimodal data.
 
 ### Model Architecture
-- [[Graph Neural Network]] (GNN) architecture defined over biological networks $G=(V, E)$ to capture relational structure.
-- [[Transformer]]-style architectures to balance inductive bias with expressive power.
+- [[02_Concepts/Graph Neural Networks|Graph Neural Network]] (GNN) architecture defined over biological networks $G=(V, E)$ to capture relational structure.
+- [[02_Concepts/Transformers for Biology|Transformer]]-style architectures to balance inductive bias with expressive power.
 - Latent manifold $M$ acting as a shared space for diverse biological modalities.
 
 ### Training Strategy
 - Encoder-decoder learning for state representation.
 - Action-conditioned transition modeling to predict the effect of interventions on cellular state.
-- Long-horizon trajectory learning using longitudinal data and inferred temporal signals (e.g., [[RNA velocity]]).
+- Long-horizon trajectory learning using longitudinal data and inferred temporal signals (e.g., [[02_Concepts/RNA Velocity|RNA velocity]]).
 
 ## Results
 | Metric | Value | Baseline |
@@ -69,7 +72,7 @@ date_read:
 ## Critical Analysis
 ### Strengths
 - Provides a visionary, unifying architecture for biological modeling.
-- Effectively bridges the gap between mechanistic models (differential equations) and data-driven [[foundation models]].
+- Effectively bridges the gap between mechanistic models (differential equations) and data-driven [[02_Concepts/Cell Foundation Models|foundation models]].
 - Addresses the critical need for "actionable" models that can perform inverse design and multi-step reasoning.
 
 ### Weaknesses
@@ -89,15 +92,15 @@ date_read:
 - Bunne et al. (2024): How to build the virtual cell with artificial intelligence.
 
 ### Related Concepts
-- [[World Models]]
-- [[Action-conditioned simulation]]
-- [[Counterfactual reasoning]]
-- [[Multi-modal foundation models]]
-- [[Latent manifolds]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|World Models]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Action-conditioned simulation]]
+- [[02_Concepts/Causal Inference|Counterfactual reasoning]]
+- [[02_Concepts/Cell Foundation Models|Multi-modal foundation models]]
+- [[02_Concepts/Cell Embeddings|Latent manifolds]]
 
 ### Potential Applications
-- [[Drug discovery]] (in-context molecular design).
-- [[Target identification]] for therapeutics.
+- [[02_Concepts/Drug Discovery|Drug discovery]] (in-context molecular design).
+- [[02_Concepts/Drug Discovery|Target identification]] for therapeutics.
 - Prediction of disease progression and response to complex combinatorial therapies.
 - Rational design of cell-based therapies and regenerative medicine.
 

@@ -27,10 +27,10 @@ status: draft
 
 ### Why PCA for Single-Cell Data?
 
-✅ **Fast & Scalable**: O(n·p·k) complexity, works with millions of cells
+✅ **Fast & Scalable**: Truncated/randomized solvers can be efficient; complexity and memory depend on solver and matrix representation
 ✅ **Interpretable**: Each PC is a linear combination of genes
-✅ **Noise Reduction**: Later PCs capture noise; early PCs capture signal
-✅ **Preserves Structure**: Linear projections preserve relative distances well
+✅ **Noise Reduction**: Truncation can reduce noise; early PCs may still capture batch, library-size or other technical effects
+✅ **Least-squares property**: PCA minimizes reconstruction error among centered rank-k linear projections; it does not guarantee preservation of all distances
 ✅ **Baseline**: Serves as gold-standard comparison for modern methods
 
 ## Applications in Single-Cell Biology
@@ -58,10 +58,10 @@ status: draft
 ## Advantages
 
 ✅ **Speed**: Extremely fast compared to deep learning
-✅ **Deterministic**: Same result every time (no randomness)
+✅ **Reproducibility**: Exact solvers are deterministic up to sign/degenerate subspaces; randomized solvers need a fixed seed
 ✅ **Interpretable**: Clear connection between genes and components
 ✅ **Robust**: Works well across diverse datasets
-✅ **No hyperparameters**: Just choose number of components
+✅ **Few modeling choices**: Component count, feature selection, scaling and solver still matter
 ✅ **Linear**: Simple model, easy to understand
 
 ## Limitations
@@ -119,16 +119,16 @@ sc.tl.umap(adata)
 Recent benchmarking studies (e.g., [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|comprehensive scFM benchmarks]]) have revealed:
 
 - PCA remains competitive in **zero-shot** embedding quality
-- PCA better preserves **trajectory continuity** than transformers
-- PCA stronger in **batch correction** evaluation than foundation models
-- Simple PCA + classical baselines often match or exceed foundation models for basic tasks
+- Trajectory-conservation comparisons depend on dataset and representation; PCA does not universally outperform transformers
+- PCA is a baseline representation, not intrinsically a batch-correction method
+- Compare PCA and other classical baselines under the same split, preprocessing and supervision protocol
 
 This suggests PCA should not be dismissed despite new foundation models.
 
 ## Related Concepts
 - [[02_Concepts/Dimensionality Reduction|Dimensionality Reduction]] - Broader category
 - [[02_Concepts/Single-Cell Embeddings|Cell Embeddings]] - General embedding approaches
-- [[02_Concepts/Trajectory Inference|Trajectory Inference]] - Where PCA excels
+- [[02_Concepts/Trajectory Inference|Trajectory Inference]] - A possible downstream application
 
 ## Tools & Implementation
 - **Scanpy**: `sc.tl.pca()`
@@ -142,4 +142,8 @@ This suggests PCA should not be dismissed despite new foundation models.
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[scikit-learn PCA documentation](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html); [scFM benchmark](https://pmc.ncbi.nlm.nih.gov/articles/PMC12803055/). Broad performance claims were narrowed to their experimental context.

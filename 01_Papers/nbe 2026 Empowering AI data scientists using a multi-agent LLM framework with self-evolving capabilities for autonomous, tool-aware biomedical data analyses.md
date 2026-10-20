@@ -40,16 +40,19 @@ date_read:
 
 # Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41551-026-01634-6). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > This paper introduces "BioMedAgent," a multi-agent, tool-aware LLM framework designed to automate complex, multistep biomedical data analysis workflows. The system features a three-phase collaborative process—Planning, Coding, and Execution—and incorporates an interactive exploration (IE) algorithm for automated code repair and a memory retrieval (MR) algorithm that allows the agent to self-evolve by recording, reusing, and refining successful past experiences. Validated on the newly developed BioMed-AQA benchmark (327 tasks), BioMedAgent achieved a 77% success rate, significantly outperforming existing LLM-based agents, and demonstrated robust generalization on the BixBench dataset.
 
 ## Key Points
 - Introduces BioMedAgent, an "AI data scientist" framework for autonomous biomedical research.
 - Utilizes a multi-agent architecture (Planner, Programmer, Executor, and Tool Manager) to break down complex tasks.
-- Employs an [[Interactive Exploration]] (IE) algorithm that enables agents to iteratively exchange feedback, repair code, and navigate complex, multistep workflows.
-- Implements a [[Memory Retrieval]] (MR) algorithm with Continuous Memory Accumulation (CMA) or Iterative Memory Forgetting (IMF) to ensure the system self-evolves through experiential learning.
+- Employs an [[01_Papers/nbe 2026 Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses|Interactive Exploration]] (IE) algorithm that enables agents to iteratively exchange feedback, repair code, and navigate complex, multistep workflows.
+- Implements a [[02_Concepts/Methods and Metrics Glossary#Retrieval-Augmented Generation|Memory Retrieval]] (MR) algorithm with Continuous Memory Accumulation (CMA) or Iterative Memory Forgetting (IMF) to ensure the system self-evolves through experiential learning.
 - Introduces BioMed-AQA, a manually curated benchmark covering five key areas: Omics (O), Precision Medicine (P), Machine Learning (M), Statistics (S), and Data Visualization (V).
-- Combines [[Local Tool Usage]] (LTU) with [[Custom Tool Code]] (CTC) generation, allowing dynamic adaptation to specialized software without needing predefined configurations for every task.
+- Combines [[01_Papers/nbe 2026 Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses|Local Tool Usage]] (LTU) with [[01_Papers/nbe 2026 Empowering AI data scientists using a multi-agent LLM framework with self-evolving capabilities for autonomous, tool-aware biomedical data analyses|Custom Tool Code]] (CTC) generation, allowing dynamic adaptation to specialized software without needing predefined configurations for every task.
 
 ## Methods
 ### Data
@@ -62,10 +65,10 @@ date_read:
     - **Planner**: Interprets user requirements and selects tools.
     - **Programmer**: Generates code based on tool documentation and dependencies.
     - **Executor**: Executes code and performs automated unit tests.
-- **Tool Manager**: Bridges the gap by maintaining a workspace of specialized [[Bioinformatics]] tools and [[APIs]].
+- **Tool Manager**: Bridges the gap by maintaining a workspace of specialized [[05_Tools/AI and Scientific Computing Reference#Bioinformatics|Bioinformatics]] tools and [[05_Tools/AI and Scientific Computing Reference#APIs|APIs]].
 
 ### Training Strategy
-- Self-evolving via [[Retrieval-Augmented Generation]] (RAG) and iterative memory management.
+- Self-evolving via [[02_Concepts/Methods and Metrics Glossary#Retrieval-Augmented Generation|Retrieval-Augmented Generation]] (RAG) and iterative memory management.
 - Uses semantic similarity to query past experiences (tool selection, workflows, code fragments).
 - Employs an "Iterative Memory Forgetting" (IMF) strategy to prune outdated records and maintain efficiency.
 
@@ -110,10 +113,10 @@ date_read:
 - BioChatter (Lobentanzer et al., 2025)
 
 ### Related Concepts
-- [[LLM Agents]]
-- [[Bioinformatics Automation]]
-- [[Autonomous Scientific Research]]
-- [[Retrieval-Augmented Generation]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|LLM Agents]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Bioinformatics Automation]]
+- [[05_Tools/AI and Scientific Computing Reference#AI agents|Autonomous Scientific Research]]
+- [[02_Concepts/Methods and Metrics Glossary#Retrieval-Augmented Generation|Retrieval-Augmented Generation]]
 
 ### Potential Applications
 - Automated omics data analysis (genomics, transcriptomics).

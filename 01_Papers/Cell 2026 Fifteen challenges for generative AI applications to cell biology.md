@@ -32,6 +32,9 @@ date_read:
 
 # Fifteen challenges for generative AI applications to cell biology
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/42607668/). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > The paper proposes 15 "grand challenges" for the application of Generative AI (Gen-AI) in cellular and multicellular biology to focus community efforts on translationally relevant questions. It argues that while current models have excelled in protein structure prediction, modeling complex system behavior requires moving beyond pure scaling laws. The authors advocate for integrating biological and physical priors into model architectures and establishing a two-tiered benchmarking framework (Tier 1 for technical improvement, Tier 2 for novel biological discovery) supported by a public-private consortium for generating large-scale, purposeful, and diverse perturbation data.
 
@@ -42,8 +45,8 @@ date_read:
 - Proposes 15 challenges categorized by level: Molecular Interactions, Molecular Function, Cellular/Systems Function, and Translation.
 - Emphasizes the need for "purposeful" data generation (e.g., perturbation-based atlases) rather than repurposing existing steady-state single-cell data.
 - Critiques current benchmarking, which often relies on retrospective datasets and statistical significance on trivial tasks (like cell-type classification) rather than prospective validation.
-- Fifteen challenges: 
-- 1. 
+- Fifteen challenges:
+- 1.
 
 ## Methods
 ### Data
@@ -53,7 +56,7 @@ date_read:
 
 ### Model Architecture
 - Advocates for "biology-anchored" models that "pre-wire" knowledge.
-- Suggests [[graph-based attention mechanisms]] and [[diffusion kernels]] to represent molecular interaction networks.
+- Suggests [[02_Concepts/Graph Neural Networks|graph-based attention mechanisms]] and [[01_Papers/Cell 2026 Fifteen challenges for generative AI applications to cell biology|diffusion kernels]] to represent molecular interaction networks.
 - Incorporates mechanism-based constraints (thermodynamics, structural properties) into the model architecture.
 
 ### Training Strategy
@@ -92,16 +95,16 @@ date_read:
 
 ## Connections
 ### Related Papers
-- [[AlphaFold]] (Jumper et al., 2021)
-- [[GREmLN]] (Zhang et al., 2026)
+- [[05_Tools/Methods and Data Resources#AlphaFold|AlphaFold]] (Jumper et al., 2021)
+- [[05_Tools/Additional Model References#GREmLN|GREmLN]] (Zhang et al., 2026)
 - [[scGPT]] / [[Geneformer]] (benchmark subjects)
 
 ### Related Concepts
-- [[Generative AI]]
-- [[Foundation Models]]
-- [[Systems Biology]]
+- [[02_Concepts/Generative Models|Generative AI]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
+- [[01_Papers/Cell 2026 A world model of the virtual cell|Systems Biology]]
 - [[Perturb-seq]]
-- [[Multicellular modeling]]
+- [[01_Papers/Cell 2025 Human interpretable grammar encodes multicellular systems biology models to democratize virtual cell laboratories|Multicellular modeling]]
 
 ### Potential Applications
 - Drug discovery and mechanism-of-action (MoA) elucidation.

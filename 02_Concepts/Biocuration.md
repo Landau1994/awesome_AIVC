@@ -38,7 +38,7 @@ status: draft
 
 **Example**: [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|CellLink paper]]
 - Identified gaps in chondrocyte classification
-- Added 15+ new cell types to [[Cell Ontology]]
+- Informed revisions of [[Cell Ontology]]; do not infer a count of accepted new types without a release record
 - Reorganized hierarchy for clarity
 
 ### 3. Database Annotation
@@ -56,17 +56,17 @@ status: draft
 ## Why Biocuration Matters
 
 ### Problem: Information Explosion
-- 1.5M+ biomedical papers published annually
+- Biomedical literature is large and continually growing; annual counts depend on database and inclusion rules
 - Experimental data growing exponentially
 - Manual reading impossible
 
 ### Solution: Structured Knowledge
-- High-quality curated databases outperform automated extraction
+- Expert curation can improve provenance and consistency; accuracy must be evaluated for each resource and task
 - Enable computational reasoning
 - Prevent garbage-in, garbage-out in AI systems
 
 ### Example Impact
-- UniProt (protein database): Hand-curated gold standard
+- UniProtKB/Swiss-Prot: Manually reviewed records; UniProtKB/TrEMBL contains unreviewed records
   - Better accuracy than automated extraction
   - Used to validate AI predictions
   - Foundation for protein research
@@ -84,7 +84,7 @@ status: draft
 7. Publication
 ```
 
-Time: ~15-30 min per paper ⏱️
+Time depends on article complexity, annotation scope and curator expertise; no universal rate is supplied.
 
 ### AI-Assisted Workflow (Modern)
 ```
@@ -97,7 +97,7 @@ Time: ~15-30 min per paper ⏱️
 7. Publication
 ```
 
-Time: ~5-10 min per paper (30-50% speedup)
+Measure curator time and correction burden in a controlled study; the earlier time and speedup estimates were unsupported.
 
 ## AI & Biocuration Synergy
 
@@ -119,18 +119,18 @@ Time: ~5-10 min per paper (30-50% speedup)
 [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|CellLink study]] demonstrates modern biocuration:
 
 ### Creation Process
-1. **Automatic passage selection**: ~22K passages from PubMed (2019-2024)
+1. **Corpus**: 3,005 excerpts containing 22,362 annotated mentions (CellLink Table 1)
 2. **Expert annotation**: 4 experienced biologists
 3. **Iterative refinement**:
    - Round 1: Independent annotation
    - Round 2: Independent linking
-   - Round 3: Collaborative resolution (99% agreement)
+   - Round 3: Collaborative resolution; agreement requires a defined metric and annotation stage
 4. **Ontology updates**: Used corpus to improve [[Cell Ontology]]
 
 ### Key Metrics
-- **Inter-annotator agreement**: 96% (very high)
+- **Inter-annotator agreement**: First-round exact span + exact-ID F1 was 0.69; the more permissive overlapping-span/merged-label measure was 0.96. These are different criteria, not a single 96% overall accuracy.
 - **Coverage**: 1,251 unique [[Cell Ontology]] IDs linked
-- **Novel discoveries**: 30% of mentions not in baseline CL
+- **Ontology gaps**: Related matches can reveal missing granularity; they do not automatically constitute newly discovered cell types
 
 ## Challenges in Biocuration
 
@@ -172,16 +172,14 @@ Time: ~5-10 min per paper (30-50% speedup)
 - Version control for annotations
 
 ### 4. Ontology-Driven
-- Align with [[Cell Ontology]], [[Gene Ontology]]
+- Align with [[Cell Ontology]], [[05_Tools/Methods and Data Resources#GO|Gene Ontology]]
 - Reference external standards
 - Enable interoperability
 
 ## AI-Driven Future
 
 ### Automation Potential
-- **Low-hanging fruit**: Extract simple facts (40-50% automation)
-- **Medium complexity**: Link to ontologies (60-70% automation)
-- **High complexity**: Novel entity detection, axiom generation (20-30% automation)
+- Extract candidate facts, rank ontology matches and flag possible gaps. Automation fractions depend on corpus, task and acceptable error rates; no universal percentages are established here.
 
 ### Emerging Approaches
 ✅ **Agentic AI**: LLMs that can query ontologies and verify facts
@@ -198,7 +196,7 @@ Time: ~5-10 min per paper (30-50% speedup)
 
 ## Major Curated Resources
 
-- **UniProt**: Protein sequences & functions (manually curated)
+- **UniProt**: Protein sequences and functions; Swiss-Prot is reviewed, TrEMBL unreviewed
 - **Gene Ontology**: Molecular function, biological process, cellular component
 - **Cell Ontology**: Standardized cell type names
 - **KEGG**: Metabolic & signaling pathways
@@ -221,4 +219,8 @@ Time: ~5-10 min per paper (30-50% speedup)
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+Corrected CellLink units, qualified the two agreement metrics, and removed untraceable time and automation percentages. [CellLink preprint](https://pmc.ncbi.nlm.nih.gov/articles/PMC12918994/); [UniProtKB reviewed/unreviewed records](https://www.uniprot.org/help/uniprotkb). Four-annotator and ontology-expansion details still require checking against the methods/release history before reuse.

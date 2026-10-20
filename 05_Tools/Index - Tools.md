@@ -103,7 +103,8 @@ pip install jupyterlab
 nvidia-smi
 
 # PyTorch with CUDA
-pip install torch --extra-index-url https://download.pytorch.org/whl/cu118
+# Choose the supported command for your OS, Python and GPU driver from:
+# https://pytorch.org/get-started/locally/
 ```
 
 ## Useful Notebooks
@@ -125,3 +126,9 @@ pip install torch --extra-index-url https://download.pytorch.org/whl/cu118
 | **Kaggle Notebooks** | Free GPU + datasets |
 | **AWS SageMaker** | Scalable training |
 | **Terra/AnVIL** | Biomedical cloud |
+
+## Installation scope
+
+The environment commands above are illustrative and unpinned; they are not a tested lockfile. Use the [PyTorch installation selector](https://pytorch.org/get-started/locally/) and each package’s supported Python versions, then record versions for reproducibility. GPU availability on hosted notebooks depends on the account and current service policy.
+
+Checked 2026-10-20: removed a fixed CUDA wheel command that cannot be assumed compatible with every machine.

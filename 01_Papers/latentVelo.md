@@ -1,9 +1,9 @@
 ---
-title: "latentVelo: Latent space RNA velocity inference"
+title: "Inferring single-cell transcriptomic dynamics with structured latent gene expression dynamics"
 aliases: [latentVelo]
-authors: []
-year: 2024
-journal: bioRxiv
+authors: ["Spencer Farrell", "Madhav Mani", "Sidhartha Goyal"]
+year: 2023
+journal: "Cell Reports Methods"
 tags:
   - paper
   - RNA-velocity
@@ -12,82 +12,34 @@ tags:
   - single-cell
 status: unread
 date_added: 2026-03-25
+doi: "10.1016/j.crmeth.2023.100581"
+url: "https://doi.org/10.1016/j.crmeth.2023.100581"
 ---
 
-# latentVelo: Latent space RNA velocity inference
+# Inferring single-cell transcriptomic dynamics with structured latent gene expression dynamics
 
 ## Quick Summary
 
-latentVelo performs RNA velocity inference in learned latent spaces, achieving the highest stability and coherence metrics while maintaining competitive accuracy. This method is ideal for applications requiring robust, noise-resistant predictions.
+LatentVelo combines a variational autoencoder with structured latent dynamics to infer developmental trajectories from single-cell transcriptomes.
 
-## Key Features
+## Methods and Evidence
 
-- **Latent Space Inference**: Learns velocity in lower-dimensional space
-- **Highest Stability**: ICCoh = 0.99 (best stability metric)
-- **Robust Predictions**: Consistent across down-sampling tests
-- **Intra-cluster Coherence**: Cell predictions well-aligned with neighbors
+The model represents spliced and unspliced measurements in a learned latent space and constrains their dynamics. High intra-cluster coherence measures agreement among nearby vectors, not correctness, noise robustness or superiority to all other methods. Disagreement between methods does not demonstrate which trajectory is biologically correct.
 
-## Performance Highlights
+## Results and Limitations
 
-[[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking results]]:
-- **Stability**: 0.99 ICCoh score (HIGHEST - best intra-cluster coherence)
-- **Accuracy**: Competitive directional correctness (~20%)
-- **Down-sampling Robustness**: Excellent stability at 0.4-0.8 rates
-- **Memory**: 2-5 GB (moderate)
-- **Speed**: 5-15 minutes per dataset
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Advantages
+## Connections
 
-✅ Highest stability/robustness
-✅ Excellent neighbor coherence
-✅ Resistant to technical noise
-✅ Good accuracy
-✅ Learned representations useful for downstream tasks
-
-## Approach
-
-- Learns latent space representation
-- Velocity inference in latent dimension
-- Latent space may capture biological structure
-- Integration with VAE/autoencoder frameworks
-
-## Limitations
-
-⚠️ Moderate-to-low inter-method agreement
-- Only 0.2-0.3 correlation with other methods
-- Suggests learning somewhat different representation
-⚠️ Slower than DeepVelo
-⚠️ Moderate memory requirements
-
-## Method Disagreement Insight
-
-Important finding: Despite high internal coherence, latentVelo agrees poorly with other methods
-- Suggests learning cell-type-specific dynamics
-- May capture biological reality other methods miss
-- Could be incorporated into ensemble approaches
-
-## Related Methods
-
-- [[DeepVelo]] - Faster, less stable
-- [[veloVI]] - Better accuracy, less stable
-- [[scvelo]] - ODE baseline
-- Ensemble methods leveraging latentVelo stability
-
-## Applications
-
-- **Noise-resistant trajectory inference**
-- **Paired with other methods in ensembles**
-- **Learning representations for downstream tasks**
-- **Studying developmental dynamics in noisy data**
-
-## See Also
-
+- [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking results]]
+- [[DeepVelo]]
+- [[veloVI]]
+- [[scvelo]]
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Comprehensive benchmarking study]]
-- [[veloVI]], [[DeepVelo]] - Alternative methods with different strengths
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1016/j.crmeth.2023.100581).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

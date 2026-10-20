@@ -12,7 +12,7 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Generative Models
@@ -58,7 +58,7 @@ Decoder p(x|z)
 Reconstructed Expression x̂
 ```
 
-#### Loss Function (ELBO)
+#### Objective (ELBO, maximized; its negative is minimized as a loss)
 $$\mathcal{L} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - D_{KL}(q(z|x) || p(z))$$
 
 - **Reconstruction**: Generate realistic cells
@@ -69,7 +69,7 @@ $$\mathcal{L} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - D_{KL}(q(z|x) || p(z))$$
 |-------|------------|-------------|
 | **scVI** | Negative binomial likelihood | Batch correction, imputation |
 | **scANVI** | Semi-supervised | Cell type annotation |
-| **CPA** | Disentangled perturbations | Drug combinations |
+| **CPA** | Adversarial autoencoder (not a standard VAE) | Drug combinations |
 | **scGen** | Latent arithmetic | Perturbation transfer |
 
 ### 2. Diffusion Models
@@ -99,14 +99,14 @@ $$x = f_\theta(z), \quad z \sim \mathcal{N}(0, I)$$
 #### Advantages
 - Exact likelihood computation
 - Invertible (encode and decode)
-- Used in CellOT-related methods
+- CellOT uses neural optimal transport; it should not be classified as a normalizing-flow density model
 
 ### 4. Optimal Transport
 
 #### Concept
 Learn map T that transforms one distribution to another with minimal cost.
 
-$$T^* = \arg\min_T \mathbb{E}_{x \sim P}[c(x, T(x))]$$
+$$T^* = \arg\min_{T:\,T_\#P=Q} \mathbb{E}_{x \sim P}[c(x,T(x))]$$
 
 #### Application: CellOT
 - Map control cell distribution → treated cell distribution
@@ -155,7 +155,7 @@ Generate cells with those properties
 
 | Model Type | Pros | Cons | Best For |
 |------------|------|------|----------|
-| VAE | Fast, interpretable latent | Blurry samples | Latent analysis, perturbation |
+| VAE | Amortized inference and probabilistic latent space | Model/likelihood assumptions; latent factors need not be interpretable | Latent analysis, perturbation |
 | Diffusion | High quality | Slow sampling | Generation quality |
 | Flow | Exact likelihood | Complex architecture | Density estimation |
 | OT | No pairing needed | Distribution-level | Unpaired prediction |
@@ -170,7 +170,7 @@ $$z = \mu + \sigma \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 Uses negative binomial for count data:
 $$p(x_g | z, s) = \text{NB}(x_g; \mu_g(z, s), \theta_g)$$
 
-where $s$ is batch/library size.
+This is schematic: scVI distinguishes batch covariates from library size and offers NB/ZINB likelihood choices. Use raw counts and preserve the chosen likelihood in model metadata.
 
 ### CPA Compositionality
 $$z_{perturbed} = z_{basal} + z_{drug_1} + z_{drug_2} + ...$$
@@ -194,10 +194,10 @@ model.train()
 # Get latent representation
 latent = model.get_latent_representation()
 
-# Generate synthetic cells
+# Sample counts conditional on observed cells (posterior predictive, not new prior samples)
 synthetic = model.posterior_predictive_sample(adata)
 
-# Impute missing values
+# Estimate normalized expression; this does not recover known ground-truth missing counts
 imputed = model.get_normalized_expression()
 ```
 
@@ -207,16 +207,20 @@ imputed = model.get_normalized_expression()
 - [[02_Concepts/Cell State Transitions|Cell State Transitions]]
 
 ## Key Papers
-- [[01_Papers/CPA|CPA]] - Compositional VAE
+- [[01_Papers/CPA|CPA]] - Compositional perturbation autoencoder
 - [[01_Papers/scGen|scGen]] - VAE + arithmetic
 - [[01_Papers/CellOT|CellOT]] - Optimal transport
 
 ## Tools & Implementations
 - [scvi-tools](https://scvi-tools.org/) - VAE models
-- [Diffusion models for single-cell](https://github.com/)
+- [scLDM: latent diffusion for single-cell expression](https://arxiv.org/abs/2511.02986)
 - [CellOT](https://github.com/bunnech/cellot)
 
 ## Learning Resources
 - "An Introduction to VAEs" (Kingma & Welling)
 - "Understanding Diffusion Models" (Lilian Weng)
 - scvi-tools tutorials
+
+## Verification (2026-10-20)
+
+Generative modeling alone does not guarantee causal identification or correct individual counterfactuals. [CPA](https://doi.org/10.15252/msb.202211517); [scVI model and input requirements](https://docs.scvi-tools.org/en/stable/user_guide/models/scvi.html); [CellOT](https://doi.org/10.1038/s41592-023-01969-x).

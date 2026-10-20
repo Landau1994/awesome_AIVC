@@ -41,7 +41,7 @@ Example: "5-way 1-shot" = 5 cell types with 1 example each
 
 ## Approaches to Few-Shot Learning
 
-### 1. Prototypical Networks ⭐ (Most Popular)
+### 1. Prototypical Networks
 - Learn embedding space
 - Create class prototypes (mean embeddings)
 - Classify by distance to prototypes
@@ -70,10 +70,10 @@ Example: "5-way 1-shot" = 5 cell types with 1 example each
 ## Why Few-Shot Learning Matters for Biology
 
 ### Cell Type Annotation Challenge
-- **Known**: 200+ defined cell types
+- **Known**: Cell-type granularity varies by tissue and ontology
 - **Problem**: Researcher has new dataset with only 1-5 reference cells for rare type
 - **Solution**: Few-shot learning with foundation models
-- **Results**: 80-90% accuracy with minimal annotation
+- **Results**: Accuracy depends on dataset, label granularity, encoder and split; no general range is established
 
 ### Rare Cell Populations
 - Difficult to get many examples
@@ -88,20 +88,20 @@ Example: "5-way 1-shot" = 5 cell types with 1 example each
 ### Cost-Effective Annotation
 - Annotate 50-100 cells manually
 - Use few-shot learning for rest
-- 10x-100x speedup in annotation
+- Measure time saved and errors on the intended annotation workflow
 
 ## Benchmarks in Single-Cell
 
 ### Recent Results
 From [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|comprehensive single-cell benchmarks]]:
 
-| Setting | Accuracy | Data Required |
-|---------|----------|---|
-| 1-shot | ~70-85% | 50 cells total |
-| 5-shot | ~85-95% | 250 cells total |
-| Fine-tuning | ~98% | 1,000-5,000 cells |
+| Setting | Labeled support set |
+|---------|----------|
+| N-way 1-shot | N examples |
+| N-way 5-shot | 5N examples |
+| Fine-tuning | Training-set size is task-specific |
 
-**Key Finding**: Diminishing returns after 5-shot; few-shot preferred for efficiency
+**Interpretation**: The former generic accuracy ranges lacked a dataset/model/split reference and are withdrawn. Evaluate the benefit of additional labels rather than assuming saturation at five examples.
 
 ## Theoretical Foundations
 
@@ -120,9 +120,9 @@ From [[bioRxiv 2026 A unified framework enables accessible deployment and compre
    - Parameter sharing reduces sample complexity
 
 ### Sample Complexity Theory
-- **Traditional**: Need O(d) samples (d = dimensions)
-- **With Meta-Learning**: Can achieve O(log d) or better
-- **In practice**: 5-10 examples often sufficient
+- Sample complexity depends on the hypothesis class, task distribution, noise and transfer assumptions.
+- There is no universal reduction from O(d) to O(log d) merely by using meta-learning.
+- Successful adaptation with a few examples must be evaluated on held-out tasks.
 
 ## Applications in Virtual Cell Modeling
 
@@ -168,8 +168,8 @@ Few-Shot: Apply meta-learned capability to new Task with few examples
 ## Implementation Considerations
 
 ### Base Encoder Quality
-- Foundation model (scGPT, Geneformer) >> Random initialization
-- Transfer from related domain >> No transfer
+- Compare pretrained encoders with simple and randomly initialized baselines.
+- Transfer from a mismatched domain can hurt performance.
 
 ### Hyperparameter Tuning
 - Distance metric (Euclidean vs Cosine)
@@ -177,7 +177,7 @@ Few-Shot: Apply meta-learned capability to new Task with few examples
 - Prototype construction method
 
 ### Evaluation Protocol
-- Standard: N-way K-shot with random splits
+- N-way K-shot evaluation separates support/query examples and meta-training/test classes; donor/study separation may also be needed
 - Realistic: Same split as deployment task
 
 ## Related Concepts
@@ -201,4 +201,8 @@ Few-Shot: Apply meta-learned capability to new Task with few examples
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+[Prototypical Networks](https://arxiv.org/abs/1703.05175); [MAML](https://proceedings.mlr.press/v70/finn17a.html); [single-cell benchmark](https://pmc.ncbi.nlm.nih.gov/articles/PMC12803055/). Unsupported universal accuracy, speedup and sample-complexity figures were removed.

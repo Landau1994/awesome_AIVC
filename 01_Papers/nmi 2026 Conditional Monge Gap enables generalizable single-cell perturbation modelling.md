@@ -22,6 +22,9 @@ date_read:
 
 # Conditional Monge Gap enables generalizable single-cell perturbation modelling
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s42256-026-01242-8). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 > The paper introduces the Conditional Monge Gap (CMonge), a principled, parameter-efficient neural optimal transport framework designed to model single-cell perturbation responses. Unlike existing methods that require separate models for each condition, CMonge learns a single global transport map conditioned on arbitrary covariates (e.g., drug identity, dose, or combinations). By leveraging shared structure across perturbations, CMonge achieves competitive performance to condition-specific models, enables cross-task learning, and demonstrates strong generalizability to unseen drug treatments using only chemical structure (SMILES) or mode-of-action (MoA) embeddings.
 

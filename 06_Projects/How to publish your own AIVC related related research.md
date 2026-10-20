@@ -15,7 +15,6 @@ end_date:
 # How to publish your own AIVC related research
 
 ## Objective
-> What are you trying to achieve?
 To outline a strategic roadmap for conceptualizing, executing, and publishing high-impact research in the emerging field of AI Virtual Cells (AIVC) and Generalist Biological AI (GBAI). The goal is to contribute novel architectures, multimodal integrations, or rigorous benchmarks that address current limitations in modeling the "language of life."
 
 ## Background
@@ -30,7 +29,7 @@ To outline a strategic roadmap for conceptualizing, executing, and publishing hi
 ## Approach
 ### Methods
 To publish a competitive paper in this space, the research pipeline should follow these steps:
-1. **Identify a High-Impact Niche:** 
+1. **Identify a High-Impact Niche:**
    - *Agentic AI:* Orchestrating specialized models for *in silico* experimental design.
    - *Causal Perturbation:* Improving out-of-distribution prediction for genetic/chemical perturbations.
    - *Spatiotemporal Dynamics:* Reconstructing 4D cellular state transitions.
@@ -41,13 +40,13 @@ To publish a competitive paper in this space, the research pipeline should follo
 ### Models Used
 *Reference models to build upon or compare against:*
 - [[01_Papers/scGPT|scGPT]] (Baseline for single-cell transcriptomics)
-- [[01_Papers/bioRxiv 2026 X-Cell Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models|X-Cell]] (State-of-the-art for causal perturbation via diffusion)
+- [[01_Papers/bioRxiv 2026 X-Cell Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models|X-Cell]] (diffusion-language-model perturbation study; compare under its stated protocol)
 - [[01_Papers/Cell2Sentence|Cell2Sentence]] (LLM approach for natural language biological interfaces)
 - [[01_Papers/nmeth 2026 stVCR spatiotemporal dynamics of single cells|stVCR]] (For spatiotemporal dynamics)
 
 ### Datasets
 *High-quality corpora for training and evaluation:*
-- [[04_Datasets/Parse 1M|Parse 1M]] (Large-scale pre-training)
+- [[04_Datasets/Parse 1M|Parse 1M]] (cytokine perturbation benchmark subset)
 - [[04_Datasets/Tabula Sapiens 2.0|Tabula Sapiens 2.0]] (Human cross-tissue atlas)
 - [[04_Datasets/Replogle|Replogle]] (Genome-wide CRISPRi screen for perturbation testing)
 
@@ -69,7 +68,7 @@ To publish a competitive paper in this space, the research pipeline should follo
 - *(To be filled as experiments progress)*
 
 ## Code Repository
-- [Link to GitHub repository - ensure code is modular and compatible with `scverse` for community adoption]
+- Repository not specified. Add a project URL after the repository exists.
 
 ## Related Work
 - [[01_Papers/Nat Biotechnol_2026_Generalist biological artificial intelligence in modeling the language of life|Generalist biological artificial intelligence in modeling the language of life]] (Core theoretical framework)

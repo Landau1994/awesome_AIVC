@@ -1,9 +1,9 @@
 ---
-title: "veloVI: Probabilistic RNA velocity using variational inference"
+title: "Deep generative modeling of transcriptional dynamics for RNA velocity analysis in single cells"
 aliases: [veloVI]
-authors: []
-year: 2023
-journal: bioRxiv
+authors: ["Adam Gayoso", "Philipp Weiler", "Mohammad Lotfollahi", "Dominik Klein", "Justin Hong", "Aaron Streets", "Fabian J. Theis", "Nir Yosef"]
+year: 2024
+journal: "Nature Methods"
 tags:
   - paper
   - RNA-velocity
@@ -12,80 +12,36 @@ tags:
   - single-cell
 status: unread
 date_added: 2026-03-25
+doi: "10.1038/s41592-023-01994-w"
+url: "https://doi.org/10.1038/s41592-023-01994-w"
 ---
 
-# veloVI: Probabilistic RNA velocity using variational inference
+# Deep generative modeling of transcriptional dynamics for RNA velocity analysis in single cells
 
 ## Quick Summary
 
-veloVI introduces a probabilistic framework for RNA velocity inference using variational inference. This method achieves the highest directional accuracy in benchmarking studies while providing uncertainty estimates for predictions.
+veloVI is a deep generative framework for RNA velocity that models transcriptional dynamics and provides posterior estimates of velocity uncertainty.
 
-## Key Innovation
+## Methods and Evidence
 
-- **Variational Inference**: Probabilistic approach to velocity
-- **Uncertainty Quantification**: Provides confidence scores for predictions
-- **Highest Accuracy**: 28% directional correctness (best among 14 methods)
-- **Principled Framework**: Bayesian approach to biological inference
+It uses variational inference and a probabilistic formulation of splicing dynamics. Intrinsic and extrinsic uncertainty help assess predictions under the model. A CBDir cosine score of 0.28, if reproduced in a particular benchmark, is not 28% directional correctness and does not establish universal superiority.
 
-## Performance Highlights
+## Results and Limitations
 
-[[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking results]]:
-- **Accuracy**: 0.28 CBDir score (HIGHEST among all methods)
-- **Speed**: ~15-30 minutes per dataset
-- **Memory**: 2-10 GB (moderate)
-- **Stability**: Good consistency across down-sampling
-- **Uncertainty**: Provides credible intervals
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Advantages
+## Connections
 
-✅ Highest directional accuracy
-✅ Probabilistic framework (interpretable)
-✅ Uncertainty quantification
-✅ Handles noise explicitly
-✅ Theoretically grounded
-
-## Approach
-
-- Variational Autoencoder architecture
-- Probabilistic model of splicing dynamics
-- Amortized inference for efficiency
-- Integration with scVI ecosystem
-
-## Limitations
-
-⚠️ Slower than DeepVelo (2-20x longer)
-⚠️ Higher memory requirements
-⚠️ Complex model (less immediately interpretable than ODE)
-⚠️ Requires careful parameter tuning
-
-## Trade-offs
-
-- **vs velocyto/scvelo**: Better accuracy, slower
-- **vs DeepVelo**: Better accuracy, slower, higher memory
-- **vs latentVelo**: Best accuracy, less stable
-- **Best for**: Accuracy-critical applications
-
-## Related Methods
-
-- [[scvelo]] - ODE baseline for comparison
-- [[latentVelo]] - Alternative deep learning approach
-- [[DeepVelo]] - Faster alternative
-- [[Dynamo]] - Extended framework
-
-## Applications
-
-- High-confidence trajectory inference
-- Publication-quality velocity analysis
-- Biological validation studies
-
-## See Also
-
+- [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|2025 benchmarking results]]
+- [[scvelo]]
+- [[latentVelo]]
+- [[DeepVelo]]
+- [[Dynamo]]
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[bioRxiv 2025 Benchmarking RNA velocity methods across 17 independent studies|Comprehensive benchmarking]]
-- [[veloVAE]], [[latentVelo]] - Alternative VI/DL methods
+- [[veloVAE]]
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-023-01994-w). Published online 21 September 2023; the journal issue is dated 2024.
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

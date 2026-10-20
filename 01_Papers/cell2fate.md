@@ -1,13 +1,12 @@
 ---
-title: "cell2fate"
+title: "Cell2fate infers RNA velocity modules to improve cell fate prediction"
 aliases:
   - Cell2fate
-authors:
-  -
-year:
-journal:
-doi:
-url:
+authors: ["Alexander Aivazidis", "Fani Memi", "Vitalii Kleshchevnikov", "Sezgin Er", "Brian Clarke", "Oliver Stegle", "Omer Ali Bayraktar"]
+year: 2025
+journal: "Nature Methods"
+doi: "10.1038/s41592-025-02608-3"
+url: "https://doi.org/10.1038/s41592-025-02608-3"
 tags:
   - paper
   - AIVC
@@ -17,59 +16,28 @@ date_added: 2026-03-25
 date_read:
 ---
 
-# cell2fate
+# Cell2fate infers RNA velocity modules to improve cell fate prediction
 
 ## Quick Summary
-> `cell2fate` is a probabilistic model for transcriptomic dynamics and cell fate analysis, often used with spliced/unspliced single-cell data to infer directional transitions.
 
-## Key Points
-- Models latent dynamics with probabilistic inference.
-- Emphasizes interpretability of fate-related transitions.
-- May require substantial compute/memory on larger datasets.
+Cell2fate is a Bayesian RNA velocity model that decomposes transcriptional dynamics into interpretable modules.
 
-## Methods
-### Data
-- Spliced/unspliced single-cell RNA count matrices.
+## Methods and Evidence
 
-### Model Architecture
-- Probabilistic latent dynamics model for velocity and fate tendencies.
+It linearizes components of the velocity ODE and fits raw spliced/unspliced counts with stochastic variational inference in Pyro. The model accounts for technical variation and supports spatial mapping of velocity modules. Constant degradation and other simplifying assumptions remain; no universal memory ranking is established here.
 
-### Training Strategy
-- Bayesian-style inference over latent dynamic variables.
+## Results and Limitations
 
-## Results
-| Metric | Value | Baseline |
-|--------|-------|----------|
-| GPU memory footprint | High in large-data benchmarks | Higher than efficient methods such as DeepVelo |
-
-## Figures
-
-| Figure | Description |
-| ------ | ----------- |
-| Fig 1  | Model components and latent state flow |
-| Fig2   | Velocity/fate estimates across cell populations |
-
-## Critical Analysis
-### Strengths
-- Uncertainty-aware and interpretable dynamics modeling.
-
-### Weaknesses
-- Resource consumption can limit large-scale use.
-
-### Questions
-- What are the best settings for balancing robustness and compute cost?
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
 ## Connections
-### Related Papers
+
 - [[01_Papers/Pyro-Velocity|Pyro-Velocity]]
 - [[01_Papers/veloVI|veloVI]]
-
-### Related Concepts
 - [[02_Concepts/RNA Velocity|RNA Velocity]]
 - [[02_Concepts/Trajectory Inference|Trajectory Inference]]
 
-### Potential Applications
-- Cell fate analysis in developmental and disease contexts.
+## Verification (2026-10-20)
 
-## Notes
-- Template-aligned draft; enrich with DOI/journal details later.
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41592-025-02608-3).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

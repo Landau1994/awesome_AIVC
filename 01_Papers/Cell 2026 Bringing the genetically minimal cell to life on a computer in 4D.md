@@ -16,6 +16,7 @@ authors:
   - Talia Long
   - Weria Pezeshkian
   - Lijie Sun
+  - Daniela Matias de C. Bittencourt
   - John I. Glass
   - Angad P. Mehta
   - Taekjip Ha
@@ -37,6 +38,9 @@ date_read:
 
 # Bringing the genetically minimal cell to life on a computer in 4D
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://pubmed.ncbi.nlm.nih.gov/41806832/). Bibliographic identity and the approximately 100-minute JCVI-syn3A cell-cycle scope were checked. The omitted author Daniela Matias de C. Bittencourt was restored. A [published correction](https://doi.org/10.1016/j.cell.2026.04.003) exists; consult it together with the article. Detailed simulation settings remain reading notes.
+
 ## Quick Summary
 > The authors present a 4D (space and time) whole-cell model (4DWCM) simulating the complete ~100 minute cell cycle of the genetically minimal bacterium JCVI-syn3A. By integrating hybrid computational methods (ODEs, CME, RDME, and Brownian dynamics), the model captures the spatial and kinetic dynamics of genetic information processes, metabolism, cell growth, chromosome replication/segregation, and cell division. The simulations successfully predict experimental metrics such as doubling time, mRNA half-lives, and the origin-to-terminus DNA ratio, revealing the impact of spatial heterogeneity and stochasticity on cell-to-cell variation.
 
@@ -49,17 +53,17 @@ date_read:
 
 ## Methods
 ### Data
-- [[Cryo-electron tomography]] (Cryo-ET) for initial spatial distribution and morphology constraints.
+- [[02_Concepts/Biological Context Glossary#Cryo-electron tomography|Cryo-electron tomography]] (Cryo-ET) for initial spatial distribution and morphology constraints.
 - Multi-omics datasets: proteomics, transcriptomics, metabolomics, and lipidomics.
 - DNA sequencing coverage to determine the experimental *ori:ter* ratio (measured at 1.21).
 - Fluorescence imaging of JCVI-syn3B+FtsZ:mCherry to track membrane, DNA, and division ring morphologies.
 
 ### Model Architecture
 - **Hybrid 4D Simulation**: Couples multiple algorithms to span different temporal and spatial scales.
-- **RDME (Reaction-Diffusion Master Equation)**: Simulated via [[Lattice Microbes]] (LM) on a 10 nm cubic lattice to handle spatial stochastic reactions (RNAP binding, translation, membrane protein insertion).
+- **RDME (Reaction-Diffusion Master Equation)**: Simulated via [[05_Tools/Methods and Data Resources#Lattice Microbes|Lattice Microbes]] (LM) on a 10 nm cubic lattice to handle spatial stochastic reactions (RNAP binding, translation, membrane protein insertion).
 - **CME (Chemical Master Equation)**: Solves global well-stirred stochastic reactions (transcription, tRNA charging).
 - **ODE (Ordinary Differential Equations)**: Manages deterministic metabolic networks (glycolysis, lipid/nucleotide synthesis) using `odeCELL`.
-- **Brownian Dynamics (BD)**: Simulates the coarse-grained chromosome (10 bp/bead) polymer dynamics, DNA replication, and SMC looping, executed in [[LAMMPS]] via GPU.
+- **Brownian Dynamics (BD)**: Simulates the coarse-grained chromosome (10 bp/bead) polymer dynamics, DNA replication, and SMC looping, executed in [[05_Tools/Methods and Data Resources#LAMMPS|LAMMPS]] via GPU.
 
 ### Training Strategy
 - Simulated 50 unique replicate cells to capture population-level stochasticity.
@@ -106,10 +110,10 @@ date_read:
 - Breuer et al., 2019 (eLife): Essential metabolism for a minimal cell.
 
 ### Related Concepts
-- [[Whole-Cell Modeling]]
-- [[Synthetic Biology]]
-- [[Reaction-Diffusion Systems]]
-- [[Stochastic Simulation]]
+- [[01_Papers/Cell 2026 Bringing the genetically minimal cell to life on a computer in 4D|Whole-Cell Modeling]]
+- [[01_Papers/nature 2026 Genome modelling and design across all domains of life with Evo 2|Synthetic Biology]]
+- [[02_Concepts/Dynamical Systems|Reaction-Diffusion Systems]]
+- [[02_Concepts/Dynamical Systems|Stochastic Simulation]]
 
 ### Potential Applications
 - Serving as a "virtual cell" sandbox to test the viability of synthetic genetic circuits before in vivo implementation.

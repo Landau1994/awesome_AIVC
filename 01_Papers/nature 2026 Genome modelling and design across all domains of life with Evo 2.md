@@ -10,11 +10,11 @@ authors:
 - Gwanggyu Sun
 - Patrick D. Hsu
 - Brian L. Hie
+author_list: selected authors; see source for the complete list
 year: 2026
 journal: Nature
 doi: 10.1038/s41586-026-10176-5
-url: 
- -[https://doi.org/10.1038/s41586-026-10176-5(https://doi.org/10.1038/s41586-026-10176-5)
+url: https://doi.org/10.1038/s41586-026-10176-5
 tags:
 - paper
 - AIVC
@@ -29,6 +29,9 @@ date_read:
 ---
 
 # Genome modelling and design across all domains of life with Evo 2
+
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41586-026-10176-5). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
 
 ## Quick Summary
 
@@ -126,11 +129,11 @@ date_read:
 
 ### Related Concepts
 
-- [[Foundation Models in Biology]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models in Biology]]
     
-- [[Mechanistic Interpretability]]
+- [[05_Tools/AI and Scientific Computing Reference#Explainable AI|Mechanistic Interpretability]]
     
-- [[Synthetic Genomics]]
+- [[01_Papers/nature 2026 Genome modelling and design across all domains of life with Evo 2|Synthetic Genomics]]
     
 
 ### Potential Applications

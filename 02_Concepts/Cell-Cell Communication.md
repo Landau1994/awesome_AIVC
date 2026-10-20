@@ -10,7 +10,7 @@ tags:
 category: Core Concept
 importance: medium
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Cell-Cell Communication
@@ -50,3 +50,7 @@ last_updated: 2026-01-16
 
 ## Key Papers
 - [[01_Papers/CellPLM|CellPLM]] - Cell-cell relations
+
+## Verification (2026-10-20)
+
+Ligand/receptor RNA co-expression or spatial proximity supplies candidate interactions, not direct evidence that signaling occurred. Validate receptor availability, downstream response and experimental context. [CellChat original paper](https://doi.org/10.1038/s41467-021-21246-9); [NicheNet original paper](https://doi.org/10.1038/s41592-019-0667-5).

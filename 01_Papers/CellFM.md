@@ -1,9 +1,9 @@
 ---
-title: "CellFM: Cell Foundation Model"
+title: "CellFM: a large-scale foundation model pre-trained on transcriptomics of 100 million human cells"
 aliases: [CellFM]
-authors: []
-year: 2024
-journal: bioRxiv
+authors: ["Yuansong Zeng", "Jiancong Xie", "Ningyuan Shangguan", "et al."]
+year: 2025
+journal: "Nature Communications"
 tags:
   - paper
   - AIVC
@@ -13,48 +13,34 @@ status: unread
 rating:
 date_added: 2026-03-25
 date_read:
+doi: "10.1038/s41467-025-59926-5"
+url: "https://doi.org/10.1038/s41467-025-59926-5"
 ---
 
-# CellFM: Cell Foundation Model
+# CellFM: a large-scale foundation model pre-trained on transcriptomics of 100 million human cells
 
 ## Quick Summary
 
-CellFM is a foundational single-cell model with focus on creating a unified representation space for diverse cell types across tissues and species. It has been identified and fixed for implementation bugs during comprehensive benchmarking.
+CellFM is a foundation model pretrained on transcriptomic profiles of approximately 100 million human cells.
 
-## Key Points
+## Methods and Evidence
 
-- **Cell-Centric Architecture**: Focuses on cell-level representations
-- **Cross-tissue Generalization**: Works across diverse cell types
-- **Benchmarking Reference**: Key baseline in foundation model comparisons
-- **Bug Fixes**: Original implementation required corrections for fair comparison
+The paper evaluates gene-function prediction, cell annotation, perturbation response and gene-network analyses. It should not be described as a demonstrated cross-species model on the basis of human pretraining alone. Benchmark-specific implementation fixes require a cited version and do not characterize the original method as a whole.
 
-## Applications
+## Results and Limitations
 
-- Cross-tissue cell type annotation
-- Cell embedding extraction
-- Foundation model baseline
-- Transfer learning across datasets
+The source supports the method description above. Specific effect sizes, figure numbers and computational costs should be added only with a dataset, metric and source location; generic template rankings are not evidence.
 
-## Performance
-
-- Competitive zero-shot embedding quality
-- Good generalization across tissues
-- Improvements after bug fixes in implementation
-
-## Related Models
+## Connections
 
 - [[01_Papers/Geneformer|Geneformer]]
 - [[01_Papers/scGPT|scGPT]]
 - [[01_Papers/scFoundation|scFoundation]]
-
-## See Also
-
 - [[02_Concepts/Cell Foundation Models|Foundation Models]]
 - [[02_Concepts/Single-Cell Embeddings|Cell Embeddings]]
 - [[bioRxiv 2026 A unified framework enables accessible deployment and comprehensive benchmarking of single-cell foundation models|Comprehensive benchmarking paper]]
 
----
+## Verification (2026-10-20)
 
-**Status**: Note skeleton - expand with detailed information when paper is read
-
-**Last Updated**: 2026-03-25
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41467-025-59926-5).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

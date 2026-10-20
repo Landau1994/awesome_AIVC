@@ -1,15 +1,11 @@
 ---
 title: "CellPLM: Pre-training of Cell Language Model Beyond Single Cells"
 aliases: [CellPLM]
-authors:
-  - Hongzhi Wen
-  - Wenzhuo Tang
-  - Xinnan Dai
-  - et al.
+authors: ["Hongzhi Wen", "Wenzhuo Tang", "Xinnan Dai", "Jiayuan Ding", "Wei Jin", "Yuying Xie", "Jiliang Tang"]
 year: 2024
-journal: ICLR 2024
-doi:
-url: https://github.com/OmicsML/CellPLM
+journal: "ICLR 2024"
+doi: null
+url: "https://proceedings.iclr.cc/paper_files/paper/2024/hash/173bcdbd820edbe43284e0941109ada9-Abstract-Conference.html"
 tags:
   - paper
   - AIVC
@@ -24,18 +20,19 @@ rating:
 priority: P1
 date_added: 2026-01-16
 date_read:
+doi_status: "Article DOI not listed in the official proceedings page; use the proceedings URL"
 ---
 
 # CellPLM: Pre-training of Cell Language Model Beyond Single Cells
 
 ## Quick Summary
-> CellPLM is the first single-cell foundation model that considers cell-cell relationships by treating cells as tokens and tissues as sentences. It leverages spatially-resolved transcriptomic data and achieves 100x faster inference than previous models while outperforming them across diverse tasks.
+> CellPLM treats cells as tokens and tissues as sequences, incorporating spatially resolved data to learn intercellular context. The authors report improved downstream performance and roughly 100-fold faster cell-embedding inference in their comparison; these results are specific to the evaluated models and setup.
 
 ## Key Points
 - **Novel paradigm**: Cells as tokens, tissues as sentences (not genes as tokens)
 - **Spatial awareness**: Uses spatial transcriptomics in pre-training
 - **Cell-cell relations**: First model to encode inter-cellular relationships
-- **100x faster**: Dramatically improved inference speed
+- **Reported speed**: Approximately 100-fold faster embedding inference in the paper's comparison
 - **ICLR 2024**: Top venue acceptance
 
 ## Core Innovation
@@ -104,7 +101,7 @@ Cell Embeddings with Contextual Information
 | Perturbation prediction | Competitive |
 
 ### Speed Comparison
-- **100x faster** than previous pre-trained models
+- The authors report approximately **100-fold faster** embedding inference against the compared pretrained models; speed depends on hardware, batching and implementation.
 - Efficient cell embedding generation
 
 ## Critical Analysis
@@ -150,3 +147,8 @@ Cell Embeddings with Contextual Information
   year={2024}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://proceedings.iclr.cc/paper_files/paper/2024/hash/173bcdbd820edbe43284e0941109ada9-Abstract-Conference.html).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

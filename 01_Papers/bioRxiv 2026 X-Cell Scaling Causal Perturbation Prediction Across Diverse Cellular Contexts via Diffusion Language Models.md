@@ -12,7 +12,7 @@ year: 2026
 journal: bioRxiv
 doi: 10.64898/2026.03.18.712807
 url: https://doi.org/10.64898/2026.03.18.712807
-tags: 
+tags:
 - paper
 - AIVC
 - Single-Cell
@@ -25,9 +25,12 @@ date_added: 2026-03-23
 
 # X-Cell: Scaling Causal Perturbation Prediction Across Diverse Cellular Contexts via Diffusion Language Models
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.03.18.712807v1). The v1 abstract confirms 25.6 million cells, 16 contexts and a 4.9-billion-parameter model. Scaling is an empirical result within the tested range; claims after self-supervised test-time adaptation must be distinguished from frozen-model zero-shot results. The author list is abridged; other detailed metrics were not independently verified.
+
 ## Quick Summary
 
-> This study introduces **X-Atlas/Pisces**, the largest genome-wide CRISPRi [[02_Concepts/Perturb-seq|Perturb-seq]] compendium to date, featuring 25.6 million single-cell transcriptomes across 16 diverse biological contexts. Leveraging this resource, the authors developed **X-Cell**, a 4.9-billion-parameter diffusion language model that predicts cellular responses to genetic perturbations by iteratively refining states through cross-attention to multi-modal biological priors (e.g., protein models, interaction networks). The work demonstrates for the first time that perturbation prediction follows universal **scaling laws** similar to large language models (LLMs) and achieves state-of-the-art **zero-shot generalization** to unseen primary human cells and novel cell lineages.
+> This study introduces **X-Atlas/Pisces**, the largest genome-wide CRISPRi [[02_Concepts/Perturb-seq|Perturb-seq]] compendium to date, featuring 25.6 million single-cell transcriptomes across 16 diverse biological contexts. Leveraging this resource, the authors developed **X-Cell**, a 4.9-billion-parameter diffusion language model that predicts cellular responses to genetic perturbations by iteratively refining states through cross-attention to multi-modal biological priors (e.g., protein models, interaction networks). The authors report power-law scaling within the tested data/model ranges and evaluate transfer to unseen cellular contexts. Results after self-supervised test-time adaptation must be distinguished from inference with a frozen model; the study does not establish universal scaling laws across all perturbation models.
 
 ## Key Points
 
@@ -122,9 +125,9 @@ date_added: 2026-03-23
 
 ### Related Concepts
 
-- [[Scalling Laws]] **Scaling Laws**: The mathematical relationship between model performance and scale.
+- [[02_Concepts/Methods and Metrics Glossary#Data Scaling Laws|Scaling Laws]] **Scaling Laws**: The mathematical relationship between model performance and scale.
     
-- [[Diffusion Models]] **Discrete Diffusion**: A generative approach for refining biological states iteratively.
+- [[02_Concepts/Generative Models|Diffusion Models]] **Discrete Diffusion**: A generative approach for refining biological states iteratively.
     
 - [[Zero-shot Learning|Zero-shot]] **Zero-Shot Learning**: The ability of a model to make accurate predictions on data types it never saw during training.
     

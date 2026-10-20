@@ -27,8 +27,11 @@ date_read:
 
 # Benchmarking RNA velocity methods across 17 independent studies
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.1101/2025.08.02.668272v1). This is the 2025 preprint note (14 methods). The [2026 Cell Reports Methods version](https://doi.org/10.1016/j.crmeth.2026.101367) evaluates 15 methods, including CellRank, across 17 datasets. Both report no universal winner; do not combine the method counts or unverified numerical rankings across versions.
+
 ## Quick Summary
-> This paper presents a comprehensive benchmark of 14 RNA velocity inference methods using 17 independent scRNA-seq datasets. The authors evaluate the methods based on inference accuracy, algorithmic stability (via down-sampling), and computational usability. The study reveals that no single method consistently outperforms others across all metrics; while [[01_Papers/veloVI|veloVI]] shows the highest directional accuracy, [[01_Papers/DeepVelo|DeepVelo]] is the most computationally efficient, and [[01_Papers/latentVelo|latentVelo]] offers high stability. Significant discrepancies were found in the velocity fields inferred by different methods, suggesting a need for consensus approaches in future studies.
+> This paper presents a comprehensive benchmark of 14 RNA velocity inference methods using 17 independent scRNA-seq datasets. The authors evaluate the methods based on inference accuracy, algorithmic stability (via down-sampling), and computational usability. The study reveals that no single method consistently outperforms others across all metrics; the reported rankings vary by dataset, metric and computational configuration. Significant discrepancies were found in the velocity fields inferred by different methods, suggesting a need for consensus approaches in future studies.
 
 ## Key Points
 - A systematic evaluation of 14 RNA velocity methods, categorized into ODE-based, Machine Learning-based, and Deep Learning-based approaches.
@@ -60,11 +63,13 @@ date_read:
     - Usability: GPU/CPU runtime and memory increment.
 
 ## Results
+The rows below are recorded preprint summaries. CBDir and ICCoh are cosine-based scores, not percentages of correctly predicted cells. Runtime and memory depend on dataset size, hardware and configuration; the original per-dataset tables are required before using these numbers as method-selection guarantees.
+
 | Metric                  | Value   | Baseline/Note                               |
 | ----------------------- | ------- | ------------------------------------------- |
 | Avg CBDir (All methods) | 0.14    | Low overall directional accuracy            |
-| Max CBDir               | 0.28    | Achieved by [[01_Papers/veloVI|veloVI]]                      |
-| Max ICCoh               | 0.99    | Achieved by [[01_Papers/latentVelo|latentVelo]]                  |
+| Max CBDir               | 0.28    | Achieved by [[01_Papers/veloVI\|veloVI]]                      |
+| Max ICCoh               | 0.99    | Achieved by [[01_Papers/latentVelo\|latentVelo]]                  |
 | Method Agreement (A1)   | < 0.3   | General average, indicates high discrepancy |
 | GPU Memory (DeepVelo)   | ~543 MB | Most efficient                              |
 | GPU Memory (cell2fate)  | > 22 GB | Least efficient                             |

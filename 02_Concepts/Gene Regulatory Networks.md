@@ -10,7 +10,7 @@ tags:
 category: Core Concept
 importance: critical
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Gene Regulatory Networks
@@ -52,7 +52,7 @@ $$A_{ij} = \begin{cases} 1 & \text{if TF } i \text{ regulates gene } j \\ 0 & \t
 
 ### Perturbation Prediction
 - GRNs explain how perturbations propagate
-- [[01_Papers/GEARS|GEARS]] uses GRN as knowledge graph
+- [[01_Papers/GEARS|GEARS]] uses co-expression and GO-derived similarity graphs; these are not validated directed GRNs
 - Predict downstream effects of gene knockouts
 
 ### Cell State Understanding
@@ -79,3 +79,7 @@ $$A_{ij} = \begin{cases} 1 & \text{if TF } i \text{ regulates gene } j \\ 0 & \t
 - [pySCENIC](https://github.com/aertslab/pySCENIC)
 - [GRNBoost2](https://arboreto.readthedocs.io/)
 - [scPRINT](https://github.com/cantinilab/scPRINT)
+
+## Verification (2026-10-20)
+
+Co-expression, attention and functional similarity nominate edges but do not alone establish causal direction. [GEARS](https://www.nature.com/articles/s41587-023-01905-6); [SCENIC](https://doi.org/10.1038/nmeth.4463).

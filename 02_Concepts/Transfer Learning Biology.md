@@ -10,7 +10,7 @@ tags:
 category: Core Technique
 importance: high
 date_created: 2026-01-16
-last_updated: 2026-01-16
+last_updated: 2026-10-20
 ---
 
 # Transfer Learning in Biology
@@ -59,3 +59,7 @@ Downstream Task (annotation, perturbation, etc.)
 ## Key Papers
 - [[01_Papers/Geneformer|Geneformer]] - Transfer learning focus
 - [[01_Papers/scGPT|scGPT]] - Multi-task transfer
+
+## Verification (2026-10-20)
+
+Transfer can improve data efficiency, but negative transfer is possible. Evaluate on donors/studies/conditions held out from all training and tuning stages. [Geneformer original study](https://doi.org/10.1038/s41586-023-06139-9); [scGPT study](https://doi.org/10.1038/s41592-024-02201-0).

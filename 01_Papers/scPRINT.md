@@ -1,13 +1,11 @@
 ---
-title: "scPRINT: Pre-training on 50 Million Cells for Gene Network Predictions"
-aliases: [scPRINT, scPRINT-2]
-authors:
-  - Jérémie Kalfon
-  - et al.
+title: "scPRINT: pre-training on 50 million cells allows robust gene network predictions"
+aliases: [scPRINT]
+authors: ["Jérémie Kalfon", "Jules Samaran", "Gabriel Peyré", "Laura Cantini"]
 year: 2025
-journal: Nature Communications
-doi: 10.1038/s41467-025-58699-1
-url: https://github.com/cantinilab/scPRINT
+journal: "Nature Communications"
+doi: "10.1038/s41467-025-58699-1"
+url: "https://doi.org/10.1038/s41467-025-58699-1"
 tags:
   - paper
   - AIVC
@@ -27,14 +25,14 @@ date_read:
 # scPRINT: Pre-training on 50 Million Cells for Gene Network Predictions
 
 ## Quick Summary
-> scPRINT (Single-cell PRe-trained Inference of Networks with Transformers) is a foundation model trained on 50+ million cells that uniquely generates cell-specific gene regulatory networks in zero-shot mode, alongside standard tasks like denoising, embedding, and label prediction.
+> scPRINT (Single-cell PRe-trained Inference of Networks with Transformers) is a foundation model trained on 50+ million cells that infers cell-context gene networks in zero-shot mode, alongside standard tasks like denoising, embedding, and label prediction.
 
 ## Key Points
-- **Gene network inference**: Unique capability among foundation models
+- **Gene network inference**: A central task evaluated by the paper
 - **Zero-shot capable**: Multiple tasks without fine-tuning
 - **50M+ cells**: Large-scale pre-training
 - **scPRINT-2**: Next-gen version with 350M cells, 16 organisms
-- **Outperforms GENIE3**: Better than classical GRN methods
+- **Evaluation**: The paper reports improvements over selected gene-network baselines in its atlas-level benchmarks
 
 ## Methods
 
@@ -80,27 +78,29 @@ Multiple Zero-shot Outputs:
 ### GRN Benchmark
 | Method | Performance |
 |--------|-------------|
-| scPRINT | Best on many benchmarks |
-| GENIE3 | Competitive but slower |
-| scGPT | Inferior on GRN task |
-| DeepSEM | Lower performance |
-| Geneformer v2 | Lower performance |
+| scPRINT | Reported improvements in the paper's atlas-level evaluation |
+| GENIE3 | Classical comparator; runtime depends on configuration |
+| scGPT | Comparator in selected settings |
+| DeepSEM | Comparator in selected settings |
+| Geneformer | Use the exact version reported in each experiment |
 
 ### Key Finding
-> Pushing training to millions of cells and large parameter sizes is essential for gene network inference
+> The authors found benefits from scale within their evaluated settings. This does not establish that large-scale pretraining is necessary for every gene-network inference task.
 
-## scPRINT-2 (Next Generation)
+## scPRINT-2 (Separate Follow-up)
+
+The [official scPRINT-2 documentation](https://cantinilab.github.io/scPRINT-2/) describes a later model trained on over 350 million cells across 16 species. These specifications belong to scPRINT-2, not the 2025 scPRINT article.
 
 | Feature | scPRINT | scPRINT-2 |
 |---------|---------|-----------|
 | Training cells | 50M | 350M |
 | Species | Multiple | 16 organisms |
-| Performance | Strong | State-of-the-art |
+| Performance | Evaluate with the original article | Evaluate separately with the follow-up manuscript |
 
 ### scPRINT-2 Improvements
 - Enhanced tokenization
 - Better loss functions
-- State-of-the-art on denoising, embedding, cell type prediction
+- Supports denoising, embedding and label prediction; results depend on task and evaluation protocol
 
 ## Ecosystem Tools
 - **scDataLoader**: Dataloader for large cell models
@@ -109,7 +109,7 @@ Multiple Zero-shot Outputs:
 
 ## Critical Analysis
 ### Strengths
-- Unique GRN inference capability
+- Gene-network inference integrated with other cell-analysis tasks
 - True zero-shot multi-task
 - Comprehensive evaluation
 - Active development (scPRINT-2)
@@ -150,3 +150,8 @@ Multiple Zero-shot Outputs:
   year={2025}
 }
 ```
+
+## Verification (2026-10-20)
+
+- Checked title, year, venue and identifier against the [primary source](https://doi.org/10.1038/s41467-025-58699-1).
+- Scope: publication metadata, abstract and accessible method descriptions. Numerical results, figure references and experiments have not all been independently checked or reproduced. Comparisons remain specific to their datasets, metrics and versions.

@@ -19,11 +19,8 @@ The **Cell Ontology (CL)** is a standardized, hierarchical classification system
 
 ## Core Structure
 
-### Hierarchy Levels
-- **Root**: Cell
-  - Organism-specific cells (human, mouse, etc.)
-    - Tissue-resident cells (liver cell, neuron, etc.)
-      - Cell type variants (activated T cell, CD4+ T cell, etc.)
+### Hierarchy
+CL represents cell types with multiple inheritance and logical relationships. Many canonical terms are species-agnostic; organism and tissue information can be recorded separately. It is not a tree with “human cell” and “mouse cell” as its main branches.
 
 ### Key Properties
 - **Unique identifiers**: CL:0000001 format
@@ -41,7 +38,7 @@ The **Cell Ontology (CL)** is a standardized, hierarchical classification system
 
 ### 2. Tool Development
 - Single-cell atlases use CL for annotation
-- Tools like [[02_Concepts/Dimensionality Reduction|cell type inference]] output CL terms
+- Cell-type annotation tools may map predictions to CL terms; dimensionality reduction alone does not assign ontology labels
 - Enables programmatic queries
 
 ### 3. Biocuration
@@ -51,44 +48,40 @@ The **Cell Ontology (CL)** is a standardized, hierarchical classification system
 
 ## Structure Example
 
-```
-CL:0000000 Cell
-├── CL:0000001 Human cell
-│   ├── CL:0000129 Fibroblast
-│   ├── CL:0000451 Dendritic cell
-│   │   ├── CL:0000453 Inflammatory dendritic cell
-│   │   ├── CL:0001043 Plasmacytoid dendritic cell
-│   └── CL:0000084 T cell
-│       ├── CL:0000085 CD4-positive, alpha-beta T cell
-│       ├── CL:0000786 CD8-positive, alpha-beta T cell
-└── CL:0000010 Mouse cell
-    └── ... (similar hierarchy)
-```
+| Identifier | Cell type |
+|---|---|
+| CL:0000000 | cell |
+| CL:0000084 | T cell |
+| CL:0000624 | CD4-positive, alpha-beta T cell |
+| CL:0000625 | CD8-positive, alpha-beta T cell |
+
+This table lists examples, not direct parent-child edges. Consult the released ontology for the complete hierarchy.
 
 ## Recent Expansions
 
 The Cell Ontology is actively maintained and expanded:
-- **2023-2024**: ~200+ new cell types added annually
-- **scRNA-seq driven**: Most new terms discovered through single-cell studies
+- **Versioned releases**: Counts and additions must be tied to a specific release
+- **Single-cell evidence**: Transcriptomic studies contribute alongside anatomical, functional and other evidence
 - **Cross-organism**: Improving human-mouse alignments
 
 ### CellLink Contribution
 [[bioRxiv 2026 Cell phenotypes in the biomedical literature a systematic analysis and text mining corpus|Recent work]] used text mining to:
 - Identify gaps in chondrocyte classification
-- Add 15+ new chondrocyte subtypes to CL
+- Support revision of chondrocyte classifications; the exact number requires release-level evidence
 - Improve hierarchy depth and specificity
 
 ## Usage in Computational Tools
 
 ### Scanpy Integration
 ```python
-import scanpy as sc
 import cellxgene_census
 
-# Query using CL terms
-cells = cellxgene_census.get_cells(
-    cell_types=['CL:0000084']  # All T cells
-)
+with cellxgene_census.open_soma() as census:
+    cells = census["census_data"]["homo_sapiens"].obs.read(
+        value_filter="cell_type_ontology_term_id == 'CL:0000084'",
+        column_names=["soma_joinid", "cell_type", "cell_type_ontology_term_id"],
+    ).concat().to_pandas()
+# Exact-ID filtering does not automatically include annotated descendant types.
 ```
 
 ### Standardization
@@ -100,7 +93,7 @@ cells = cellxgene_census.get_cells(
 
 ⚠️ **Scope Creep**: Does "activated CD4+ T cell in a specific tissue" deserve own CL term?
 ⚠️ **Consensus**: Different labs use different granularity
-⚠️ **Growth Rate**: ~200 new terms/year; scRNA-seq discovering faster
+⚠️ **Versioning**: Terminology and definitions change; record the ontology release
 ⚠️ **Organism Coverage**: Human/mouse well-represented; others sparse
 
 ## Advantages
@@ -121,7 +114,7 @@ cells = cellxgene_census.get_cells(
 ## Tools & Access
 
 - **OBO Format**: Cell.obo file (open format)
-- **Ontology Lookup Service (OLS)**: https://www.ebi.ac.uk/ols/ontologies/cl
+- **Ontology Lookup Service (OLS)**: https://www.ebi.ac.uk/ols4/ontologies/cl
 - **Cell Ontology GitHub**: https://github.com/obophenotype/cell-ontology
 - **Pronto**: Python library for ontology manipulation
 
@@ -133,4 +126,8 @@ cells = cellxgene_census.get_cells(
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+Corrected mislabeled identifiers and a nonexistent Census API call. [CL documentation](https://obophenotype.github.io/cell-ontology/); [CL logical definitions](https://pmc.ncbi.nlm.nih.gov/articles/PMC3024222/); [CD8 term](https://www.informatics.jax.org/vocab/cell_ontology/CL%3A0000625); [Census query documentation](https://chanzuckerberg.github.io/cellxgene-census/notebooks/api_demo/census_query_extract.html).

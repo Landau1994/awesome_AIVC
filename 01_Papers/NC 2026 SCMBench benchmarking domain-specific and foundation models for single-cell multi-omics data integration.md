@@ -1,5 +1,5 @@
 ---
-title: SCMBench benchmarking domain-specific and foundation models for single-cell multi-omics data integration
+title: "SCMBench: benchmarking domain-specific and foundation models for single-cell multi-omics data integration"
 aliases:
   - SCMBench
 authors:
@@ -41,13 +41,16 @@ date_read:
 
 # SCMBench: benchmarking domain-specific and foundation models for single-cell multi-omics data integration
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41467-026-72570-x). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
-> The paper introduces SCMBench, a comprehensive benchmarking framework evaluating 23 single-cell multi-omics integration tools, spanning both Domain-specific Models (DMs) and modern Foundation Models (FMs). Through extensive testing across paired, unpaired, and simulated datasets, the authors evaluate integration accuracy, biomarker detection, trajectory inference, and batch effect correction, ultimately demonstrating that while zero-shot FMs currently underperform top DMs like [[GLUE]] and [[scJoint]], a proposed lightweight adapter strategy significantly boosts FM efficacy for multi-modal tasks.
+> The paper introduces SCMBench, a comprehensive benchmarking framework evaluating 23 single-cell multi-omics integration tools, spanning both Domain-specific Models (DMs) and modern Foundation Models (FMs). Through extensive testing across paired, unpaired, and simulated datasets, the authors evaluate integration accuracy, biomarker detection, trajectory inference, and batch effect correction, ultimately demonstrating that while zero-shot FMs currently underperform top DMs like [[05_Tools/Methods and Data Resources#GLUE|GLUE]] and [[05_Tools/Methods and Data Resources#scJoint|scJoint]], a proposed lightweight adapter strategy significantly boosts FM efficacy for multi-modal tasks.
 
 ## Key Points
 - Benchmarks 19 DMs and 4 FMs ([[scGPT]], [[Geneformer]], [[scFoundation]], [[UCE]]) on single-cell multi-omics data integration.
 - Introduces an evaluation framework covering 13 metrics across technical accuracy, biological information conservation (biomarkers, DARs, motifs), trajectory conservation, and batch effect correction.
-- Recommends [[GLUE]] as the most consistently reliable method for paired multi-omics integration and [[scJoint]] for unpaired scenarios.
+- Recommends [[05_Tools/Methods and Data Resources#GLUE|GLUE]] as the most consistently reliable method for paired multi-omics integration and [[05_Tools/Methods and Data Resources#scJoint|scJoint]] for unpaired scenarios.
 - Uncovers that zero-shot FMs struggle significantly with multi-modal integration (especially scATAC-seq), typically performing worse than state-of-the-art DMs.
 - Proposes a computationally efficient adapter-based strategy (combining FM embeddings with [[scVI]]) that bridges the performance gap, improving FM integration accuracy by over 65% in some cases.
 - Outlines a practical recommendation pipeline to guide method selection based on data characteristics (paired/unpaired), species, and computational constraints.
@@ -55,12 +58,12 @@ date_read:
 ## Methods
 ### Data
 - **Real Data:** 3 paired datasets (PBMC-10k, Chen-2019, Ma-2020), 2 unpaired datasets (Muto-2021, Yao-2021), and 1 triple-omics dataset (mouse cortex integrating scRNA-seq, scATAC-seq, and snmC-seq).
-- **Simulated Data:** Datasets generated via [[scMultiSim]] with varying degrees of batch effects to quantitatively evaluate robustness.
-- **Preprocessing:** ATAC-seq peaks are transformed into gene activity scores using [[MAESTRO]] to make them compatible with gene-centric FM tokenizers.
+- **Simulated Data:** Datasets generated via [[05_Tools/Methods and Data Resources#scMultiSim|scMultiSim]] with varying degrees of batch effects to quantitatively evaluate robustness.
+- **Preprocessing:** ATAC-seq peaks are transformed into gene activity scores using [[05_Tools/Methods and Data Resources#MAESTRO|MAESTRO]] to make them compatible with gene-centric FM tokenizers.
 
 ### Model Architecture
 - **Domain-specific Models (DMs):** Includes statistical methods (e.g., PCA, MOFA, bindSC, LIGER, Seurat4, Seurat5) and deep learning methods (e.g., GLUE, scVI, TotalVI, scJoint, Cobolt).
-- **Foundation Models (FMs):** scGPT, Geneformer, scFoundation, and UCE. 
+- **Foundation Models (FMs):** scGPT, Geneformer, scFoundation, and UCE.
 - **Adapter Strategy:** A hybrid architecture where pre-trained FM embeddings are fed into a lightweight [[scVI]] variational autoencoder module (e.g., scGPT-scVI, UCE-scVI) for joint representation learning.
 
 ### Training Strategy
@@ -105,11 +108,11 @@ date_read:
 - *scGPT: toward building a foundation model for single-cell multi-omics using generative AI* (Cui et al., 2024) - One of the core models evaluated.
 
 ### Related Concepts
-- [[Single-cell Multi-omics]]
-- [[Foundation Models]]
-- [[Batch Effect Correction]]
+- [[02_Concepts/Multi-modal Integration|Single-cell Multi-omics]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
+- [[02_Concepts/Batch Correction|Batch Effect Correction]]
 - [[Trajectory Inference]]
-- [[Latent Space Alignment]]
+- [[02_Concepts/Disentangled Representations|Latent Space Alignment]]
 
 ### Potential Applications
 - Guiding bioinformatics pipelines for atlas-scale single-cell integration projects.

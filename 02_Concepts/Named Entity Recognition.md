@@ -81,9 +81,9 @@ Entity: "lung"                     Type: ANATOMY
 | BiomedBERT (fine-tuned) | 0.874 | Best for cell phenotypes |
 | GPT-4.1 (few-shot) | 0.612 | Slower, needs prompting |
 | GPT-5.2 (few-shot) | 0.568 | More flexible but less accurate |
-| Legacy CRAFT model | 0.36-0.58 | Outdated on modern terminology |
+| Legacy CRAFT-based model | See task-specific table | Domain transfer depends on training corpus and matching criterion |
 
-**Key Finding**: Fine-tuned BERT still outperforms LLMs on specific NER tasks
+**Scope**: The first three values are exact span-and-type F1 for the cell-phenotype class in CellLink Table 4. All-type exact F1 differs (0.834, 0.509, 0.477 respectively). The result does not establish a universal BERT-versus-LLM ranking.
 
 ## Evaluation Metrics
 
@@ -99,9 +99,7 @@ Entity: "lung"                     Type: ANATOMY
 
 ### Per-Type Performance
 - Different entity types have different difficulty
-- Cell phenotypes: 87-90% F1
-- Vague populations: 50-70% F1
-- Heterogeneous populations: 70% F1
+- Report each entity class, exact/approximate match rule, model and evaluation split. The former generic per-type ranges lacked that context and are withdrawn.
 
 ## Applications in Bioinformatics
 
@@ -134,14 +132,14 @@ ner_pipeline = pipeline(
 text = "CD4+ T cells infiltrated the tumor microenvironment."
 results = ner_pipeline(text)
 
-# Output: [
-#   {'entity': 'B-CELL_TYPE', 'score': 0.99, 'word': 'CD4'},
-#   {'entity': 'I-CELL_TYPE', 'score': 0.98, 'word': '+'},
-#   ...
-# ]
+# Inspect the checkpoint’s label set and actual output.
+# This general biomedical checkpoint does not imply CellLink CELL_TYPE labels.
+print(results)
 ```
 
 ## Fine-Tuning Workflow
+
+Illustrative pseudocode: datasets, label mappings, tokenizer alignment and training arguments must be supplied.
 
 ```python
 from transformers import AutoTokenizer, AutoModelForTokenClassification
@@ -156,7 +154,7 @@ trainer = Trainer(
     model=model,
     train_dataset=celllink_train,
     eval_dataset=celllink_eval,
-    ...
+    # Supply TrainingArguments, data collator and metrics here.
 )
 
 # 3. Evaluate
@@ -198,8 +196,12 @@ trainer.evaluate()
 - **BioID**: Gene/protein NER (Arighi et al., 2017)
 - **CRAFT**: Biomedical concept NER (Verspoor et al., 2012)
 - **AnatEM**: Anatomical entity NER (Pyysalo et al., 2014)
-- **CellLink**: Cell phenotype NER (recent; 22K annotations)
+- **CellLink**: 22,362 annotated mentions in 3,005 excerpts (Table 1)
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+NER figures were checked against [CellLink preprint, Tables 1 and 4](https://pmc.ncbi.nlm.nih.gov/articles/PMC12918994/). Counts refer to mentions and excerpts, not 22,000 passages. The legacy CRAFT range needs a specific matching condition before quantitative reuse.

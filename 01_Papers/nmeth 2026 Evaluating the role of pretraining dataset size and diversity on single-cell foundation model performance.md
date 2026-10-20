@@ -28,27 +28,30 @@ date_read:
 
 # Evaluating the role of pretraining dataset size and diversity on single-cell foundation model performance
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.nature.com/articles/s41592-026-03120-y). The abstract confirms 22.2 million cells, 400 pretrained models and 6,400 experiments. The reported saturation concerns the tested architectures, objectives and tasks; it does not prove that useful scaling is impossible for all future single-cell models. Detailed saturation percentages remain to be checked against the figures.
+
 ## Quick Summary
-> This paper systematically investigates how pretraining dataset size and diversity influence the performance of five prominent single-cell foundation models (scFMs) across zero-shot and fine-tuned tasks. Through 6,400 experiments using a 22.2-million-cell corpus (scTab), the authors find that model performance plateaus at a surprisingly small fraction of the total available data—often as little as 1% to 10%—and that current scFMs lack the clear data scaling laws observed in large language models. The findings suggest that developers should shift focus from simply increasing training data to improving data quality and better aligning pretraining objectives with target downstream tasks.
+> This paper systematically investigates how pretraining dataset size and diversity influence the performance of a set of single-cell representation models and baselines across zero-shot and fine-tuned tasks. Through 6,400 experiments using a 22.2-million-cell corpus (scTab), the authors find that model performance plateaus at a surprisingly small fraction of the total available data—often as little as 1% to 10%—and that current scFMs lack the clear data scaling laws observed in large language models. The findings suggest that developers should shift focus from simply increasing training data to improving data quality and better aligning pretraining objectives with target downstream tasks.
 
 ## Key Points
-- Evaluated 5 model architectures: [[PCA]], [[scVI]], [[SSL]], [[Geneformer]], and [[SCimilarity]].
+- Compared five approaches (including baselines rather than five foundation models): [[02_Concepts/Principal Component Analysis|PCA]], [[scVI]], [[02_Concepts/Self-Supervised Learning|SSL]], [[Geneformer]], and [[SCimilarity]].
 - Conducted 6,400 experiments across 4 tasks (cell-type classification, batch integration, perturbation response prediction) to assess performance scaling.
 - Observed "learning saturation points," where performance gains become marginal once models are trained on only a small subset of the total corpus.
-- Contrary to findings in the NLP domain, increasing dataset diversity through techniques like [[Geometric sketching]] or cell-type re-weighting did not result in significant downstream performance improvements.
+- Contrary to findings in the NLP domain, increasing dataset diversity through techniques like [[05_Tools/AI and Scientific Computing Reference#Geometric sketching|Geometric sketching]] or cell-type re-weighting did not result in significant downstream performance improvements.
 - Larger models typically achieve higher absolute performance but still encounter early performance saturation.
 - Simple linear baselines or standard statistical methods (like PCA) often outperform or compete with more complex transformer-based scFMs on well-defined tasks.
 
 ## Methods
 ### Data
-- Primary Corpus: [[scTab]] (22.2M cells, 164 cell types).
+- Primary Corpus: [[05_Tools/Methods and Data Resources#scTab|scTab]] (22.2M cells, 164 cell types).
 - Downstream Tasks: Clonal hematopoiesis, intestine-on-chip, placenta, periodontitis, lung, liver, renal, and Tahoe-100M (perturbation data).
-- Diversity Schemes: Uniform random downsampling, cell-type re-weighting, and [[Geometric sketching]].
+- Diversity Schemes: Uniform random downsampling, cell-type re-weighting, and [[05_Tools/AI and Scientific Computing Reference#Geometric sketching|Geometric sketching]].
 
 ### Model Architecture
-- [[PCA]] (Projection matrices)
+- [[02_Concepts/Principal Component Analysis|PCA]] (Projection matrices)
 - [[scVI]] (Variational autoencoder)
-- [[SSL]] (Masked autoencoder)
+- [[02_Concepts/Self-Supervised Learning|SSL]] (Masked autoencoder)
 - [[Geneformer]] (Transformer)
 - [[SCimilarity]] (Autoencoder-based metric learning)
 
@@ -84,8 +87,8 @@ date_read:
 - Clear demonstration that complex models are often outperformed by standard, simpler statistical baselines.
 
 ### Weaknesses
-- Restricted to a specific set of five foundational architectures; the field is rapidly evolving with newer architectures.
-- The use of raw [[scTab]] without further curation highlights that performance might be gated by data quality rather than architectural limitations, but a more controlled "high-quality" subset was not explored in depth.
+- Restricted to the evaluated architectures and training regimes; the field is rapidly evolving with newer architectures.
+- The use of raw [[05_Tools/Methods and Data Resources#scTab|scTab]] without further curation highlights that performance might be gated by data quality rather than architectural limitations, but a more controlled "high-quality" subset was not explored in depth.
 
 ### Questions
 - To what extent are the saturation points caused by the specific pretraining tasks chosen, rather than the intrinsic difficulty of the biological domain?
@@ -99,10 +102,10 @@ date_read:
 - [[SCimilarity]] (Heimberg et al., 2025)
 
 ### Related Concepts
-- [[Foundation Models]]
-- [[Transfer Learning]]
-- [[Batch Integration]]
-- [[Data Scaling Laws]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models]]
+- [[02_Concepts/Transfer Learning Biology|Transfer Learning]]
+- [[02_Concepts/Batch Correction|Batch Integration]]
+- [[02_Concepts/Methods and Metrics Glossary#Data Scaling Laws|Data Scaling Laws]]
 
 ### Potential Applications
 - Designing compute-optimal training regimes for future biological foundation models.

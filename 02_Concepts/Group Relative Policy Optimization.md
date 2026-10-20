@@ -15,149 +15,59 @@ status: unread
 
 ## Overview
 
-**Group Relative Policy Optimization (GRPO)** is a reinforcement learning algorithm designed to align large language models (LLMs) with biological or domain-specific objectives without requiring a separate critic network. It simplifies the RL training pipeline compared to traditional methods like PPO (Proximal Policy Optimization) or RLHF (Reinforcement Learning from Human Feedback).
+GRPO is a policy-optimization method introduced in **DeepSeekMath (2024)**. It estimates relative advantages from multiple responses to the same prompt, avoiding a separately trained value critic. It is a general language-model training method, not a method originally designed for biology. [DeepSeekMath](https://arxiv.org/abs/2402.03300)
 
-## Key Concepts
+## Core Procedure
 
-### Core Idea
-GRPO optimizes model outputs by:
-1. Generating multiple responses/outputs from the model
-2. Computing a reward for each output based on a biological objective (e.g., correlation with experimental data, biological validity score)
-3. Using *relative* comparisons within a group of outputs to update the policy
-4. Eliminating the need for a separate critic network by using group-based statistics
+1. Sample a prompt $x$ and $K$ responses from a frozen behavior policy $\pi_{\mathrm{old}}$.
+2. Evaluate a task-specific reward $r_i$ for each response.
+3. For outcome supervision, normalize rewards within the group:
 
-### Why GRPO for Biology?
+$$\hat A_i=\frac{r_i-\bar r}{\operatorname{std}(r_1,\ldots,r_K)+\epsilon_{\mathrm{num}}}.$$
 
-- **Eliminates Critic Network**: Simpler, more stable training (critic networks can become bottlenecks)
-- **Group Comparisons**: Comparing outputs within a group is more stable than absolute reward scaling
-- **Direct Reward Integration**: Can directly incorporate biological metrics (BioBERTScore, correlation with L1000 data, etc.)
-- **Scalable**: Works well with large models without additional learnable components
+4. Optimize a clipped importance-ratio objective, with reference-policy KL regularization in the original formulation. A schematic token-level objective is
 
-## Technical Details
+$$J(\theta)=\mathbb E\left[\frac1K\sum_i\frac1{|y_i|}\sum_t\left\{\min\!\left(\rho_{i,t}\hat A_i,\operatorname{clip}(\rho_{i,t},1-\varepsilon,1+\varepsilon)\hat A_i\right)-\beta\,\widehat D_{\mathrm{KL},i,t}\right\}\right],$$
 
-### Algorithm Steps
+where $\rho_{i,t}=\pi_\theta(y_{i,t}\mid x,y_{i,<t})/\pi_{\mathrm{old}}(y_{i,t}\mid x,y_{i,<t})$. The behavior and reference policies have different roles. Identical group rewards yield zero relative learning signal from the reward term. Implementations can modify normalization, length weighting and KL handling; record the variant.
 
-1. **Prompt Sampling**: Sample a batch of prompts from training data
-2. **Response Generation**: Generate K responses per prompt from the current policy
-3. **Reward Computation**: Score each response using a reward function $r(y|x)$
-   - Example: Correlation between predicted and observed gene expression
-   - Example: BioBERTScore for question answering quality
-4. **Advantage Estimation**: Within each group of K responses, compute advantages:
-   $$A_i = r_i - \text{mean}(r_1, ..., r_K)$$
-5. **Policy Update**: Update model parameters using the advantage-weighted log-likelihood:
-   $$\mathcal{L} = -\mathbb{E}[\log \pi_\theta(y|x) \cdot A(y|x)]$$
-6. **Repeat**: Iterate until convergence
+## Comparison with Related Methods
 
-### Comparison to Other Methods
+| Method | Distinction |
+|---|---|
+| REINFORCE | Policy gradient; can use a baseline, but does not inherently have PPO clipping |
+| PPO | Usually learns a value baseline and clips policy-ratio updates |
+| GRPO | Uses within-prompt group rewards rather than a separate value critic |
+| RLHF | Describes a feedback/training setting, not one optimization algorithm; can use different optimizers |
+| DPO | Learns from preference pairs with a different objective |
 
-| Method | Critic Network | Training Stability | Scalability |
-|--------|---|---|---|
-| REINFORCE | No | Low | Medium |
-| PPO | Yes | Medium | Medium |
-| RLHF | Yes (implicit) | Medium-High | Medium |
-| **GRPO** | **No** | **High** | **High** |
+No universal ranking of training stability, sample efficiency or quality follows from this table.
 
-## Applications in Single-Cell Biology
+## Potential Biological Applications
 
-### 1. Perturbation Prediction
-- **Reward**: Correlation between predicted expression changes and experimental data
-- **Objective**: Improve generalization to unseen perturbations (drugs, CRISPR)
-- **Example**: [[01_Papers/Cell2Sentence|C2S-Scale]] uses GRPO to predict response to chemical perturbations
+Rewards could score perturbation predictions, biological question answering or generated expression profiles. These are application designs rather than intrinsic GRPO capabilities. Biological validity depends on reward construction, experimental evidence and evaluation on held-out settings. Optimizing correlation or a language-based score alone does not establish biological correctness.
 
-### 2. Question Answering
-- **Reward**: BioBERTScore (semantic similarity with ground truth answers)
-- **Objective**: Generate accurate, biologically sound answers to queries
-- **Example**: "What genes are upregulated in this cell type?" → Ranked by biological accuracy
+See [[01_Papers/Cell2Sentence|Cell2Sentence / C2S-Scale]] for the specific model version and training tasks. Do not infer that every Cell2Sentence release uses the same RL procedure.
 
-### 3. Gene Expression Generation
-- **Reward**: Realism of generated transcriptome (scFID metric)
-- **Objective**: Generate biologically plausible gene expression profiles
-- **Constraint**: Maintain consistency with experimental datasets
+## Advantages and Limitations
 
-## Advantages
-
-✅ **No Critic Network**: Eliminates a source of training instability and complexity
-✅ **Stable Learning**: Group-based relative comparisons prevent reward scale issues
-✅ **Direct Biological Metrics**: Can incorporate any differentiable or non-differentiable reward
-✅ **Scalable**: Works efficiently with very large models (27B+ parameters)
-✅ **Interpretable**: Clear connection between rewards and model behavior
-
-## Limitations
-
-⚠️ **Reward Function Design**: Quality of RL depends entirely on reward function engineering
-⚠️ **Computational Cost**: Requires multiple forward passes per prompt (K responses)
-⚠️ **Mode Collapse**: May still suffer from mode collapse in some settings
-⚠️ **Sample Efficiency**: Less sample-efficient than offline RL methods
+- Avoiding the value critic can reduce memory, but generating several responses per prompt costs compute.
+- Rewards need not be differentiable; they still need to reflect the intended task.
+- Reward gaming, poor exploration, noisy rewards and distribution shift remain possible.
+- Group size, sampling policy, clipping, KL coefficient and normalization affect behavior; there is no universal best group size or stability guarantee.
 
 ## Implementation Notes
 
-### Key Hyperparameters
-- **Group Size (K)**: Number of responses per prompt (typically 4-8)
-- **Learning Rate**: Usually lower than supervised fine-tuning
-- **Reward Scaling**: Normalize rewards to reasonable ranges
-- **Training Iterations**: Depends on convergence of reward metric
-
-### Pseudocode
-
-```python
-def grpo_training_step(prompts, model, reward_fn, group_size=4):
-    """Single GRPO training step"""
-    losses = []
-
-    for prompt in prompts:
-        # Generate multiple responses per prompt
-        responses = []
-        for _ in range(group_size):
-            response = model.generate(prompt)
-            responses.append(response)
-
-        # Compute rewards
-        rewards = [reward_fn(prompt, r) for r in responses]
-
-        # Compute advantages within group
-        mean_reward = mean(rewards)
-        advantages = [r - mean_reward for r in rewards]
-
-        # Compute loss
-        for response, advantage in zip(responses, advantages):
-            log_prob = model.log_prob(response | prompt)
-            loss = -log_prob * advantage
-            losses.append(loss)
-
-    # Update model
-    total_loss = mean(losses)
-    total_loss.backward()
-    optimizer.step()
-
-    return total_loss
-```
+The former example only minimized an advantage-weighted log-likelihood. That is a policy-gradient sketch, not the full GRPO algorithm. Use a documented implementation that retains behavior-policy log probabilities, masks/pads tokens correctly, normalizes rewards, clips importance ratios and handles the selected KL term. This note is conceptual, not a tested training recipe.
 
 ## Related Concepts
 
-- [[02_Concepts/Transfer Learning Biology|Transfer Learning in Biology]] - GRPO used for fine-tuning
-- [[02_Concepts/Cell Foundation Models|Cell Foundation Models]] - Target models for GRPO alignment
-- [[02_Concepts/Transformers for Biology|Transformers for Biology]] - Architecture being optimized
+- [[02_Concepts/Transfer Learning Biology|Transfer Learning in Biology]]
+- [[02_Concepts/Cell Foundation Models|Cell Foundation Models]]
+- [[02_Concepts/Transformers for Biology|Transformers for Biology]]
 
-## Related Papers
+## Sources and Verification (2026-10-20)
 
-- [[01_Papers/Cell2Sentence|Cell2Sentence (C2S-Scale)]]: Uses GRPO for perturbation prediction and QA
-- DeepSeek-R1 (2024): Demonstrates GRPO effectiveness at scale
-- OpenAI RLHF papers: Foundation for reward-based RL in LLMs
-
-## See Also
-
-- **RLHF**: More complex but uses human feedback
-- **PPO**: Standard policy gradient method with critic
-- **DPO (Direct Preference Optimization)**: Simpler offline alternative
-- **Supervised Fine-Tuning (SFT)**: Baseline without RL
-
-## Notes
-
-- GRPO is particularly effective when biological rewards can be computed directly (not requiring human annotation)
-- The method scales well to 27B+ parameter models, making it practical for large foundation models
-- Group-based relative comparisons make it more stable than REINFORCE but simpler than PPO
-- Can be combined with other techniques (e.g., supervised fine-tuning before RL)
-
----
-
-**Last Updated**: 2026-03-25
+- [DeepSeekMath (2024), Section 4.1](https://arxiv.org/html/2402.03300v3): original GRPO formulation.
+- [DeepSeek-R1 (2025)](https://arxiv.org/abs/2501.12948): later reasoning-model application; the former 2024 date was incorrect.
+- [[01_Papers/Cell2Sentence|Cell2Sentence / C2S-Scale]]: check the paper’s task and checkpoint before transferring biological application claims.

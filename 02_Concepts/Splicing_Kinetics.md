@@ -34,7 +34,7 @@ Degraded
 
 ### 1. Transcription Rate (α)
 - How fast is RNA polymerase transcribing?
-- Measured by unspliced RNA accumulation
+- Inferred jointly with processing/loss rates or estimated with dedicated labeling experiments; unspliced abundance alone does not measure transcription rate
 - High α → Cell is actively transcribing
 
 ### 2. Splicing Rate (β)
@@ -52,19 +52,10 @@ Degraded
 ### Unspliced/Spliced Ratio Reveals Momentum
 
 ```
-High unspliced, low spliced
-→ Cell is transcribing rapidly
-→ Expression will INCREASE
-→ Velocity = POSITIVE
-
-Low unspliced, high spliced
-→ Old transcription
-→ Expression will DECREASE
-→ Velocity = NEGATIVE
-
-Balanced unspliced/spliced
-→ Steady-state expression
-→ Velocity = ZERO
+β × unspliced > γ × spliced → mature RNA increases
+β × unspliced < γ × spliced → mature RNA decreases
+β × unspliced = γ × spliced → instantaneous mature-RNA velocity is zero
+Full steady state additionally requires α = β × unspliced
 ```
 
 ## Kinetic Models
@@ -81,17 +72,17 @@ d[spliced]/dt = β[unspliced] - γ[spliced]
 - Can identify:
   - Induction (moving right-up)
   - Degradation (moving left-down)
-  - Steady-state (center region)
+  - Steady-state points, where both derivatives vanish
 
 ## Gene-Specific Variation
 
 Different genes have different kinetics:
-- **Fast-splicing genes**: β >> α (spliced quickly)
+- **Fast-splicing genes**: Large β gives a short characteristic splicing time 1/β; β and α have different units and should not be directly compared
 - **Stable transcripts**: γ small (long half-life)
 - **Unstable transcripts**: γ large (short half-life)
 
 Example:
-- Housekeeping genes: Steady state, slow kinetics
+- Housekeeping genes can be near steady state while RNA production and turnover remain rapid
 - Response genes: Rapid kinetics, fast transcription changes
 - Short-lived regulatory RNAs: High degradation rate
 
@@ -104,10 +95,11 @@ Example:
 
 ### Quantification
 ```
-Splicing index = Unspliced / (Unspliced + Spliced)
-- 0 = All mature (old transcription)
-- 0.5 = Balanced (steady-state or transition)
-- 1.0 = All unspliced (active transcription)
+Unspliced fraction = U / (U + S), defined when U + S > 0
+- 0 = No unspliced counts detected
+- 0.5 = Equal observed unspliced and spliced counts
+- 1 = No spliced counts detected
+These values do not independently identify transcriptional state or velocity.
 ```
 
 ## Challenges
@@ -146,10 +138,14 @@ Splicing index = Unspliced / (Unspliced + Spliced)
 ## Measurement Tools
 
 - **RNA-seq**: Quantify spliced/unspliced
-- **Metabolic labeling**: Directly measure transcription rate
+- **Metabolic labeling**: Distinguish newly synthesized RNA; kinetic rates require a labeling/turnover model
 - **scNT-seq**: Single-cell nascent transcript sequencing
 - **Single-molecule FISH**: Visualize transcription
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+Rate constants, molecular abundance and measured read counts are different quantities. Splicing times and half-lives vary by gene, cell and experimental context. [scVelo dynamical model](https://scvelo.readthedocs.io/en/stable/about.html).

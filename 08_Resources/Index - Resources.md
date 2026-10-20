@@ -22,7 +22,7 @@ date_created: 2026-01-16
 ### Machine Learning for Biology
 | Course | Platform |
 |--------|----------|
-| MIT 6.878: ML for Genomics | MIT OCW |
+| [MIT 6.047: Computational Biology (2015)](https://ocw.mit.edu/courses/6-047-computational-biology-fall-2015/) | MIT OCW |
 | Deep Learning for Life Sciences | DeepMind/EMBL |
 | Machine Learning in Genomics | Stanford |
 
@@ -83,7 +83,7 @@ date_created: 2026-01-16
 
 ### Awesome Lists
 - [awesome-single-cell](https://github.com/seandavi/awesome-single-cell)
-- [awesome-deep-learning-single-cell](https://github.com/)
+- [Foundation-model single-cell paper collection](https://github.com/OmicsML/awesome-foundation-model-single-cell-papers)
 
 ### Paper Implementations
 - scGPT, Geneformer repos
@@ -94,7 +94,7 @@ date_created: 2026-01-16
 ### Active/Recent
 | Competition | Host | Prize |
 |-------------|------|-------|
-| Virtual Cell Challenge | Arc Institute | $100K |
+| [Virtual Cell Challenge](https://arcinstitute.org/virtual-cell-challenge) | Arc Institute | See the specific competition edition |
 | Open Problems | CZI/Helmholtz | Community |
 | NeurIPS SC competitions | NeurIPS | Varies |
 
@@ -146,3 +146,7 @@ date_created: 2026-01-16
 ### Twitter Lists
 - Single-cell researchers
 - AI for biology researchers
+
+## Resource scope — 2026-10-20
+
+Linked resources are concrete entry points. Unlinked course, community and newsletter labels above are discovery topics, not verified current offerings. Competition dates, access conditions and prizes must be read from the relevant edition.

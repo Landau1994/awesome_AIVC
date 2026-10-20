@@ -15,7 +15,7 @@ status: draft
 
 ## Overview
 
-**Entity Linking (EL)** is an NLP task that maps mentions of entities in text to their corresponding entries in a knowledge base or ontology. After identifying entities via NER, linking assigns them to standardized identifiers (e.g., "CD4+ T cell" → CL:0000085).
+**Entity Linking (EL)** is an NLP task that maps mentions of entities in text to their corresponding entries in a knowledge base or ontology. After identifying entities via NER, linking assigns them to standardized identifiers (e.g., "CD4+ T cell" → CL:0000624).
 
 ## Task Pipeline
 
@@ -29,8 +29,8 @@ Extracted Mentions: "CD4+ T cell", "CD8+ T cell"
 Entity Linking (EL)
    ↓
 Linked Entities:
-  "CD4+ T cell" → CL:0000085
-  "CD8+ T cell" → CL:0000786
+  "CD4+ T cell" → CL:0000624
+  "CD8+ T cell" → CL:0000625
 ```
 
 ## Key Concepts
@@ -40,18 +40,18 @@ Linked Entities:
 ```
 "T cells were isolated from blood."
 "T lymphocytes were cultured in vitro."
-"T cell receptor expression..."
+"T lymphocyte populations..."
 ```
-All refer to "T cells" but use different names
+These are potential mentions of T cells; contextual qualifiers determine the appropriate term. A T-cell receptor is a molecular entity, not a cell-type mention.
 
 **Solution**: Link all to single [[Cell Ontology]] term: CL:0000084
 
 ### Exact vs Related Matches
 **Exact**: Mention directly matches ontology term
-- "CD4+ T cell" → CL:0000085 (exact match in CL)
+- "CD4+ T cell" → CL:0000624 (exact match in CL)
 
 **Related**: Mention expresses concept not yet in ontology
-- "regulatory CD4+ T cell in lung" → CL:0000085 + information about function/location
+- "regulatory CD4+ T cell in lung" → CL:0000624 + information about function/location
 - May suggest new ontology term
 
 ### Ambiguity in Biomedical Domain
@@ -69,7 +69,7 @@ Same word, completely different meanings → requires context
 ### 1. Embedding-Based Methods
 - Map mentions and ontology entries to embedding space
 - Find nearest neighbor in embedding space
-- Examples: [[SapBERT]], [[MedCPT]]
+- Examples: [[05_Tools/Methods and Data Resources#SapBERT|SapBERT]], [[05_Tools/Methods and Data Resources#MedCPT|MedCPT]]
 
 **Advantages**:
 ✅ Fast inference
@@ -95,7 +95,7 @@ Same word, completely different meanings → requires context
 **Advantages**:
 ✅ Flexible reasoning
 ✅ Can identify "related" vs "exact" matches
-✅ Handles novel entities better
+✅ Can propose matches for novel descriptions, subject to verification
 
 **Disadvantages**:
 ⚠️ Slow (multiple API calls per entity)
@@ -107,11 +107,11 @@ Same word, completely different meanings → requires context
 ### 1. Terminology Variation
 - 10+ names for same cell type
 - Synonyms, abbreviations, colloquialisms
-- "CD4+ helper T cells" vs "Th cells" vs "Type 1 helper cells"
+- Broad helper T-cell terms and subtype terms such as type 1 helper T cells are related but not interchangeable
 
 ### 2. Ontology Incompleteness
 - Ontologies lag behind literature
-- [[Cell Ontology]] missing ~30% of new cell types from 2019-2024 papers
+- Some mentions require related rather than exact ontology matches; corpus-specific fractions are not the fraction of all newly discovered cell types missing from CL
 - Solution: "related" matches can suggest new terms
 
 ### 3. Nested Mentions
@@ -131,66 +131,43 @@ Same word, completely different meanings → requires context
 |-------|----------|-------|------|
 | SapBERT (embedding) | 0.842 | Fast ⭐⭐⭐⭐⭐ | Free |
 | MedCPT (embedding) | 0.821 | Fast ⭐⭐⭐⭐⭐ | Free |
-| OpenAI text-embedding-3 | 0.835 | Medium | $$ |
+| OpenAI text-embedding-3-large | 0.812 | Not benchmarked here | API-dependent |
 | GPT-5.2 Agent (LLM) | 0.892 | Slow ⭐⭐ | $$$$ |
 
-**Key Finding**: LLM agents best performance but expensive; embeddings best speed-accuracy tradeoff
+**Scope**: These are overall F1 values for exact CL matches in CellLink Table 5, not all-ID or cell-phenotype-only F1. GPT-5.2 led this particular comparison; speed/cost symbols above are qualitative, not measured benchmarks.
 
 ## Implementation Approaches
 
 ### Simple Embedding-Based Linking
 
 ```python
-from sentence_transformers import SentenceTransformer
-import numpy as np
+import torch
+import torch.nn.functional as F
+from transformers import AutoTokenizer, AutoModel
 
-# Load model
-model = SentenceTransformer('dmis-lab/sapbert-from-biowordvec')
-
-# Embed mention and all CL terms
-mention_text = "CD4-positive T cells"
-mention_emb = model.encode(mention_text)
-
-cl_terms = ["CD4-positive, alpha-beta T cell",
-            "CD8-positive, alpha-beta T cell",
-            "T cell"]
-cl_embs = model.encode(cl_terms)
-
-# Find best match
-scores = np.dot(mention_emb, cl_embs.T)
-best_idx = np.argmax(scores)
-print(f"Linked to: {cl_terms[best_idx]} (score: {scores[best_idx]:.3f})")
+checkpoint = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+model = AutoModel.from_pretrained(checkpoint).eval()
+mention = "CD4-positive T cells"
+terms = ["CD4-positive, alpha-beta T cell", "CD8-positive, alpha-beta T cell", "T cell"]
+tokens = tokenizer([mention] + terms, padding=True, truncation=True, return_tensors="pt")
+with torch.no_grad():
+    # This checkpoint uses the final CLS state before the pooler.
+    vectors = F.normalize(model(**tokens).last_hidden_state[:, 0, :], dim=1)
+scores = vectors[1:] @ vectors[0]
+print(terms[int(scores.argmax())])
+# Retrieve candidates only; assess specificity, context and no-match cases separately.
 ```
 
 ### LLM-Based Reasoning
 
-```python
-from openai import OpenAI
-from ontology_access_kit import OntologyInterface
+Conceptual workflow (not executable SDK code):
 
-client = OpenAI()
-oi = OntologyInterface()
-
-mention = "Activated regulatory T cells"
-# Query ontology for candidates
-candidates = oi.search_terms(mention, limit=5)
-
-# Use LLM to reason about best match
-prompt = f"""
-Given the mention: "{mention}"
-And candidate ontology terms:
-{candidates}
-
-Which is the best match? Explain your reasoning.
-Is this an exact match or does it suggest a new term?
-"""
-
-response = client.chat.completions.create(
-    model="gpt-5.2",
-    messages=[{"role": "user", "content": prompt}]
-)
-print(response.choices[0].message.content)
-```
+1. Retrieve candidate ontology identifiers, definitions and synonyms.
+2. Supply the mention and its surrounding text to a language model.
+3. Request a ranked candidate and an exact/related/no-match assessment.
+4. Validate the returned identifier against the pinned ontology release.
+5. Route uncertain or proposed new concepts to expert review.
 
 ## Evaluation Metrics
 
@@ -228,7 +205,7 @@ print(response.choices[0].message.content)
 ## Challenges & Future
 
 ### Current Bottlenecks
-⚠️ **Scalability**: Large ontologies (50K+ terms) slow down EL
+⚠️ **Scalability**: Retrieval cost depends on ontology size and indexing; 50K+ is not a stated size of CL
 ⚠️ **Ambiguity**: Context-dependent meanings hard to resolve
 ⚠️ **Cost**: LLM-based approaches expensive at scale
 ⚠️ **Ontology Lag**: Linking to incomplete ontologies problematic
@@ -262,4 +239,8 @@ print(response.choices[0].message.content)
 
 ---
 
-**Last Updated**: 2026-03-25
+**Last Updated**: 2026-10-20
+
+## Verification (2026-10-20)
+
+Exact CD4/CD8 examples assume alpha-beta T-cell context. The previous OpenAI embedding F1 of 0.835 was corrected to 0.812. [CellLink preprint, Table 5](https://pmc.ncbi.nlm.nih.gov/articles/PMC12918994/); [SapBERT implementation](https://github.com/cambridgeltl/sapbert). The illustrative linking code has not been executed against a pinned environment.

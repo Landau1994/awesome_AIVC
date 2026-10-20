@@ -31,6 +31,9 @@ date_read:
 
 # Generative machine learning unlocks the first proteome-wide image of human cells
 
+> [!info] Verification scope — 2026-10-20
+> [Source record](https://www.biorxiv.org/content/10.64898/2026.03.31.715748v1). The work was located by title and DOI in its source record. This pass checked bibliographic identity and the broad research topic; detailed method settings, figure descriptions and numerical comparisons below remain reading notes and were not all independently verified.
+
 ## Quick Summary
 The authors present **ProtiCelli**, a deep generative model that simulates high-resolution microscopy images for 12,800 human proteins (the near-proteome) using only three cellular landmark stains: the nucleus, endoplasmic reticulum (ER), and microtubules. Trained on over 1.2 million images from the Human Protein Atlas, the model overcomes experimental scalability limits to create **Proteome2Cell**, a massive dataset of 30.7 million simulated "virtual cells." The model demonstrates a remarkable ability to predict drug-induced changes in protein localization from morphology alone and provides a computational framework for proteome-scale spatial systems biology.
 
@@ -103,10 +106,10 @@ The authors present **ProtiCelli**, a deep generative model that simulates high-
 - **Thul et al. (2017):** The original HPA subcellular map.
 
 ### Related Concepts
-- [[Diffusion Models]]
-- [[Spatial Proteomics]]
-- [[Virtual Staining]]
-- [[Foundation Models for Biology]]
+- [[02_Concepts/Generative Models|Diffusion Models]]
+- [[01_Papers/bioRxiv 2026 Generative machiner learning unlocks the first proteome-wide image of human cells|Spatial Proteomics]]
+- [[01_Papers/bioRxiv 2026 Generative machiner learning unlocks the first proteome-wide image of human cells|Virtual Staining]]
+- [[02_Concepts/Cell Foundation Models|Foundation Models for Biology]]
 
 ### Potential Applications
 - **Drug Discovery:** High-throughput virtual screening of drug effects on protein localization.
