@@ -1,5 +1,5 @@
 ---
-title: "Benchmarking biomedical foundation models"
+title: Benchmarking biomedical foundation models
 aliases: []
 authors:
   - Julio Saez-Rodriguez
@@ -15,7 +15,7 @@ tags:
   - AIVC
 status: unread
 rating:
-date_added: 2024-05-22
+date_added: 2026-10-23
 date_read:
 ---
 
